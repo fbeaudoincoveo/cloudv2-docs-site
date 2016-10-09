@@ -13,16 +13,18 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@domain.com
+title: Coveo Cloud V2 API Documetation
+email: fdallaire@coveo.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Coveo Cloud V2 API explorer and documentation
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://coveo.gighub.io/coveo/cloudv2-docs-site" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username:  fdallaireCoveo
+
+# Global settings
+timezone: America/New_York
+# encoding: utf8
 
 # Build settings
 markdown: kramdown
@@ -32,3 +34,7 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+sass:
+    sass_dir: _sass
+    style: compressed
