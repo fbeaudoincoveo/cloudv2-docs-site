@@ -12,9 +12,9 @@ $( document ).ready(function() {
         $( "#mysidebar" ).attr("class", "nav affix");
     }
     // activate tooltips. although this is a bootstrap js function, it must be activated this way in your theme.
-    $('[data-toggle="tooltip"]').tooltip({
+    /*$('[data-toggle="tooltip"]').tooltip({
         placement : 'top'
-    });
+    });*/
 
     /**
      * AnchorJS
