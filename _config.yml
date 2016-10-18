@@ -93,6 +93,7 @@ defaults:
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
+- ccv2_docs
 - home_sidebar
 - mydoc_sidebar
 - product1_sidebar
