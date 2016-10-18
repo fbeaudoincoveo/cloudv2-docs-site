@@ -11,7 +11,7 @@ site_title: Coveo Cloud V2
 company_name: Coveo
 # this appears in the footer
 
-github_editme_path:
+github_editme_path: coveo/cloudv2-docs-site/blob/gh-pages
 # if you're using Github, provide the basepath to the branch you've created for reviews, (ex.:tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages/). if not, leave this value blank.
 
 disqus_shortname:
