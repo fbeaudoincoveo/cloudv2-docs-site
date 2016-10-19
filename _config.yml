@@ -105,3 +105,36 @@ description: "Coveo Cloud V2 documentation site"
 
 # needed for sitemap.xml file only
 url: https://github.com/coveo/
+
+# Getting Swagger JSON files for Coveo Cloud V2 APIs (using https://github.com/18F/jekyll-get)
+jekyll_get:
+  - data: platform_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Platform'
+    cache: false
+  - data: index_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Index'
+    cache: false
+  - data: securitycache_api
+    json: 'https://platform.cloud.coveo.com/api-docs/SecurityCache'
+    cache: false
+  - data: source_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Source'
+    cache: false
+  - data: activity_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Activity'
+    cache: false
+  - data: privilege_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Privilege'
+    cache: false
+  - data: usageanalytics_api
+    json: 'https://platform.cloud.coveo.com/api-docs/UsageAnalytics'
+    cache: false
+  - data: authorizationserver_api
+    json: 'https://platform.cloud.coveo.com/api-docs/AuthorizationServer'
+    cache: false
+  - data: extension_api
+    json: 'https://platform.cloud.coveo.com/api-docs/Extension'
+    cache: false
+  - data: push_api
+    json: 'https://push.cloud.coveo.com/v1/api-docs/'
+    cache: false
