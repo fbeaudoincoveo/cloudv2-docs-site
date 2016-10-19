@@ -18,9 +18,6 @@ entries:
     output: web
     folderitems:
 
-    - title: Push API
+    - title: Platform API
       output: web
-      url: /index.html
-    - title: Pushing an Item
-      output: web
-      url: /index.html
+      url: platform.html
