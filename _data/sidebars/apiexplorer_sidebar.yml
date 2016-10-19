@@ -48,3 +48,6 @@ entries:
     - title: Extension API
       output: web
       url: extension_api.html
+    - title: Search API
+      output: web
+      url: search_api.html
