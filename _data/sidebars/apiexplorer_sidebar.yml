@@ -20,4 +20,31 @@ entries:
 
     - title: Platform API
       output: web
-      url: platform.html
+      url: platform_api.html
+    - title: Index API
+      output: web
+      url: index_api.html
+    - title: Security Cache API
+      output: web
+      url: securitycache_api.html
+    - title: Source API
+      output: web
+      url: source_api.html
+    - title: Activity API
+      output: web
+      url: activity_api.html
+    - title: Privilege API
+      output: web
+      url: privilege_api.html
+    - title: Usage Analytics API
+      output: web
+      url: usageanalytics_api.html
+    - title: Push API
+      output: web
+      url: push_api.html
+    - title: Authorization Server API
+      output: web
+      url: authorizationserver_api.html
+    - title: Extension API
+      output: web
+      url: extension_api.html
