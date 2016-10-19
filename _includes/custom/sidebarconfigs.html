@@ -1,4 +1,7 @@
-{% if page.sidebar == "ccv2_docs" %}
+{% if page.sidebar == "apiexplorer_sidebar" %}
+{% assign sidebar = site.data.sidebars.apiexplorer_sidebar.entries %}
+
+{% elsif page.sidebar == "ccv2_docs" %}
 {% assign sidebar = site.data.sidebars.ccv2_docs.entries %}
 
 {% elsif page.sidebar == "home_sidebar" %}
