@@ -1,29 +1,29 @@
-
 # Follow the pattern here for the URLs -- no slash at the beginning, and include the .html. The link here is rendered exactly as is in the Markdown references.
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
 
 entries:
-- title: Coveo Cloud V2 Documentation
-  version: 53
+- title: Sidebar
+  product: Coveo Cloud V2
   folders:
 
-  - title: Introduction
+  - title: Getting Started
+    output: web
     folderitems:
 
-    - title: What Is Coveo Cloud V2
-      url: /mydoc_hyperlinks.html#automatedlinks
+    - title: Welcome
+      output: web
+      url: /index.html
+    - title: What is Coveo Cloud V2
+      output: web
+      url: /index.html
 
-    - title: Getting Started
-      url: /mydoc_hyperlinks.html#automatedlinks
-
-  - title: On-preises Crawling Module
+  - title: Push API
+    output: web
     folderitems:
 
-  - title: Indexing Pipeline Extensions
-    folderitems:
-
-
-  - title: Release Notes
-    folderitems:
-
-    - title: Push API - Release Notes
-      url: /mydoc_hyperlinks.html#automatedlinks
+    - title: Overview
+      output: web
+      url: /index.html
+    - title: Pushing an Item
+      output: web
+      url: /index.html
