@@ -14,7 +14,7 @@ layout: default
 
 {% for route in swagger.paths %}
   <div class="swagger-paths">
-    <h2 class="swagger-path">{{ route[0] }}</h>
+    <h2 class="swagger-path">{{ route[0] }}</h2>
     {% for method in route[1] %}
     <div class="swagger-method swagger-method-{{ method[0] }}">
         <h3 class="swagger-method-title">
@@ -99,7 +99,7 @@ layout: default
   // Helpers
   var slice = Array.prototype.slice;
 
-  function $(expr, parent) {
+  function $$$(expr, parent) {
       return typeof expr === "string" ? (parent || document).querySelector(expr) : expr || null;
   }
 
@@ -107,11 +107,10 @@ layout: default
       return slice.call((parent || document).querySelectorAll(expr));
   }
 
-  $.bind = function(element, o) {
+  $$$.bind = function(element, o) {
       if (element) {
           for (var event in o) {
               var callback = o[event];
-
               event.split(/\s+/).forEach(function (event) {
                   element.addEventListener(event, callback);
               });
@@ -119,22 +118,22 @@ layout: default
       }
   };
 
-  $.toggleDetails = function (element) {
+  $$$.toggleDetails = function (element) {
       if (element.classList.contains('open')) {
           element.classList.remove('open');
       }
       else {
           element.classList.add('open');
       }
-  }
+  };
 
   // Initialization
   function init() {
       $$('.swagger-method-title').forEach(function (title) {
-          $.bind(title, {
+          $$$.bind(title, {
               'click': function (e) {
-                  var details = $('.swagger-method-details', title.parentNode)
-                  $.toggleDetails(details);
+                  var details = $$$('.swagger-method-details', title.parentNode);
+                  $$$.toggleDetails(details);
                   e.preventDefault();
               }
           });
