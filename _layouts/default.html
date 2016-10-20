@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head>
     {% include head.html %}
     <script>
@@ -47,7 +48,8 @@
                           paging: false,
                           stateSave: true
                       }
-              );
+              )
+          });
       </script>
     {% endif %}
 
@@ -62,6 +64,7 @@
         <!-- Sidebar Column -->
         <div class="col-md-3">
           {% include sidebar.html %}
+        </div>
         <!-- Content Column -->
         <div class="col-md-9">
           {{content}}
