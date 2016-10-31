@@ -42,6 +42,9 @@ entries:
     - title: Push API
       output: web
       url: push_api.html
+    - title: Push API (Improved)
+      output: web
+      url: push_api_improved.html
     - title: Authorization Server API
       output: web
       url: authorizationserver_api.html
