@@ -1,0 +1,29 @@
+# Follow the pattern here for the URLs -- no slash at the beginning, and include the .html. The link here is rendered exactly as is in the Markdown references.
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Coveo Cloud V2
+  folders:
+
+  - title: Getting Started
+    output: web
+    folderitems:
+
+    - title: Welcome
+      output: web
+      url: /index.html
+    - title: What is Coveo Cloud V2
+      output: web
+      url: /index.html
+
+  - title: Push API
+    output: web
+    folderitems:
+
+    - title: Overview
+      output: web
+      url: /index.html
+    - title: Pushing an Item
+      output: web
+      url: /index.html
