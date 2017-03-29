@@ -1,0 +1,11 @@
+{% case include.typeName %}
+    {% when "integer" %}
+        0
+    {% when "string" %}
+        "string"
+    {% when "boolean" %}
+        true
+    {% when "array" %}
+        []
+    {% when "enum" %}
+        {{ include.enum.first }}
