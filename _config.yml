@@ -138,6 +138,3 @@ jekyll_get:
   - data: push_api
     json: 'https://push.cloud.coveo.com/v1/api-docs/'
     cache: false
-  - data: search_api
-    json: 'https://searchapiqa.cloud.coveo.com/api-docs/rest/search'
-    cache: false

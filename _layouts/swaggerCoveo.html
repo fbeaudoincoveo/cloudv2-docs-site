@@ -4,14 +4,384 @@ layout: default
 
 <h1>{{ page.title }}</h1>
 
-{{ content }}
-
 {% if page.data %}
   {% assign swagger = site.data[page.data] %}
 {% else %}
   {% assign swagger = page %}
 {% endif %}
 
+<div id="swagger"
+     data-swagger-swagger="{{swagger.swagger}}"
+     data-swagger-host="{{swagger.host}}"
+     data-swagger-basepath="{{swagger.basePath}}"
+     data-swagger-schemes="{{swagger.schemes}}"
+     data-swagger-consumes="{{swagger.consumes}}"
+     data-swagger-produces="{{swagger.produces}}">
+    <div id="swagger-info"
+         data-swagger-title="{{swagger.info.title}}"
+         data-swagger-description="{{swagger.info.description}}"
+         data-swagger-termsofservice="{{swagger.info.termsOfService}}"
+         data-swagger-version="{{swagger.info.version}}">
+         {% markdown %}{{swagger.info.description}}{% endmarkdown %}
+        <div id="swagger-info-contact"
+             data-swagger-name="{{swagger.info.contact.name}}"
+             data-swagger-url="{{swagger.info.contact.url}}"
+             data-swagger-email="{{swagger.info.contact.email}}">
+        </div>
+        <div id="swagger-info-license"
+             data-swagger-name="{{swagger.info.license.name}}"
+             data-swagger-url="{{swagger.info.license.name}}">
+        </div>
+    </div>
+    <div id="swagger-externaldocs"
+         data-swagger-description="{{swagger.externalDocs.description}}"
+         data-swagger-url="{{swagger.externalDocs.url}}">
+    </div>
+    {% for tag_object in swagger.tags %}
+        {% assign formatted_tag_name = tag_object.name | downcase | replace: ' ', '_' %}
+        <div id="swagger-tag-{{formatted_tag_name}}" class="swagger-tag-section"
+             data-swagger-name="{{tag_object.name}}"
+             data-swagger-description="{{tag_object.description}}">
+            <div id="swagger-tag-externaldocs-{{formatted_tag_name}}" class="swagger-tag-externaldocs-section"
+                 data-swagger-description="{{tag_object.externalDocs.description}}"
+                 data-swagger-url="{{tag_object.externalDocs.url}}">
+            </div>
+            <h2 class="swagger-tag-header">{{ tag_object.name }}: {{ tag_object.description }}</h2>
+            {% for paths_object_field in swagger.paths %}
+                {% assign paths_object_field_name_first_characters = paths_object_field[0] | slice: 0, 1 %}
+                {% if paths_object_field_name_first_characters != "x-" %}
+                    {% for path_item_object_field in paths_object_field[1] %}
+                        {% assign path_item_object_field_name_first_characters = path_item_object_field[0] | slice: 0, 1 %}
+                        {% if path_item_object_field_name_first_characters != "x-" and path_item_object_field[0] != "$ref" %}
+                            {% for method_tag in path_item_object_field[1].tags %}
+                                {% if method_tag == tag_object.name %}
+                                    {% assign formatted_endpoint_name = path_item_object_field[0] | downcase | append: "_" | append: paths_object_field[0] | replace: "/", "_" | replace: "{", "" | replace: "}", "" %}
+                                    <div class="swagger-path-section" data-swagger-path="{{paths_object_field[0]}}">
+                                        <div class="swagger-operation-section"
+                                         data-swagger-operation="{{path_item_object_field[0]}}"
+                                         data-swagger-tags="{{path_item_object_field[1].tags}}"
+                                         data-swagger-summary="{{path_item_object_field[1].summary}}"
+                                         data-swagger-description="{{path_item_object_field[1].description}}"
+                                         data-swagger-operationid="{{path_item_object_field[1].operationId}}"
+                                         data-swagger-consumes="{{path_item_object_field[1].consumes}}"
+                                         data-swagger-produces="{{path_item_object_field[1].produces}}"
+                                         data-swagger-schemes="{{path_item_object_field[1].schemes}}"
+                                         data-swagger-deprecated="{{path_item_object_field[1].deprecated}}">
+                                            <div class="swagger-operation-externaldocs-section"
+                                                 data-swagger-description="{{path_item_object_field[1].externalDocs.description}}"
+                                                 data-swagger-url="{{path_item_object_field[1].externalDocs.url}}">
+                                            </div>
+                                            <h3 id="swagger-endpoint-header-{{formatted_endpoint_name}}" class="swagger swagger-endpoint">{{ path_item_object_field[0] | upcase }} {{ paths_object_field[0] }} {{ path_item_object_field[1].summary }}</h3>
+                                            {% markdown %}{{path_item_object_field[1].description}}{% endmarkdown %}
+                                            {% for responses_object_field in path_item_object_field[1].responses %}
+                                                {% assign responses_object_field_name_first_characters = responses_object_field[0] | slice: 0, 1 %}
+                                                {% if responses_object_field_name_first_characters != "x-" and responses_object_field[0] != "default" %}
+                                                    <div id="swagger-response-section-{{formatted_endpoint_name}}-{{responses_object_field[0]}}"
+                                                         data-swagger-response-code="{{responses_object_field[0]}}"
+                                                         data-swagger-response-description="{{responses_object_field[1].description}}">
+                                                        {% if responses_object_field[1].schema %}
+                                                            <div id="swagger-response-schema-section-{{formatted_endpoint_name}}-{{responses_object_field[0]}}">
+                                                                <h4 class="swagger swagger-response-schema swagger-response-class-status">Response Class (Status {{responses_object_field[0]}})</h4>
+                                                                <h4 class="swagger swagger-response-schema swagger-response-description">{{responses_object_field[1].description}}</h4>
+                                                                {% assign response_schema = responses_object_field[1].schema %}
+                                                                    {% if response_schema contains "$ref" %}
+                                                                        {% assign definition_substring = response_schema | split:'#/definitions/' %}
+                                                                        {% assign definition_string = definition_substring[1] | remove: '"}'  %}
+                                                                        {% for definitions_object in swagger.definitions %}
+                                                                            {% if definitions_object[0] == definition_string %}
+                                                                                <div class="swagger swagger-response-schema swagger-response-schema swagger-response-schema-content" style="height: 200px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey">{% include /developElement.html e=definitions_object.last d=swagger.definitions %}</div>
+                                                                                {% assign response_schema = definitions_object %}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% else %}
+                                                                        <div class="swagger swagger-response-schema swagger-response-schema swagger-response-schema-content" style="height: 200px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey">{% include /developElement.html e=response_schema d=swagger.definitions %}</div>
+                                                                    {% endif %}
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if responses_object_field[1].headers %}
+                                                            {% for headers_object in responses_object_field[1].headers %}
+                                                            <div id="swagger-response-header-section-{{formatted_endpoint_name}}-{{responses_object_field[0]}}-{{headers_object[0]}}"
+                                                                 data-swagger-response-header="{{headers_object[0]}}"
+                                                                 data-swagger-response-header-description="{{headers_object[1].description}}" data-swagger-response-header-type="{{headers_object[1].type}}"></div>
+                                                            <!-- TODO: add other Header Object fields in data- attributes -->
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        {% if responses_object_field[1].examples %}
+                                                            {% for example_object in responses_object_field[1].examples %}
+                                                                <div id="swagger-response-example-section-{{formatted_endpoint_name}}-{{responses_object_field[0]}}-{{example_object[0]}}"></div>
+                                                            {% endfor %}
+                                                         {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if path_item_object_field[1].parameters %}
+                                                <h4 class="swagger-parameter-head">Parameters</h4>
+                                                <table class="swagger-parameter-table">
+                                                    <tr class="swagger-parameter-header-row">
+                                                        <th>Parameter</th>
+                                                        <th>Value</th>
+                                                        <th>Description</th>
+                                                        <th>Parameter Type</th>
+                                                        <th>Data Type</th>
+                                                    </tr>
+                                                    {% for parameter_object in path_item_object_field[1].parameters %}
+                                                        <tr class="swagger-parameter-section"
+                                                            data-swagger-name="{{parameter_object.name}}"
+                                                            data-swagger-in="{{parameter_object.in}}"
+                                                            data-swagger-description="{{parameter_object.description}}"
+                                                            data-swagger-required="{{parameter_object.required}}"
+                                                            data-swagger-type="{{parameter_object.type}}"
+                                                            data-swagger-format="{{parameter_object.format}}"
+                                                            data-swagger-allowemptyvalue="{{parameter_object.allowEmptyValue}}"
+                                                            data-swagger-collectionformat="{{parameter_object.collectionFormat}}"
+                                                            data-swagger-maximum="{{parameter_object.maximum}}"
+                                                            data-swagger-exclusivemaximum="{{parameter_object.exclusiveMaximum}}"
+                                                            data-swagger-minimum="{{parameter_object.minimum}}"
+                                                            data-swagger-exclusiveminimum="{{parameter_object.exclusiveMinimum}}"
+                                                            data-swagger-maxlength="{{parameter_object.maxLength}}"
+                                                            data-swagger-minlength="{{parameter_object.minLength}}"
+                                                            data-swagger-pattern="{{parameter_object.pattern}}"
+                                                            data-swagger-maxitems="{{parameter_object.maxItems}}"
+                                                            data-swagger-minitems="{{parameter_object.minItems}}"
+                                                            data-swagger-uniqueitems="{{parameter_object.uniqueItems}}"
+                                                            data-swagger-multipleof="{{parameter_object.multipleOf}}">
+                                                            <td class="parameter-field">{{ parameter_object.name }}</td>
+                                                            <td>{% if parameter_object.schema %}<textarea class="swagger-parameter-input" style="height: 100px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey" placeholder="{% if parameter_object.required %}(required){% endif %}"></textarea>{% else %}<input class="swagger-parameter-input" placeholder="{% if parameter_object.required %}(required){% endif %}">{% endif %}</td>
+                                                            <td>{{ parameter_object.description }}</td>
+                                                            <td>{{ parameter_object.in }}</td>
+                                                            <td>{% if parameter_object.schema %}<div style="height: 100px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey">{% include /developElement.html e=parameter_object.schema d=swagger.definitions %}</div>{% else %}{{ parameter_object.type }}{% endif %}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>
+                                            {% endif %}
+                                            {% if path_item_object_field[1].responses %}
+                                                <h4 class="swagger-response-messages-head">Response Messages</h4>
+                                                <table class="swagger-response-messages-table">
+                                                    <tr class="swagger-response-messages-header-row">
+                                                        <th>HTTP Status Code</th>
+                                                        <th>Reason</th>
+                                                        <th>Response Model</th>
+                                                        <th>Headers</th>
+                                                    </tr>
+                                                    {% for responses_object in path_item_object_field[1].responses %}
+                                                        {% unless responses_object[1].schema %}
+                                                            <tr id="swagger-response-section">
+                                                                <td>{{ responses_object[0] }}</td>
+                                                                <td>{{ responses_object[1].description }}</td>
+                                                                <td>{% if responses_object[1].schema %}<div style="height: 100px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey">{% highlight json %}{% include /developElement.html e=responses_object.last.schema d=swagger.definitions %}{% endhighlight %}</div>{% endif %}</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        {% endunless %}
+                                                    {% endfor %}
+                                                </table>
+                                            {% endif %}
+                                            <button class="swagger-try-it-out">Try it out!</button>
+                                            <div class="swagger-try-it-out-response-section" style="display: none;">
+                                                <h5 class="swagger-try-it-out-response-header">Response:</h5>
+                                                <textarea class="swagger-try-it-out-response" style="height: 200px; width: 600px; overflow: scroll; resize: both; border-style: solid; border-width: 0.5px; border-color: darkgrey"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      var swaggerElement = document.querySelector('#swagger');
+      var swaggerModel = buildSwaggerModel(swaggerElement);
+
+      var swaggerPathsElement = swaggerElement.querySelectorAll('.swagger-path-section');
+      swaggerPathsElement.forEach(function (swaggerPathElement) {
+
+        var swaggerPathModel = buildSwaggerPathModel(swaggerPathElement);
+
+        var swaggerOperationsElement = swaggerPathElement.querySelectorAll('.swagger-operation-section');
+        swaggerOperationsElement.forEach(function (swaggerOperationElement) {
+
+          var swaggerOperationModel = buildSwaggerOperationModel(swaggerOperationElement);
+
+          var swaggerParametersElement = swaggerOperationElement.querySelectorAll('.swagger-parameter-section');
+          var swaggerTryItOutElement = swaggerOperationElement.querySelector('.swagger-try-it-out');
+
+          swaggerTryItOutElement.addEventListener('click', function () {
+
+            var swaggerParametersModel = [];
+
+            swaggerParametersElement.forEach(function (swaggerParameterElement) {
+              var swaggerParameterModel = buildSwaggerParameterModel(swaggerParameterElement);
+              var swaggerParameterInputElement = swaggerParameterElement.querySelector('.swagger-parameter-input');
+              swaggerParameterModel.value = swaggerParameterInputElement.value;
+              swaggerParametersModel.push(swaggerParameterModel);
+            });
+
+            swaggerModel.path = swaggerPathModel;
+            swaggerModel.path.operation = swaggerOperationModel;
+            swaggerModel.path.operation.parameters = swaggerParametersModel;
+
+            console.log(swaggerModel);
+
+            var client = new HttpClient();
+            client.sendAsyncHttpRequest(swaggerModel, function(response) {
+              displayResponse(swaggerOperationElement, response);
+            });
+          });
+        });
+      });
+    });
+
+    function displayResponse(swaggerOperationElement, response) {
+      swaggerOperationElement.querySelector('.swagger-try-it-out-response-section').style.display = "block";
+      var responseAreaElement = swaggerOperationElement.querySelector('.swagger-try-it-out-response');
+      responseAreaElement.textContent = response;
+    }
+
+    function buildSwaggerModel(HTMLSwaggerInput) {
+
+      var output = {};
+
+      generateKeyValues(HTMLSwaggerInput, output);
+
+      output.info = {};
+      generateKeyValues(HTMLSwaggerInput.querySelector('#swagger-info'), output.info);
+
+      output.info.contact = {};
+      generateKeyValues(HTMLSwaggerInput.querySelector('#swagger-info-contact'), output.info.contact);
+
+      output.info.license = {};
+      generateKeyValues(HTMLSwaggerInput.querySelector('#swagger-info-license'), output.info.license);
+
+      output.externalDocs = {};
+      generateKeyValues(HTMLSwaggerInput.querySelector('#swagger-externaldocs'), output.externalDocs);
+
+      return output
+    }
+
+    function buildSwaggerPathModel(HTMLSwaggerInput) {
+
+      var output = {};
+
+      generateKeyValues(HTMLSwaggerInput, output);
+
+      return output;
+    }
+
+    function buildSwaggerOperationModel(HTMLSwaggerInput) {
+
+      var output = {};
+
+      generateKeyValues(HTMLSwaggerInput, output);
+
+      output.externalDocs = {};
+      generateKeyValues(HTMLSwaggerInput.querySelector('.swagger-operation-externaldocs-section'), output.externalDocs);
+
+      return output;
+    }
+
+    function buildSwaggerParameterModel(HTMLSwaggerInput) {
+
+      var output = {};
+
+      generateKeyValues(HTMLSwaggerInput, output);
+
+      return output;
+    }
+
+    function HttpClient() {
+
+      this.sendAsyncHttpRequest = function(swaggerModel, callback) {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = function() {
+          if (httpRequest.readyState == 4) {
+            callback(httpRequest.responseText);
+          }
+        };
+
+        var method = swaggerModel.path.operation.operation.toUpperCase();
+        httpRequest.open(method, formatRequestUrl(swaggerModel), true);
+        var contentType = swaggerModel.path.operation.consumes ?
+          swaggerModel.path.operation.consumes :
+          'application/json';
+        httpRequest.setRequestHeader('Content-Type', contentType);
+        httpRequest.setRequestHeader('Authorization', 'Bearer xxdd7e7c04-9865-4e29-b236-dd4b3100a368');
+        if (method == "GET" || method == "HEAD" || method == "DELETE") {
+            httpRequest.send(null)
+        }
+        else
+        httpRequest.send(formatRequestBody(swaggerModel))
+      };
+    }
+
+    function formatRequestUrl(swaggerModel) {
+      var url = swaggerModel.host?
+        "https://" + swaggerModel.host + swaggerModel.path.path :
+        "https://platform.cloud.coveo.com:443" + swaggerModel.path.path;
+      var rx = new RegExp(".*\\?.*");
+      swaggerModel.path.operation.parameters.forEach(function(parameter) {
+        if (parameter.in == "query" && parameter.value) {
+          url += rx.test(url) ?
+            "&" + parameter.name + "=" + parameter.value :
+            "?" + parameter.name + "=" + parameter.value;
+        }
+        else if (parameter.in == "path" && parameter.value) {
+          var pathParameterRegExp = new RegExp("{" + parameter.name + "}");
+          url = url.replace(pathParameterRegExp, parameter.value);
+        }
+      });
+      return url;
+    }
+
+    function formatRequestBody(swaggerModel) {
+
+      var body = {};
+
+      swaggerModel.path.operation.parameters.forEach(function(parameter) {
+
+        if (parameter.in == "formData" && parameter.value) {
+          body[parameter.name] = parameter.value;
+        }
+
+        else if (parameter.in == "body" && parameter.value) {
+          body = JSON.parse(parameter.value);
+        }
+      });
+
+      return JSON.stringify(body);
+    }
+
+    function generateKeyValues(HTMLInputObject, outputObject) {
+      for (var i = 0; i < HTMLInputObject.attributes.length; i++) {
+        if (HTMLInputObject.attributes[i].name != "id" && HTMLInputObject.attributes[i].name != "class") {
+          outputObject[HTMLInputObject.attributes[i].name.split('data-swagger-')[1]] = HTMLInputObject.attributes[i].value;
+        }
+      }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}This is the original template this POC is based on{% endcomment %}
 {% for route in swagger.paths %}
   <div class="swagger-paths">
     <h2 class="swagger-path">{{ route[0] }}</h2>

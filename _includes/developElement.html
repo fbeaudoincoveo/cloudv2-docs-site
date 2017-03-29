@@ -1,0 +1,21 @@
+{% if include.e.first %}
+{% raw %}{{% endraw %}
+    {% for subElement in include.e %}
+        {% if subElement.first and subElement.first != "$ref" %}
+            <div style="padding-left: 10px">"{{ subElement.first }}":{% include /developElement.html e=subElement.last d=include.d %}</div>
+        {% elsif subElement.first == "$ref" %}
+            {% assign reference = subElement[1] | split:'#/definitions/' | last %}
+            {% for definition in include.d %}
+                {% assign test = definition | first %}
+                {% if test == reference %}
+                    <div style="padding-left: 10px">{{ definition.first }}":{% include /developElement.html e=definition.last d=include.d %}</div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div style="padding-left: 10px">"{{ subElement }}"{% if subElement != include.e.last %},{% endif %}</div>
+        {% endif %}
+    {% endfor %}
+    <div>{% raw %}},{% endraw %}</div>
+{% else %}
+    "{{ include.e }}",
+{% endif %}
