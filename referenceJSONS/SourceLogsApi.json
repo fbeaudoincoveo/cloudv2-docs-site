@@ -1,0 +1,826 @@
+{
+    "definitions": {
+        "DocumentLogFacetModel": {
+            "properties": {
+                "operations": {
+                    "$ref": "#/definitions/DocumentLogOperations"
+                },
+                "results": {
+                    "$ref": "#/definitions/DocumentLogResults"
+                },
+                "sourcesIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tasks": {
+                    "$ref": "#/definitions/DocumentLogTasks"
+                }
+            },
+            "type": "object"
+        },
+        "DocumentLogOperations": {
+            "items": {
+                "enum": [
+                    "ADD",
+                    "UPDATE",
+                    "DELETE",
+                    "DELETE_OLDER_THAN",
+                    "DELETE_AND_CHILDREN",
+                    "BATCH_FILE"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "DocumentLogResults": {
+            "items": {
+                "enum": [
+                    "COMPLETED",
+                    "WARNING",
+                    "REJECTED",
+                    "ERROR",
+                    "SKIPPED"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "DocumentLogTasks": {
+            "items": {
+                "enum": [
+                    "STREAMING",
+                    "STREAMING_BATCH",
+                    "CONSUMING",
+                    "CONSUMING_BATCH",
+                    "CRAWLING",
+                    "PROCESSING",
+                    "MAPPING",
+                    "EXTENSION",
+                    "INDEXING"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "Empty": {
+            "type": "object"
+        },
+        "Error": {
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "f6ptflc2i7.execute-api.us-east-1.amazonaws.com/v1",
+    "info": {
+        "title": "Document Logs API",
+        "version": "2016-03-03T13:22:11Z"
+    },
+    "paths": {
+        "/organizations/{organizationId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "organizationId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sourceId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "documentId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "allowMultiple": true,
+                        "in": "query",
+                        "name": "tasks",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "allowMultiple": true,
+                        "in": "query",
+                        "name": "operations",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "allowMultiple": true,
+                        "in": "query",
+                        "name": "results",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "from",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "query",
+                        "name": "perPage",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "412": {
+                        "description": "Precondition Failed",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many Requests",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "504": {
+                        "description": "Gateway Timeout",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "full"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "documentlogs"
+                ],
+                "x-pretty-name": "getDocumentLogsDeprecated"
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "organizationId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "documentId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "from",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "query",
+                        "name": "perPage",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "DocumentLogFacetModel",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DocumentLogFacetModel"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "412": {
+                        "description": "Precondition Failed",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many Requests",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "504": {
+                        "description": "Gateway Timeout",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "full"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "documentlogs"
+                ],
+                "x-pretty-name": "getDocumentLogs"
+            }
+        },
+        "/organizations/{organizationId}/facets": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "organizationId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "documentId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "DocumentLogFacetModel",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DocumentLogFacetModel"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "412": {
+                        "description": "Precondition Failed",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "429": {
+                        "description": "Too many Requests",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "504": {
+                        "description": "Gateway Timeout",
+                        "headers": {
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2": [
+                            "full"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "documentlogsfacets"
+                ],
+                "x-pretty-name": "getDocumentLogsFacets"
+            }
+        }
+    },
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "oauth2": {
+            "authorizationUrl": "https://platform.cloud.coveo.com/oauth/authorize",
+            "flow": "implicit",
+            "scopes": {
+                "full": "Required"
+            },
+            "type": "oauth2"
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Document Logs",
+            "name": "documentlogs"
+        }
+    ]
+}
