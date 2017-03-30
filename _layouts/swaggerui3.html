@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+{% include swaggerui3_head.html %}
+
+<body>
+
+{% include swaggerui3_header.html %}
+{% include header.html %}
+
+<main class="page-content" aria-label="Content">
+    <div class="wrapper">
+        {{ content }}
+    </div>
+
+    {% assign swagger = page.swagger | relative_url %}
+
+    <div id="swagger-ui"></div>
+
+    <script src={{"/swaggerui/v3/dist/swagger-ui-bundle.js" | relative_url}}> </script>
+    <script src={{"/swaggerui/v3/dist/swagger-ui-standalone-preset.js" | relative_url}}> </script>
+
+    <script>
+      window.onload = function() {
+        // Build a system
+        const ui = SwaggerUIBundle({
+          url: "{{swagger}}",
+          dom_id: '#swagger-ui',
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            SwaggerUIBundle.plugins.DownloadUrl
+          ],
+          layout: "StandaloneLayout"
+        });
+
+        window.ui = ui
+      }
+    </script>
+</main>
+
+{% include footer.html %}
+
+</body>
+
+</html>
