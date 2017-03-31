@@ -6,41 +6,41 @@
   basePath: "/rest/ua"
   tags: 
     - 
-      name: "Exports API - Version 15"
+      name: "Analytics API - Version 14"
     - 
       name: "Groups API - Version 15"
     - 
-      name: "Filters API - Version 14"
+      name: "Metrics API - Version 15"
     - 
-      name: "Dimensions API - Version 14"
+      name: "Exports API - Version 15"
+    - 
+      name: "Users API - Version 14"
     - 
       name: "Exports API - Version 14"
     - 
-      name: "Metrics API - Version 15"
+      name: "Administration API - Version 15"
+    - 
+      name: "Dimensions API, Version 15"
+    - 
+      name: "Reports API - Version 15"
+    - 
+      name: "Metrics API - Version 14"
     - 
       name: "Reports API - Version 14"
     - 
+      name: "Users API - Version 15"
+    - 
+      name: "Dimensions API - Version 14"
+    - 
+      name: "Filters API - Version 14"
+    - 
       name: "Statistics API - Version 15"
     - 
-      name: "Administration API - Version 15"
-    - 
-      name: "Reports API - Version 15"
+      name: "Filters API - Version 15"
     - 
       name: "Analytics API - Version 15"
     - 
       name: "Statistics API - Version 14"
-    - 
-      name: "Dimensions API - Version 15"
-    - 
-      name: "Users API - Version 14"
-    - 
-      name: "Analytics API - Version 14"
-    - 
-      name: "Filters API - Version 15"
-    - 
-      name: "Metrics API - Version 14"
-    - 
-      name: "Users API - Version 15"
   paths: 
     /v14/analytics/click: 
       get: 
@@ -48,7 +48,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a click event via GET"
         description: ""
-        operationId: "get__v14_analytics_click"
+        operationId: "addClickEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -89,7 +89,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a click event via POST"
         description: ""
-        operationId: "post__v14_analytics_click"
+        operationId: "addClickEvent"
         schemes: 
           - "https"
         produces: 
@@ -132,7 +132,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a custom event via GET"
         description: ""
-        operationId: "get__v14_analytics_custom"
+        operationId: "addCustomEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -173,7 +173,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a custom event via POST"
         description: ""
-        operationId: "post__v14_analytics_custom"
+        operationId: "addCustomEventViaPost"
         schemes: 
           - "https"
         produces: 
@@ -216,7 +216,7 @@
           - "Analytics API - Version 14"
         summary: "Health check for the analytics service"
         description: ""
-        operationId: "get__v14_analytics_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -246,7 +246,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a search event via GET"
         description: ""
-        operationId: "get__v14_analytics_search"
+        operationId: "addSearchEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -287,7 +287,7 @@
           - "Analytics API - Version 14"
         summary: "Adds a search event via POST"
         description: ""
-        operationId: "post__v14_analytics_search"
+        operationId: "addSearchEvent"
         schemes: 
           - "https"
         produces: 
@@ -330,7 +330,7 @@
           - "Analytics API - Version 14"
         summary: "Adds multiple search events via GET"
         description: ""
-        operationId: "get__v14_analytics_searches"
+        operationId: "addSearchEventsViaGet"
         schemes: 
           - "https"
         produces: 
@@ -373,7 +373,7 @@
           - "Analytics API - Version 14"
         summary: "Adds multiple search events via POST"
         description: ""
-        operationId: "post__v14_analytics_searches"
+        operationId: "addSearchEvents"
         schemes: 
           - "https"
         produces: 
@@ -420,7 +420,7 @@
           - "Analytics API - Version 14"
         summary: "Gets the status of the analytics service"
         description: ""
-        operationId: "get__v14_analytics_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -450,7 +450,7 @@
           - "Analytics API - Version 14"
         summary: "Get the user current visit informations"
         description: ""
-        operationId: "get__v14_analytics_visit"
+        operationId: "getUserCurrentVisit"
         schemes: 
           - "https"
         produces: 
@@ -491,7 +491,7 @@
           - "Analytics API - Version 14"
         summary: "Clears all cookies associated with this API"
         description: ""
-        operationId: "delete__v14_analytics_visit"
+        operationId: "invalidateUserCurrentVisit"
         schemes: 
           - "https"
         produces: 
@@ -519,7 +519,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets all the dimensions"
         description: ""
-        operationId: "get__v14_dimensions"
+        operationId: "getDimensions"
         schemes: 
           - "https"
         produces: 
@@ -565,7 +565,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets all the custom dimensions"
         description: ""
-        operationId: "get__v14_dimensions_custom"
+        operationId: "getCustomDimensions"
         produces: 
           - "application/json"
         parameters: 
@@ -601,7 +601,7 @@
           - "Dimensions API - Version 14"
         summary: "Creates a custom dimension"
         description: ""
-        operationId: "post__v14_dimensions_custom"
+        operationId: "createCustomDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -662,7 +662,7 @@
           - "Dimensions API - Version 14"
         summary: "Health check for the custom dimensions service"
         description: ""
-        operationId: "get__v14_dimensions_custom_monitoring_health"
+        operationId: "getServiceHealth"
         produces: 
           - "application/json"
         parameters: 
@@ -690,7 +690,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets the status of the custom dimensions service"
         description: ""
-        operationId: "get__v14_dimensions_custom_status"
+        operationId: "getServiceStatus"
         produces: 
           - "application/json"
         parameters: 
@@ -718,7 +718,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets a custom dimension"
         description: ""
-        operationId: "get__v14_dimensions_custom_{apiName}"
+        operationId: "getDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -751,7 +751,7 @@
           - "Dimensions API - Version 14"
         summary: "Creates or edits a custom dimension"
         description: ""
-        operationId: "put__v14_dimensions_custom_{apiName}"
+        operationId: "createOrEditDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -798,7 +798,7 @@
           - "Dimensions API - Version 14"
         summary: "Deletes a custom dimension"
         description: ""
-        operationId: "delete__v14_dimensions_custom_{apiName}"
+        operationId: "deleteDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -830,7 +830,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets the values for this custom dimensions"
         description: ""
-        operationId: "get__v14_dimensions_custom_{dimension}_values"
+        operationId: "listValues"
         produces: 
           - "application/json"
         parameters: 
@@ -906,7 +906,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets a list of dimensions that have data but are not created yet"
         description: ""
-        operationId: "get__v14_dimensions_custom_{event}_suggestions"
+        operationId: "getCustomDimensionSuggestions"
         produces: 
           - "application/json"
         parameters: 
@@ -971,7 +971,7 @@
           - "Dimensions API - Version 14"
         summary: "Health check for the dimensions service"
         description: ""
-        operationId: "get__v14_dimensions_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -1001,7 +1001,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets the status of the dimensions service"
         description: ""
-        operationId: "get__v14_dimensions_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -1031,7 +1031,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets a dimension"
         description: ""
-        operationId: "get__v14_dimensions_{apiName}"
+        operationId: "getDimension"
         schemes: 
           - "https"
         produces: 
@@ -1067,7 +1067,7 @@
           - "Dimensions API - Version 14"
         summary: "Gets the values for this dimensions"
         description: ""
-        operationId: "get__v14_dimensions_{dimension}_values"
+        operationId: "listValues"
         schemes: 
           - "https"
         produces: 
@@ -1145,7 +1145,7 @@
           - "Exports API - Version 14"
         summary: "Lists all exports"
         description: ""
-        operationId: "get__v14_exports"
+        operationId: "getExports"
         schemes: 
           - "https"
         produces: 
@@ -1177,7 +1177,7 @@
           - "Exports API - Version 14"
         summary: "Generates the export"
         description: ""
-        operationId: "post__v14_exports"
+        operationId: "export"
         schemes: 
           - "https"
         produces: 
@@ -1268,7 +1268,7 @@
           - "Exports API - Version 14"
         summary: "Estimates the number of rows in an export"
         description: ""
-        operationId: "get__v14_exports_estimate"
+        operationId: "estimateExport"
         schemes: 
           - "https"
         produces: 
@@ -1337,7 +1337,7 @@
           - "Exports API - Version 14"
         summary: "Health check for the exports service"
         description: ""
-        operationId: "get__v14_exports_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -1367,7 +1367,7 @@
           - "Exports API - Version 14"
         summary: "Gets the status of the exports service"
         description: ""
-        operationId: "get__v14_exports_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -1397,7 +1397,7 @@
           - "Exports API - Version 14"
         summary: "Generates the export of the visits"
         description: ""
-        operationId: "post__v14_exports_visits"
+        operationId: "exportVisits"
         schemes: 
           - "https"
         produces: 
@@ -1479,7 +1479,7 @@
           - "Exports API - Version 14"
         summary: "Estimates the number of rows in an export of visits"
         description: ""
-        operationId: "get__v14_exports_visits_estimate"
+        operationId: "estimateVisitsExport"
         schemes: 
           - "https"
         produces: 
@@ -1539,7 +1539,7 @@
           - "Exports API - Version 14"
         summary: "Gets information on a specific export"
         description: ""
-        operationId: "get__v14_exports_{exportId}"
+        operationId: "getExport"
         schemes: 
           - "https"
         produces: 
@@ -1581,7 +1581,7 @@
           - "Exports API - Version 14"
         summary: "Deletes an export"
         description: ""
-        operationId: "delete__v14_exports_{exportId}"
+        operationId: "deleteExport"
         schemes: 
           - "https"
         produces: 
@@ -1615,7 +1615,7 @@
           - "Filters API - Version 14"
         summary: "Health check for the filter service"
         description: ""
-        operationId: "get__v14_filters_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -1651,7 +1651,7 @@
           - "Filters API - Version 14"
         summary: "Gets all the permission filters"
         description: ""
-        operationId: "get__v14_filters_permissions"
+        operationId: "getPermissionFilters"
         schemes: 
           - "https"
         produces: 
@@ -1680,7 +1680,7 @@
           - "Filters API - Version 14"
         summary: "Creates a new permission filter"
         description: ""
-        operationId: "post__v14_filters_permissions"
+        operationId: "createPermissionFilters"
         schemes: 
           - "https"
         produces: 
@@ -1717,7 +1717,7 @@
           - "Filters API - Version 14"
         summary: "Gets the specified permission filter"
         description: ""
-        operationId: "get__v14_filters_permissions_{filterId}"
+        operationId: "getPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -1752,7 +1752,7 @@
           - "Filters API - Version 14"
         summary: "Updates the specified permission filter"
         description: ""
-        operationId: "put__v14_filters_permissions_{filterId}"
+        operationId: "updatePermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -1794,7 +1794,7 @@
           - "Filters API - Version 14"
         summary: "Deletes the specified permission filter"
         description: ""
-        operationId: "delete__v14_filters_permissions_{filterId}"
+        operationId: "deletePermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -1828,7 +1828,7 @@
           - "Filters API - Version 14"
         summary: "Gets the users of a specified permission filter"
         description: ""
-        operationId: "get__v14_filters_permissions_{filterId}_users"
+        operationId: "getUsersRestrictedByPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -1865,7 +1865,7 @@
           - "Filters API - Version 14"
         summary: "Sets the users of a specified permission filter"
         description: ""
-        operationId: "put__v14_filters_permissions_{filterId}_users"
+        operationId: "setUsersRestrictedByPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -1908,7 +1908,7 @@
           - "Filters API - Version 14"
         summary: "Gets all the reporting filters"
         description: ""
-        operationId: "get__v14_filters_reporting"
+        operationId: "getReportingFilters"
         schemes: 
           - "https"
         produces: 
@@ -1937,7 +1937,7 @@
           - "Filters API - Version 14"
         summary: "Creates a new reporting filter"
         description: ""
-        operationId: "post__v14_filters_reporting"
+        operationId: "createReportingFilters"
         schemes: 
           - "https"
         produces: 
@@ -1974,7 +1974,7 @@
           - "Filters API - Version 14"
         summary: "Gets the specified reporting filter"
         description: ""
-        operationId: "get__v14_filters_reporting_{filterId}"
+        operationId: "getReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -2009,7 +2009,7 @@
           - "Filters API - Version 14"
         summary: "Updates the specified reporting filter"
         description: ""
-        operationId: "put__v14_filters_reporting_{filterId}"
+        operationId: "updateReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -2051,7 +2051,7 @@
           - "Filters API - Version 14"
         summary: "Deletes the specified reporting filter"
         description: ""
-        operationId: "delete__v14_filters_reporting_{filterId}"
+        operationId: "deleteReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -2085,7 +2085,7 @@
           - "Filters API - Version 14"
         summary: "Gets the status of the filter service"
         description: ""
-        operationId: "get__v14_filters_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -2121,7 +2121,7 @@
           - "Metrics API - Version 14"
         summary: "Gets all the metrics"
         description: ""
-        operationId: "get__v14_metrics"
+        operationId: "getMetrics"
         schemes: 
           - "https"
         produces: 
@@ -2151,7 +2151,7 @@
           - "Metrics API - Version 14"
         summary: "Health check for the metrics service"
         description: ""
-        operationId: "get__v14_metrics_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -2181,7 +2181,7 @@
           - "Metrics API - Version 14"
         summary: "Gets the status of the metrics service"
         description: ""
-        operationId: "get__v14_metrics_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -2211,7 +2211,7 @@
           - "Metrics API - Version 14"
         summary: "Gets a metric"
         description: ""
-        operationId: "get__v14_metrics_{metricName}"
+        operationId: "getMetric"
         schemes: 
           - "https"
         produces: 
@@ -2247,7 +2247,7 @@
           - "Reports API - Version 14"
         summary: "Gets the persisted reports of the specified type. If no type is specified, all reports will be returned."
         description: ""
-        operationId: "get__v14_reports"
+        operationId: "getAllReportsForType"
         schemes: 
           - "https"
         produces: 
@@ -2292,7 +2292,7 @@
           - "Reports API - Version 14"
         summary: "Creates a new report."
         description: ""
-        operationId: "post__v14_reports"
+        operationId: "createReport"
         schemes: 
           - "https"
         produces: 
@@ -2329,7 +2329,7 @@
           - "Reports API - Version 14"
         summary: "Health check for the reports service"
         description: ""
-        operationId: "get__v14_reports_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -2365,7 +2365,7 @@
           - "Reports API - Version 14"
         summary: "Gets the status of the reports service"
         description: ""
-        operationId: "get__v14_reports_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -2401,7 +2401,7 @@
           - "Reports API - Version 14"
         summary: "Gets the specified report."
         description: ""
-        operationId: "get__v14_reports_{reportId}"
+        operationId: "getReport"
         schemes: 
           - "https"
         produces: 
@@ -2438,7 +2438,7 @@
           - "Reports API - Version 14"
         summary: "Updates an existing report."
         description: ""
-        operationId: "put__v14_reports_{reportId}"
+        operationId: "updateReport"
         schemes: 
           - "https"
         produces: 
@@ -2480,7 +2480,7 @@
           - "Reports API - Version 14"
         summary: "Deletes the specified report."
         description: ""
-        operationId: "delete__v14_reports_{reportId}"
+        operationId: "deleteReport"
         schemes: 
           - "https"
         produces: 
@@ -2514,7 +2514,7 @@
           - "Reports API - Version 14"
         summary: "Gets the users that can view the specified report."
         description: ""
-        operationId: "get__v14_reports_{reportId}_users"
+        operationId: "getUsersAllowedOnReport"
         schemes: 
           - "https"
         produces: 
@@ -2549,7 +2549,7 @@
           - "Reports API - Version 14"
         summary: "Sets the users that are allowed to view the specified report."
         description: ""
-        operationId: "put__v14_reports_{reportId}_users"
+        operationId: "setAllowedUsersOnReport"
         schemes: 
           - "https"
         produces: 
@@ -2592,7 +2592,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the specified metrics combined by the specified dimensions in the date range"
         description: "There is one value of each metric for every possible dimensions combination."
-        operationId: "get__v14_stats_combinedData"
+        operationId: "getCombinedData"
         schemes: 
           - "https"
         produces: 
@@ -2729,7 +2729,7 @@
           - "Statistics API - Version 14"
         summary: "Gets global data for each specified metrics in the specified date range"
         description: "Global data contain the total, the daily peak and the daily average."
-        operationId: "get__v14_stats_globalData"
+        operationId: "getGlobalAggregatedData"
         schemes: 
           - "https"
         produces: 
@@ -2825,7 +2825,7 @@
           - "Statistics API - Version 14"
         summary: "Gets graph data points for the specified metrics in the specified date range"
         description: "There is one data point per interval per metric. The interval can be specified with the 'i' query parameter."
-        operationId: "get__v14_stats_graphDataPoints"
+        operationId: "getGraphAggregatedData"
         schemes: 
           - "https"
         produces: 
@@ -2912,7 +2912,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the incoherent events in the specified date range"
         description: ""
-        operationId: "get__v14_stats_incoherentEvents"
+        operationId: "getIncoherentEvents"
         schemes: 
           - "https"
         produces: 
@@ -2977,7 +2977,7 @@
           - "Statistics API - Version 14"
         summary: "Marks the incoherent events in the specified date range as 'seen'"
         description: ""
-        operationId: "post__v14_stats_incoherentEvents_seen"
+        operationId: "markIncoherentEventsAsSeen"
         schemes: 
           - "https"
         produces: 
@@ -3017,7 +3017,7 @@
           - "Statistics API - Version 14"
         summary: "Health check for the statistics service"
         description: ""
-        operationId: "get__v14_stats_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -3047,7 +3047,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the status of the statistics service"
         description: ""
-        operationId: "get__v14_stats_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -3077,7 +3077,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the most frequent queries matching the specified query text"
         description: ""
-        operationId: "get__v14_stats_topQueries"
+        operationId: "getTopQueriesByFrequency"
         schemes: 
           - "https"
         produces: 
@@ -3106,7 +3106,7 @@
           - 
             name: "pageNumber"
             in: "query"
-            description: "The response's page to access, starting at 0."
+            description: "The response's page to access, starting at 1."
             required: false
             type: "integer"
             default: 0
@@ -3131,7 +3131,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the specified metrics combined by the specified dimensions in the date range"
         description: "There is on value of each metric for every possible dimensions combination."
-        operationId: "get__v14_stats_trends"
+        operationId: "getCombinedDataWithTrends"
         schemes: 
           - "https"
         produces: 
@@ -3289,7 +3289,7 @@
           - "Statistics API - Version 14"
         summary: "Gets the details of the visits matching the specified criteria"
         description: ""
-        operationId: "get__v14_stats_visits"
+        operationId: "getVisitsStatistics"
         schemes: 
           - "https"
         produces: 
@@ -3400,7 +3400,7 @@
           - "Statistics API - Version 14"
         summary: "Forces an update on the visits view."
         description: ""
-        operationId: "post__v14_stats_visits"
+        operationId: "updateVisits"
         schemes: 
           - "https"
         produces: 
@@ -3428,7 +3428,7 @@
           - "Users API - Version 14"
         summary: "Health check for the users service"
         description: ""
-        operationId: "get__v14_users_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -3464,7 +3464,7 @@
           - "Users API - Version 14"
         summary: "Gets the status of the users service"
         description: ""
-        operationId: "get__v14_users_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -3500,7 +3500,7 @@
           - "Users API - Version 14"
         summary: "Gets a user by its ID."
         description: ""
-        operationId: "get__v14_users_{userId}"
+        operationId: "getUser"
         schemes: 
           - "https"
         produces: 
@@ -3536,7 +3536,7 @@
           - "Users API - Version 14"
         summary: "Gets the data level filters that apply to the specified user."
         description: ""
-        operationId: "get__v14_users_{userId}_filters"
+        operationId: "getFiltersByUser"
         schemes: 
           - "https"
         produces: 
@@ -3571,7 +3571,7 @@
           - "Users API - Version 14"
         summary: "Set the filters that will be applied to the specified user's query"
         description: ""
-        operationId: "put__v14_users_{userId}_filters"
+        operationId: "setFiltersOnUser"
         schemes: 
           - "https"
         produces: 
@@ -3614,7 +3614,7 @@
           - "Users API - Version 14"
         summary: "Gets the reports that the specified user can access."
         description: ""
-        operationId: "get__v14_users_{userId}_reports"
+        operationId: "getReportsByUser"
         schemes: 
           - "https"
         produces: 
@@ -3656,7 +3656,7 @@
           - "Users API - Version 14"
         summary: "Set which reports the specified user can access"
         description: ""
-        operationId: "put__v14_users_{userId}_reports"
+        operationId: "setAllowedReportsOnUser"
         schemes: 
           - "https"
         produces: 
@@ -3699,7 +3699,7 @@
           - "Administration API - Version 15"
         summary: "Get an account"
         description: ""
-        operationId: "get__v15_admin_account"
+        operationId: "getAccount"
         schemes: 
           - "https"
         produces: 
@@ -3730,7 +3730,7 @@
           - "Administration API - Version 15"
         summary: "Edit an account"
         description: ""
-        operationId: "put__v15_admin_account"
+        operationId: "editAccount"
         schemes: 
           - "https"
         produces: 
@@ -3769,7 +3769,7 @@
           - "Administration API - Version 15"
         summary: "Sets one endpoint status"
         description: ""
-        operationId: "post__v15_admin_redshift_endpoint_status"
+        operationId: "updateRedshiftClusterStatus"
         schemes: 
           - "https"
         produces: 
@@ -3817,7 +3817,7 @@
           - "Analytics API - Version 15"
         summary: "Add a click event via GET"
         description: ""
-        operationId: "get__v15_analytics_click"
+        operationId: "addClickEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -3858,7 +3858,7 @@
           - "Analytics API - Version 15"
         summary: "Add a click event via POST"
         description: ""
-        operationId: "post__v15_analytics_click"
+        operationId: "addClickEvent"
         schemes: 
           - "https"
         produces: 
@@ -3901,7 +3901,7 @@
           - "Analytics API - Version 15"
         summary: "Add a custom event via GET"
         description: ""
-        operationId: "get__v15_analytics_custom"
+        operationId: "addCustomEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -3942,7 +3942,7 @@
           - "Analytics API - Version 15"
         summary: "Add a custom event via POST"
         description: ""
-        operationId: "post__v15_analytics_custom"
+        operationId: "addCustomEventViaPost"
         schemes: 
           - "https"
         produces: 
@@ -3985,7 +3985,7 @@
           - "Analytics API - Version 15"
         summary: "Health check for the analytics service"
         description: ""
-        operationId: "get__v15_analytics_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -4015,7 +4015,7 @@
           - "Analytics API - Version 15"
         summary: "Add a search event via GET"
         description: ""
-        operationId: "get__v15_analytics_search"
+        operationId: "addSearchEventViaGet"
         schemes: 
           - "https"
         produces: 
@@ -4056,7 +4056,7 @@
           - "Analytics API - Version 15"
         summary: "Add a search event via POST"
         description: ""
-        operationId: "post__v15_analytics_search"
+        operationId: "addSearchEvent"
         schemes: 
           - "https"
         produces: 
@@ -4099,7 +4099,7 @@
           - "Analytics API - Version 15"
         summary: "Add multiple search events via GET"
         description: ""
-        operationId: "get__v15_analytics_searches"
+        operationId: "addSearchEventsViaGet"
         schemes: 
           - "https"
         produces: 
@@ -4142,7 +4142,7 @@
           - "Analytics API - Version 15"
         summary: "Add multiple search events via POST"
         description: ""
-        operationId: "post__v15_analytics_searches"
+        operationId: "addSearchEvents"
         schemes: 
           - "https"
         produces: 
@@ -4189,7 +4189,7 @@
           - "Analytics API - Version 15"
         summary: "Get the analytics service status"
         description: ""
-        operationId: "get__v15_analytics_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -4219,7 +4219,7 @@
           - "Analytics API - Version 15"
         summary: "Add a view event via POST"
         description: ""
-        operationId: "post__v15_analytics_view"
+        operationId: "addViewEventViaPost"
         schemes: 
           - "https"
         produces: 
@@ -4262,7 +4262,7 @@
           - "Analytics API - Version 15"
         summary: "Get the user current visit information"
         description: ""
-        operationId: "get__v15_analytics_visit"
+        operationId: "getUserCurrentVisit"
         schemes: 
           - "https"
         produces: 
@@ -4303,7 +4303,7 @@
           - "Analytics API - Version 15"
         summary: "Clear all cookies associated with the API"
         description: ""
-        operationId: "delete__v15_analytics_visit"
+        operationId: "invalidateUserCurrentVisit"
         schemes: 
           - "https"
         produces: 
@@ -4328,10 +4328,10 @@
     /v15/dimensions: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get all the dimensions"
         description: ""
-        operationId: "get__v15_dimensions"
+        operationId: "getDimensions"
         schemes: 
           - "https"
         produces: 
@@ -4374,10 +4374,10 @@
     /v15/dimensions/custom: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get all the custom dimensions"
         description: ""
-        operationId: "get__v15_dimensions_custom"
+        operationId: "getCustomDimensions"
         produces: 
           - "application/json"
         parameters: 
@@ -4410,10 +4410,10 @@
               - "readUA"
       post: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Create a custom dimension"
         description: ""
-        operationId: "post__v15_dimensions_custom"
+        operationId: "createCustomDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -4471,10 +4471,10 @@
     /v15/dimensions/custom/monitoring/health: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Health check for the custom dimensions service"
         description: ""
-        operationId: "get__v15_dimensions_custom_monitoring_health"
+        operationId: "getServiceHealth"
         produces: 
           - "application/json"
         parameters: 
@@ -4499,10 +4499,10 @@
     /v15/dimensions/custom/status: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get the custom dimensions service status"
         description: ""
-        operationId: "get__v15_dimensions_custom_status"
+        operationId: "getServiceStatus"
         produces: 
           - "application/json"
         parameters: 
@@ -4527,10 +4527,10 @@
     /v15/dimensions/custom/{apiName}: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get a custom dimension"
         description: ""
-        operationId: "get__v15_dimensions_custom_{apiName}"
+        operationId: "getDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -4560,10 +4560,10 @@
               - "readUA"
       put: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Create or edit a custom dimension"
         description: ""
-        operationId: "put__v15_dimensions_custom_{apiName}"
+        operationId: "createOrEditDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -4607,10 +4607,10 @@
               - "readUA"
       delete: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Delete a custom dimension"
         description: ""
-        operationId: "delete__v15_dimensions_custom_{apiName}"
+        operationId: "deleteDimension"
         produces: 
           - "application/json"
         parameters: 
@@ -4639,10 +4639,10 @@
     /v15/dimensions/custom/{dimension}/values: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get the values for a custom dimension"
         description: ""
-        operationId: "get__v15_dimensions_custom_{dimension}_values"
+        operationId: "listValues"
         produces: 
           - "application/json"
         parameters: 
@@ -4715,10 +4715,10 @@
     /v15/dimensions/custom/{event}/suggestions: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get a list of dimensions that have data but are not created yet"
         description: ""
-        operationId: "get__v15_dimensions_custom_{event}_suggestions"
+        operationId: "getCustomDimensionSuggestions"
         produces: 
           - "application/json"
         parameters: 
@@ -4780,10 +4780,10 @@
     /v15/dimensions/exportables: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get all the exportable dimensions"
         description: ""
-        operationId: "get__v15_dimensions_exportables"
+        operationId: "getExportableDimensions"
         schemes: 
           - "https"
         produces: 
@@ -4826,10 +4826,10 @@
     /v15/dimensions/monitoring/health: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Health check for the dimensions service"
         description: ""
-        operationId: "get__v15_dimensions_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -4856,10 +4856,10 @@
     /v15/dimensions/status: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get the dimensions service status"
         description: ""
-        operationId: "get__v15_dimensions_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -4886,10 +4886,10 @@
     /v15/dimensions/{apiName}: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get a dimension"
         description: ""
-        operationId: "get__v15_dimensions_{apiName}"
+        operationId: "getDimension"
         schemes: 
           - "https"
         produces: 
@@ -4922,10 +4922,10 @@
     /v15/dimensions/{dimension}/values: 
       get: 
         tags: 
-          - "Dimensions API - Version 15"
+          - "Dimensions API, Version 15"
         summary: "Get the values for a dimension"
         description: ""
-        operationId: "get__v15_dimensions_{dimension}_values"
+        operationId: "listValues"
         schemes: 
           - "https"
         produces: 
@@ -5003,7 +5003,7 @@
           - "Exports API - Version 15"
         summary: "Get all the exports"
         description: ""
-        operationId: "get__v15_exports"
+        operationId: "getExports"
         schemes: 
           - "https"
         produces: 
@@ -5035,7 +5035,7 @@
           - "Exports API - Version 15"
         summary: "Generate an export"
         description: ""
-        operationId: "post__v15_exports"
+        operationId: "export"
         schemes: 
           - "https"
         produces: 
@@ -5158,7 +5158,7 @@
           - "Exports API - Version 15"
         summary: "Estimate the number of rows in an export"
         description: ""
-        operationId: "get__v15_exports_estimate"
+        operationId: "estimateExport"
         schemes: 
           - "https"
         produces: 
@@ -5243,7 +5243,7 @@
           - "Exports API - Version 15"
         summary: "Health check for the exports service"
         description: ""
-        operationId: "get__v15_exports_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -5273,7 +5273,7 @@
           - "Exports API - Version 15"
         summary: "Get all the export schedules"
         description: ""
-        operationId: "get__v15_exports_schedules"
+        operationId: "getExportSchedules"
         schemes: 
           - "https"
         produces: 
@@ -5305,7 +5305,7 @@
           - "Exports API - Version 15"
         summary: "Create an export schedule"
         description: ""
-        operationId: "post__v15_exports_schedules"
+        operationId: "createExportSchedule"
         schemes: 
           - "https"
         produces: 
@@ -5342,7 +5342,7 @@
           - "Exports API - Version 15"
         summary: "Get information on an export schedule"
         description: ""
-        operationId: "get__v15_exports_schedules_{exportScheduleId}"
+        operationId: "getExportSchedule"
         schemes: 
           - "https"
         produces: 
@@ -5377,7 +5377,7 @@
           - "Exports API - Version 15"
         summary: "Update an existing export schedule"
         description: ""
-        operationId: "put__v15_exports_schedules_{exportScheduleId}"
+        operationId: "updateExportSchedule"
         schemes: 
           - "https"
         produces: 
@@ -5419,7 +5419,7 @@
           - "Exports API - Version 15"
         summary: "Delete an export schedule"
         description: ""
-        operationId: "delete__v15_exports_schedules_{exportScheduleId}"
+        operationId: "deleteExportSchedule"
         schemes: 
           - "https"
         produces: 
@@ -5455,7 +5455,7 @@
           - "Exports API - Version 15"
         summary: "Get the exports service status"
         description: ""
-        operationId: "get__v15_exports_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -5485,7 +5485,7 @@
           - "Exports API - Version 15"
         summary: "Generate a visit export"
         description: ""
-        operationId: "post__v15_exports_visits"
+        operationId: "exportVisits"
         schemes: 
           - "https"
         produces: 
@@ -5590,7 +5590,7 @@
           - "Exports API - Version 15"
         summary: "Estimate the number of rows in a visit export"
         description: ""
-        operationId: "get__v15_exports_visits_estimate"
+        operationId: "estimateVisitsExport"
         schemes: 
           - "https"
         produces: 
@@ -5650,7 +5650,7 @@
           - "Exports API - Version 15"
         summary: "Get information on an export"
         description: ""
-        operationId: "get__v15_exports_{exportId}"
+        operationId: "getExport"
         schemes: 
           - "https"
         produces: 
@@ -5692,7 +5692,7 @@
           - "Exports API - Version 15"
         summary: "Delete an export"
         description: ""
-        operationId: "delete__v15_exports_{exportId}"
+        operationId: "deleteExport"
         schemes: 
           - "https"
         produces: 
@@ -5726,7 +5726,7 @@
           - "Filters API - Version 15"
         summary: "Health check for the filter service"
         description: ""
-        operationId: "get__v15_filters_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -5762,7 +5762,7 @@
           - "Filters API - Version 15"
         summary: "Get all the permission filters"
         description: ""
-        operationId: "get__v15_filters_permissions"
+        operationId: "getPermissionFilters"
         schemes: 
           - "https"
         produces: 
@@ -5791,7 +5791,7 @@
           - "Filters API - Version 15"
         summary: "Create a permission filter"
         description: ""
-        operationId: "post__v15_filters_permissions"
+        operationId: "createPermissionFilters"
         schemes: 
           - "https"
         produces: 
@@ -5828,7 +5828,7 @@
           - "Filters API - Version 15"
         summary: "Get a permission filter"
         description: ""
-        operationId: "get__v15_filters_permissions_{filterId}"
+        operationId: "getPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -5863,7 +5863,7 @@
           - "Filters API - Version 15"
         summary: "Update a permission filter"
         description: ""
-        operationId: "put__v15_filters_permissions_{filterId}"
+        operationId: "updatePermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -5905,7 +5905,7 @@
           - "Filters API - Version 15"
         summary: "Delete a permission filter"
         description: ""
-        operationId: "delete__v15_filters_permissions_{filterId}"
+        operationId: "deletePermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -5939,7 +5939,7 @@
           - "Filters API - Version 15"
         summary: "Get the targets of a permission filter"
         description: ""
-        operationId: "get__v15_filters_permissions_{filterId}_targets"
+        operationId: "getPermissionFilterTarget"
         schemes: 
           - "https"
         produces: 
@@ -5982,7 +5982,7 @@
           - "Filters API - Version 15"
         summary: "Set the targets of a permission filter"
         description: ""
-        operationId: "put__v15_filters_permissions_{filterId}_targets"
+        operationId: "setPermissionFilterTarget"
         schemes: 
           - "https"
         produces: 
@@ -6029,7 +6029,7 @@
           - "Filters API - Version 15"
         summary: "Get the users of a permission filter"
         description: ""
-        operationId: "get__v15_filters_permissions_{filterId}_users"
+        operationId: "getUsersRestrictedByPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -6066,7 +6066,7 @@
           - "Filters API - Version 15"
         summary: "Set the users of a permission filter"
         description: ""
-        operationId: "put__v15_filters_permissions_{filterId}_users"
+        operationId: "setUsersRestrictedByPermissionFilter"
         schemes: 
           - "https"
         produces: 
@@ -6109,7 +6109,7 @@
           - "Filters API - Version 15"
         summary: "Get all the reporting filters"
         description: ""
-        operationId: "get__v15_filters_reporting"
+        operationId: "getReportingFilters"
         schemes: 
           - "https"
         produces: 
@@ -6138,7 +6138,7 @@
           - "Filters API - Version 15"
         summary: "Create a reporting filter"
         description: ""
-        operationId: "post__v15_filters_reporting"
+        operationId: "createReportingFilters"
         schemes: 
           - "https"
         produces: 
@@ -6175,7 +6175,7 @@
           - "Filters API - Version 15"
         summary: "Get a reporting filter"
         description: ""
-        operationId: "get__v15_filters_reporting_{filterId}"
+        operationId: "getReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -6210,7 +6210,7 @@
           - "Filters API - Version 15"
         summary: "Update a reporting filter"
         description: ""
-        operationId: "put__v15_filters_reporting_{filterId}"
+        operationId: "updateReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -6252,7 +6252,7 @@
           - "Filters API - Version 15"
         summary: "Delete a reporting filter"
         description: ""
-        operationId: "delete__v15_filters_reporting_{filterId}"
+        operationId: "deleteReportingFilter"
         schemes: 
           - "https"
         produces: 
@@ -6286,7 +6286,7 @@
           - "Filters API - Version 15"
         summary: "Get the filter service status"
         description: ""
-        operationId: "get__v15_filters_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -6322,7 +6322,7 @@
           - "Groups API - Version 15"
         summary: "Gets all groups for account."
         description: ""
-        operationId: "get__v15_groups"
+        operationId: "getAllGroups"
         schemes: 
           - "https"
         produces: 
@@ -6354,7 +6354,7 @@
           - "Groups API - Version 15"
         summary: "Health check for the groups service"
         description: ""
-        operationId: "get__v15_groups_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -6386,7 +6386,7 @@
           - "Groups API - Version 15"
         summary: "Get the groups service status"
         description: ""
-        operationId: "get__v15_groups_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -6418,7 +6418,7 @@
           - "Groups API - Version 15"
         summary: "Get a group."
         description: ""
-        operationId: "get__v15_groups_{groupId}"
+        operationId: "getGroup"
         schemes: 
           - "https"
         produces: 
@@ -6456,7 +6456,7 @@
           - "Groups API - Version 15"
         summary: "Gets the data level filters that apply to the specified group."
         description: ""
-        operationId: "get__v15_groups_{groupId}_filters"
+        operationId: "getFiltersByGroup"
         schemes: 
           - "https"
         produces: 
@@ -6491,7 +6491,7 @@
           - "Groups API - Version 15"
         summary: "Set the filters that will be applied to the specified group's query"
         description: ""
-        operationId: "put__v15_groups_{groupId}_filters"
+        operationId: "setFiltersOnGroup"
         schemes: 
           - "https"
         produces: 
@@ -6534,7 +6534,7 @@
           - "Groups API - Version 15"
         summary: "Gets the reports that the specified group can access."
         description: ""
-        operationId: "get__v15_groups_{groupId}_reports"
+        operationId: "getReportsByGroup"
         schemes: 
           - "https"
         produces: 
@@ -6576,7 +6576,7 @@
           - "Groups API - Version 15"
         summary: "Set which reports the specified group can access."
         description: ""
-        operationId: "put__v15_groups_{groupId}_reports"
+        operationId: "setAllowedReportsOnGroup"
         schemes: 
           - "https"
         produces: 
@@ -6619,7 +6619,7 @@
           - "Metrics API - Version 15"
         summary: "Get all the metrics"
         description: ""
-        operationId: "get__v15_metrics"
+        operationId: "getMetrics"
         schemes: 
           - "https"
         produces: 
@@ -6649,7 +6649,7 @@
           - "Metrics API - Version 15"
         summary: "Health check for the metrics service"
         description: ""
-        operationId: "get__v15_metrics_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -6679,7 +6679,7 @@
           - "Metrics API - Version 15"
         summary: "Get the metrics service status"
         description: ""
-        operationId: "get__v15_metrics_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -6709,7 +6709,7 @@
           - "Metrics API - Version 15"
         summary: "Get a metric"
         description: ""
-        operationId: "get__v15_metrics_{metricName}"
+        operationId: "getMetric"
         schemes: 
           - "https"
         produces: 
@@ -6745,7 +6745,7 @@
           - "Reports API - Version 15"
         summary: "Get the persisted reports of one or all types"
         description: ""
-        operationId: "get__v15_reports"
+        operationId: "getAllReportsForType"
         schemes: 
           - "https"
         produces: 
@@ -6790,7 +6790,7 @@
           - "Reports API - Version 15"
         summary: "Create a report"
         description: ""
-        operationId: "post__v15_reports"
+        operationId: "createReport"
         schemes: 
           - "https"
         produces: 
@@ -6827,7 +6827,7 @@
           - "Reports API - Version 15"
         summary: "Health check for the reports service"
         description: ""
-        operationId: "get__v15_reports_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -6863,7 +6863,7 @@
           - "Reports API - Version 15"
         summary: "Get the reports service status"
         description: ""
-        operationId: "get__v15_reports_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -6899,7 +6899,7 @@
           - "Reports API - Version 15"
         summary: "Get all report template ids"
         description: ""
-        operationId: "get__v15_reports_templates"
+        operationId: "getTemplateIds"
         schemes: 
           - "https"
         produces: 
@@ -6937,7 +6937,7 @@
           - "Reports API - Version 15"
         summary: "Get a report template"
         description: ""
-        operationId: "get__v15_reports_templates_{templateId}"
+        operationId: "getTemplate"
         schemes: 
           - "https"
         produces: 
@@ -6981,7 +6981,7 @@
           - "Reports API - Version 15"
         summary: "Get a report"
         description: ""
-        operationId: "get__v15_reports_{reportId}"
+        operationId: "getReport"
         schemes: 
           - "https"
         produces: 
@@ -7018,7 +7018,7 @@
           - "Reports API - Version 15"
         summary: "Update a report"
         description: ""
-        operationId: "put__v15_reports_{reportId}"
+        operationId: "updateReport"
         schemes: 
           - "https"
         produces: 
@@ -7060,7 +7060,7 @@
           - "Reports API - Version 15"
         summary: "Delete a report"
         description: ""
-        operationId: "delete__v15_reports_{reportId}"
+        operationId: "deleteReport"
         schemes: 
           - "https"
         produces: 
@@ -7094,7 +7094,7 @@
           - "Reports API - Version 15"
         summary: "Get the users and groups who can view a report"
         description: ""
-        operationId: "get__v15_reports_{reportId}_access"
+        operationId: "getReportAccesses"
         schemes: 
           - "https"
         produces: 
@@ -7129,7 +7129,7 @@
           - "Reports API - Version 15"
         summary: "Set the users and groups who are allowed to view a report"
         description: ""
-        operationId: "put__v15_reports_{reportId}_access"
+        operationId: "setReportAccesses"
         schemes: 
           - "https"
         produces: 
@@ -7170,7 +7170,7 @@
           - "Reports API - Version 15"
         summary: "Get the users who can view a report"
         description: ""
-        operationId: "get__v15_reports_{reportId}_users"
+        operationId: "getUsersAllowedOnReport"
         schemes: 
           - "https"
         produces: 
@@ -7205,7 +7205,7 @@
           - "Reports API - Version 15"
         summary: "Set the users who are allowed to view a report"
         description: ""
-        operationId: "put__v15_reports_{reportId}_users"
+        operationId: "setAllowedUsersOnReport"
         schemes: 
           - "https"
         produces: 
@@ -7248,7 +7248,7 @@
           - "Statistics API - Version 15"
         summary: "Get metrics combined with dimensions for a date range"
         description: "There is one value of each metric for every possible dimensions combination."
-        operationId: "get__v15_stats_combinedData"
+        operationId: "getCombinedData"
         schemes: 
           - "https"
         produces: 
@@ -7385,7 +7385,7 @@
           - "Statistics API - Version 15"
         summary: "Get global data for each metric for a date range"
         description: "Global data contain the total, the daily peak and the daily average."
-        operationId: "get__v15_stats_globalData"
+        operationId: "getGlobalAggregatedData"
         schemes: 
           - "https"
         produces: 
@@ -7481,7 +7481,7 @@
           - "Statistics API - Version 15"
         summary: "Get graph data points for the metrics for a date range"
         description: "There is one data point per interval per metric. The interval can be specified with the 'i' query parameter."
-        operationId: "get__v15_stats_graphDataPoints"
+        operationId: "getGraphAggregatedData"
         schemes: 
           - "https"
         produces: 
@@ -7568,7 +7568,7 @@
           - "Statistics API - Version 15"
         summary: "Get the incoherent events for a date range"
         description: ""
-        operationId: "get__v15_stats_incoherentEvents"
+        operationId: "getIncoherentEvents"
         schemes: 
           - "https"
         produces: 
@@ -7633,7 +7633,7 @@
           - "Statistics API - Version 15"
         summary: "Mark the incoherent events for a date range as \"seen\""
         description: ""
-        operationId: "post__v15_stats_incoherentEvents_seen"
+        operationId: "markIncoherentEventsAsSeen"
         schemes: 
           - "https"
         produces: 
@@ -7673,7 +7673,7 @@
           - "Statistics API - Version 15"
         summary: "Health check for the statistics service"
         description: ""
-        operationId: "get__v15_stats_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -7703,7 +7703,7 @@
           - "Statistics API - Version 15"
         summary: "Cancel the execution of a query"
         description: "This is a best effort; there is no guarantee that the query will be cancelled. If the query is cancelled, the sender of the now cancelled query will receieve a 409 Conflict."
-        operationId: "delete__v15_stats_query_{queryId}"
+        operationId: "cancelQuery"
         schemes: 
           - "https"
         produces: 
@@ -7737,7 +7737,7 @@
           - "Statistics API - Version 15"
         summary: "Get the statistics service status"
         description: ""
-        operationId: "get__v15_stats_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -7767,7 +7767,7 @@
           - "Statistics API - Version 15"
         summary: "Get the most frequent queries matching the specified query text"
         description: ""
-        operationId: "get__v15_stats_topQueries"
+        operationId: "getTopQueriesByFrequency"
         schemes: 
           - "https"
         produces: 
@@ -7796,7 +7796,7 @@
           - 
             name: "pageNumber"
             in: "query"
-            description: "The response's page to access, starting at 0."
+            description: "The response's page to access, starting at 1."
             required: false
             type: "integer"
             default: 0
@@ -7821,7 +7821,7 @@
           - "Statistics API - Version 15"
         summary: "Get trends of a metric combined with dimensions for a date range"
         description: "There is on value of each metric for every possible dimensions combination."
-        operationId: "get__v15_stats_trends"
+        operationId: "getCombinedDataWithTrends"
         schemes: 
           - "https"
         produces: 
@@ -7979,7 +7979,7 @@
           - "Statistics API - Version 15"
         summary: "Get the details of the visits matching the specified criteria"
         description: ""
-        operationId: "get__v15_stats_visits"
+        operationId: "getVisitsStatistics"
         schemes: 
           - "https"
         produces: 
@@ -8090,7 +8090,7 @@
           - "Statistics API - Version 15"
         summary: "Force a visit view update"
         description: ""
-        operationId: "post__v15_stats_visits"
+        operationId: "updateVisits"
         schemes: 
           - "https"
         produces: 
@@ -8118,7 +8118,7 @@
           - "Statistics API - Version 15"
         summary: "Get graph data points for visit based metrics for a date range"
         description: "There is one data point per interval per metric. The interval can be specified with the 'i' query parameter."
-        operationId: "get__v15_stats_visitsGraphDataPoints"
+        operationId: "getVisitsGraphDataPoints"
         schemes: 
           - "https"
         produces: 
@@ -8208,7 +8208,7 @@
           - "Statistics API - Version 15"
         summary: "Get the metrics based on the visits matching the specified criteria"
         description: ""
-        operationId: "get__v15_stats_visitsMetrics"
+        operationId: "getVisitsMetrics"
         schemes: 
           - "https"
         produces: 
@@ -8285,7 +8285,7 @@
           - "Users API - Version 15"
         summary: "Health check for the users service"
         description: ""
-        operationId: "get__v15_users_monitoring_health"
+        operationId: "getServiceHealth"
         schemes: 
           - "https"
         produces: 
@@ -8321,7 +8321,7 @@
           - "Users API - Version 15"
         summary: "Get the users service status"
         description: ""
-        operationId: "get__v15_users_status"
+        operationId: "getServiceStatus"
         schemes: 
           - "https"
         produces: 
@@ -8357,7 +8357,7 @@
           - "Users API - Version 15"
         summary: "Get a user"
         description: ""
-        operationId: "get__v15_users_{userId}"
+        operationId: "getUser"
         schemes: 
           - "https"
         produces: 
@@ -8393,7 +8393,7 @@
           - "Users API - Version 15"
         summary: "Get the data level filters that apply to a user"
         description: ""
-        operationId: "get__v15_users_{userId}_filters"
+        operationId: "getFiltersByUser"
         schemes: 
           - "https"
         produces: 
@@ -8435,7 +8435,7 @@
           - "Users API - Version 15"
         summary: "Set the filters that will be applied to a user query"
         description: ""
-        operationId: "put__v15_users_{userId}_filters"
+        operationId: "setFiltersOnUser"
         schemes: 
           - "https"
         produces: 
@@ -8478,7 +8478,7 @@
           - "Users API - Version 15"
         summary: "Get the reports that a user can access"
         description: ""
-        operationId: "get__v15_users_{userId}_reports"
+        operationId: "getReportsByUser"
         schemes: 
           - "https"
         produces: 
@@ -8527,7 +8527,7 @@
           - "Users API - Version 15"
         summary: "Set which reports a user can access"
         description: ""
-        operationId: "put__v15_users_{userId}_reports"
+        operationId: "setAllowedReportsOnUser"
         schemes: 
           - "https"
         produces: 
@@ -8567,7 +8567,7 @@
   securityDefinitions: 
     v7: 
       type: "oauth2"
-      authorizationUrl: "https://cloudplatformdev.coveo.com/oauth/authorize"
+      authorizationUrl: "https://cloudplatform.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         writeUA: "Write to the Usage Analytics service"
@@ -8577,7 +8577,7 @@
         administrate: "Perform organization administrator reserved operations"
     v8: 
       type: "oauth2"
-      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: ""
@@ -8729,9 +8729,6 @@
           type: "integer"
           format: "int32"
           description: "The outcome of the event. A score you apply on the event which gives it importance"
-        originContext: 
-          type: "string"
-          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         searchQueryUid: 
           type: "string"
           description: "The unique identifier of the search event. Must be a UUID"
@@ -8808,6 +8805,19 @@
           type: "string"
           description: "The filter id."
       description: "A filter id."
+    ResultModelV14: 
+      type: "object"
+      required: 
+        - "documentUri"
+        - "documentUriHash"
+      properties: 
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of this document"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of this document"
+      description: "A search result"
     CombinedDataResponseV14: 
       type: "object"
       required: 
@@ -8830,19 +8840,6 @@
           format: "int32"
           description: "The total number of combinations available"
       description: "The values of the metrics combined by dimensions"
-    ResultModelV14: 
-      type: "object"
-      required: 
-        - "documentUri"
-        - "documentUriHash"
-      properties: 
-        documentUri: 
-          type: "string"
-          description: "The @sysuri of this document"
-        documentUriHash: 
-          type: "string"
-          description: "The @sysurihash of this document"
-      description: "A search result"
     CombinedDataResponseV15: 
       type: "object"
       required: 
@@ -8914,6 +8911,57 @@
           description: "The metric values"
           additionalProperties: 
             $ref: "#/definitions/Number"
+    ExportResponseV14: 
+      type: "object"
+      required: 
+        - "author"
+        - "description"
+        - "filters"
+        - "from"
+        - "id"
+        - "size"
+        - "startDate"
+        - "status"
+        - "to"
+      properties: 
+        id: 
+          type: "string"
+          description: "The export's unique identifier"
+        author: 
+          type: "string"
+          description: "The user who created this export"
+        startDate: 
+          type: "string"
+          format: "date-time"
+          description: "The date at which this export was started"
+        from: 
+          type: "string"
+          format: "date-time"
+          description: "The beginning date of the date range. ISO8601 format 'YYYY-MM-DDThh:mm:ss.ssssZ'"
+        to: 
+          type: "string"
+          format: "date-time"
+          description: "The end date of the date range. ISO8601 format 'YYYY-MM-DDThh:mm:ss.ssssZ'"
+        filters: 
+          type: "object"
+          description: "The filters that will be applied to the export"
+          additionalProperties: 
+            type: "string"
+        description: 
+          type: "string"
+          description: "A description of this export"
+        size: 
+          type: "integer"
+          format: "int64"
+          description: "In bytes"
+        status: 
+          type: "string"
+          description: "The status of this export"
+          enum: 
+            - "AVAILABLE"
+            - "PENDING"
+            - "FAILED"
+      description: "Export's information"
     DimensionResponseV14: 
       type: "object"
       required: 
@@ -8968,57 +9016,6 @@
             - "AVAILABLE"
             - "UPDATING"
       description: "The details of a dimension"
-    ExportResponseV14: 
-      type: "object"
-      required: 
-        - "author"
-        - "description"
-        - "filters"
-        - "from"
-        - "id"
-        - "size"
-        - "startDate"
-        - "status"
-        - "to"
-      properties: 
-        id: 
-          type: "string"
-          description: "The export's unique identifier"
-        author: 
-          type: "string"
-          description: "The user who created this export"
-        startDate: 
-          type: "string"
-          format: "date-time"
-          description: "The date at which this export was started"
-        from: 
-          type: "string"
-          format: "date-time"
-          description: "The beginning date of the date range. ISO8601 format 'YYYY-MM-DDThh:mm:ss.ssssZ'"
-        to: 
-          type: "string"
-          format: "date-time"
-          description: "The end date of the date range. ISO8601 format 'YYYY-MM-DDThh:mm:ss.ssssZ'"
-        filters: 
-          type: "object"
-          description: "The filters that will be applied to the export"
-          additionalProperties: 
-            type: "string"
-        description: 
-          type: "string"
-          description: "A description of this export"
-        size: 
-          type: "integer"
-          format: "int64"
-          description: "In bytes"
-        status: 
-          type: "string"
-          description: "The status of this export"
-          enum: 
-            - "AVAILABLE"
-            - "PENDING"
-            - "FAILED"
-      description: "Export's information"
     ExportResponseV15: 
       type: "object"
       required: 
@@ -9361,9 +9358,6 @@
           type: "integer"
           format: "int32"
           description: "The outcome of the event. A score you apply on the event which gives it importance"
-        originContext: 
-          type: "string"
-          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         location: 
           type: "string"
           description: "The uri of the loaded page or component that is viewed"
@@ -9450,19 +9444,6 @@
           items: 
             type: "string"
       description: "The targets of a permission filter."
-    IncoherentEventsResponse: 
-      type: "object"
-      properties: 
-        errorCode: 
-          type: "string"
-          description: "The error code of the incoherent event"
-        datetime: 
-          type: "string"
-          format: "date-time"
-          description: "The date and time of the incoherent event"
-        event: 
-          description: "Information regarding the inchoherent event"
-          $ref: "#/definitions/JsonNode"
     AccountResponseV15: 
       type: "object"
       properties: 
@@ -9487,6 +9468,19 @@
           items: 
             type: "string"
       description: "The response to get and edit account operations"
+    IncoherentEventsResponse: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+          description: "The error code of the incoherent event"
+        datetime: 
+          type: "string"
+          format: "date-time"
+          description: "The date and time of the incoherent event"
+        event: 
+          description: "Information regarding the inchoherent event"
+          $ref: "#/definitions/JsonNode"
     FilterModelV15: 
       type: "object"
       required: 
@@ -9639,6 +9633,21 @@
           format: "int32"
           description: "The total number of visits matching"
       description: "The visits matching the specified criteria"
+    CustomDimensionSuggestionResponseV15: 
+      type: "object"
+      properties: 
+        eventName: 
+          type: "string"
+          description: "The event type of the custom dimension"
+        apiName: 
+          type: "string"
+          description: "The api name of the custom dimension"
+        values: 
+          type: "array"
+          description: "The existing values for the custom dimension"
+          uniqueItems: true
+          items: 
+            type: "string"
     User: 
       type: "object"
       properties: {}
@@ -9655,21 +9664,6 @@
             additionalProperties: 
               $ref: "#/definitions/Number"
       description: "The global aggregated values by metrics"
-    CustomDimensionSuggestionResponseV15: 
-      type: "object"
-      properties: 
-        eventName: 
-          type: "string"
-          description: "The event type of the custom dimension"
-        apiName: 
-          type: "string"
-          description: "The api name of the custom dimension"
-        values: 
-          type: "array"
-          description: "The existing values for the custom dimension"
-          uniqueItems: true
-          items: 
-            type: "string"
     GraphAggregatedDataResponseV15: 
       type: "object"
       required: 
@@ -9932,9 +9926,6 @@
           type: "integer"
           format: "int32"
           description: "The outcome of the event. A score you apply on the event which gives it importance"
-        originContext: 
-          type: "string"
-          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         documentUri: 
           type: "string"
           description: "The @sysuri of the document that was clicked"
@@ -10009,9 +10000,6 @@
           uniqueItems: true
           items: 
             $ref: "#/definitions/ReportResponseV15"
-    SummaryStatisticsPojo: 
-      type: "object"
-      properties: {}
     MetricsResponseV14: 
       type: "object"
       properties: 
@@ -10020,6 +10008,9 @@
           description: "A collection of metrics."
           items: 
             $ref: "#/definitions/MetricResponseV14"
+    SummaryStatisticsPojo: 
+      type: "object"
+      properties: {}
     MetricsResponseV15: 
       type: "object"
       properties: 
@@ -10366,9 +10357,6 @@
           type: "integer"
           format: "int32"
           description: "The outcome of the event. A score you apply on the event which gives it importance"
-        originContext: 
-          type: "string"
-          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         eventType: 
           type: "string"
           description: "The type of this event"
@@ -10521,21 +10509,13 @@
           uniqueItems: true
           items: 
             type: "string"
-    CustomDimensionSuggestionResponseV14: 
+    AddCustomEventResponseV14: 
       type: "object"
       properties: 
-        eventName: 
+        visitId: 
           type: "string"
-          description: "The event type of the custom dimension"
-        apiName: 
-          type: "string"
-          description: "The api name of the custom dimension"
-        values: 
-          type: "array"
-          description: "The existing values for the custom dimension"
-          uniqueItems: true
-          items: 
-            type: "string"
+          description: "The ID of the visit associated with the provided custom event"
+      description: "The response to add custom event operation"
     UserResponseV14: 
       type: "object"
       properties: 
@@ -10558,13 +10538,21 @@
           items: 
             type: "string"
       description: "A user."
-    AddCustomEventResponseV14: 
+    CustomDimensionSuggestionResponseV14: 
       type: "object"
       properties: 
-        visitId: 
+        eventName: 
           type: "string"
-          description: "The ID of the visit associated with the provided custom event"
-      description: "The response to add custom event operation"
+          description: "The event type of the custom dimension"
+        apiName: 
+          type: "string"
+          description: "The api name of the custom dimension"
+        values: 
+          type: "array"
+          description: "The existing values for the custom dimension"
+          uniqueItems: true
+          items: 
+            type: "string"
     AddCustomEventResponseV15: 
       type: "object"
       properties: 

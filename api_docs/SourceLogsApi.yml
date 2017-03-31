@@ -4,10 +4,6 @@
       properties: 
         operations: 
           $ref: "#/definitions/DocumentLogOperations"
-        resourceIds: 
-          items: 
-            type: "string"
-          type: "array"
         results: 
           $ref: "#/definitions/DocumentLogResults"
         sourcesIds: 
@@ -61,9 +57,9 @@
         message: 
           type: "string"
       type: "object"
-  host: "vo49e6237j.execute-api.us-east-1.amazonaws.com/v1"
+  host: "f6ptflc2i7.execute-api.us-east-1.amazonaws.com/v1"
   info: 
-    title: "Document Logs API - Dev"
+    title: "Document Logs API"
     version: "2016-03-03T13:22:11Z"
   paths: 
     /organizations/{organizationId}: 
@@ -557,7 +553,7 @@
     - "https"
   securityDefinitions: 
     oauth2: 
-      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"

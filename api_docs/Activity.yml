@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platformdev.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -113,12 +113,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/activities_post"
         x-pretty-name: "getAllActivities"
     /rest/activities/facets: 
       post: 
@@ -169,12 +163,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/activities/facets_post"
         x-pretty-name: "getAllActivitiesFacets"
     /rest/organizations/{organizationId}/activities: 
       post: 
@@ -249,11 +237,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities_post"
         x-pretty-name: "getAllActivitiesForOrganization"
     /rest/organizations/{organizationId}/activities/apikey: 
       get: 
@@ -305,11 +288,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "API_KEY"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/apikey_get"
         x-pretty-name: "getApiKeyActivities"
     /rest/organizations/{organizationId}/activities/create: 
       post: 
@@ -350,11 +328,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/create_post"
         x-pretty-name: "createActivity"
     /rest/organizations/{organizationId}/activities/extension: 
       get: 
@@ -406,11 +379,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INDEXING_PIPELINE_EXTENSION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/extension_get"
         x-pretty-name: "getExtensionActivities"
     /rest/organizations/{organizationId}/activities/facets: 
       post: 
@@ -467,11 +435,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/facets_post"
         x-pretty-name: "getActivitiesFacetsForOrganization"
     /rest/organizations/{organizationId}/activities/facets/public: 
       post: 
@@ -528,11 +491,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/facets/public_post"
         x-pretty-name: "getPublicActivitiesFacetsForOrganization"
     /rest/organizations/{organizationId}/activities/fields: 
       get: 
@@ -584,11 +542,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/fields_get"
         x-pretty-name: "getFieldActivities"
     /rest/organizations/{organizationId}/activities/index: 
       get: 
@@ -640,11 +593,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INDEX"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/index_get"
         x-pretty-name: "getIndexActivities"
     /rest/organizations/{organizationId}/activities/license: 
       get: 
@@ -696,11 +644,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/license_get"
         x-pretty-name: "getLicenseActivities"
     /rest/organizations/{organizationId}/activities/organization: 
       get: 
@@ -752,11 +695,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/organization_get"
         x-pretty-name: "getOrganizationActivities"
     /rest/organizations/{organizationId}/activities/permissions: 
       get: 
@@ -808,11 +746,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SECURITY_CACHE"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/permissions_get"
         x-pretty-name: "getPermissionsActivities"
     /rest/organizations/{organizationId}/activities/provisioning: 
       get: 
@@ -870,11 +803,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/provisioning_get"
         x-pretty-name: "getProvisioningActivities"
     /rest/organizations/{organizationId}/activities/public: 
       post: 
@@ -949,11 +877,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/public_post"
         x-pretty-name: "getAllPublicActivitiesForOrganization"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}: 
       get: 
@@ -1011,11 +934,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId_get"
         x-pretty-name: "getSourceActivities"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/pushapi/{activityOperation}: 
       post: 
@@ -1084,7 +1002,6 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
-              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"
@@ -1106,12 +1023,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          targetId: "{sourceId}"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/pushapi/paramId_post"
         x-pretty-name: "createOrUpdatePushApiActivity"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}: 
       delete: 
@@ -1153,12 +1064,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          targetId: "{sourceId}"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId_delete"
         x-pretty-name: "deleteSourceActivity"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/cancel: 
       post: 
@@ -1204,12 +1109,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          targetId: "{sourceId}"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/cancel_post"
         x-pretty-name: "cancelSourceActivity"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/pause: 
       post: 
@@ -1255,12 +1154,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          targetId: "{sourceId}"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/pause_post"
         x-pretty-name: "pauseSourceActivity"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/resume: 
       post: 
@@ -1306,12 +1199,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "SOURCE"
-          targetId: "{sourceId}"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/resume_post"
         x-pretty-name: "resumeSourceActivity"
     /rest/organizations/{organizationId}/activities/{activityId}: 
       get: 
@@ -1351,11 +1238,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId_get"
         x-pretty-name: "getActivityById"
     /rest/organizations/{organizationId}/activities/{activityId}/abort: 
       post: 
@@ -1402,11 +1284,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/abort_post"
         x-pretty-name: "notifyAbort"
     /rest/organizations/{organizationId}/activities/{activityId}/error: 
       post: 
@@ -1453,11 +1330,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/error_post"
         x-pretty-name: "notifyError"
     /rest/organizations/{organizationId}/activities/{activityId}/pause: 
       post: 
@@ -1497,11 +1369,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/pause_post"
         x-pretty-name: "notifyPause"
     /rest/organizations/{organizationId}/activities/{activityId}/progress: 
       post: 
@@ -1548,11 +1415,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/progress_post"
         x-pretty-name: "notifyProgress"
     /rest/organizations/{organizationId}/activities/{activityId}/resume: 
       post: 
@@ -1592,11 +1454,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/resume_post"
         x-pretty-name: "notifyResume"
     /rest/organizations/{organizationId}/activities/{activityId}/start: 
       post: 
@@ -1636,11 +1493,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/start_post"
         x-pretty-name: "notifyStart"
     /rest/organizations/{organizationId}/activities/{activityId}/success: 
       post: 
@@ -1665,13 +1517,6 @@
             description: "activityId"
             required: true
             type: "string"
-          - 
-            in: "body"
-            name: "notifyActivitySuccessModel"
-            description: "notifyActivitySuccessModel"
-            required: false
-            schema: 
-              $ref: "#/definitions/NotifyActivitySuccessModel"
         responses: 
           201: 
             description: "Created"
@@ -1687,16 +1532,11 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/success_post"
         x-pretty-name: "notifySuccess"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
@@ -1746,7 +1586,6 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
-              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"
@@ -1815,8 +1654,6 @@
           format: "int64"
         errorCode: 
           type: "string"
-        errorDetail: 
-          type: "string"
         id: 
           type: "string"
         operation: 
@@ -1859,7 +1696,6 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
-            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -1958,7 +1794,6 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
-            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -2046,7 +1881,6 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
-            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -2119,7 +1953,6 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
-            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -2142,9 +1975,4 @@
           type: "string"
         triggeredBy: 
           $ref: "#/definitions/ActivityTriggerByModel"
-    NotifyActivitySuccessModel: 
-      type: "object"
-      properties: 
-        content: 
-          type: "object"
 

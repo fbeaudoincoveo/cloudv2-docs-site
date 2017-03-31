@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platformdev.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -80,12 +80,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/aws/instances/agents_get"
         x-pretty-name: "getAgents"
     /rest/aws/instances/agents/{agentId}: 
       get: 
@@ -122,12 +116,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/aws/instances/agents/paramId_get"
         x-pretty-name: "getAgent"
     /rest/backups: 
       get: 
@@ -157,12 +145,6 @@
             oauth2: 
               - "full"
         deprecated: true
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/backups_get"
         x-pretty-name: "getBackups"
     /rest/backups/organizations/page: 
       get: 
@@ -206,12 +188,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/backups/organizations/page_get"
         x-pretty-name: "getOrganizationsWithBackupsPage"
     /rest/backups/page: 
       get: 
@@ -300,12 +276,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/backups/page_get"
         x-pretty-name: "getBackupPage"
     /rest/import: 
       post: 
@@ -346,12 +316,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/import_post"
         x-pretty-name: "importBackup"
     /rest/infrastructure/organizations: 
       post: 
@@ -410,12 +374,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/infrastructure/organizations_post"
         x-pretty-name: "internalCreateOrganization"
     /rest/infrastructure/organizations/readonly: 
       put: 
@@ -449,12 +407,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/infrastructure/organizations/readonly_put"
         x-pretty-name: "setReadOnly"
     /rest/licensetemplates: 
       get: 
@@ -483,12 +435,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "LICENSE_TEMPLATE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/licensetemplates_get"
         x-pretty-name: "getLicenseTemplates"
       post: 
         tags: 
@@ -522,12 +468,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "LICENSE_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/licensetemplates_post"
         x-pretty-name: "createLicenseTemplate"
     /rest/licensetemplates/{templateName}: 
       get: 
@@ -561,12 +501,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "LICENSE_TEMPLATE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/licensetemplates/paramId_get"
         x-pretty-name: "getLicenseTemplate"
       put: 
         tags: 
@@ -606,12 +540,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "LICENSE_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/licensetemplates/paramId_put"
         x-pretty-name: "updateLicenseTemplate"
       delete: 
         tags: 
@@ -640,12 +568,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "LICENSE_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/licensetemplates/paramId_delete"
         x-pretty-name: "deleteLicenseTemplate"
     /rest/logging: 
       post: 
@@ -682,7 +604,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/logging_post"
         x-pretty-name: "logException"
     /rest/organizations: 
       get: 
@@ -757,7 +678,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations_get"
         x-pretty-name: "getOrganizations"
       post: 
         tags: 
@@ -808,7 +728,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations_post"
         x-pretty-name: "createOrganization"
     /rest/organizations/license/sync: 
       post: 
@@ -835,12 +754,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "APPLICATION_DEFAULT_PARAMETERS"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/license/sync_post"
         x-pretty-name: "syncWithDefaultLicenseGlobal"
     /rest/organizations/{organizationId}: 
       get: 
@@ -874,11 +787,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId_get"
         x-pretty-name: "getOrganization"
       put: 
         tags: 
@@ -918,11 +826,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId_put"
         x-pretty-name: "updateOrganization"
       delete: 
         tags: 
@@ -951,11 +854,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId_delete"
         x-pretty-name: "deleteOrganization"
     /rest/organizations/{organizationId}/backups: 
       get: 
@@ -991,11 +889,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/backups_get"
         x-pretty-name: "getOrganizationBackups"
       post: 
         tags: 
@@ -1030,11 +923,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/backups_post"
         x-pretty-name: "backupOrganization"
     /rest/organizations/{organizationId}/clusters: 
       get: 
@@ -1070,11 +958,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters_get"
         x-pretty-name: "getOrganizationClusters"
     /rest/organizations/{organizationId}/clusters/live: 
       get: 
@@ -1108,11 +991,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/live_get"
         x-pretty-name: "getOrganizationLiveCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents: 
       get: 
@@ -1154,11 +1032,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents_get"
         x-pretty-name: "getAgents"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}: 
       get: 
@@ -1204,11 +1077,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId_get"
         x-pretty-name: "getAgent"
       delete: 
         tags: 
@@ -1249,11 +1117,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId_delete"
         x-pretty-name: "unregisterAgent"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/dump: 
       post: 
@@ -1299,11 +1162,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId/dump_post"
         x-pretty-name: "dumpAgent"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/upgrade: 
       put: 
@@ -1356,11 +1214,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId/upgrade_put"
         x-pretty-name: "upgradeAgentNodes"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes: 
       get: 
@@ -1402,11 +1255,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes_get"
         x-pretty-name: "getOrganizationNodes"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/start: 
       post: 
@@ -1446,11 +1294,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/start_post"
         x-pretty-name: "startNodes"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/stop: 
       post: 
@@ -1490,11 +1333,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/stop_post"
         x-pretty-name: "stopNodes"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/dumps: 
       post: 
@@ -1540,11 +1378,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/dumps_post"
         x-pretty-name: "generateDumps"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/start: 
       post: 
@@ -1590,11 +1423,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/start_post"
         x-pretty-name: "startNode"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/stop: 
       post: 
@@ -1640,11 +1468,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/stop_post"
         x-pretty-name: "stopNode"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrade: 
       put: 
@@ -1697,11 +1520,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/upgrade_put"
         x-pretty-name: "upgradeNode"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrades: 
       get: 
@@ -1749,11 +1567,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/upgrades_get"
         x-pretty-name: "getNodeUpgrades"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/status: 
       get: 
@@ -1793,11 +1606,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/status_get"
         x-pretty-name: "getProvisioningStatus"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/synchronize: 
       post: 
@@ -1837,11 +1645,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/synchronize_post"
         x-pretty-name: "synchronizeCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/versions: 
       get: 
@@ -1881,11 +1684,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/versions_get"
         x-pretty-name: "getOrganizationClusterComponentVersions"
       put: 
         tags: 
@@ -1931,11 +1729,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/clusters/paramId/versions_put"
         x-pretty-name: "setOrganizationClusterComponentVersions"
     /rest/organizations/{organizationId}/duplicate: 
       post: 
@@ -1975,11 +1768,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/duplicate_post"
         x-pretty-name: "duplicateOrganization"
     /rest/organizations/{organizationId}/exports/logins: 
       get: 
@@ -2019,11 +1807,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ACTIVITIES"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/exports/logins_get"
         x-pretty-name: "getLoginsExport"
     /rest/organizations/{organizationId}/launchprovisioning: 
       post: 
@@ -2057,11 +1840,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/launchprovisioning_post"
         x-pretty-name: "launchProvisioning"
     /rest/organizations/{organizationId}/license: 
       get: 
@@ -2095,11 +1873,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/license_get"
         x-pretty-name: "getLicense"
       put: 
         tags: 
@@ -2139,11 +1912,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license_put"
         x-pretty-name: "updateLicense"
     /rest/organizations/{organizationId}/license/snapshots/{snapshotId}: 
       get: 
@@ -2183,11 +1951,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license/snapshots/paramId_get"
         x-pretty-name: "getSnapshot"
     /rest/organizations/{organizationId}/license/sync: 
       post: 
@@ -2221,11 +1984,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license/sync_post"
         x-pretty-name: "syncWithDefaultLicense"
     /rest/organizations/{organizationId}/license/template: 
       put: 
@@ -2266,11 +2024,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license/template_put"
         x-pretty-name: "applyTemplate"
     /rest/organizations/{organizationId}/license/{sectionName}: 
       get: 
@@ -2310,11 +2063,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/license/paramId_get"
         x-pretty-name: "getLicenseSection"
       put: 
         tags: 
@@ -2360,11 +2108,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license/paramId_put"
         x-pretty-name: "updateLicenseSection"
       delete: 
         tags: 
@@ -2399,11 +2142,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "MANAGE_LICENSE"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/license/paramId_delete"
         x-pretty-name: "deleteLicenseSection"
     /rest/organizations/{organizationId}/readonly: 
       put: 
@@ -2443,12 +2181,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/readonly_put"
         x-pretty-name: "setReadOnly"
     /rest/organizations/{organizationId}/recover: 
       post: 
@@ -2489,11 +2221,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/recover_post"
         x-pretty-name: "recoverOrganization"
     /rest/organizations/{organizationId}/resetTopology: 
       post: 
@@ -2527,12 +2254,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/resetTopology_post"
         x-pretty-name: "resetTopology"
     /rest/organizations/{organizationId}/restore: 
       post: 
@@ -2586,11 +2307,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_ADMINISTRATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/restore_post"
         x-pretty-name: "restoreOrganization"
     /rest/organizations/{organizationId}/status: 
       get: 
@@ -2624,11 +2340,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "VIEW"
-        uiOperationId: "/rest/organizations/paramId/status_get"
         x-pretty-name: "getOrganizationStatus"
     /rest/organizations/{organizationId}/support: 
       put: 
@@ -2668,11 +2379,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/support_put"
         x-pretty-name: "changeSupportStatus"
     /rest/organizations/{organizationId}/template/{templateName}: 
       put: 
@@ -2712,12 +2418,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizations/paramId/template/paramId_put"
         x-pretty-name: "applyOrganizationTemplate"
     /rest/organizationtemplates: 
       get: 
@@ -2746,12 +2446,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/organizationtemplates_get"
         x-pretty-name: "getOrganizationTemplates"
       post: 
         tags: 
@@ -2785,12 +2479,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizationtemplates_post"
         x-pretty-name: "createOrganizationTemplate"
     /rest/organizationtemplates/{templateName}: 
       get: 
@@ -2824,12 +2512,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/organizationtemplates/paramId_get"
         x-pretty-name: "getOrganizationTemplate"
       put: 
         tags: 
@@ -2869,12 +2551,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizationtemplates/paramId_put"
         x-pretty-name: "updateOrganizationTemplate"
       delete: 
         tags: 
@@ -2903,12 +2579,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "ORGANIZATION_TEMPLATE"
-          global: "true"
-          type: "EDIT"
-        uiOperationId: "/rest/organizationtemplates/paramId_delete"
         x-pretty-name: "deleteOrganizationTemplate"
     /rest/packages: 
       get: 
@@ -2937,12 +2607,6 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/packages_get"
         x-pretty-name: "getComponentInfoList"
     /rest/packages/versions: 
       get: 
@@ -2969,17 +2633,11 @@
           - 
             oauth2: 
               - "full"
-        x-required-privilege: 
-          owner: "PLATFORM"
-          targetDomain: "INFRASTRUCTURE"
-          global: "true"
-          type: "VIEW"
-        uiOperationId: "/rest/packages/versions_get"
         x-pretty-name: "getAvailableComponentList"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
@@ -3766,8 +3424,6 @@
           type: "string"
         name: 
           type: "string"
-        type: 
-          type: "string"
     PageModel«string»: 
       type: "object"
       properties: 
@@ -3849,7 +3505,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"

@@ -9,12 +9,9 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platformdev.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   basePath: "/"
   tags: 
-    - 
-      name: "Saml Certificate"
-      description: "Saml Certificate Resource"
     - 
       name: "Saml Identity Providers"
       description: "Saml Identity Provider Resource"
@@ -24,9 +21,6 @@
     - 
       name: "Users"
       description: "User Resource"
-    - 
-      name: "Realms"
-      description: "Realm Resource"
   paths: 
     /rest/oauth2clients: 
       get: 
@@ -71,7 +65,7 @@
             name: "clientId"
             in: "path"
             description: "clientId"
-            required: true
+            required: false
             type: "string"
         responses: 
           200: 
@@ -91,37 +85,6 @@
             oauth2: 
               - "full"
         x-pretty-name: "getClient"
-    /rest/organizations/{organizationId}/saml/certificate: 
-      get: 
-        tags: 
-          - "Saml Certificate"
-        summary: "Get the Coveo Cloud Platform Saml public certificate."
-        operationId: "getPlatformPublicCertificateUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getPlatformPublicCertificate"
     /rest/organizations/{organizationId}/saml/identityproviders: 
       get: 
         tags: 
@@ -137,7 +100,7 @@
             name: "organizationId"
             in: "path"
             description: "organizationId"
-            required: true
+            required: false
             type: "string"
         responses: 
           200: 
@@ -171,7 +134,7 @@
             name: "organizationId"
             in: "path"
             description: "organizationId"
-            required: true
+            required: false
             type: "string"
           - 
             in: "body"
@@ -181,10 +144,12 @@
             schema: 
               $ref: "#/definitions/SamlIdentityProviderModel"
         responses: 
-          201: 
-            description: "Created"
+          200: 
+            description: "OK"
             schema: 
               $ref: "#/definitions/SamlIdentityProviderModel"
+          201: 
+            description: "Created"
           401: 
             description: "Unauthorized"
           403: 
@@ -211,13 +176,13 @@
             name: "organizationId"
             in: "path"
             description: "organizationId"
-            required: true
+            required: false
             type: "string"
           - 
             name: "id"
             in: "path"
             description: "id"
-            required: true
+            required: false
             type: "string"
         responses: 
           200: 
@@ -249,13 +214,13 @@
             name: "organizationId"
             in: "path"
             description: "organizationId"
-            required: true
+            required: false
             type: "string"
           - 
             name: "id"
             in: "path"
             description: "id"
-            required: true
+            required: false
             type: "string"
           - 
             in: "body"
@@ -296,15 +261,17 @@
             name: "organizationId"
             in: "path"
             description: "organizationId"
-            required: true
+            required: false
             type: "string"
           - 
             name: "id"
             in: "path"
             description: "id"
-            required: true
+            required: false
             type: "string"
         responses: 
+          200: 
+            description: "OK"
           204: 
             description: "No Content"
           401: 
@@ -316,112 +283,6 @@
             oauth2: 
               - "full"
         x-pretty-name: "deleteIdentityProvider"
-    /rest/realms: 
-      get: 
-        tags: 
-          - "Realms"
-        summary: "Get realms by ids."
-        operationId: "getRealmsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "realmIds"
-            in: "query"
-            description: "realmIds"
-            required: true
-            type: "array"
-            items: 
-              type: "string"
-            collectionFormat: "multi"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/RealmModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getRealms"
-    /rest/realms/{realmId}: 
-      get: 
-        tags: 
-          - "Realms"
-        summary: "Get the realm matching the specified id."
-        operationId: "getRealmUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "realmId"
-            in: "path"
-            description: "realmId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/RealmModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getRealm"
-    /rest/realms/{realmId}/members: 
-      get: 
-        tags: 
-          - "Realms"
-        summary: "Get all members for a realm."
-        operationId: "getRealmMembersUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "realmId"
-            in: "path"
-            description: "realmId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/UserModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getRealmMembers"
     /rest/users/{username}: 
       get: 
         tags: 
@@ -436,7 +297,7 @@
           - 
             name: "username"
             in: "path"
-            description: "username"
+            description: "Username of the user"
             required: true
             type: "string"
         responses: 
@@ -479,10 +340,10 @@
             schema: 
               $ref: "#/definitions/UserModel"
         responses: 
+          200: 
+            description: "OK"
           201: 
             description: "Created"
-          204: 
-            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
@@ -531,7 +392,7 @@
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
