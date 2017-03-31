@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platformqa.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -62,7 +62,6 @@
               - "DROPBOX"
               - "DROPBOX_FOR_BUSINESS"
               - "EXCHANGE"
-              - "EXCHANGE_ENTERPRISE"
               - "GMAIL"
               - "GMAIL_DOMAIN_WIDE"
               - "GMAIL_SINGLE_USER"
@@ -98,7 +97,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/defaultfields/versions/paramId/sourceType/paramId_get"
         x-pretty-name: "getDefaultSourceFieldsByVersion"
     /rest/organizations/{organizationId}/defaultfields: 
       get: 
@@ -132,7 +130,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/defaultfields_get"
         x-pretty-name: "getDefaultFieldsVersionByOrganization"
     /rest/organizations/{organizationId}/indexbackups: 
       get: 
@@ -169,7 +166,6 @@
             oauth2: 
               - "full"
         deprecated: true
-        uiOperationId: "/rest/organizations/paramId/indexbackups_get"
         x-pretty-name: "getOrganizationIndexBackups"
     /rest/organizations/{organizationId}/indexbackups/page: 
       get: 
@@ -267,7 +263,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexbackups/page_get"
         x-pretty-name: "getIndexBackupPage"
     /rest/organizations/{organizationId}/indexbackups/{indexId}: 
       get: 
@@ -310,7 +305,6 @@
             oauth2: 
               - "full"
         deprecated: true
-        uiOperationId: "/rest/organizations/paramId/indexbackups/paramId_get"
         x-pretty-name: "getIndexBackups"
     /rest/organizations/{organizationId}/indexes: 
       get: 
@@ -346,7 +340,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes_get"
         x-pretty-name: "getIndexes"
       post: 
         tags: 
@@ -386,7 +379,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes_post"
         x-pretty-name: "createIndex"
     /rest/organizations/{organizationId}/indexes/fields: 
       post: 
@@ -427,7 +419,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields_post"
         x-pretty-name: "createField"
     /rest/organizations/{organizationId}/indexes/fields/batch/create: 
       post: 
@@ -470,7 +461,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/create_post"
         x-pretty-name: "createFields"
     /rest/organizations/{organizationId}/indexes/fields/batch/delete: 
       delete: 
@@ -509,7 +499,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/delete_delete"
         x-pretty-name: "removeFields"
     /rest/organizations/{organizationId}/indexes/fields/batch/update: 
       put: 
@@ -552,7 +541,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/update_put"
         x-pretty-name: "updateFields"
     /rest/organizations/{organizationId}/indexes/fields/synchronize: 
       post: 
@@ -586,7 +574,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/synchronize_post"
         x-pretty-name: "synchronizeFields"
     /rest/organizations/{organizationId}/indexes/fields/{fieldId}: 
       get: 
@@ -626,7 +613,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_get"
         x-pretty-name: "getField"
       put: 
         tags: 
@@ -672,7 +658,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_put"
         x-pretty-name: "updateField"
       delete: 
         tags: 
@@ -707,7 +692,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_delete"
         x-pretty-name: "removeField"
     /rest/organizations/{organizationId}/indexes/page/fields: 
       get: 
@@ -802,7 +786,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/page/fields_get"
         x-pretty-name: "getFields"
     /rest/organizations/{organizationId}/indexes/raw: 
       put: 
@@ -843,7 +826,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/raw_put"
         x-pretty-name: "updateIndexesRawConfig"
     /rest/organizations/{organizationId}/indexes/snapshots/{snapshotId}: 
       get: 
@@ -883,7 +865,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/snapshots/paramId_get"
         x-pretty-name: "getSnapshot"
     /rest/organizations/{organizationId}/indexes/{indexId}: 
       get: 
@@ -923,7 +904,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId_get"
         x-pretty-name: "getIndex"
       delete: 
         tags: 
@@ -958,7 +938,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId_delete"
         x-pretty-name: "deleteIndex"
     /rest/organizations/{organizationId}/indexes/{indexId}/backup: 
       post: 
@@ -1000,7 +979,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/backup_post"
         x-pretty-name: "backupIndex"
     /rest/organizations/{organizationId}/indexes/{indexId}/commit: 
       post: 
@@ -1040,7 +1018,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/commit_post"
         x-pretty-name: "forceCommit"
     /rest/organizations/{organizationId}/indexes/{indexId}/content: 
       delete: 
@@ -1076,7 +1053,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/content_delete"
         x-pretty-name: "deleteIndexContent"
     /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions: 
       get: 
@@ -1122,7 +1098,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions_get"
         x-pretty-name: "getPermissions"
     /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions/effective: 
       get: 
@@ -1207,7 +1182,7 @@
           200: 
             description: "OK"
             schema: 
-              $ref: "#/definitions/PageModel«SinglePermissionModel»"
+              $ref: "#/definitions/PermissionSetModel"
           401: 
             description: "Unauthorized"
           403: 
@@ -1218,7 +1193,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions/effective_get"
         x-pretty-name: "getEffectivePermissions"
     /rest/organizations/{organizationId}/indexes/{indexId}/online: 
       put: 
@@ -1264,7 +1238,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/online_put"
         x-pretty-name: "setOnline"
     /rest/organizations/{organizationId}/indexes/{indexId}/raw: 
       get: 
@@ -1304,7 +1277,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/raw_get"
         x-pretty-name: "getIndexRawConfig"
       put: 
         tags: 
@@ -1350,7 +1322,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/raw_put"
         x-pretty-name: "updateIndexRawConfig"
     /rest/organizations/{organizationId}/indexes/{indexId}/readonly: 
       put: 
@@ -1396,7 +1367,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/readonly_put"
         x-pretty-name: "setReadOnly"
     /rest/organizations/{organizationId}/indexes/{indexId}/resize: 
       post: 
@@ -1443,7 +1413,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/resize_post"
         x-pretty-name: "resizeIndex"
     /rest/organizations/{organizationId}/indexes/{indexId}/restore: 
       post: 
@@ -1490,7 +1459,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/restore_post"
         x-pretty-name: "restoreIndex"
     /rest/organizations/{organizationId}/indexes/{indexId}/slices: 
       get: 
@@ -1532,7 +1500,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices_get"
         x-pretty-name: "getSlices"
       post: 
         tags: 
@@ -1578,7 +1545,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices_post"
         x-pretty-name: "addSlice"
     /rest/organizations/{organizationId}/indexes/{indexId}/slices/{sliceId}: 
       put: 
@@ -1632,7 +1598,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices/paramId_put"
         x-pretty-name: "updateSlice"
     /rest/organizations/{organizationId}/indexes/{indexId}/stats: 
       get: 
@@ -1672,7 +1637,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/stats_get"
         x-pretty-name: "getIndexStatistics"
     /rest/organizations/{organizationId}/indexes/{indexId}/synchronize: 
       post: 
@@ -1725,12 +1689,11 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/indexes/paramId/synchronize_post"
         x-pretty-name: "synchronizeIndex"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
@@ -2064,12 +2027,8 @@
       type: "object"
       properties: 
         indexerVersion: 
-          type: "string"
-        indexerVersionAsOptional: 
           $ref: "#/definitions/Optional«string»"
         securityCacheVersion: 
-          type: "string"
-        securityCacheVersionAsOptional: 
           $ref: "#/definitions/Optional«string»"
     SinglePermissionModel: 
       type: "object"
@@ -2170,6 +2129,28 @@
         totalPhysicalMemory: 
           type: "integer"
           format: "int64"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+        name: 
+          type: "string"
+        permissions: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+        state: 
+          type: "string"
+          enum: 
+            - "UNKNOWN"
+            - "VALID"
+            - "PENDING"
+            - "INCOMPLETE"
+            - "IN_ERROR"
     IndexBackupStatusModel: 
       type: "object"
       properties: 
@@ -2189,20 +2170,6 @@
         transferredSize: 
           type: "integer"
           format: "int64"
-    PermissionSetModel: 
-      type: "object"
-      properties: 
-        anonymousAllowed: 
-          type: "boolean"
-        lastUpdatedDate: 
-          type: "integer"
-          format: "int64"
-        name: 
-          type: "string"
-        permissions: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/SinglePermissionModel"
     ResizeStorageModel: 
       type: "object"
       properties: 
@@ -2593,7 +2560,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -2634,17 +2600,4 @@
             - "PENDING"
             - "INCOMPLETE"
             - "IN_ERROR"
-    PageModel«SinglePermissionModel»: 
-      type: "object"
-      properties: 
-        items: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/SinglePermissionModel"
-        totalEntries: 
-          type: "integer"
-          format: "int64"
-        totalPages: 
-          type: "integer"
-          format: "int32"
 
