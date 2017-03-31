@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platform.cloud.coveo.com:443"
+  host: "platformqa.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -59,6 +59,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders_get"
         x-pretty-name: "getSecurityProvidersForCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}: 
       get: 
@@ -104,6 +105,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_get"
         x-pretty-name: "getSecurityProviderForCluster"
       put: 
         tags: 
@@ -157,6 +159,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_put"
         x-pretty-name: "createOrUpdateSecurityProviderForCluster"
       delete: 
         tags: 
@@ -199,6 +202,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_delete"
         x-pretty-name: "removeSecurityProviderForCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/raw: 
       get: 
@@ -244,6 +248,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/raw_get"
         x-pretty-name: "getSecurityProviderRawForCluster"
       put: 
         tags: 
@@ -304,6 +309,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/raw_put"
         x-pretty-name: "createOrUpdateSecurityProviderRawForCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
       delete: 
@@ -362,6 +368,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/paramId/paramId_delete"
         x-pretty-name: "removeReferenceFromSecurityProviderForCluster"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/sources/{sourceId}/securityproviders/: 
       get: 
@@ -409,6 +416,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/sources/paramId/securityproviders_get"
         x-pretty-name: "getSecurityProvidersForSource"
     /rest/organizations/{organizationId}/securitycache/entities/{providerId}: 
       get: 
@@ -472,13 +480,16 @@
             type: "integer"
             default: 100
             format: "int32"
+          - 
+            name: "usePageModel"
+            in: "query"
+            required: true
+            type: "string"
         responses: 
           200: 
             description: "OK"
             schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SIDModel"
+              $ref: "#/definitions/PageModel«SIDModel»"
           401: 
             description: "Unauthorized"
           403: 
@@ -489,6 +500,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId_get"
         x-pretty-name: "getEntities"
     /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members: 
       get: 
@@ -552,13 +564,16 @@
             type: "integer"
             default: 100
             format: "int32"
+          - 
+            name: "usePageModel"
+            in: "query"
+            required: true
+            type: "string"
         responses: 
           200: 
             description: "OK"
             schema: 
-              type: "array"
-              items: 
-                type: "string"
+              $ref: "#/definitions/PageModel«SecurityCacheMemberModel»"
           401: 
             description: "Unauthorized"
           403: 
@@ -569,6 +584,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId/members_get"
         x-pretty-name: "getMembers"
     /rest/organizations/{organizationId}/securitycache/refresh: 
       post: 
@@ -602,6 +618,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh_post"
         x-pretty-name: "refresh"
     /rest/organizations/{organizationId}/securitycache/refresh/entity: 
       post: 
@@ -642,6 +659,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh/entity_post"
         x-pretty-name: "refreshEntity"
     /rest/organizations/{organizationId}/securitycache/schedule: 
       get: 
@@ -676,6 +694,7 @@
             oauth2: 
               - "full"
         deprecated: true
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_get"
         x-pretty-name: "getSchedule"
       put: 
         tags: 
@@ -718,6 +737,7 @@
             oauth2: 
               - "full"
         deprecated: true
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_put"
         x-pretty-name: "updateRefreshSchedule"
     /rest/organizations/{organizationId}/securitycache/schedules: 
       get: 
@@ -751,6 +771,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules_get"
         x-pretty-name: "getSchedules"
     /rest/organizations/{organizationId}/securitycache/schedules/{scheduleId}: 
       get: 
@@ -790,6 +811,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_get"
         x-pretty-name: "getScheduleById"
       put: 
         tags: 
@@ -837,6 +859,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_put"
         x-pretty-name: "updateSchedule"
     /rest/organizations/{organizationId}/securitycache/status: 
       get: 
@@ -870,6 +893,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/status_get"
         x-pretty-name: "getStatus"
     /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
       post: 
@@ -909,6 +933,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securitycache/paramId/refresh_post"
         x-pretty-name: "refreshProvider"
     /rest/organizations/{organizationId}/securityproviders: 
       get: 
@@ -944,6 +969,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders_get"
         x-pretty-name: "getSecurityProviders"
     /rest/organizations/{organizationId}/securityproviders/snapshots/{snapshotId}: 
       get: 
@@ -983,6 +1009,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/snapshots/paramId_get"
         x-pretty-name: "getSnapshot"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}: 
       get: 
@@ -1022,6 +1049,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_get"
         x-pretty-name: "getSecurityProvider"
       put: 
         tags: 
@@ -1069,6 +1097,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_put"
         x-pretty-name: "createOrUpdateSecurityProvider"
       delete: 
         tags: 
@@ -1105,6 +1134,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_delete"
         x-pretty-name: "removeSecurityProvider"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/raw: 
       get: 
@@ -1144,6 +1174,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_get"
         x-pretty-name: "getSecurityProviderRaw"
       put: 
         tags: 
@@ -1198,6 +1229,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_put"
         x-pretty-name: "createOrUpdateSecurityProviderRaw"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
       delete: 
@@ -1250,24 +1282,16 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/paramId/paramId_delete"
         x-pretty-name: "removeReferenceFromSecurityProvider"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
   definitions: 
-    UserIdentity: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        password: 
-          type: "string"
-        userName: 
-          type: "string"
     UserIdentityModel: 
       type: "object"
       properties: 
@@ -1304,72 +1328,17 @@
           type: "string"
         statistics: 
           $ref: "#/definitions/SecurityCacheStatisticsModel"
-    SecurityCacheLastRefreshOperationModel: 
+    PageModel«SIDModel»: 
       type: "object"
       properties: 
-        errorCode: 
-          type: "string"
-        id: 
-          type: "string"
-        numberOfEntitiesProcessed: 
-          type: "integer"
-          format: "int32"
-        operationType: 
-          type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        result: 
-          type: "string"
-        timestamp: 
+        items: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/SIDModel"
+        totalEntries: 
           type: "integer"
           format: "int64"
-    SecurityProviderCurrentStatusModel: 
-      type: "object"
-      properties: 
-        numberOfEntitiesInError: 
-          type: "integer"
-          format: "int32"
-        numberOfEntitiesProcessed: 
-          type: "integer"
-          format: "int32"
-        refreshType: 
-          type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
-        type: 
-          type: "string"
-          enum: 
-            - "CREATING"
-            - "DISABLED"
-            - "DELETING"
-            - "REFRESHING"
-            - "PAUSED"
-            - "IDLE"
-            - "ERROR"
-            - "PUSH_READY"
-            - "PAUSING"
-            - "RESUMING"
-            - "CANCELING_REFRESH"
-    HourMinutePair: 
-      type: "object"
-      properties: 
-        hour: 
-          type: "integer"
-          format: "int32"
-        minute: 
+        totalPages: 
           type: "integer"
           format: "int32"
     DataFile: 
@@ -1446,89 +1415,6 @@
             - "DISABLED"
         type: 
           type: "string"
-    ParameterModel: 
-      type: "object"
-      properties: 
-        sensitive: 
-          type: "boolean"
-        value: 
-          type: "string"
-    RawSecurityProviderConfig: 
-      type: "object"
-      properties: 
-        caseSensitive: 
-          type: "boolean"
-        dataFiles: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/DataFile"
-        dbConnectionString: 
-          type: "string"
-        displayName: 
-          type: "string"
-        indexIdentifier: 
-          type: "string"
-        name: 
-          type: "string"
-        nodeRequired: 
-          type: "boolean"
-        parameters: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/Parameter"
-        securityProviders: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/SecurityProvider"
-        type: 
-          type: "string"
-          enum: 
-            - "ACTIVE_DIRECTORY"
-            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
-            - "ALFRESCO"
-            - "BOX"
-            - "CLAIMS"
-            - "CLAIMS_TO_EMAIL"
-            - "CONFLUENCE"
-            - "CONFLUENCE2"
-            - "CUSTOM"
-            - "DATABASE"
-            - "DROPBOX_FOR_BUSINESS"
-            - "EMAIL"
-            - "EXCHANGE"
-            - "EXPANDED"
-            - "FILE_SYSTEM"
-            - "GOOGLE_DRIVE_DOMAIN_WIDE"
-            - "JIRA2"
-            - "JIRA_LEGACY"
-            - "JIVE"
-            - "LDAP"
-            - "LIFERAY"
-            - "MICROSOFT_DYNAMICS"
-            - "MICROSOFT_DYNAMICS_LEGACY"
-            - "OFFICE365"
-            - "OPENTEXT_CONTENT_SERVER"
-            - "ORACLE_KNOWLEDGE"
-            - "ORACLE_UCM"
-            - "SALESFORCE"
-            - "SALESFORCE_LEGACY"
-            - "SHAREPOINT"
-            - "SITECORE"
-            - "SITECORE_LEGACY"
-            - "WEBSPHERE_WCM"
-            - "WINDCHILL"
-            - "YAMMER"
-        userIdentities: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/UserIdentity"
-    SIDModel: 
-      type: "object"
-      properties: 
-        data: 
-          type: "string"
-        provider: 
-          type: "string"
     CascadingSecurityProvider: 
       type: "object"
       properties: 
@@ -1574,48 +1460,6 @@
             - "WEBSPHERE_WCM"
             - "WINDCHILL"
             - "YAMMER"
-    SecurityProvider: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        typeName: 
-          type: "string"
-    SecurityCacheCurrentStatusModel: 
-      type: "object"
-      properties: 
-        numberOfEntitiesInError: 
-          type: "integer"
-          format: "int32"
-        numberOfEntitiesProcessed: 
-          type: "integer"
-          format: "int32"
-        refreshType: 
-          type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
-        type: 
-          type: "string"
-          enum: 
-            - "CREATING"
-            - "DISABLED"
-            - "DELETING"
-            - "REFRESHING"
-            - "PAUSED"
-            - "IDLE"
-            - "ERROR"
-            - "PUSH_READY"
-            - "PAUSING"
-            - "RESUMING"
-            - "CANCELING_REFRESH"
     SecurityProviderModel: 
       type: "object"
       properties: 
@@ -1703,20 +1547,6 @@
           enum: 
             - "SOURCE"
             - "SECURITY_PROVIDER"
-    Parameter: 
-      type: "object"
-      properties: 
-        sensitive: 
-          type: "boolean"
-        value: 
-          type: "string"
-    SecurityCacheMemberInfoModel: 
-      type: "object"
-      properties: 
-        key: 
-          type: "string"
-        value: 
-          type: "string"
     ScheduleFrequency: 
       type: "object"
       properties: 
@@ -1748,6 +1578,250 @@
               - "FRIDAY"
               - "SATURDAY"
               - "SUNDAY"
+    NextOperation: 
+      type: "object"
+      properties: 
+        operationType: 
+          type: "string"
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+        timestamp: 
+          type: "integer"
+          format: "int64"
+    UserIdentity: 
+      type: "object"
+      properties: 
+        name: 
+          type: "string"
+        password: 
+          type: "string"
+        userName: 
+          type: "string"
+    SecurityCacheLastRefreshOperationModel: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+        id: 
+          type: "string"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+        operationType: 
+          type: "string"
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+        result: 
+          type: "string"
+        timestamp: 
+          type: "integer"
+          format: "int64"
+    SecurityProviderCurrentStatusModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+        refreshType: 
+          type: "string"
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        type: 
+          type: "string"
+          enum: 
+            - "CREATING"
+            - "DISABLED"
+            - "DELETING"
+            - "REFRESHING"
+            - "PAUSED"
+            - "IDLE"
+            - "ERROR"
+            - "PUSH_READY"
+            - "PAUSING"
+            - "RESUMING"
+            - "CANCELING_REFRESH"
+    HourMinutePair: 
+      type: "object"
+      properties: 
+        hour: 
+          type: "integer"
+          format: "int32"
+        minute: 
+          type: "integer"
+          format: "int32"
+    PageModel«SecurityCacheMemberModel»: 
+      type: "object"
+      properties: 
+        items: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/SecurityCacheMemberModel"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+        totalPages: 
+          type: "integer"
+          format: "int32"
+    ParameterModel: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    RawSecurityProviderConfig: 
+      type: "object"
+      properties: 
+        caseSensitive: 
+          type: "boolean"
+        dataFiles: 
+          type: "object"
+          additionalProperties: 
+            $ref: "#/definitions/DataFile"
+        dbConnectionString: 
+          type: "string"
+        displayName: 
+          type: "string"
+        indexIdentifier: 
+          type: "string"
+        name: 
+          type: "string"
+        nodeRequired: 
+          type: "boolean"
+        parameters: 
+          type: "object"
+          additionalProperties: 
+            $ref: "#/definitions/Parameter"
+        securityProviders: 
+          type: "object"
+          additionalProperties: 
+            $ref: "#/definitions/SecurityProvider"
+        type: 
+          type: "string"
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+        userIdentities: 
+          type: "object"
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentity"
+    SIDModel: 
+      type: "object"
+      properties: 
+        data: 
+          type: "string"
+        provider: 
+          type: "string"
+    SecurityProvider: 
+      type: "object"
+      properties: 
+        name: 
+          type: "string"
+        typeName: 
+          type: "string"
+    SecurityCacheCurrentStatusModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+        refreshType: 
+          type: "string"
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        type: 
+          type: "string"
+          enum: 
+            - "CREATING"
+            - "DISABLED"
+            - "DELETING"
+            - "REFRESHING"
+            - "PAUSED"
+            - "IDLE"
+            - "ERROR"
+            - "PUSH_READY"
+            - "PAUSING"
+            - "RESUMING"
+            - "CANCELING_REFRESH"
+    Parameter: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    SecurityCacheMemberInfoModel: 
+      type: "object"
+      properties: 
+        key: 
+          type: "string"
+        value: 
+          type: "string"
     SecurityCacheStatisticsModel: 
       type: "object"
       properties: 
@@ -1789,21 +1863,6 @@
             - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
         result: 
           type: "string"
-        timestamp: 
-          type: "integer"
-          format: "int64"
-    NextOperation: 
-      type: "object"
-      properties: 
-        operationType: 
-          type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
         timestamp: 
           type: "integer"
           format: "int64"
