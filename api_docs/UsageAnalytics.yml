@@ -6,41 +6,41 @@
   basePath: "/rest/ua"
   tags: 
     - 
-      name: "Filters API - Version 15"
-    - 
-      name: "Users API - Version 15"
-    - 
-      name: "Statistics API - Version 14"
-    - 
       name: "Analytics API - Version 14"
-    - 
-      name: "Dimensions API, Version 15"
-    - 
-      name: "Statistics API - Version 15"
-    - 
-      name: "Administration API - Version 15"
-    - 
-      name: "Metrics API - Version 14"
-    - 
-      name: "Exports API - Version 14"
-    - 
-      name: "Dimensions API - Version 14"
-    - 
-      name: "Metrics API - Version 15"
     - 
       name: "Groups API - Version 15"
     - 
-      name: "Reports API - Version 14"
-    - 
-      name: "Analytics API - Version 15"
-    - 
-      name: "Reports API - Version 15"
+      name: "Metrics API - Version 15"
     - 
       name: "Exports API - Version 15"
     - 
+      name: "Users API - Version 14"
+    - 
+      name: "Exports API - Version 14"
+    - 
+      name: "Administration API - Version 15"
+    - 
+      name: "Dimensions API, Version 15"
+    - 
+      name: "Reports API - Version 15"
+    - 
+      name: "Metrics API - Version 14"
+    - 
+      name: "Reports API - Version 14"
+    - 
+      name: "Users API - Version 15"
+    - 
+      name: "Dimensions API - Version 14"
+    - 
       name: "Filters API - Version 14"
     - 
-      name: "Users API - Version 14"
+      name: "Statistics API - Version 15"
+    - 
+      name: "Filters API - Version 15"
+    - 
+      name: "Analytics API - Version 15"
+    - 
+      name: "Statistics API - Version 14"
   paths: 
     /v14/analytics/click: 
       get: 
@@ -8778,6 +8778,9 @@
           type: "string"
           description: "The filter id."
       description: "A filter id."
+    JsonNode: 
+      type: "object"
+      properties: {}
     FilterTargetsResponseV15: 
       type: "object"
       properties: 
@@ -8791,9 +8794,10 @@
           description: "The groups targeted by the filter."
           items: 
             $ref: "#/definitions/GroupResponseV15"
-    JsonNode: 
+    FiltersResponseV15: 
       type: "object"
       properties: {}
+      description: "A collection of report configurations."
     FilterIdResponseV15: 
       type: "object"
       properties: 
@@ -8801,10 +8805,19 @@
           type: "string"
           description: "The filter id."
       description: "A filter id."
-    FiltersResponseV15: 
+    ResultModelV14: 
       type: "object"
-      properties: {}
-      description: "A collection of report configurations."
+      required: 
+        - "documentUri"
+        - "documentUriHash"
+      properties: 
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of this document"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of this document"
+      description: "A search result"
     CombinedDataResponseV14: 
       type: "object"
       required: 
@@ -8827,19 +8840,6 @@
           format: "int32"
           description: "The total number of combinations available"
       description: "The values of the metrics combined by dimensions"
-    ResultModelV14: 
-      type: "object"
-      required: 
-        - "documentUri"
-        - "documentUriHash"
-      properties: 
-        documentUri: 
-          type: "string"
-          description: "The @sysuri of this document"
-        documentUriHash: 
-          type: "string"
-          description: "The @sysurihash of this document"
-      description: "A search result"
     CombinedDataResponseV15: 
       type: "object"
       required: 
@@ -9016,60 +9016,6 @@
             - "AVAILABLE"
             - "UPDATING"
       description: "The details of a dimension"
-    DimensionResponseV15: 
-      type: "object"
-      required: 
-        - "apiNames"
-        - "custom"
-        - "displayName"
-        - "eventTypes"
-        - "returnName"
-        - "status"
-        - "type"
-      properties: 
-        type: 
-          type: "string"
-          description: "The type of the dimension"
-          enum: 
-            - "TEXT"
-            - "NUMBER"
-            - "SHORT"
-            - "BOOLEAN"
-            - "DATE"
-            - "DATETIME"
-        displayName: 
-          type: "string"
-          description: "The display name of the dimension"
-        apiNames: 
-          type: "array"
-          description: "A collection of possible names to use when querying the statistics service with this dimension"
-          uniqueItems: true
-          items: 
-            type: "string"
-        returnName: 
-          type: "string"
-          description: "The name of the dimension when returned by the statistics service"
-        custom: 
-          type: "boolean"
-          description: "A flag indicating if the dimension is a custom dimension"
-          default: false
-        availableInVisit: 
-          type: "boolean"
-          description: "Whether the dimension is available in a visit's statistics."
-          default: false
-        eventTypes: 
-          type: "array"
-          description: "Indicates the type of events that this dimension can be attached to."
-          uniqueItems: true
-          items: 
-            type: "string"
-        status: 
-          type: "string"
-          description: "The status of the dimension"
-          enum: 
-            - "AVAILABLE"
-            - "UPDATING"
-      description: "The details of a dimension"
     ExportResponseV15: 
       type: "object"
       required: 
@@ -9149,6 +9095,60 @@
           type: "string"
           description: "The id of the schedule an export was generated by (if scheduled export)"
       description: "Export's information"
+    DimensionResponseV15: 
+      type: "object"
+      required: 
+        - "apiNames"
+        - "custom"
+        - "displayName"
+        - "eventTypes"
+        - "returnName"
+        - "status"
+        - "type"
+      properties: 
+        type: 
+          type: "string"
+          description: "The type of the dimension"
+          enum: 
+            - "TEXT"
+            - "NUMBER"
+            - "SHORT"
+            - "BOOLEAN"
+            - "DATE"
+            - "DATETIME"
+        displayName: 
+          type: "string"
+          description: "The display name of the dimension"
+        apiNames: 
+          type: "array"
+          description: "A collection of possible names to use when querying the statistics service with this dimension"
+          uniqueItems: true
+          items: 
+            type: "string"
+        returnName: 
+          type: "string"
+          description: "The name of the dimension when returned by the statistics service"
+        custom: 
+          type: "boolean"
+          description: "A flag indicating if the dimension is a custom dimension"
+          default: false
+        availableInVisit: 
+          type: "boolean"
+          description: "Whether the dimension is available in a visit's statistics."
+          default: false
+        eventTypes: 
+          type: "array"
+          description: "Indicates the type of events that this dimension can be attached to."
+          uniqueItems: true
+          items: 
+            type: "string"
+        status: 
+          type: "string"
+          description: "The status of the dimension"
+          enum: 
+            - "AVAILABLE"
+            - "UPDATING"
+      description: "The details of a dimension"
     AddSearchEventResponseV14: 
       type: "object"
       required: 
@@ -9161,20 +9161,6 @@
           type: "string"
           description: "The ID of the visit associated with the provided custom event"
       description: "The response to add search event operations"
-    ReportUsersResponseV15: 
-      type: "object"
-      properties: 
-        access: 
-          type: "string"
-          description: "The access type of the report. Can be PUBLIC or PRIVATE."
-          enum: 
-            - "PUBLIC"
-            - "PRIVATE"
-        allowedUsers: 
-          type: "array"
-          description: "The users allowed to access the specified report."
-          items: 
-            $ref: "#/definitions/UserResponseV15"
     ExportScheduleResponseV15: 
       type: "object"
       required: 
@@ -9245,6 +9231,20 @@
           items: 
             type: "string"
       description: "Information about the export schedule"
+    ReportUsersResponseV15: 
+      type: "object"
+      properties: 
+        access: 
+          type: "string"
+          description: "The access type of the report. Can be PUBLIC or PRIVATE."
+          enum: 
+            - "PUBLIC"
+            - "PRIVATE"
+        allowedUsers: 
+          type: "array"
+          description: "The users allowed to access the specified report."
+          items: 
+            $ref: "#/definitions/UserResponseV15"
     ReportUsersResponseV14: 
       type: "object"
       properties: 
@@ -9416,6 +9416,18 @@
           items: 
             type: "string"
       description: "The access model of a report."
+    TemplateResponseV15: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+          description: "The template id."
+        configuration: 
+          type: "object"
+          description: "The JSON report configuration of the template."
+          additionalProperties: 
+            type: "object"
+      description: "Information about a template."
     FilterTargetsModelV15: 
       type: "object"
       properties: 
@@ -9432,44 +9444,6 @@
           items: 
             type: "string"
       description: "The targets of a permission filter."
-    TemplateResponseV15: 
-      type: "object"
-      properties: 
-        id: 
-          type: "string"
-          description: "The template id."
-        configuration: 
-          type: "object"
-          description: "The JSON report configuration of the template."
-          additionalProperties: 
-            type: "object"
-      description: "Information about a template."
-    FilterModelV15: 
-      type: "object"
-      required: 
-        - "displayName"
-        - "value"
-      properties: 
-        displayName: 
-          type: "string"
-          description: "The display name of the filter."
-        value: 
-          type: "string"
-          description: "The actual value of the filter."
-      description: "A filter."
-    IncoherentEventsResponse: 
-      type: "object"
-      properties: 
-        errorCode: 
-          type: "string"
-          description: "The error code of the incoherent event"
-        datetime: 
-          type: "string"
-          format: "date-time"
-          description: "The date and time of the incoherent event"
-        event: 
-          description: "Information regarding the inchoherent event"
-          $ref: "#/definitions/JsonNode"
     AccountResponseV15: 
       type: "object"
       properties: 
@@ -9494,6 +9468,32 @@
           items: 
             type: "string"
       description: "The response to get and edit account operations"
+    IncoherentEventsResponse: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+          description: "The error code of the incoherent event"
+        datetime: 
+          type: "string"
+          format: "date-time"
+          description: "The date and time of the incoherent event"
+        event: 
+          description: "Information regarding the inchoherent event"
+          $ref: "#/definitions/JsonNode"
+    FilterModelV15: 
+      type: "object"
+      required: 
+        - "displayName"
+        - "value"
+      properties: 
+        displayName: 
+          type: "string"
+          description: "The display name of the filter."
+        value: 
+          type: "string"
+          description: "The actual value of the filter."
+      description: "A filter."
     FilterModelV14: 
       type: "object"
       required: 
@@ -9568,6 +9568,21 @@
           uniqueItems: true
           items: 
             $ref: "#/definitions/GroupResponseV15"
+    VisitsStatisticsResponseV15: 
+      type: "object"
+      required: 
+        - "visits"
+      properties: 
+        visits: 
+          type: "array"
+          description: "The visits matching the specified criteria"
+          items: 
+            $ref: "#/definitions/VisitStatisticsResponseV15"
+        totalNumberOfVisits: 
+          type: "integer"
+          format: "int32"
+          description: "The total number of visits matching"
+      description: "The visits matching the specified criteria"
     GraphAggregatedDataResponseV14: 
       type: "object"
       required: 
@@ -9590,21 +9605,19 @@
           additionalProperties: 
             $ref: "#/definitions/SummaryStatisticsPojo"
       description: "The data points to be used in a graph, aggregated by the specified time interval."
-    VisitsStatisticsResponseV15: 
+    GlobalAggregatedDataResponseV15: 
       type: "object"
       required: 
-        - "visits"
+        - "globalDatas"
       properties: 
-        visits: 
-          type: "array"
-          description: "The visits matching the specified criteria"
-          items: 
-            $ref: "#/definitions/VisitStatisticsResponseV15"
-        totalNumberOfVisits: 
-          type: "integer"
-          format: "int32"
-          description: "The total number of visits matching"
-      description: "The visits matching the specified criteria"
+        globalDatas: 
+          type: "object"
+          description: "The global values by metrics. Usually a unique count, a daily count or daily average"
+          additionalProperties: 
+            type: "object"
+            additionalProperties: 
+              $ref: "#/definitions/Number"
+      description: "The global aggregated values by metrics"
     VisitsStatisticsResponseV14: 
       type: "object"
       required: 
@@ -9620,19 +9633,21 @@
           format: "int32"
           description: "The total number of visits matching"
       description: "The visits matching the specified criteria"
-    GlobalAggregatedDataResponseV15: 
+    CustomDimensionSuggestionResponseV15: 
       type: "object"
-      required: 
-        - "globalDatas"
       properties: 
-        globalDatas: 
-          type: "object"
-          description: "The global values by metrics. Usually a unique count, a daily count or daily average"
-          additionalProperties: 
-            type: "object"
-            additionalProperties: 
-              $ref: "#/definitions/Number"
-      description: "The global aggregated values by metrics"
+        eventName: 
+          type: "string"
+          description: "The event type of the custom dimension"
+        apiName: 
+          type: "string"
+          description: "The api name of the custom dimension"
+        values: 
+          type: "array"
+          description: "The existing values for the custom dimension"
+          uniqueItems: true
+          items: 
+            type: "string"
     User: 
       type: "object"
       properties: {}
@@ -9649,21 +9664,6 @@
             additionalProperties: 
               $ref: "#/definitions/Number"
       description: "The global aggregated values by metrics"
-    CustomDimensionSuggestionResponseV15: 
-      type: "object"
-      properties: 
-        eventName: 
-          type: "string"
-          description: "The event type of the custom dimension"
-        apiName: 
-          type: "string"
-          description: "The api name of the custom dimension"
-        values: 
-          type: "array"
-          description: "The existing values for the custom dimension"
-          uniqueItems: true
-          items: 
-            type: "string"
     GraphAggregatedDataResponseV15: 
       type: "object"
       required: 
@@ -9751,16 +9751,6 @@
           items: 
             type: "string"
       description: "A group of users."
-    AccountInfoModelV15: 
-      type: "object"
-      properties: 
-        internalEventIps: 
-          type: "array"
-          description: "A set of IP addresses or CIDR blocks from which events will be considered internal."
-          uniqueItems: true
-          items: 
-            type: "string"
-      description: "Account informations"
     FilterResponseV14: 
       type: "object"
       properties: 
@@ -9780,6 +9770,16 @@
           type: "string"
           description: "The actual filter."
       description: "A filter."
+    AccountInfoModelV15: 
+      type: "object"
+      properties: 
+        internalEventIps: 
+          type: "array"
+          description: "A set of IP addresses or CIDR blocks from which events will be considered internal."
+          uniqueItems: true
+          items: 
+            type: "string"
+      description: "Account informations"
     ClickEventModelV14: 
       type: "object"
       required: 
@@ -10000,9 +10000,6 @@
           uniqueItems: true
           items: 
             $ref: "#/definitions/ReportResponseV15"
-    SummaryStatisticsPojo: 
-      type: "object"
-      properties: {}
     MetricsResponseV14: 
       type: "object"
       properties: 
@@ -10011,6 +10008,17 @@
           description: "A collection of metrics."
           items: 
             $ref: "#/definitions/MetricResponseV14"
+    SummaryStatisticsPojo: 
+      type: "object"
+      properties: {}
+    MetricsResponseV15: 
+      type: "object"
+      properties: 
+        metricResponses: 
+          type: "array"
+          description: "A collection of metrics."
+          items: 
+            $ref: "#/definitions/MetricResponseV15"
     ReportResponseV15: 
       type: "object"
       properties: 
@@ -10042,14 +10050,6 @@
           items: 
             type: "string"
       description: "A report configuration."
-    MetricsResponseV15: 
-      type: "object"
-      properties: 
-        metricResponses: 
-          type: "array"
-          description: "A collection of metrics."
-          items: 
-            $ref: "#/definitions/MetricResponseV15"
     ReportResponseV14: 
       type: "object"
       properties: 
@@ -10516,21 +10516,6 @@
           type: "string"
           description: "The ID of the visit associated with the provided custom event"
       description: "The response to add custom event operation"
-    CustomDimensionSuggestionResponseV14: 
-      type: "object"
-      properties: 
-        eventName: 
-          type: "string"
-          description: "The event type of the custom dimension"
-        apiName: 
-          type: "string"
-          description: "The api name of the custom dimension"
-        values: 
-          type: "array"
-          description: "The existing values for the custom dimension"
-          uniqueItems: true
-          items: 
-            type: "string"
     UserResponseV14: 
       type: "object"
       properties: 
@@ -10553,6 +10538,21 @@
           items: 
             type: "string"
       description: "A user."
+    CustomDimensionSuggestionResponseV14: 
+      type: "object"
+      properties: 
+        eventName: 
+          type: "string"
+          description: "The event type of the custom dimension"
+        apiName: 
+          type: "string"
+          description: "The api name of the custom dimension"
+        values: 
+          type: "array"
+          description: "The existing values for the custom dimension"
+          uniqueItems: true
+          items: 
+            type: "string"
     AddCustomEventResponseV15: 
       type: "object"
       properties: 
