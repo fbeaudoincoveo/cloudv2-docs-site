@@ -1,0 +1,1978 @@
+---
+  swagger: "2.0"
+  info: 
+    description: "API for Coveo Platform"
+    title: "Coveo Platform API"
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      name: "Coveo"
+      url: "www.coveo.com"
+      email: "support@coveo.com"
+    license: {}
+  host: "platform.cloud.coveo.com:443"
+  basePath: "/"
+  tags: 
+    - 
+      name: "Extension Activities"
+      description: "Extension Activity Service Resource"
+    - 
+      name: "License Activities"
+      description: "License Activity Service Resource"
+    - 
+      name: "Activities"
+      description: "Activity Service Resource"
+    - 
+      name: "Api Key Activities"
+      description: "Api Key Activity Service Resource"
+    - 
+      name: "Organization Activities"
+      description: "Organization Activity Service Resource"
+    - 
+      name: "Index Activities"
+      description: "Index Activity Service Resource"
+    - 
+      name: "Field Activities"
+      description: "Field Activity Service Resource"
+    - 
+      name: "Provisioning Activities"
+      description: "Provisioning Activity Service Resource"
+    - 
+      name: "Source Activities"
+      description: "Source Activity Service Resource"
+    - 
+      name: "Global Activities"
+      description: "Global Activity Service Resource"
+    - 
+      name: "Permissions Activities"
+      description: "Permissions Activity Service Resource"
+  paths: 
+    /rest/activities: 
+      post: 
+        tags: 
+          - "Global Activities"
+        summary: "Get all activities"
+        operationId: "getAllActivitiesUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getAllActivities"
+    /rest/activities/facets: 
+      post: 
+        tags: 
+          - "Global Activities"
+        summary: "Get all activities facets"
+        operationId: "getAllActivitiesFacetsUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getAllActivitiesFacets"
+    /rest/organizations/{organizationId}/activities: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Get all activities related to an organization"
+        operationId: "getAllActivitiesForOrganizationUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getAllActivitiesForOrganization"
+    /rest/organizations/{organizationId}/activities/apikey: 
+      get: 
+        tags: 
+          - "Api Key Activities"
+        summary: "Get the api key activities for an organization"
+        operationId: "getApiKeyActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getApiKeyActivities"
+    /rest/organizations/{organizationId}/activities/create: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Create a new activity"
+        operationId: "createActivityUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            in: "body"
+            name: "createActivityModel"
+            description: "createActivityModel"
+            required: true
+            schema: 
+              $ref: "#/definitions/CreateActivityModel"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "createActivity"
+    /rest/organizations/{organizationId}/activities/extension: 
+      get: 
+        tags: 
+          - "Extension Activities"
+        summary: "Get the extension activities for an organization"
+        operationId: "getExtensionActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getExtensionActivities"
+    /rest/organizations/{organizationId}/activities/facets: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Get activity facets"
+        operationId: "getActivitiesFacetsForOrganizationUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getActivitiesFacetsForOrganization"
+    /rest/organizations/{organizationId}/activities/facets/public: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Get activity public facets"
+        operationId: "getPublicActivitiesFacetsForOrganizationUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getPublicActivitiesFacetsForOrganization"
+    /rest/organizations/{organizationId}/activities/fields: 
+      get: 
+        tags: 
+          - "Field Activities"
+        summary: "Get the field activities for an organization"
+        operationId: "getFieldActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getFieldActivities"
+    /rest/organizations/{organizationId}/activities/index: 
+      get: 
+        tags: 
+          - "Index Activities"
+        summary: "Get activities related to indexes"
+        operationId: "getIndexActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getIndexActivities"
+    /rest/organizations/{organizationId}/activities/license: 
+      get: 
+        tags: 
+          - "License Activities"
+        summary: "Get the organization license's activities"
+        operationId: "getLicenseActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getLicenseActivities"
+    /rest/organizations/{organizationId}/activities/organization: 
+      get: 
+        tags: 
+          - "Organization Activities"
+        summary: "Get organization activities for an organization"
+        operationId: "getOrganizationActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getOrganizationActivities"
+    /rest/organizations/{organizationId}/activities/permissions: 
+      get: 
+        tags: 
+          - "Permissions Activities"
+        summary: "Get permissions activities"
+        operationId: "getPermissionsActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getPermissionsActivities"
+    /rest/organizations/{organizationId}/activities/provisioning: 
+      get: 
+        tags: 
+          - "Provisioning Activities"
+        summary: "Get an organization cluster provisioning activities"
+        operationId: "getProvisioningActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "organizationClusterId"
+            in: "query"
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getProvisioningActivities"
+    /rest/organizations/{organizationId}/activities/public: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Get public activities related to an organization"
+        operationId: "getAllPublicActivitiesForOrganizationUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+          - 
+            name: "from"
+            in: "query"
+            description: "from"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            name: "to"
+            in: "query"
+            description: "to"
+            required: false
+            type: "integer"
+            format: "int64"
+          - 
+            in: "body"
+            name: "activityFacet"
+            description: "activityFacet"
+            required: true
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getAllPublicActivitiesForOrganization"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}: 
+      get: 
+        tags: 
+          - "Source Activities"
+        summary: "Get all activities for a source"
+        operationId: "getSourceActivitiesUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "page"
+            in: "query"
+            description: "page"
+            required: false
+            type: "integer"
+            default: 0
+            format: "int32"
+          - 
+            name: "perPage"
+            in: "query"
+            description: "perPage"
+            required: false
+            type: "integer"
+            default: 100
+            format: "int32"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getSourceActivities"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}/pushapi/{activityOperation}: 
+      post: 
+        tags: 
+          - "Source Activities"
+        summary: "Create a push api activity for a source"
+        operationId: "createOrUpdatePushApiActivityUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "activityOperation"
+            in: "path"
+            description: "activityOperation"
+            required: true
+            type: "string"
+            enum: 
+              - "ORG_PROVISIONING_CHECK"
+              - "SOURCE_CREATE"
+              - "SOURCE_DELETE"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "ROLLBACK_TO"
+              - "REFRESH_CANCEL"
+              - "SOURCE_PAUSE"
+              - "SOURCE_RESUME"
+              - "PUSH_SOURCE_CREATE"
+              - "PUSH_CONFIG_CHANGE"
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "string"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "createOrUpdatePushApiActivity"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}: 
+      delete: 
+        tags: 
+          - "Source Activities"
+        summary: "Delete a specific content activity which is not started"
+        operationId: "deleteSourceActivityUsingDELETE"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "deleteSourceActivity"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/cancel: 
+      post: 
+        tags: 
+          - "Source Activities"
+        summary: "Cancel a specific activity which is running"
+        operationId: "cancelSourceActivityUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "cancelSourceActivity"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/pause: 
+      post: 
+        tags: 
+          - "Source Activities"
+        summary: "Pause a specific activity which is running"
+        operationId: "pauseSourceActivityUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "pauseSourceActivity"
+    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/resume: 
+      post: 
+        tags: 
+          - "Source Activities"
+        summary: "Resume a specific activity which is running"
+        operationId: "resumeSourceActivityUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "sourceId"
+            in: "path"
+            description: "sourceId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "resumeSourceActivity"
+    /rest/organizations/{organizationId}/activities/{activityId}: 
+      get: 
+        tags: 
+          - "Activities"
+        summary: "Get activity by id"
+        operationId: "getActivityByIdUsingGET"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "getActivityById"
+    /rest/organizations/{organizationId}/activities/{activityId}/abort: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify abort of activity"
+        operationId: "notifyAbortUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+          - 
+            in: "body"
+            name: "notifyActivityAbortModel"
+            description: "notifyActivityAbortModel"
+            required: true
+            schema: 
+              $ref: "#/definitions/NotifyActivityAbortModel"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyAbort"
+    /rest/organizations/{organizationId}/activities/{activityId}/error: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify error in activity"
+        operationId: "notifyErrorUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+          - 
+            in: "body"
+            name: "notifyActivityErrorModel"
+            description: "notifyActivityErrorModel"
+            required: true
+            schema: 
+              $ref: "#/definitions/NotifyActivityErrorModel"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyError"
+    /rest/organizations/{organizationId}/activities/{activityId}/pause: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify pause activity"
+        operationId: "notifyPauseUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyPause"
+    /rest/organizations/{organizationId}/activities/{activityId}/progress: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify progress of activity"
+        operationId: "notifyProgressUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+          - 
+            in: "body"
+            name: "notifyActivityProgressModel"
+            description: "notifyActivityProgressModel"
+            required: true
+            schema: 
+              $ref: "#/definitions/NotifyActivityProgressModel"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyProgress"
+    /rest/organizations/{organizationId}/activities/{activityId}/resume: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify resume activity"
+        operationId: "notifyResumeUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyResume"
+    /rest/organizations/{organizationId}/activities/{activityId}/start: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify start of activity"
+        operationId: "notifyStartUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifyStart"
+    /rest/organizations/{organizationId}/activities/{activityId}/success: 
+      post: 
+        tags: 
+          - "Activities"
+        summary: "Notify success of activity"
+        operationId: "notifySuccessUsingPOST"
+        consumes: 
+          - "application/json"
+        produces: 
+          - "*/*"
+        parameters: 
+          - 
+            name: "organizationId"
+            in: "path"
+            description: "organizationId"
+            required: true
+            type: "string"
+          - 
+            name: "activityId"
+            in: "path"
+            description: "activityId"
+            required: true
+            type: "string"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        x-pretty-name: "notifySuccess"
+  securityDefinitions: 
+    oauth2: 
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      flow: "implicit"
+      scopes: 
+        full: "Required"
+  definitions: 
+    ActivityFacetModel: 
+      type: "object"
+      properties: 
+        operations: 
+          type: "array"
+          items: 
+            type: "string"
+            enum: 
+              - "ORG_PROVISIONING_CHECK"
+              - "SOURCE_CREATE"
+              - "SOURCE_DELETE"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "ROLLBACK_TO"
+              - "REFRESH_CANCEL"
+              - "SOURCE_PAUSE"
+              - "SOURCE_RESUME"
+              - "PUSH_SOURCE_CREATE"
+              - "PUSH_CONFIG_CHANGE"
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+        organizationIds: 
+          type: "array"
+          items: 
+            type: "string"
+        resourceIds: 
+          type: "array"
+          items: 
+            type: "string"
+        resourceTypes: 
+          type: "array"
+          items: 
+            type: "string"
+        resultTypes: 
+          type: "array"
+          items: 
+            type: "string"
+            enum: 
+              - "SUCCESS"
+              - "ERROR"
+              - "ABORT"
+        sections: 
+          type: "array"
+          items: 
+            type: "string"
+            enum: 
+              - "CONTENT"
+              - "SEARCH"
+              - "ANALYTICS"
+              - "ORGANIZATION"
+              - "INTERNAL"
+        states: 
+          type: "array"
+          items: 
+            type: "string"
+            enum: 
+              - "NOT_EXECUTED"
+              - "SCHEDULED"
+              - "EXECUTING"
+              - "RESCHEDULED"
+              - "MONITORED"
+              - "PAUSED"
+              - "EXECUTED"
+    ActivityModel: 
+      type: "object"
+      properties: 
+        abortReason: 
+          type: "string"
+        abortedBy: 
+          $ref: "#/definitions/ActivityAbortedByModel"
+        content: 
+          type: "object"
+        createDate: 
+          type: "integer"
+          format: "int64"
+        description: 
+          type: "string"
+        duration: 
+          type: "integer"
+          format: "int64"
+        endDate: 
+          type: "integer"
+          format: "int64"
+        errorCode: 
+          type: "string"
+        id: 
+          type: "string"
+        operation: 
+          type: "string"
+          enum: 
+            - "ORG_PROVISIONING_CHECK"
+            - "SOURCE_CREATE"
+            - "SOURCE_DELETE"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "ROLLBACK_TO"
+            - "REFRESH_CANCEL"
+            - "SOURCE_PAUSE"
+            - "SOURCE_RESUME"
+            - "PUSH_SOURCE_CREATE"
+            - "PUSH_CONFIG_CHANGE"
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+        organizationClusterId: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        progress: 
+          type: "number"
+          format: "double"
+        resourceId: 
+          type: "string"
+        resourceName: 
+          type: "string"
+        resourceType: 
+          type: "string"
+        result: 
+          type: "string"
+          enum: 
+            - "SUCCESS"
+            - "ERROR"
+            - "ABORT"
+        section: 
+          type: "string"
+          enum: 
+            - "CONTENT"
+            - "SEARCH"
+            - "ANALYTICS"
+            - "ORGANIZATION"
+            - "INTERNAL"
+        snapshotId: 
+          type: "string"
+        startDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          type: "string"
+          enum: 
+            - "NOT_EXECUTED"
+            - "SCHEDULED"
+            - "EXECUTING"
+            - "RESCHEDULED"
+            - "MONITORED"
+            - "PAUSED"
+            - "EXECUTED"
+        triggeredBy: 
+          $ref: "#/definitions/ActivityTriggerByModel"
+    ActivityAbortedByModel: 
+      type: "object"
+      properties: 
+        abortedByType: 
+          type: "string"
+          enum: 
+            - "USER"
+            - "SYSTEM"
+        displayName: 
+          type: "string"
+        relatedActivity: 
+          type: "string"
+          enum: 
+            - "ORG_PROVISIONING_CHECK"
+            - "SOURCE_CREATE"
+            - "SOURCE_DELETE"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "ROLLBACK_TO"
+            - "REFRESH_CANCEL"
+            - "SOURCE_PAUSE"
+            - "SOURCE_RESUME"
+            - "PUSH_SOURCE_CREATE"
+            - "PUSH_CONFIG_CHANGE"
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+        relatedActivityId: 
+          type: "string"
+        relatedActivityResourceType: 
+          type: "string"
+        userId: 
+          type: "string"
+    NotifyActivityProgressModel: 
+      type: "object"
+      properties: 
+        content: 
+          type: "object"
+        progress: 
+          type: "number"
+          format: "double"
+    PageModel«ActivityModel»: 
+      type: "object"
+      properties: 
+        items: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/ActivityModel"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+        totalPages: 
+          type: "integer"
+          format: "int32"
+    NotifyActivityErrorModel: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+        errorMessage: 
+          type: "string"
+    ActivityTriggerByModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        operationId: 
+          type: "string"
+        relatedActivity: 
+          type: "string"
+          enum: 
+            - "ORG_PROVISIONING_CHECK"
+            - "SOURCE_CREATE"
+            - "SOURCE_DELETE"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "ROLLBACK_TO"
+            - "REFRESH_CANCEL"
+            - "SOURCE_PAUSE"
+            - "SOURCE_RESUME"
+            - "PUSH_SOURCE_CREATE"
+            - "PUSH_CONFIG_CHANGE"
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+        relatedActivityId: 
+          type: "string"
+        relatedActivityResourceType: 
+          type: "string"
+        type: 
+          type: "string"
+          enum: 
+            - "USER"
+            - "SYSTEM"
+    NotifyActivityAbortModel: 
+      type: "object"
+      properties: 
+        abortReason: 
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    CreateActivityModel: 
+      type: "object"
+      properties: 
+        content: 
+          type: "object"
+        description: 
+          type: "string"
+        executed: 
+          type: "boolean"
+        operation: 
+          type: "string"
+          enum: 
+            - "ORG_PROVISIONING_CHECK"
+            - "SOURCE_CREATE"
+            - "SOURCE_DELETE"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "ROLLBACK_TO"
+            - "REFRESH_CANCEL"
+            - "SOURCE_PAUSE"
+            - "SOURCE_RESUME"
+            - "PUSH_SOURCE_CREATE"
+            - "PUSH_CONFIG_CHANGE"
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+        resourceId: 
+          type: "string"
+        resourceName: 
+          type: "string"
+        resourceType: 
+          type: "string"
+        section: 
+          type: "string"
+          enum: 
+            - "CONTENT"
+            - "SEARCH"
+            - "ANALYTICS"
+            - "ORGANIZATION"
+            - "INTERNAL"
+        snapshotId: 
+          type: "string"
+        triggeredBy: 
+          $ref: "#/definitions/ActivityTriggerByModel"
+

@@ -1,0 +1,3684 @@
+---
+  swagger: "2.0"
+  info: 
+    title: "Coveo Search API"
+    version: "1.0.0"
+    description: "Documentation for Coveo Search API"
+    termsOfService: "http://www.coveo.com/en/support/terms-agreements"
+    contact: 
+      name: "support@coveo.com"
+    license: 
+      name: ""
+      url: ""
+  tags: 
+    - 
+      name: "Search"
+      description: "Exposes the search related methods from Search API."
+    - 
+      name: "Organizations"
+      description: "Exposes APIs to manage organizations."
+    - 
+      name: "Pipelines"
+      description: "Exposes APIs to manage pipelines"
+  paths: 
+    /rest/organizations/{organizationId}/authentication/sharepoint/{id}: 
+      delete: 
+        operationId: "deleteSharePointAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Deletes a SharePoint authentication from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The SharePoint authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "loadSharePointAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Loads a single SharePoint authentication from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The sharepoint authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/OutgoingSharePointAuthentication"
+      put: 
+        operationId: "updateSharePointAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Updates a SharePoint authentication in an organization"
+        parameters: 
+          - 
+            name: "sharepoint"
+            description: "The SharePoint authentication data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSharePointAuthentication"
+          - 
+            name: "id"
+            description: "The SharePoint authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/admin/pipelines/{pipelineId}/statements/{statementId}/move: 
+      put: 
+        operationId: "Move a pipeline statement"
+        tags: 
+          - "Pipelines"
+        summary: "Move a pipeline statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "statement"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingMoveStatement"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/querySuggest: 
+      post: 
+        operationId: "querySuggest"
+        tags: 
+          - "Search"
+        summary: "Query suggest method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "autoCompleter"
+            description: ""
+            required: false
+            defaultValue: "default"
+            in: "formData"
+            type: "string"
+          - 
+            name: "additionalData"
+            description: ""
+            required: false
+            defaultValue: "{}"
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "count"
+            description: ""
+            required: false
+            defaultValue: "5"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "formData"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "querySuggest"
+        tags: 
+          - "Search"
+        summary: "Query suggest method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "autoCompleter"
+            description: ""
+            required: false
+            defaultValue: "default"
+            in: "query"
+            type: "string"
+          - 
+            name: "additionalData"
+            description: ""
+            required: false
+            defaultValue: "{}"
+            in: "query"
+            type: "undefined"
+          - 
+            name: "count"
+            description: ""
+            required: false
+            defaultValue: "5"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "query"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/tagDocument: 
+      get: 
+        operationId: "tagDocument"
+        tags: 
+          - "Search"
+        summary: "Tag a document"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "doAdd"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "fieldValue"
+            description: "The field value."
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "fieldName"
+            description: "The field name."
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/text: 
+      get: 
+        operationId: "text"
+        tags: 
+          - "Search"
+        summary: "Get the text version for a document"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/token: 
+      post: 
+        operationId: "token"
+        tags: 
+          - "Search"
+        summary: "Create the search token."
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "body"
+            description: "The token's information."
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/RestTokenParams"
+        responses: 
+          200: 
+            schema: 
+              type: "TokenModel"
+    /rest/organizations/{organizationId}/indexes/onpremises/status: 
+      get: 
+        operationId: "loadOnPremisesIndexStatus"
+        tags: 
+          - "Organizations"
+        summary: "Gets the status of a on premises index for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/OnPremisesIndexStatus"
+    /rest/search/admin/pipelines/{pipelineId}/statements/export: 
+      get: 
+        operationId: "Export pipeline statements"
+        tags: 
+          - "Pipelines"
+        summary: "Export pipeline statements"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "feature"
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/organizations/{organization}/authentication: 
+      get: 
+        operationId: "listAuthentications"
+        tags: 
+          - "Organizations"
+        summary: "Lists all authentication providers for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/OutgoingSharePointAuthentication"
+    /rest/search/rating: 
+      post: 
+        operationId: "rating"
+        tags: 
+          - "Search"
+        summary: "Update user rating"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "rating"
+            description: "The rate to be updated."
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/indexes/onpremises: 
+      get: 
+        operationId: "loadOnPremisesIndexStatus"
+        tags: 
+          - "Organizations"
+        summary: "Gets the url of the on premises index for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/OnPremisesIndex"
+      put: 
+        operationId: "loadOnPremisesIndexStatus"
+        tags: 
+          - "Organizations"
+        summary: "Sets the url, client and server certificates of the on premises index for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/Nothing$"
+    /rest/search/fields: 
+      get: 
+        operationId: "fields"
+        tags: 
+          - "Search"
+        summary: "Get the list of fields"
+        produces: 
+          - "application/json"
+        parameters: []
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/: 
+      post: 
+        operationId: "search"
+        tags: 
+          - "Search"
+        summary: "Search request to the Search API"
+        produces: 
+          - "application/json"
+          - "application/xml"
+        parameters: 
+          - 
+            name: "aq"
+            description: "The advanced query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "cq"
+            description: "The constant query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "dq"
+            description: "The disjunction query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "lq"
+            description: "The large query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "wildcards"
+            description: "Whether to enable wildcards on the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "questionMark"
+            description: "Whether to enable question marks with wildcards.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "partialMatch"
+            description: "Whether to enable partial matching of the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "partialMatchKeywords"
+            description: "The minimum number of keywords needed to activate partial match.\n"
+            required: false
+            defaultValue: "5"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "partialMatchThreshold"
+            description: "The threshold to use for matching documents when partial match is enabled.\n"
+            required: false
+            defaultValue: "50%"
+            in: "formData"
+            type: "string"
+          - 
+            name: "lowercaseOperators"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "firstResult"
+            description: "Index of the first result to return.\n"
+            required: false
+            defaultValue: "0"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "numberOfResults"
+            description: "The number of results to return.\n"
+            required: false
+            defaultValue: "10"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "sortCriteria"
+            description: "Sort criteria(s) to use to sort results.\n"
+            required: false
+            defaultValue: "Relevancy"
+            in: "formData"
+            type: "string"
+          - 
+            name: "sortField"
+            description: "Name of the field to use for sorting.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "enableDuplicateFiltering"
+            description: "Whether to filter duplicates.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "parentField"
+            description: "Name of the parent field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "childField"
+            description: "Name of the child field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "filterFieldRange"
+            description: "Number of results that should be folded.\n"
+            required: false
+            defaultValue: "5"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "filterField"
+            description: "Name of the field to use for folding.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "excerptLength"
+            description: "Length of the generated excerpts.\n"
+            required: false
+            defaultValue: "200"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "summaryLength"
+            description: ""
+            required: false
+            defaultValue: "0"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "retrieveFirstSentences"
+            description: "Whether to retrieve the first sentences.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "groupBy"
+            description: "Definition of the facets to compute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestGroupBy"
+          - 
+            name: "fieldsToInclude"
+            description: "Fields that should be included in the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "fieldsToExclude"
+            description: "Fields that should be excluded from the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "enableDidYouMean"
+            description: "Whether to suggest query corrections.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "timezone"
+            description: "The time zone to use for dates in the query and in the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "enableThesaurus"
+            description: "Whether to expand the query with the thesaurus.\n"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "enableCollaborativeRating"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "queryFunctions"
+            description: "Definition of query functions to execute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestQueryFunction"
+          - 
+            name: "rankingFunctions"
+            description: "Definition of ranking functions to alter the ranking.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestRankingFunction"
+          - 
+            name: "maximumAge"
+            description: "The maximum age for cached query results, in milliseconds.\n"
+            required: false
+            defaultValue: "-1"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "disableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "enableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "syntax"
+            description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "formData"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "search"
+        tags: 
+          - "Search"
+        summary: "Search request to the Search API"
+        produces: 
+          - "application/json"
+          - "application/xml"
+        parameters: 
+          - 
+            name: "aq"
+            description: "The advanced query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "cq"
+            description: "The constant query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "dq"
+            description: "The disjunction query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "lq"
+            description: "The large query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "wildcards"
+            description: "Whether to enable wildcards on the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "questionMark"
+            description: "Whether to enable question marks with wildcards.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "partialMatch"
+            description: "Whether to enable partial matching of the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "partialMatchKeywords"
+            description: "The minimum number of keywords needed to activate partial match.\n"
+            required: false
+            defaultValue: "5"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "partialMatchThreshold"
+            description: "The threshold to use for matching documents when partial match is enabled.\n"
+            required: false
+            defaultValue: "50%"
+            in: "query"
+            type: "string"
+          - 
+            name: "lowercaseOperators"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "firstResult"
+            description: "Index of the first result to return.\n"
+            required: false
+            defaultValue: "0"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "numberOfResults"
+            description: "The number of results to return.\n"
+            required: false
+            defaultValue: "10"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "sortCriteria"
+            description: "Sort criteria(s) to use to sort results.\n"
+            required: false
+            defaultValue: "Relevancy"
+            in: "query"
+            type: "string"
+          - 
+            name: "sortField"
+            description: "Name of the field to use for sorting.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "enableDuplicateFiltering"
+            description: "Whether to filter duplicates.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "parentField"
+            description: "Name of the parent field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "childField"
+            description: "Name of the child field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "filterFieldRange"
+            description: "Number of results that should be folded.\n"
+            required: false
+            defaultValue: "5"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "filterField"
+            description: "Name of the field to use for folding.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "excerptLength"
+            description: "Length of the generated excerpts.\n"
+            required: false
+            defaultValue: "200"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "summaryLength"
+            description: ""
+            required: false
+            defaultValue: "0"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "retrieveFirstSentences"
+            description: "Whether to retrieve the first sentences.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "groupBy"
+            description: "Definition of the facets to compute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestGroupBy"
+          - 
+            name: "fieldsToInclude"
+            description: "Fields that should be included in the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "fieldsToExclude"
+            description: "Fields that should be excluded from the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "enableDidYouMean"
+            description: "Whether to suggest query corrections.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "timezone"
+            description: "The time zone to use for dates in the query and in the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "enableThesaurus"
+            description: "Whether to expand the query with the thesaurus.\n"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "enableCollaborativeRating"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "queryFunctions"
+            description: "Definition of query functions to execute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestQueryFunction"
+          - 
+            name: "rankingFunctions"
+            description: "Definition of ranking functions to alter the ranking.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestRankingFunction"
+          - 
+            name: "maximumAge"
+            description: "The maximum age for cached query results, in milliseconds.\n"
+            required: false
+            defaultValue: "-1"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "disableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "enableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "syntax"
+            description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "query"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/admin/pipelines/{pipelineId}/statements/{statementId}: 
+      delete: 
+        operationId: "Delete a pipeline statement"
+        tags: 
+          - "Pipelines"
+        summary: "Delete a pipeline statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "Get a pipeline statement"
+        tags: 
+          - "Pipelines"
+        summary: "Get a pipeline statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      put: 
+        operationId: "Update a pipeline statement"
+        tags: 
+          - "Pipelines"
+        summary: "Update a pipeline statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "statement"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingStatement"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/values/batch: 
+      post: 
+        operationId: "valuesBatch"
+        tags: 
+          - "Search"
+        summary: "Get field list values method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "batch"
+            description: "Batch/Array of parameters. For more information about them see /rest/search/values documentation.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestListFieldValuesParameters"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "valuesBatch"
+        tags: 
+          - "Search"
+        summary: "Get field list values method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "batch"
+            description: "Batch/Array of parameters. For more information about them see /rest/search/values documentation.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestListFieldValuesParameters"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/admin/pipelines/{pipelineId}: 
+      delete: 
+        operationId: "Delete a pipeline"
+        tags: 
+          - "Pipelines"
+        summary: "Delete a pipeline"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "Get a pipeline"
+        tags: 
+          - "Pipelines"
+        summary: "Get a pipeline"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      put: 
+        operationId: "Update a pipeline"
+        tags: 
+          - "Pipelines"
+        summary: "Update a pipeline"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "pipeline"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingPipeline"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/admin/pipelines/statements/{statementId}: 
+      delete: 
+        operationId: "Delete a statement"
+        tags: 
+          - "Pipelines"
+        summary: "Delete a statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "accessToken"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "Get a single statement"
+        tags: 
+          - "Pipelines"
+        summary: "Get a single statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "accessToken"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      put: 
+        operationId: "Update a statement"
+        tags: 
+          - "Pipelines"
+        summary: "Update a statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "accessToken"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "statement"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingCondition"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/tag: 
+      post: 
+        operationId: "tag"
+        tags: 
+          - "Search"
+        summary: "Tag a document"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "doAdd"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "fieldValue"
+            description: "The field value."
+            required: true
+            in: "formData"
+            type: "string"
+          - 
+            name: "fieldName"
+            description: "The field name."
+            required: true
+            in: "formData"
+            type: "string"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "formData"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/admin/pipelines/{pipelineId}/statements: 
+      post: 
+        operationId: "Create a pipeline statement"
+        tags: 
+          - "Pipelines"
+        summary: "Create a pipeline statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "statement"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingStatement"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "List pipeline statements"
+        tags: 
+          - "Pipelines"
+        summary: "List pipeline statements"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "feature"
+            description: "the targeted feature"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "size"
+            description: "the number of results per page"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "page"
+            description: "The page of results to get"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "sortBy"
+            description: "Sorting type (description or definition)"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "filter"
+            description: "will filter out results who do not contain filter"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "isOrderAscending"
+            description: "false will reverse the order of the results"
+            required: false
+            in: "query"
+            type: "boolean"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/admin/pipelines/{pipelineId}/swap: 
+      post: 
+        operationId: "Swap two pipelines"
+        tags: 
+          - "Pipelines"
+        summary: "Swap two pipelines"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "other"
+            description: "the other pipeline id"
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/organizations/{organizationId}/salesforce/tokens: 
+      delete: 
+        operationId: "clearSalesforceTokens"
+        tags: 
+          - "Organizations"
+        summary: "Clears the OAuth tokens to use to execute queries on a Salesforce index."
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      put: 
+        operationId: "startSalesforceHandshake"
+        tags: 
+          - "Organizations"
+        summary: "Starts the OAuth handshake to gain access to refresh and access tokens to a Salesforce organization."
+        parameters: 
+          - 
+            name: "handshake"
+            description: "Information about the handshake."
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingOAuthHandshake"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/CreatedOAuthHandshake"
+    /rest/search/values: 
+      post: 
+        operationId: "values"
+        tags: 
+          - "Search"
+        summary: "Get field list values method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "field"
+            description: "Specifies the field of the request.\n"
+            required: true
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "lookupField"
+            description: "Specifies the name of an additional field whose value should be included.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "ignoreAccents"
+            description: "Specifies if the accents should be ignored.\n"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "sortCriteria"
+            description: "Specifies the sort criteria to be used.\n"
+            required: false
+            defaultValue: "occurrences"
+            in: "formData"
+            type: "string"
+          - 
+            name: "maximumNumberOfValues"
+            description: "Specifies the maximum number of values to be returned by the query.\n"
+            required: false
+            defaultValue: "10"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "queryOverride"
+            description: "Specifies a different query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "constantQueryOverride"
+            description: "Specifies a different constant query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "disjunctionQueryOverride"
+            description: "Specifies a different disjunction query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "pattern"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "patternType"
+            description: "Specifies the type of pattern that is being used to list field values.\n"
+            required: false
+            defaultValue: "wildcards"
+            in: "formData"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "values"
+        tags: 
+          - "Search"
+        summary: "Get field list values method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "field"
+            description: "Specifies the field of the request.\n"
+            required: true
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "lookupField"
+            description: "Specifies the name of an additional field whose value should be included.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "ignoreAccents"
+            description: "Specifies if the accents should be ignored.\n"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "sortCriteria"
+            description: "Specifies the sort criteria to be used.\n"
+            required: false
+            defaultValue: "occurrences"
+            in: "query"
+            type: "string"
+          - 
+            name: "maximumNumberOfValues"
+            description: "Specifies the maximum number of values to be returned by the query.\n"
+            required: false
+            defaultValue: "10"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "queryOverride"
+            description: "Specifies a different query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "constantQueryOverride"
+            description: "Specifies a different constant query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "disjunctionQueryOverride"
+            description: "Specifies a different disjunction query expression to be used.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "pattern"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "patternType"
+            description: "Specifies the type of pattern that is being used to list field values.\n"
+            required: false
+            defaultValue: "wildcards"
+            in: "query"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/login/{provider}: 
+      post: 
+        operationId: "login"
+        tags: 
+          - "Search"
+        summary: "Login method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "provider"
+            description: "The authentication provider to be used."
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "login"
+        tags: 
+          - "Search"
+        summary: "Login method"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "provider"
+            description: "The authentication provider to be used."
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/pages/{id}: 
+      delete: 
+        operationId: "deleteSearchPageOperation"
+        tags: 
+          - "Organizations"
+        summary: "Deletes a search page from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The search page ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "loadSearchPage"
+        tags: 
+          - "Organizations"
+        summary: "Loads a single search page from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The search page ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/OutgoingSearchPage"
+      put: 
+        operationId: "updateSearchPage"
+        tags: 
+          - "Organizations"
+        summary: "Updates a search page in an organization"
+        parameters: 
+          - 
+            name: "page"
+            description: "The search page data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSearchPage"
+          - 
+            name: "id"
+            description: "The search page ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/document: 
+      get: 
+        operationId: "document"
+        tags: 
+          - "Search"
+        summary: "Get document"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "integer"
+            format: "int32"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/authentication/saml/{id}: 
+      delete: 
+        operationId: "deleteSamlAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Deletes a SAML authentication from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The SAML authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "loadSamlAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Loads a single SAML authentication from an organization"
+        parameters: 
+          - 
+            name: "id"
+            description: "The SAML authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/OutgoingSamlAuthentication"
+      put: 
+        operationId: "updateSamlAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Updates a SAML authentication in an organization"
+        parameters: 
+          - 
+            name: "saml"
+            description: "The SAML authentication data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSamlAuthentication"
+          - 
+            name: "id"
+            description: "The SAML authentication ID"
+            required: true
+            in: "path"
+            type: "string"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/log: 
+      post: 
+        operationId: "log"
+        tags: 
+          - "Search"
+        summary: "Log an error to sentry for the JSUI"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "title"
+            description: "title of the log\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "message"
+            description: "content of the log\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "level"
+            description: "log level\n"
+            required: false
+            defaultValue: "ERROR"
+            in: "formData"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/debug/version: 
+      get: 
+        operationId: "debugVersion"
+        tags: 
+          - "Search"
+        summary: "Get the api version"
+        produces: 
+          - "application/json"
+        parameters: []
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/debug/expandedUserIds: 
+      get: 
+        operationId: "debugExpandedUserIds"
+        tags: 
+          - "Search"
+        summary: "Get the debug expanded user ids"
+        produces: 
+          - "application/json"
+        parameters: []
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/authentication/saml: 
+      post: 
+        operationId: "createSamlAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Creates a new SAML authentication in an organization"
+        parameters: 
+          - 
+            name: "saml"
+            description: "The SAML authentication data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSamlAuthentication"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/CreatedSamlAuthentication"
+      get: 
+        operationId: "listSamlAuthentications"
+        tags: 
+          - "Organizations"
+        summary: "Lists the SAML authentications for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/OutgoingSamlAuthentication"
+    /rest/search/extensions: 
+      get: 
+        operationId: "extensions"
+        tags: 
+          - "Search"
+        summary: "Get a list of all extensions from the pipeline"
+        produces: 
+          - "application/json"
+        parameters: []
+        responses: 
+          200: 
+            description: "No response"
+    /rest/search/admin/pipelines/{pipelineId}/duplicate: 
+      post: 
+        operationId: "Copy a pipeline"
+        tags: 
+          - "Pipelines"
+        summary: "Copy a pipeline"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/admin/pipelines/: 
+      post: 
+        operationId: "Create a pipeline"
+        tags: 
+          - "Pipelines"
+        summary: "Create a pipeline"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "pipeline"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingPipeline"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "List pipelines"
+        tags: 
+          - "Pipelines"
+        summary: "List pipelines"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "access_token"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "feature"
+            description: "the targeted feature"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "size"
+            description: "the number of results per page"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "page"
+            description: "The page of results to get"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "sortBy"
+            description: "Sorting type (id, name, description, condition)"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "filter"
+            description: "will filter out results who do not contain filter"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "isOrderAscending"
+            description: "false will reverse the order of the results"
+            required: false
+            in: "query"
+            type: "boolean"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/datastream: 
+      get: 
+        operationId: "datastream"
+        tags: 
+          - "Search"
+        summary: "Get data stream for a document"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "contentType"
+            description: "The unique id of the document."
+            required: false
+            defaultValue: "application/binary"
+            in: "query"
+            type: "string"
+          - 
+            name: "dataStream"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/authentication/sharepoint: 
+      post: 
+        operationId: "createSharePointAuthentication"
+        tags: 
+          - "Organizations"
+        summary: "Creates a new SharePoint authentication in an organization"
+        parameters: 
+          - 
+            name: "sharepoint"
+            description: "The SharePoint authentication data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSharePointAuthentication"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/CreatedSharePointAuthentication"
+      get: 
+        operationId: "listSharePointAuthentications"
+        tags: 
+          - "Organizations"
+        summary: "Lists the SharePoint authentications for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/OutgoingSharePointAuthentication"
+    /rest/search/admin/pipelines/statements: 
+      post: 
+        operationId: "Create a statement"
+        tags: 
+          - "Pipelines"
+        summary: "Create a statement"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "accessToken"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "statement"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingCondition"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+      get: 
+        operationId: "list statements"
+        tags: 
+          - "Pipelines"
+        summary: "List multiple statements"
+        produces: 
+          - "application/json"
+        parameters: 
+          - 
+            name: "accessToken"
+            required: true
+            in: "query"
+            type: "string"
+          - 
+            name: "organizationId"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "feature"
+            description: "the targeted feature"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "size"
+            description: "the number of results per page"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "page"
+            description: "The page of results to get"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "sortBy"
+            description: "Sorting type (description or definition)"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "filter"
+            description: "will filter out results who do not contain filter"
+            required: false
+            in: "query"
+            type: "string"
+          - 
+            name: "isOrderAscending"
+            description: "false will reverse the order of the results"
+            required: false
+            in: "query"
+            type: "boolean"
+        responses: 
+          200: 
+            schema: 
+              type: "string"
+    /rest/search/html: 
+      post: 
+        operationId: "html"
+        tags: 
+          - "Search"
+        summary: "Get html document"
+        produces: 
+          - "text/html"
+        parameters: 
+          - 
+            name: "aq"
+            description: "The advanced query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "cq"
+            description: "The constant query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "dq"
+            description: "The disjunction query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "lq"
+            description: "The large query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "wildcards"
+            description: "Whether to enable wildcards on the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "questionMark"
+            description: "Whether to enable question marks with wildcards.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "partialMatch"
+            description: "Whether to enable partial matching of the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "partialMatchKeywords"
+            description: "The minimum number of keywords needed to activate partial match.\n"
+            required: false
+            defaultValue: "5"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "partialMatchThreshold"
+            description: "The threshold to use for matching documents when partial match is enabled.\n"
+            required: false
+            defaultValue: "50%"
+            in: "formData"
+            type: "string"
+          - 
+            name: "lowercaseOperators"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "firstResult"
+            description: "Index of the first result to return.\n"
+            required: false
+            defaultValue: "0"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "numberOfResults"
+            description: "The number of results to return.\n"
+            required: false
+            defaultValue: "10"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "sortCriteria"
+            description: "Sort criteria(s) to use to sort results.\n"
+            required: false
+            defaultValue: "Relevancy"
+            in: "formData"
+            type: "string"
+          - 
+            name: "sortField"
+            description: "Name of the field to use for sorting.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "enableDuplicateFiltering"
+            description: "Whether to filter duplicates.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "parentField"
+            description: "Name of the parent field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "childField"
+            description: "Name of the child field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "filterFieldRange"
+            description: "Number of results that should be folded.\n"
+            required: false
+            defaultValue: "5"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "filterField"
+            description: "Name of the field to use for folding.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "excerptLength"
+            description: "Length of the generated excerpts.\n"
+            required: false
+            defaultValue: "200"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "summaryLength"
+            description: ""
+            required: false
+            defaultValue: "0"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "retrieveFirstSentences"
+            description: "Whether to retrieve the first sentences.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "groupBy"
+            description: "Definition of the facets to compute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestGroupBy"
+          - 
+            name: "fieldsToInclude"
+            description: "Fields that should be included in the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "fieldsToExclude"
+            description: "Fields that should be excluded from the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "enableDidYouMean"
+            description: "Whether to suggest query corrections.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "timezone"
+            description: "The time zone to use for dates in the query and in the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "enableThesaurus"
+            description: "Whether to expand the query with the thesaurus.\n"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "enableCollaborativeRating"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "queryFunctions"
+            description: "Definition of query functions to execute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestQueryFunction"
+          - 
+            name: "rankingFunctions"
+            description: "Definition of ranking functions to alter the ranking.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestRankingFunction"
+          - 
+            name: "maximumAge"
+            description: "The maximum age for cached query results, in milliseconds.\n"
+            required: false
+            defaultValue: "-1"
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "disableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "enableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "syntax"
+            description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "formData"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "string"
+          - 
+            name: "findNext"
+            required: false
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "findPrevious"
+            required: false
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "page"
+            required: false
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "enableNavigation"
+            required: false
+            defaultValue: "true"
+            in: "formData"
+            type: "boolean"
+          - 
+            name: "requestedOutputSize"
+            description: "Set this to 0 get the complete document."
+            required: false
+            in: "formData"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "formData"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "html"
+        tags: 
+          - "Search"
+        summary: "Get html document"
+        produces: 
+          - "text/html"
+        parameters: 
+          - 
+            name: "aq"
+            description: "The advanced query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "cq"
+            description: "The constant query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "dq"
+            description: "The disjunction query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "lq"
+            description: "The large query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "wildcards"
+            description: "Whether to enable wildcards on the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "questionMark"
+            description: "Whether to enable question marks with wildcards.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "partialMatch"
+            description: "Whether to enable partial matching of the basic expression keywords.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "partialMatchKeywords"
+            description: "The minimum number of keywords needed to activate partial match.\n"
+            required: false
+            defaultValue: "5"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "partialMatchThreshold"
+            description: "The threshold to use for matching documents when partial match is enabled.\n"
+            required: false
+            defaultValue: "50%"
+            in: "query"
+            type: "string"
+          - 
+            name: "lowercaseOperators"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "firstResult"
+            description: "Index of the first result to return.\n"
+            required: false
+            defaultValue: "0"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "numberOfResults"
+            description: "The number of results to return.\n"
+            required: false
+            defaultValue: "10"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "sortCriteria"
+            description: "Sort criteria(s) to use to sort results.\n"
+            required: false
+            defaultValue: "Relevancy"
+            in: "query"
+            type: "string"
+          - 
+            name: "sortField"
+            description: "Name of the field to use for sorting.\nDeprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "enableDuplicateFiltering"
+            description: "Whether to filter duplicates.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "parentField"
+            description: "Name of the parent field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "childField"
+            description: "Name of the child field to use when loading the parent.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "filterFieldRange"
+            description: "Number of results that should be folded.\n"
+            required: false
+            defaultValue: "5"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "filterField"
+            description: "Name of the field to use for folding.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "excerptLength"
+            description: "Length of the generated excerpts.\n"
+            required: false
+            defaultValue: "200"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "summaryLength"
+            description: ""
+            required: false
+            defaultValue: "0"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "retrieveFirstSentences"
+            description: "Whether to retrieve the first sentences.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "groupBy"
+            description: "Definition of the facets to compute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestGroupBy"
+          - 
+            name: "fieldsToInclude"
+            description: "Fields that should be included in the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "fieldsToExclude"
+            description: "Fields that should be excluded from the query results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              type: "string"
+          - 
+            name: "enableDidYouMean"
+            description: "Whether to suggest query corrections.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "timezone"
+            description: "The time zone to use for dates in the query and in the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "enableThesaurus"
+            description: "Whether to expand the query with the thesaurus.\n"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "enableCollaborativeRating"
+            description: ""
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "queryFunctions"
+            description: "Definition of query functions to execute on the results.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestQueryFunction"
+          - 
+            name: "rankingFunctions"
+            description: "Definition of ranking functions to alter the ranking.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "array"
+            items: 
+              $ref: "#/definitions/RestRankingFunction"
+          - 
+            name: "maximumAge"
+            description: "The maximum age for cached query results, in milliseconds.\n"
+            required: false
+            defaultValue: "-1"
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "disableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "enableQuerySyntax"
+            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "syntax"
+            description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "pipeline"
+            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "q"
+            description: "The basic query expression.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "language"
+            description: "Deprecated."
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "locale"
+            description: ""
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "tab"
+            description: "Represent the current Tab name in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "searchHub"
+            description: "Represents the search dimension name.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "debug"
+            description: "Whether to include debug info in the results.\n"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "format"
+            description: "The format of the results.\n"
+            required: false
+            defaultValue: "json"
+            in: "query"
+            type: "string"
+          - 
+            name: "recommendation"
+            description: "Represent the current Recommendation id in use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "context"
+            description: "Value of the context JSON object to use.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "actionsHistory"
+            description: "The action history of the current user.\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
+            name: "indexToken"
+            description: "A token that you can pass to always make queries using the same index\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "string"
+          - 
+            name: "findNext"
+            required: false
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "findPrevious"
+            required: false
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "page"
+            required: false
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "enableNavigation"
+            required: false
+            defaultValue: "true"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "requestedOutputSize"
+            description: "Set this to 0 get the complete document."
+            required: false
+            in: "query"
+            type: "integer"
+            format: "int32"
+          - 
+            name: "uniqueId"
+            description: "The unique id of the document."
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /rest/organizations/{organizationId}/pages/: 
+      post: 
+        operationId: "createSearchPage"
+        tags: 
+          - "Organizations"
+        summary: "Creates a new search page in an organization"
+        parameters: 
+          - 
+            name: "page"
+            description: "The search page data"
+            required: true
+            in: "body"
+            schema: 
+              $ref: "#/definitions/IncomingSearchPage"
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              $ref: "#/definitions/CreatedSearchPage"
+      get: 
+        operationId: "listSearchPages"
+        tags: 
+          - "Organizations"
+        summary: "Lists the search pages for an organization"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The organization ID"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            schema: 
+              type: "array"
+              items: 
+                $ref: "#/definitions/OutgoingSearchPage"
+  definitions: 
+    OnPremisesIndex: 
+      properties: 
+        uri: 
+          type: "string"
+    OutgoingSamlAuthentication: 
+      properties: 
+        secret: 
+          type: "string"
+        organization: 
+          type: "string"
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+        redirectUri: 
+          type: "string"
+        id: 
+          type: "string"
+        metadata: 
+          type: "string"
+        relyingPartyIdentifier: 
+          type: "string"
+        expiration: 
+          type: "integer"
+          format: "int32"
+        protocol: 
+          type: "string"
+    IncomingSearchPage: 
+      properties: 
+        name: 
+          type: "string"
+        title: 
+          type: "string"
+        html: 
+          type: "string"
+    List[Throwable]: 
+      properties: {}
+    RestUserId: 
+      properties: 
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+        infos: 
+          type: "array"
+          items: 
+            type: "string"
+        type: 
+          type: "string"
+        authCookie: 
+          type: "string"
+        password: 
+          type: "string"
+    IncomingMoveStatement: 
+      properties: 
+        position: 
+          type: "integer"
+          format: "int32"
+        after: 
+          type: "string"
+        pageSize: 
+          type: "integer"
+          format: "int32"
+    StackTraceElement: 
+      properties: 
+        declaringClass: 
+          type: "string"
+        methodName: 
+          type: "string"
+        fileName: 
+          type: "string"
+        lineNumber: 
+          type: "integer"
+          format: "int32"
+    OnPremisesIndexStatus: 
+      properties: 
+        status: 
+          type: "string"
+        message: 
+          type: "string"
+    RestTokenParams: 
+      properties: 
+        userGroups: 
+          type: "array"
+          items: 
+            type: "string"
+        userDisplayName: 
+          type: "string"
+        searchHub: 
+          type: "string"
+        superUserToken: 
+          type: "string"
+        scope: 
+          type: "integer"
+          format: "int32"
+        salesforceUser: 
+          type: "string"
+        salesforceFallbackToAdmin: 
+          type: "boolean"
+        pipeline: 
+          type: "string"
+        filter: 
+          type: "string"
+        userIds: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/RestUserId"
+        expiration: 
+          type: "integer"
+          format: "int32"
+        salesforceCommunityUrl: 
+          type: "string"
+    Throwable: 
+      properties: 
+        detailMessage: 
+          type: "string"
+        cause: 
+          $ref: "#/definitions/Throwable"
+        stackTrace: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/StackTraceElement"
+        suppressedExceptions: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/Throwable"
+    TokenModel: 
+      properties: 
+        token: 
+          type: "string"
+    RestGroupBy: 
+      properties: 
+        sortCriteria: 
+          type: "string"
+        lookupField: 
+          type: "string"
+        advancedQueryOverride: 
+          type: "string"
+        field: 
+          type: "string"
+        allowedValues: 
+          type: "array"
+          items: 
+            type: "string"
+        injectionDepth: 
+          type: "integer"
+          format: "int32"
+        thoroughLookup: 
+          type: "boolean"
+        maximumNumberOfValues: 
+          type: "integer"
+          format: "int32"
+        disjunctionQueryOverride: 
+          type: "string"
+        constantQueryOverride: 
+          type: "string"
+        rangeValues: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/RestRangeValue"
+        completeFacetWithStandardValues: 
+          type: "boolean"
+        computedFields: 
+          type: "array"
+          items: 
+            $ref: "#/definitions/RestComputedField"
+        queryOverride: 
+          type: "string"
+        generateAutomaticRanges: 
+          type: "boolean"
+    RestListFieldValuesParameters: 
+      properties: 
+        sortCriteria: 
+          type: "string"
+        lookupField: 
+          type: "string"
+        pattern: 
+          type: "string"
+        field: 
+          type: "string"
+        patternType: 
+          type: "string"
+        maximumNumberOfValues: 
+          type: "integer"
+          format: "int32"
+        disjunctionQueryOverride: 
+          type: "string"
+        ignoreAccents: 
+          type: "boolean"
+        debug: 
+          type: "boolean"
+        constantQueryOverride: 
+          type: "string"
+        queryOverride: 
+          type: "string"
+    RestComputedField: 
+      properties: 
+        field: 
+          type: "string"
+        operation: 
+          type: "string"
+    OutgoingSharePointAuthentication: 
+      properties: 
+        secret: 
+          type: "string"
+        organization: 
+          type: "string"
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+        redirectUri: 
+          type: "string"
+        uri: 
+          type: "string"
+        id: 
+          type: "string"
+        expiration: 
+          type: "integer"
+          format: "int32"
+        protocol: 
+          type: "string"
+    IncomingOAuthHandshake: 
+      properties: 
+        redirectUri: 
+          type: "string"
+        sandbox: 
+          type: "boolean"
+    Object: 
+      properties: {}
+    RestRangeValue: 
+      properties: 
+        start: 
+          $ref: "#/definitions/Object"
+        end: 
+          $ref: "#/definitions/Object"
+        label: 
+          type: "string"
+        endInclusive: 
+          type: "boolean"
+    RestRankingFunction: 
+      properties: 
+        expression: 
+          type: "string"
+        normalizeWeight: 
+          type: "boolean"
+    IncomingPipeline: 
+      properties: 
+        name: 
+          type: "string"
+        splitTestEnabled: 
+          type: "boolean"
+        description: 
+          type: "string"
+        splitTestTarget: 
+          type: "string"
+        splitTestName: 
+          type: "string"
+        splitTestRatio: 
+          type: "number"
+          format: "double"
+        filter: 
+          type: "string"
+        condition: 
+          $ref: "#/definitions/IncomingCondition"
+        modifiedBy: 
+          type: "string"
+        isDefault: 
+          type: "boolean"
+    OutgoingSearchPage: 
+      properties: 
+        name: 
+          type: "string"
+        lastModified: 
+          type: "string"
+          format: "date-time"
+        id: 
+          type: "string"
+        title: 
+          type: "string"
+        html: 
+          type: "string"
+    IncomingStatement: 
+      properties: 
+        parent: 
+          type: "string"
+        feature: 
+          type: "string"
+        description: 
+          type: "string"
+        id: 
+          type: "string"
+        modified_by: 
+          type: "string"
+        definition: 
+          type: "string"
+        position: 
+          type: "string"
+    CreatedSharePointAuthentication: 
+      properties: 
+        id: 
+          type: "string"
+    IncomingSharePointAuthentication: 
+      properties: 
+        secret: 
+          type: "string"
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+        redirectUri: 
+          type: "string"
+        uri: 
+          type: "string"
+        expiration: 
+          type: "integer"
+          format: "int32"
+    IncomingSamlAuthentication: 
+      properties: 
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+        redirectUri: 
+          type: "string"
+        metadata: 
+          type: "string"
+        relyingPartyIdentifier: 
+          type: "string"
+        expiration: 
+          type: "integer"
+          format: "int32"
+    IncomingCondition: 
+      properties: 
+        id: 
+          type: "string"
+        description: 
+          type: "string"
+        definition: 
+          type: "string"
+    CreatedSearchPage: 
+      properties: 
+        id: 
+          type: "string"
+    CreatedSamlAuthentication: 
+      properties: 
+        id: 
+          type: "string"
+    CreatedOAuthHandshake: 
+      properties: 
+        uri: 
+          type: "string"
+    RestQueryFunction: 
+      properties: 
+        function: 
+          type: "string"
+        fieldName: 
+          type: "string"
+  securityDefinitions: {}
+

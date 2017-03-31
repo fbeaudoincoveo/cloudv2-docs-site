@@ -1,10 +1,9 @@
 ---
 layout: swaggerui2_page
 title:  "Platform API"
-date:   2017-03-29 10:09:23 -0400
 categories: api_docs
 swagger: /api_docs/Platform.yaml
-permalink: docs/static/Platform
+permalink: docs/api-explorer/Platform
 ---
 
 This is the Platfom API
