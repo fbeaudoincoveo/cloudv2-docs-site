@@ -1,7 +1,7 @@
 ---
   swagger: "2.0"
   info: 
-    description: "API for Coveo Platform test"
+    description: "API for Coveo Platform"
     title: "Coveo Platform API"
     termsOfService: "Coveo API terms of service"
     contact: 
