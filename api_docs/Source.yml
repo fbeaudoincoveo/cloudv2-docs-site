@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platformqa.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -68,7 +68,6 @@
               - "DROPBOX"
               - "DROPBOX_FOR_BUSINESS"
               - "EXCHANGE"
-              - "EXCHANGE_ENTERPRISE"
               - "GMAIL"
               - "GMAIL_DOMAIN_WIDE"
               - "GMAIL_SINGLE_USER"
@@ -104,7 +103,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/defaultmappings/versions/paramId/sourceType/paramId_get"
         x-pretty-name: "getDefaultSourceMappingsByVersion"
     /rest/globalsources: 
       get: 
@@ -150,7 +148,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/globalsources_get"
         x-pretty-name: "getAllSources"
     /rest/organizations/{organizationId}/defaultmappings: 
       get: 
@@ -184,7 +181,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/defaultmappings_get"
         x-pretty-name: "getDefaultMappingsVersionByOrganization"
     /rest/organizations/{organizationId}/sources: 
       get: 
@@ -220,7 +216,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources_get"
         x-pretty-name: "getSources"
       post: 
         tags: 
@@ -274,7 +269,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources_post"
         x-pretty-name: "createSource"
     /rest/organizations/{organizationId}/sources/fields: 
       get: 
@@ -324,7 +318,6 @@
             oauth2: 
               - "full"
         deprecated: true
-        uiOperationId: "/rest/organizations/paramId/sources/fields_get"
         x-pretty-name: "getFields"
       post: 
         tags: 
@@ -364,7 +357,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields_post"
         x-pretty-name: "createField"
     /rest/organizations/{organizationId}/sources/fields/batch/create: 
       post: 
@@ -407,7 +399,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/create_post"
         x-pretty-name: "createFields"
     /rest/organizations/{organizationId}/sources/fields/batch/delete: 
       delete: 
@@ -446,7 +437,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/delete_delete"
         x-pretty-name: "removeFields"
     /rest/organizations/{organizationId}/sources/fields/batch/update: 
       put: 
@@ -489,7 +479,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/update_put"
         x-pretty-name: "updateFields"
     /rest/organizations/{organizationId}/sources/fields/{fieldId}: 
       get: 
@@ -536,7 +525,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_get"
         x-pretty-name: "getField"
       put: 
         tags: 
@@ -582,7 +570,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_put"
         x-pretty-name: "updateField"
       delete: 
         tags: 
@@ -617,7 +604,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_delete"
         x-pretty-name: "removeField"
     /rest/organizations/{organizationId}/sources/page/fields: 
       get: 
@@ -719,7 +705,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/page/fields_get"
         x-pretty-name: "getFields"
     /rest/organizations/{organizationId}/sources/raw: 
       post: 
@@ -774,7 +759,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/raw_post"
         x-pretty-name: "createRawSource"
     /rest/organizations/{organizationId}/sources/snapshots/{snapshotId}: 
       get: 
@@ -814,7 +798,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/snapshots/paramId_get"
         x-pretty-name: "getSnapshot"
     /rest/organizations/{organizationId}/sources/{sourceId}: 
       get: 
@@ -854,7 +837,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId_get"
         x-pretty-name: "getSource"
       put: 
         tags: 
@@ -916,7 +898,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId_put"
         x-pretty-name: "updateSource"
       delete: 
         tags: 
@@ -955,7 +936,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId_delete"
         x-pretty-name: "deleteSource"
     /rest/organizations/{organizationId}/sources/{sourceId}/applyChanges: 
       post: 
@@ -995,7 +975,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/applyChanges_post"
         x-pretty-name: "applyChanges"
     /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/evict: 
       post: 
@@ -1035,7 +1014,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/evict_post"
         x-pretty-name: "evictSchemaForSource"
     /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/objects/{objectName}/fields: 
       get: 
@@ -1083,7 +1061,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/objects/paramId/fields_get"
         x-pretty-name: "getFieldsForSource"
     /rest/organizations/{organizationId}/sources/{sourceId}/disable: 
       post: 
@@ -1125,7 +1102,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/disable_post"
         x-pretty-name: "disable"
     /rest/organizations/{organizationId}/sources/{sourceId}/enable: 
       post: 
@@ -1167,7 +1143,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/enable_post"
         x-pretty-name: "enable"
     /rest/organizations/{organizationId}/sources/{sourceId}/extensions: 
       get: 
@@ -1207,7 +1182,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_get"
         x-pretty-name: "getSourceExtensions"
       put: 
         tags: 
@@ -1260,7 +1234,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_put"
         x-pretty-name: "setSourceExtensions"
     /rest/organizations/{organizationId}/sources/{sourceId}/fullRefresh: 
       post: 
@@ -1302,7 +1275,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/fullRefresh_post"
         x-pretty-name: "fullRefresh"
     /rest/organizations/{organizationId}/sources/{sourceId}/incrementalRefresh: 
       post: 
@@ -1344,7 +1316,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/incrementalRefresh_post"
         x-pretty-name: "incrementalRefresh"
     /rest/organizations/{organizationId}/sources/{sourceId}/light: 
       get: 
@@ -1384,7 +1355,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/light_get"
         x-pretty-name: "getLightSource"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings: 
       get: 
@@ -1424,7 +1394,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_get"
         x-pretty-name: "getMappingsConfiguration"
       put: 
         tags: 
@@ -1479,7 +1448,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_put"
         x-pretty-name: "updateMappingsConfiguration"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common: 
       get: 
@@ -1519,7 +1487,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_get"
         x-pretty-name: "getCommonMappingSettings"
       put: 
         tags: 
@@ -1574,7 +1541,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_put"
         x-pretty-name: "updateCommonMappingSettings"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules: 
       get: 
@@ -1616,7 +1582,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_get"
         x-pretty-name: "getCommonMappingSettingsRules"
       post: 
         tags: 
@@ -1669,7 +1634,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_post"
         x-pretty-name: "addCommonMappingSettingsRule"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules/{ruleId}: 
       get: 
@@ -1715,7 +1679,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_get"
         x-pretty-name: "getCommonMappingSettingsRule"
       put: 
         tags: 
@@ -1776,7 +1739,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_put"
         x-pretty-name: "updateCommonMappingSettingsRule"
       delete: 
         tags: 
@@ -1824,7 +1786,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_delete"
         x-pretty-name: "deleteCommonMappingSettingsRule"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types: 
       get: 
@@ -1866,7 +1827,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_get"
         x-pretty-name: "getMappingTypes"
       post: 
         tags: 
@@ -1919,7 +1879,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_post"
         x-pretty-name: "addMappingTypes"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}: 
       get: 
@@ -1965,7 +1924,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_get"
         x-pretty-name: "getMappingTypeSettings"
       put: 
         tags: 
@@ -2026,7 +1984,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_put"
         x-pretty-name: "updateMappingTypeSettings"
       delete: 
         tags: 
@@ -2074,7 +2031,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_delete"
         x-pretty-name: "deleteMappingType"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules: 
       get: 
@@ -2122,7 +2078,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_get"
         x-pretty-name: "getMappingTypeSettingRules"
       post: 
         tags: 
@@ -2181,7 +2136,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_post"
         x-pretty-name: "addMappingTypeSettingRule"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules/{ruleId}: 
       get: 
@@ -2233,7 +2187,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_get"
         x-pretty-name: "getMappingTypeSettingsRule"
       put: 
         tags: 
@@ -2300,7 +2253,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_put"
         x-pretty-name: "updateMappingTypeSettingsRule"
       delete: 
         tags: 
@@ -2354,7 +2306,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_delete"
         x-pretty-name: "deleteMappingTypeSettingsRule"
     /rest/organizations/{organizationId}/sources/{sourceId}/pauseRefresh: 
       post: 
@@ -2396,97 +2347,7 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/pauseRefresh_post"
         x-pretty-name: "pauseRefresh"
-    /rest/organizations/{organizationId}/sources/{sourceId}/pushRefresh: 
-      post: 
-        tags: 
-          - "Sources"
-        summary: "Sets the refreshing state of a push source"
-        operationId: "setPushRefreshStatusUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "sourceId"
-            in: "path"
-            description: "sourceId"
-            required: true
-            type: "string"
-          - 
-            name: "activityOperation"
-            in: "query"
-            description: "activityOperation"
-            required: true
-            type: "string"
-            enum: 
-              - "ORG_PROVISIONING_CHECK"
-              - "SOURCE_CREATE"
-              - "SOURCE_DELETE"
-              - "REBUILD"
-              - "FULL_REFRESH"
-              - "INCREMENTAL_REFRESH"
-              - "IDLE"
-              - "ROLLBACK_TO"
-              - "REFRESH_CANCEL"
-              - "SOURCE_PAUSE"
-              - "SOURCE_RESUME"
-              - "PUSH_SOURCE_CREATE"
-              - "PUSH_CONFIG_CHANGE"
-              - "COMMIT"
-              - "CREATE"
-              - "DELETE"
-              - "DISABLE"
-              - "DUPLICATE"
-              - "ENABLE"
-              - "UPDATE"
-              - "START"
-              - "STOP"
-              - "PAUSE"
-              - "RESUME"
-              - "SYNCHRONIZE"
-              - "BACKUP"
-              - "RECOVER"
-              - "REFRESH"
-              - "REFRESH_ENTITIES_IN_ERROR"
-              - "REFRESH_ENTITY"
-              - "RESIZE"
-              - "RESTORE"
-              - "IMPORT"
-              - "CONFIG_CHANGE"
-              - "CONFIG_CREATE"
-              - "CHANGE_READ_ONLY"
-              - "CHANGE_ONLINE"
-              - "TEST"
-              - "UPGRADE"
-              - "SCHEDULE_CREATE"
-              - "SCHEDULE_CHANGE"
-              - "SCHEDULE_DELETE"
-        responses: 
-          200: 
-            description: "OK"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/pushRefresh_post"
-        x-pretty-name: "setPushRefreshStatus"
     /rest/organizations/{organizationId}/sources/{sourceId}/raw: 
       get: 
         tags: 
@@ -2525,7 +2386,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_get"
         x-pretty-name: "getRawSource"
       put: 
         tags: 
@@ -2587,7 +2447,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_put"
         x-pretty-name: "updateRawSource"
     /rest/organizations/{organizationId}/sources/{sourceId}/rebuild: 
       post: 
@@ -2629,7 +2488,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/rebuild_post"
         x-pretty-name: "rebuild"
     /rest/organizations/{organizationId}/sources/{sourceId}/resumeRefresh: 
       post: 
@@ -2671,7 +2529,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/resumeRefresh_post"
         x-pretty-name: "resumeRefresh"
     /rest/organizations/{organizationId}/sources/{sourceId}/schedules: 
       get: 
@@ -2713,7 +2570,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_get"
         x-pretty-name: "getSourceSchedules"
       post: 
         tags: 
@@ -2759,7 +2615,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_post"
         x-pretty-name: "createSourceSchedule"
     /rest/organizations/{organizationId}/sources/{sourceId}/schedules/{scheduleId}: 
       put: 
@@ -2812,7 +2667,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_put"
         x-pretty-name: "updateSourceSchedule"
       delete: 
         tags: 
@@ -2853,7 +2707,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_delete"
         x-pretty-name: "deleteSourceSchedule"
     /rest/organizations/{organizationId}/sources/{sourceId}/startRefresh: 
       post: 
@@ -2895,7 +2748,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/startRefresh_post"
         x-pretty-name: "startRefresh"
     /rest/organizations/{organizationId}/sources/{sourceId}/stopRefresh: 
       post: 
@@ -2937,60 +2789,7 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/stopRefresh_post"
         x-pretty-name: "stopRefresh"
-    /rest/organizations/{organizationId}/sources/{sourceId}/tasks/abort: 
-      post: 
-        tags: 
-          - "Sources"
-        summary: "Abort a source task related to a given activity."
-        operationId: "abortTaskForActivityUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "sourceId"
-            in: "path"
-            description: "sourceId"
-            required: true
-            type: "string"
-          - 
-            name: "activityId"
-            in: "query"
-            description: "activityId"
-            required: true
-            type: "string"
-          - 
-            name: "abortReason"
-            in: "query"
-            description: "abortReason"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        uiOperationId: "/rest/organizations/paramId/sources/paramId/tasks/abort_post"
-        x-pretty-name: "abortTaskForActivity"
     /rest/sourceTokenRetriever/box/personal/authorize: 
       get: 
         tags: 
@@ -3021,7 +2820,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/box/personal/authorize_get"
         x-pretty-name: "authorizeBoxPersonal"
     /rest/sourceTokenRetriever/box/personal/tokens: 
       get: 
@@ -3059,7 +2857,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/box/personal/tokens_get"
         x-pretty-name: "getBoxPersonalTokens"
     /rest/sourceTokenRetriever/drive/personal/authorize: 
       get: 
@@ -3091,7 +2888,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/drive/personal/authorize_get"
         x-pretty-name: "authorizeDrivePersonal"
     /rest/sourceTokenRetriever/drive/personal/tokens: 
       get: 
@@ -3129,7 +2925,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/drive/personal/tokens_get"
         x-pretty-name: "getDrivePersonalTokens"
     /rest/sourceTokenRetriever/dropbox/authorize: 
       get: 
@@ -3168,7 +2963,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/dropbox/authorize_get"
         x-pretty-name: "authorizeDropbox"
     /rest/sourceTokenRetriever/dropbox/tokens: 
       get: 
@@ -3214,7 +3008,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/dropbox/tokens_get"
         x-pretty-name: "getDropboxTokens"
     /rest/sourceTokenRetriever/gmail/authorize: 
       get: 
@@ -3246,7 +3039,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/gmail/authorize_get"
         x-pretty-name: "authorizeGmail"
     /rest/sourceTokenRetriever/gmail/personal/authorize: 
       get: 
@@ -3278,7 +3070,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/gmail/personal/authorize_get"
         x-pretty-name: "authorizeGmailPersonal"
     /rest/sourceTokenRetriever/gmail/personal/tokens: 
       get: 
@@ -3316,7 +3107,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/gmail/personal/tokens_get"
         x-pretty-name: "getGmailPersonalTokens"
     /rest/sourceTokenRetriever/gmail/tokens: 
       get: 
@@ -3354,7 +3144,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/gmail/tokens_get"
         x-pretty-name: "getGmailTokens"
     /rest/sourceTokenRetriever/salesforce/authorize: 
       get: 
@@ -3399,7 +3188,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/salesforce/authorize_get"
         x-pretty-name: "authorizeSalesforce"
     /rest/sourceTokenRetriever/salesforce/tokens: 
       get: 
@@ -3458,7 +3246,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceTokenRetriever/salesforce/tokens_get"
         x-pretty-name: "getSalesforceTokens"
     /rest/sourceconfiguration/salesforce/generateOTG: 
       post: 
@@ -3497,7 +3284,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/generateOTG_post"
         x-pretty-name: "generateOTG"
     /rest/sourceconfiguration/salesforce/objects: 
       get: 
@@ -3574,7 +3360,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_get"
         x-pretty-name: "getObjects"
       post: 
         tags: 
@@ -3633,7 +3418,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_post"
         x-pretty-name: "refreshObjects"
     /rest/sourceconfiguration/salesforce/objects/{objectName}/fields: 
       get: 
@@ -3688,7 +3472,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_get"
         x-pretty-name: "getFields"
       post: 
         tags: 
@@ -3753,7 +3536,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_post"
         x-pretty-name: "refreshFields"
     /rest/sourceconfiguration/salesforce/parseOTG: 
       post: 
@@ -3792,7 +3574,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/parseOTG_post"
         x-pretty-name: "parseOTG"
     /rest/sourceconfiguration/salesforce/schema: 
       get: 
@@ -3869,7 +3650,6 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_get"
         x-pretty-name: "getSchema"
       post: 
         tags: 
@@ -3928,12 +3708,11 @@
           - 
             oauth2: 
               - "full"
-        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_post"
         x-pretty-name: "refreshSchema"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
@@ -4090,6 +3869,14 @@
           type: "array"
           items: 
             $ref: "#/definitions/SinglePermissionModel"
+        state: 
+          type: "string"
+          enum: 
+            - "UNKNOWN"
+            - "VALID"
+            - "PENDING"
+            - "INCOMPLETE"
+            - "IN_ERROR"
     ScheduleModel: 
       type: "object"
       properties: 
@@ -4442,7 +4229,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -5002,7 +4788,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -5235,7 +5020,6 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
-              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"
@@ -5385,7 +5169,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -5505,7 +5288,6 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
-            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
