@@ -100,7 +100,7 @@ paths:
       tags:
       - AWS
       summary: Some new call 2 summary
-      description: Some new call 2 description
+      description: Some new call 2 description MODIFIED UPSTREAM
       operationId: someNewCall2UsingGET
       consumes:
       - application/json
@@ -123,6 +123,34 @@ paths:
       - oauth2:
         - full
       x-pretty-name: getSomeNewCall2
+  "/rest/some/new/call3":
+    get:
+      tags:
+      - AWS
+      summary: Some new call 3 summary
+      description: Some new call 3 description
+      operationId: someNewCall3UsingGET
+      consumes:
+      - application/json
+      produces:
+      - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/AWSAgentInstanceModel"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - oauth2:
+        - full
+      x-pretty-name: getSomeNewCall3
   "/rest/aws/instances/agents/{agentId}":
     get:
       tags:
