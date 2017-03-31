@@ -610,7 +610,7 @@
         tags: 
           - "Organizations"
         summary: "Gets all organizations"
-        operationId: "getOrganizationsUsingGET"
+        operationId: "getOrganizationsUsingGET_1"
         consumes: 
           - "application/json"
         produces: 
