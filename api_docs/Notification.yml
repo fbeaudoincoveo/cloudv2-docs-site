@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platform.cloud.coveo.com:443"
+  host: "platformdev.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -53,6 +53,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions_get"
         x-pretty-name: "getSubscriptions"
       post: 
         tags: 
@@ -92,6 +97,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/subscriptions_post"
         x-pretty-name: "createSubscription"
     /rest/organizations/{organizationId}/subscriptions/me: 
       get: 
@@ -127,6 +137,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me_get"
         x-pretty-name: "getCurrentUserSubscriptions"
       post: 
         tags: 
@@ -166,6 +181,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me_post"
         x-pretty-name: "createSubscriptionForCurrentUser"
     /rest/organizations/{organizationId}/subscriptions/me/{subscriptionId}: 
       get: 
@@ -205,6 +225,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_get"
         x-pretty-name: "getCurrentUserSubscriptionById"
       put: 
         tags: 
@@ -252,6 +277,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_put"
         x-pretty-name: "editSubscriptionForCurrentUser"
       delete: 
         tags: 
@@ -286,6 +316,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_delete"
         x-pretty-name: "deleteCurrentUserSubscriptionById"
     /rest/organizations/{organizationId}/subscriptions/{subscriptionId}: 
       get: 
@@ -325,6 +360,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_get"
         x-pretty-name: "getSubscriptionById"
       put: 
         tags: 
@@ -372,6 +412,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_put"
         x-pretty-name: "editSubscription"
       delete: 
         tags: 
@@ -406,6 +451,11 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_delete"
         x-pretty-name: "deleteSubscriptionById"
     /rest/subscriptions: 
       get: 
@@ -434,6 +484,12 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INFRASTRUCTURE"
+          global: "true"
+          type: "VIEW"
+        uiOperationId: "/rest/subscriptions_get"
         x-pretty-name: "getSubscriptions"
       post: 
         tags: 
@@ -467,6 +523,12 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INFRASTRUCTURE"
+          global: "true"
+          type: "EDIT"
+        uiOperationId: "/rest/subscriptions_post"
         x-pretty-name: "createSubscription"
     /rest/subscriptions/{subscriptionId}: 
       get: 
@@ -500,6 +562,12 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INFRASTRUCTURE"
+          global: "true"
+          type: "VIEW"
+        uiOperationId: "/rest/subscriptions/paramId_get"
         x-pretty-name: "getSubscriptionById"
       put: 
         tags: 
@@ -541,6 +609,12 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INFRASTRUCTURE"
+          global: "true"
+          type: "EDIT"
+        uiOperationId: "/rest/subscriptions/paramId_put"
         x-pretty-name: "editSubscription"
       delete: 
         tags: 
@@ -569,37 +643,31 @@
           - 
             oauth2: 
               - "full"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INFRASTRUCTURE"
+          global: "true"
+          type: "EDIT"
+        uiOperationId: "/rest/subscriptions/paramId_delete"
         x-pretty-name: "deleteSubscriptionById"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
   definitions: 
-    SubscriptionModel: 
+    SubscriptionPatternModel: 
       type: "object"
       properties: 
-        createdDate: 
-          type: "integer"
-          format: "int64"
-        description: 
-          type: "string"
-        id: 
-          type: "string"
-        lastModified: 
-          type: "integer"
-          format: "int64"
-        name: 
-          type: "string"
+        content: 
+          type: "object"
+          additionalProperties: 
+            type: "string"
         operations: 
           type: "array"
           items: 
-            type: "string"
-        parameters: 
-          type: "object"
-          additionalProperties: 
             type: "string"
         resourceTypes: 
           type: "array"
@@ -609,6 +677,38 @@
           type: "array"
           items: 
             type: "string"
+    SubscriptionModel: 
+      type: "object"
+      properties: 
+        createdDate: 
+          type: "integer"
+          format: "int64"
+        description: 
+          type: "string"
+        enabled: 
+          type: "boolean"
+        frequency: 
+          type: "string"
+          enum: 
+            - "LIVE"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+        id: 
+          type: "string"
+        lastModified: 
+          type: "integer"
+          format: "int64"
+        name: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        parameters: 
+          type: "object"
+          additionalProperties: 
+            type: "string"
+        pattern: 
+          $ref: "#/definitions/SubscriptionPatternModel"
         type: 
           type: "string"
           enum: 
@@ -622,24 +722,23 @@
       properties: 
         description: 
           type: "string"
+        enabled: 
+          type: "boolean"
+        frequency: 
+          type: "string"
+          enum: 
+            - "LIVE"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
         name: 
           type: "string"
-        operations: 
-          type: "array"
-          items: 
-            type: "string"
         parameters: 
           type: "object"
           additionalProperties: 
             type: "string"
-        resourceTypes: 
-          type: "array"
-          items: 
-            type: "string"
-        resultTypes: 
-          type: "array"
-          items: 
-            type: "string"
+        pattern: 
+          $ref: "#/definitions/SubscriptionPatternModel"
         type: 
           type: "string"
           enum: 

@@ -12,6 +12,9 @@
       url: ""
   tags: 
     - 
+      name: "default"
+      description: "Exposes a few ops-related APIs."
+    - 
       name: "Search"
       description: "Exposes the search related methods from Search API."
     - 
@@ -154,6 +157,13 @@
             type: "integer"
             format: "int32"
           - 
+            name: "enableWordCompletion"
+            description: "Whether to enable word completion\n"
+            required: false
+            defaultValue: ""
+            in: "formData"
+            type: "undefined"
+          - 
             name: "pipeline"
             description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
             required: false
@@ -271,6 +281,13 @@
             type: "integer"
             format: "int32"
           - 
+            name: "enableWordCompletion"
+            description: "Whether to enable word completion\n"
+            required: false
+            defaultValue: ""
+            in: "query"
+            type: "undefined"
+          - 
             name: "pipeline"
             description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
             required: false
@@ -353,6 +370,37 @@
             required: false
             defaultValue: ""
             in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /api/ops/organizations/{organizationId}: 
+      delete: 
+        operationId: "organizations"
+        tags: 
+          - "default"
+        summary: "Deletes organization specified from search api if it doesn't exist in the cloud platform"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The id of the organization to delete"
+            required: true
+            in: "path"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+      get: 
+        operationId: "organizations"
+        tags: 
+          - "default"
+        summary: "Gets a search api organization cloud status"
+        parameters: 
+          - 
+            name: "organizationId"
+            description: "The id of the organization"
+            required: true
+            in: "path"
             type: "string"
         responses: 
           200: 
@@ -1631,7 +1679,7 @@
             in: "query"
             type: "string"
           - 
-            name: "size"
+            name: "perPage"
             description: "the number of results per page"
             required: false
             in: "query"
@@ -1911,6 +1959,36 @@
         responses: 
           200: 
             description: "No response"
+    /api/ops/reveal/synchronize: 
+      post: 
+        operationId: "synchronize"
+        tags: 
+          - "default"
+        summary: "Synchronize Reveal for a single organization"
+        parameters: 
+          - 
+            name: "delete"
+            description: "Whether to delete superfluous schedules"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "create"
+            description: "Whether to create missing schedules"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "organizationId"
+            description: "The current organization ID"
+            required: true
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
     /rest/search/login/{provider}: 
       post: 
         operationId: "login"
@@ -2015,6 +2093,40 @@
             required: true
             in: "path"
             type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /api/ops/loggingLevel: 
+      post: 
+        operationId: "loggingLevel"
+        tags: 
+          - "default"
+        summary: "Change the logging level of the application"
+        parameters: 
+          - 
+            name: "level"
+            description: "The desired logging level"
+            required: true
+            enum: 
+              - "ALL"
+              - "DEBUG"
+              - "INFO"
+              - "WARN"
+              - "ERROR"
+              - "FATAL"
+              - "OFF"
+            in: "query"
+            type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /api/ops/organizations/unsynced: 
+      get: 
+        operationId: "organizations"
+        tags: 
+          - "default"
+        summary: "Lists all organizations in the search api that does not exist in the cloud platform"
+        parameters: []
         responses: 
           200: 
             description: "No response"
@@ -2243,6 +2355,16 @@
           200: 
             schema: 
               type: "string"
+    /api/ops/organizations/{organizationId}/reload: 
+      post: 
+        operationId: "Reloads an organization"
+        tags: 
+          - "default"
+        summary: "Reloads cached organization information, including pipelines and license"
+        parameters: []
+        responses: 
+          200: 
+            description: "No response"
     /rest/search/admin/pipelines/: 
       post: 
         operationId: "Create a pipeline"
@@ -2297,7 +2419,7 @@
             in: "query"
             type: "string"
           - 
-            name: "size"
+            name: "perPage"
             description: "the number of results per page"
             required: false
             in: "query"
@@ -2358,6 +2480,30 @@
             required: true
             in: "query"
             type: "string"
+        responses: 
+          200: 
+            description: "No response"
+    /api/ops/reveal/synchronizeAll: 
+      post: 
+        operationId: "synchronizeAll"
+        tags: 
+          - "default"
+        summary: "Synchronize Reveal for all organization"
+        parameters: 
+          - 
+            name: "delete"
+            description: "Whether to delete superfluous schedules"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
+          - 
+            name: "create"
+            description: "Whether to create missing schedules"
+            required: false
+            defaultValue: "false"
+            in: "query"
+            type: "boolean"
         responses: 
           200: 
             description: "No response"
@@ -2457,7 +2603,7 @@
             in: "query"
             type: "string"
           - 
-            name: "size"
+            name: "perPage"
             description: "the number of results per page"
             required: false
             in: "query"
@@ -3336,9 +3482,9 @@
           type: "string"
         provider: 
           type: "string"
-        redirectUri: 
-          type: "string"
         id: 
+          type: "string"
+        assertionConsumerServiceUrl: 
           type: "string"
         metadata: 
           type: "string"
@@ -3533,8 +3679,6 @@
           type: "string"
         provider: 
           type: "string"
-        redirectUri: 
-          type: "string"
         uri: 
           type: "string"
         id: 
@@ -3632,8 +3776,6 @@
           type: "string"
         provider: 
           type: "string"
-        redirectUri: 
-          type: "string"
         uri: 
           type: "string"
         expiration: 
@@ -3645,7 +3787,7 @@
           type: "string"
         provider: 
           type: "string"
-        redirectUri: 
+        assertionConsumerServiceUrl: 
           type: "string"
         metadata: 
           type: "string"

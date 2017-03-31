@@ -9,7 +9,7 @@
       url: "www.coveo.com"
       email: "support@coveo.com"
     license: {}
-  host: "platform.cloud.coveo.com:443"
+  host: "platformdev.cloud.coveo.com:443"
   basePath: "/"
   tags: 
     - 
@@ -94,6 +94,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups_get"
         x-pretty-name: "getGlobalGroups"
       post: 
         tags: 
@@ -127,6 +128,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups_post"
         x-pretty-name: "createGlobalGroup"
     /rest/globalgroups/{globalGroupId}: 
       get: 
@@ -160,6 +162,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId_get"
         x-pretty-name: "getGlobalGroup"
       put: 
         tags: 
@@ -199,6 +202,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId_put"
         x-pretty-name: "updateGlobalGroup"
       delete: 
         tags: 
@@ -227,6 +231,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId_delete"
         x-pretty-name: "deleteGlobalGroup"
     /rest/globalgroups/{globalGroupId}/members: 
       get: 
@@ -262,6 +267,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/members_get"
         x-pretty-name: "getGlobalGroupMembers"
       post: 
         tags: 
@@ -301,6 +307,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/members_post"
         x-pretty-name: "addGlobalGroupMember"
     /rest/globalgroups/{globalGroupId}/members/{username}: 
       get: 
@@ -340,6 +347,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/members/paramId_get"
         x-pretty-name: "getGlobalGroupMember"
       delete: 
         tags: 
@@ -374,6 +382,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/members/paramId_delete"
         x-pretty-name: "deleteGlobalGroupMember"
     /rest/globalgroups/{globalGroupId}/realms: 
       get: 
@@ -409,6 +418,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/realms_get"
         x-pretty-name: "getGlobalGroupRealms"
       post: 
         tags: 
@@ -448,6 +458,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/realms_post"
         x-pretty-name: "addGlobalGroupRealm"
     /rest/globalgroups/{globalGroupId}/realms/{realmId}: 
       get: 
@@ -487,6 +498,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_get"
         x-pretty-name: "getGlobalGroupRealm"
       delete: 
         tags: 
@@ -521,6 +533,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_delete"
         x-pretty-name: "deleteGlobalGroupRealm"
     /rest/globalprivileges: 
       get: 
@@ -549,6 +562,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/globalprivileges_get"
         x-pretty-name: "getGlobalPrivileges"
     /rest/invites: 
       get: 
@@ -577,6 +591,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/invites_get"
         x-pretty-name: "getInvites"
     /rest/oauth2clients/{clientId}/privileges: 
       get: 
@@ -610,6 +625,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/oauth2clients/paramId/privileges_get"
         x-pretty-name: "getClientPrivilege"
       put: 
         tags: 
@@ -651,6 +667,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/oauth2clients/paramId/privileges_put"
         x-pretty-name: "updateClientPrivilege"
       delete: 
         tags: 
@@ -683,6 +700,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/oauth2clients/paramId/privileges_delete"
         x-pretty-name: "deleteClientPrivilege"
     /rest/organizations/{organizationId}/apikeys: 
       get: 
@@ -718,6 +736,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys_get"
         x-pretty-name: "getApiKeys"
       post: 
         tags: 
@@ -757,6 +776,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys_post"
         x-pretty-name: "createApiKey"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}: 
       get: 
@@ -796,6 +816,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_get"
         x-pretty-name: "getApiKey"
       put: 
         tags: 
@@ -841,6 +862,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_put"
         x-pretty-name: "updateApiKey"
       delete: 
         tags: 
@@ -875,6 +897,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_delete"
         x-pretty-name: "deleteApiKey"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}/activate: 
       put: 
@@ -914,6 +937,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/activate_put"
         x-pretty-name: "activateApiKey"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}/disable: 
       put: 
@@ -953,6 +977,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/disable_put"
         x-pretty-name: "disableApiKey"
     /rest/organizations/{organizationId}/groups: 
       get: 
@@ -988,6 +1013,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups_get"
         x-pretty-name: "getGroups"
       post: 
         tags: 
@@ -1034,6 +1060,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups_post"
         x-pretty-name: "createGroup"
     /rest/organizations/{organizationId}/groups/{groupId}: 
       get: 
@@ -1073,6 +1100,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_get"
         x-pretty-name: "getGroup"
       put: 
         tags: 
@@ -1125,6 +1153,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_put"
         x-pretty-name: "updateGroup"
       delete: 
         tags: 
@@ -1159,6 +1188,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_delete"
         x-pretty-name: "deleteGroup"
     /rest/organizations/{organizationId}/groups/{groupId}/invites: 
       get: 
@@ -1200,6 +1230,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_get"
         x-pretty-name: "getInvites"
       post: 
         tags: 
@@ -1254,6 +1285,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_post"
         x-pretty-name: "inviteMember"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/accept: 
       post: 
@@ -1293,6 +1325,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/accept_post"
         x-pretty-name: "acceptInvite"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/decline: 
       post: 
@@ -1332,6 +1365,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/decline_post"
         x-pretty-name: "declineInvite"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/{usernameOrEmail}: 
       delete: 
@@ -1373,6 +1407,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/paramId_delete"
         x-pretty-name: "deleteInvite"
     /rest/organizations/{organizationId}/groups/{groupId}/members: 
       get: 
@@ -1414,6 +1449,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_get"
         x-pretty-name: "getGroupMembers"
       post: 
         tags: 
@@ -1466,6 +1502,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_post"
         x-pretty-name: "addGroupMember"
     /rest/organizations/{organizationId}/groups/{groupId}/members/{username}: 
       get: 
@@ -1511,6 +1548,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_get"
         x-pretty-name: "getGroupMember"
       delete: 
         tags: 
@@ -1551,6 +1589,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_delete"
         x-pretty-name: "deleteGroupMember"
     /rest/organizations/{organizationId}/groups/{groupId}/realms: 
       get: 
@@ -1592,6 +1631,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_get"
         x-pretty-name: "getGroupRealms"
       post: 
         tags: 
@@ -1625,8 +1665,6 @@
         responses: 
           201: 
             description: "Created"
-          204: 
-            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
@@ -1637,6 +1675,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_post"
         x-pretty-name: "addGroupRealm"
     /rest/organizations/{organizationId}/groups/{groupId}/realms/{realmId}: 
       get: 
@@ -1682,6 +1721,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_get"
         x-pretty-name: "getGroupRealm"
       delete: 
         tags: 
@@ -1722,6 +1762,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_delete"
         x-pretty-name: "deleteGroupRealm"
     /rest/organizations/{organizationId}/invites: 
       get: 
@@ -1757,6 +1798,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/invites_get"
         x-pretty-name: "getOrganizationInvites"
     /rest/organizations/{organizationId}/members: 
       get: 
@@ -1792,6 +1834,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members_get"
         x-pretty-name: "getOrganizationMembers"
       put: 
         tags: 
@@ -1844,6 +1887,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members_put"
         x-pretty-name: "updateOrganizationMembers"
     /rest/organizations/{organizationId}/members/privileges: 
       get: 
@@ -1879,6 +1923,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members/privileges_get"
         x-pretty-name: "getOrganizationMemberPrivileges"
     /rest/organizations/{organizationId}/members/{username}: 
       get: 
@@ -1918,6 +1963,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_get"
         x-pretty-name: "getOrganizationMember"
       put: 
         tags: 
@@ -1965,6 +2011,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_put"
         x-pretty-name: "updateOrganizationMember"
       delete: 
         tags: 
@@ -1999,6 +2046,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_delete"
         x-pretty-name: "deleteOrganizationMember"
     /rest/organizations/{organizationId}/members/{username}/groups: 
       get: 
@@ -2040,6 +2088,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/members/paramId/groups_get"
         x-pretty-name: "getMemberGroups"
     /rest/organizations/{organizationId}/privileges: 
       get: 
@@ -2075,6 +2124,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges_get"
         x-pretty-name: "getOrganizationPrivileges"
     /rest/organizations/{organizationId}/privileges/apikeys: 
       get: 
@@ -2110,6 +2160,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges/apikeys_get"
         x-pretty-name: "getApiKeyPrivileges"
     /rest/organizations/{organizationId}/privileges/masks: 
       put: 
@@ -2152,6 +2203,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges/masks_put"
         x-pretty-name: "updateOrganizationPrivilegeMasks"
     /rest/organizations/{organizationId}/privileges/me: 
       get: 
@@ -2187,6 +2239,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges/me_get"
         x-pretty-name: "getOrganizationMemberPrivileges"
     /rest/organizations/{organizationId}/privileges/token: 
       get: 
@@ -2234,6 +2287,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges/token_get"
         x-pretty-name: "getOrganizationMemberPrivileges"
       post: 
         tags: 
@@ -2276,6 +2330,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/privileges/token_post"
         x-pretty-name: "getOrganizationMemberPrivilegesUsingPost"
     /rest/organizations/{organizationId}/realms: 
       get: 
@@ -2311,6 +2366,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/realms_get"
         x-pretty-name: "getOrganizationRealms"
       post: 
         tags: 
@@ -2350,6 +2406,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/realms_post"
         x-pretty-name: "addRealmsToGroups"
     /rest/organizations/{organizationId}/realms/{realmId}: 
       put: 
@@ -2398,6 +2455,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/organizations/paramId/realms/paramId_put"
         x-pretty-name: "updateRealmsInGroups"
     /rest/privilege/evaluate: 
       post: 
@@ -2434,6 +2492,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privilege/evaluate_post"
         x-pretty-name: "evaluate"
     /rest/privileges/masks: 
       get: 
@@ -2462,6 +2521,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/masks_get"
         x-pretty-name: "getPrivilegeMasks"
       post: 
         tags: 
@@ -2497,6 +2557,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/masks_post"
         x-pretty-name: "createPrivilegeMask"
     /rest/privileges/masks/{privilegeMaskId}: 
       get: 
@@ -2530,6 +2591,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/masks/paramId_get"
         x-pretty-name: "getPrivilegeMask"
       put: 
         tags: 
@@ -2571,6 +2633,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/masks/paramId_put"
         x-pretty-name: "updatePrivilegeMask"
       delete: 
         tags: 
@@ -2601,6 +2664,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/masks/paramId_delete"
         x-pretty-name: "deletePrivilegeMask"
     /rest/privileges/me: 
       get: 
@@ -2629,6 +2693,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/me_get"
         x-pretty-name: "getGlobalPrivilegesForAuthentication"
     /rest/privileges/token: 
       get: 
@@ -2670,6 +2735,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/token_get"
         x-pretty-name: "getGlobalPrivilegesForToken"
       post: 
         tags: 
@@ -2706,6 +2772,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/privileges/token_post"
         x-pretty-name: "getGlobalPrivilegesForTokenUsingPost"
     /rest/templates/apikeys: 
       get: 
@@ -2734,6 +2801,7 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/templates/apikeys_get"
         x-pretty-name: "getApiKeyTemplates"
     /rest/templates/apikeys/{apiKeyTemplateId}: 
       get: 
@@ -2767,11 +2835,12 @@
           - 
             oauth2: 
               - "full"
+        uiOperationId: "/rest/templates/apikeys/paramId_get"
         x-pretty-name: "getApiKeyTemplate"
   securityDefinitions: 
     oauth2: 
       type: "oauth2"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"

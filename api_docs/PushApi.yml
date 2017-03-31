@@ -116,9 +116,9 @@
         uploadUri: 
           type: "string"
       type: "object"
-  host: "push.cloud.coveo.com/v1"
+  host: "pushdev.cloud.coveo.com/v1"
   info: 
-    title: "Push API"
+    title: "Push API - Dev"
     version: "2016-03-03T13:22:11Z"
   paths: 
     /organizations/{organizationId}/files: 
@@ -1093,6 +1093,12 @@
             required: true
             type: "string"
           - 
+            description: "compressionType"
+            in: "query"
+            name: "compressionType"
+            required: false
+            type: "string"
+          - 
             description: "DocumentBody"
             in: "body"
             name: "DocumentBody"
@@ -1614,7 +1620,7 @@
     - "https"
   securityDefinitions: 
     oauth2: 
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformdev.cloud.coveo.com/oauth/authorize"
       flow: "implicit"
       scopes: 
         full: "Required"
