@@ -18,7 +18,7 @@ def add(file_to_add, debug=False):
 def commit_all(commit_message, debug=False):
     if debug:
         print "Committing all changes."
-    call("git commit -a %s" % commit_message)
+    call("git commit -a --message=%s" % commit_message, shell=True)
 
 
 def push(debug=False):
