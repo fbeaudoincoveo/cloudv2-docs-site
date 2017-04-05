@@ -2875,7 +2875,7 @@
               - "full"
         consumes: 
           - "application/json"
-        operationId: "getFieldsUsingGET_2"
+        operationId: "getFieldsUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules: 
       post: 
         responses: 
