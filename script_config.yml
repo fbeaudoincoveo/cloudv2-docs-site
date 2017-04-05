@@ -1,6 +1,6 @@
 ---
   repository:
-    accessToken: 90e77f1b45d8a829884828c5f5684f8341802457
+    accessToken: e94fdf427348895ab94dd5931412126ac9c6fbee
     tempOutputJsonPath: ./temp_json/
     outputYamlPath: ./api_docs/
     mdPagesPath: ./pages/api_explorer/
