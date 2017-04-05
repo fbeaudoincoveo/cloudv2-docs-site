@@ -1,5 +1,4 @@
 from subprocess import call
-from json import dumps
 from httpHelper import basic_post
 
 
@@ -29,7 +28,7 @@ def push(debug=False):
 
 def create_pull_request(access_token, title, head, base, debug=False):
     uri = "https://api.github.com/repos/coveo/cloudv2-docs-site/pulls"
-    headers = dumps({'Authorization': 'token %s' % access_token})
+    headers = {'Authorization': 'token %s' % access_token}
     body = {'title': title, 'head': head, 'base': base}
     pull_request = basic_post(uri, headers, body, debug)
     if debug:
