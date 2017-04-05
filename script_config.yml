@@ -1,0 +1,37 @@
+---
+  repository:
+    accessToken: 4e3cfd0ee667a8bf846bbd6f1e1d65483deff541
+    tempOutputJsonPath: ./temp_json/
+    outputYamlPath: ./api_docs/
+    mdPagesPath: ./pages/api_explorer/
+    upstreamBranch: upstream_api_spec_changes
+    baseBranch: master
+    baseCommitMessage: Upstream_update_
+    pullRequestMessage: Upstream_update_request
+  platform:
+    environment: ""
+    apiList:
+      - Platform
+      - Index
+      - SecurityCache
+      - Source
+      - Activity
+      - Privilege
+      - UsageAnalytics
+      - PushApi
+      - SourceLogsApi
+      - Extension
+      - AuthorizationServer
+      - Notification
+      - SearchApi
+    methodList:
+      - get
+      - put
+      - post
+      - delete
+      - options
+      - head
+      - patch
+    host1: https://platform
+    host2: .cloud.coveo.com
+    apiDocsPath: /api-docs/
