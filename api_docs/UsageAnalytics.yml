@@ -32,7 +32,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_exports_status"
     /v15/reports/templates: 
       get: 
         responses: 
@@ -70,7 +70,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getTemplateIds"
+        operationId: "get__v15_reports_templates"
     /v14/filters/status: 
       get: 
         responses: 
@@ -106,7 +106,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_filters_status"
     /v14/stats/trends: 
       get: 
         responses: 
@@ -264,7 +264,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCombinedDataWithTrends"
+        operationId: "get__v14_stats_trends"
     /v14/users/{userId}/reports: 
       put: 
         responses: 
@@ -307,7 +307,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setAllowedReportsOnUser"
+        operationId: "put__v14_users_{userId}_reports"
       get: 
         responses: 
           200: 
@@ -349,7 +349,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportsByUser"
+        operationId: "get__v14_users_{userId}_reports"
     /v15/analytics/custom: 
       post: 
         responses: 
@@ -392,7 +392,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addCustomEventViaPost"
+        operationId: "post__v15_analytics_custom"
       get: 
         responses: 
           200: 
@@ -433,7 +433,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addCustomEventViaGet"
+        operationId: "get__v15_analytics_custom"
     /v14/filters/permissions/{filterId}: 
       put: 
         responses: 
@@ -476,7 +476,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "updatePermissionFilter"
+        operationId: "put__v14_filters_permissions_{filterId}"
       delete: 
         responses: 
           default: 
@@ -509,7 +509,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "deletePermissionFilter"
+        operationId: "delete__v14_filters_permissions_{filterId}"
       get: 
         responses: 
           200: 
@@ -544,7 +544,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getPermissionFilter"
+        operationId: "get__v14_filters_permissions_{filterId}"
     /v14/users/{userId}: 
       get: 
         responses: 
@@ -580,7 +580,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUser"
+        operationId: "get__v14_users_{userId}"
     /v15/stats/visits: 
       post: 
         responses: 
@@ -608,7 +608,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "updateVisits"
+        operationId: "post__v15_stats_visits"
       get: 
         responses: 
           200: 
@@ -719,7 +719,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getVisitsStatistics"
+        operationId: "get__v15_stats_visits"
     /v15/analytics/status: 
       get: 
         responses: 
@@ -749,7 +749,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_analytics_status"
     /v15/stats/trends: 
       get: 
         responses: 
@@ -907,7 +907,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCombinedDataWithTrends"
+        operationId: "get__v15_stats_trends"
     /v14/exports/{exportId}: 
       delete: 
         responses: 
@@ -941,7 +941,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "deleteExport"
+        operationId: "delete__v14_exports_{exportId}"
       get: 
         responses: 
           200: 
@@ -983,7 +983,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExport"
+        operationId: "get__v14_exports_{exportId}"
     /v15/exports/schedules/{exportScheduleId}: 
       put: 
         responses: 
@@ -1026,7 +1026,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "updateExportSchedule"
+        operationId: "put__v15_exports_schedules_{exportScheduleId}"
       delete: 
         responses: 
           200: 
@@ -1061,7 +1061,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "deleteExportSchedule"
+        operationId: "delete__v15_exports_schedules_{exportScheduleId}"
       get: 
         responses: 
           200: 
@@ -1096,7 +1096,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExportSchedule"
+        operationId: "get__v15_exports_schedules_{exportScheduleId}"
     /v15/reports/status: 
       get: 
         responses: 
@@ -1132,7 +1132,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_reports_status"
     /v14/filters/permissions: 
       post: 
         responses: 
@@ -1169,7 +1169,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "createPermissionFilters"
+        operationId: "post__v14_filters_permissions"
       get: 
         responses: 
           200: 
@@ -1198,7 +1198,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getPermissionFilters"
+        operationId: "get__v14_filters_permissions"
     /v14/reports/monitoring/health: 
       get: 
         responses: 
@@ -1234,7 +1234,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_reports_monitoring_health"
     /v15/stats/incoherentEvents: 
       get: 
         responses: 
@@ -1299,7 +1299,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getIncoherentEvents"
+        operationId: "get__v15_stats_incoherentEvents"
     /v15/filters/permissions/{filterId}/targets: 
       put: 
         responses: 
@@ -1346,7 +1346,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setPermissionFilterTarget"
+        operationId: "put__v15_filters_permissions_{filterId}_targets"
       get: 
         responses: 
           200: 
@@ -1389,7 +1389,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getPermissionFilterTarget"
+        operationId: "get__v15_filters_permissions_{filterId}_targets"
     /v15/stats/graphDataPoints: 
       get: 
         responses: 
@@ -1476,7 +1476,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getGraphAggregatedData"
+        operationId: "get__v15_stats_graphDataPoints"
     /v14/dimensions/custom/{event}/suggestions: 
       get: 
         responses: 
@@ -1541,7 +1541,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCustomDimensionSuggestions"
+        operationId: "get__v14_dimensions_custom_{event}_suggestions"
     /v14/stats/status: 
       get: 
         responses: 
@@ -1571,7 +1571,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_stats_status"
     /v15/filters/monitoring/health: 
       get: 
         responses: 
@@ -1607,7 +1607,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_filters_monitoring_health"
     /v14/reports: 
       post: 
         responses: 
@@ -1644,7 +1644,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "createReport"
+        operationId: "post__v14_reports"
       get: 
         responses: 
           200: 
@@ -1689,7 +1689,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getAllReportsForType"
+        operationId: "get__v14_reports"
     /v15/reports/{reportId}: 
       put: 
         responses: 
@@ -1732,7 +1732,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "updateReport"
+        operationId: "put__v15_reports_{reportId}"
       delete: 
         responses: 
           default: 
@@ -1765,7 +1765,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "deleteReport"
+        operationId: "delete__v15_reports_{reportId}"
       get: 
         responses: 
           200: 
@@ -1802,7 +1802,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReport"
+        operationId: "get__v15_reports_{reportId}"
     /v15/stats/monitoring/health: 
       get: 
         responses: 
@@ -1832,7 +1832,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_stats_monitoring_health"
     /v15/dimensions/custom/status: 
       get: 
         responses: 
@@ -1851,7 +1851,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get the custom dimensions service status"
         security: 
           - 
@@ -1860,7 +1860,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_dimensions_custom_status"
     /v15/exports/schedules: 
       post: 
         responses: 
@@ -1897,7 +1897,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "createExportSchedule"
+        operationId: "post__v15_exports_schedules"
       get: 
         responses: 
           200: 
@@ -1929,7 +1929,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExportSchedules"
+        operationId: "get__v15_exports_schedules"
     /v14/dimensions/{dimension}/values: 
       get: 
         responses: 
@@ -2007,7 +2007,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "listValues"
+        operationId: "get__v14_dimensions_{dimension}_values"
     /v15/filters/permissions: 
       post: 
         responses: 
@@ -2044,7 +2044,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "createPermissionFilters"
+        operationId: "post__v15_filters_permissions"
       get: 
         responses: 
           200: 
@@ -2073,7 +2073,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getPermissionFilters"
+        operationId: "get__v15_filters_permissions"
     /v15/stats/query/{queryId}: 
       delete: 
         responses: 
@@ -2107,7 +2107,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "cancelQuery"
+        operationId: "delete__v15_stats_query_{queryId}"
     /v15/filters/permissions/{filterId}/users: 
       put: 
         responses: 
@@ -2150,7 +2150,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setUsersRestrictedByPermissionFilter"
+        operationId: "put__v15_filters_permissions_{filterId}_users"
       get: 
         responses: 
           200: 
@@ -2187,7 +2187,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUsersRestrictedByPermissionFilter"
+        operationId: "get__v15_filters_permissions_{filterId}_users"
     /v14/analytics/status: 
       get: 
         responses: 
@@ -2217,7 +2217,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_analytics_status"
     /v15/groups/{groupId}/filters: 
       put: 
         responses: 
@@ -2260,7 +2260,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setFiltersOnGroup"
+        operationId: "put__v15_groups_{groupId}_filters"
       get: 
         responses: 
           200: 
@@ -2295,7 +2295,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getFiltersByGroup"
+        operationId: "get__v15_groups_{groupId}_filters"
     /v15/stats/globalData: 
       get: 
         responses: 
@@ -2391,7 +2391,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getGlobalAggregatedData"
+        operationId: "get__v15_stats_globalData"
     /v15/stats/topQueries: 
       get: 
         responses: 
@@ -2426,7 +2426,7 @@
             type: "integer"
             name: "pageSize"
           - 
-            description: "The response's page to access, starting at 1."
+            description: "The response's page to access, starting at 0."
             format: "int32"
             default: 0
             required: false
@@ -2445,7 +2445,7 @@
           - 
             v7: 
               - "executeQuery"
-        operationId: "getTopQueriesByFrequency"
+        operationId: "get__v15_stats_topQueries"
     /v15/reports/{reportId}/users: 
       put: 
         responses: 
@@ -2488,7 +2488,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setAllowedUsersOnReport"
+        operationId: "put__v15_reports_{reportId}_users"
       get: 
         responses: 
           200: 
@@ -2523,7 +2523,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUsersAllowedOnReport"
+        operationId: "get__v15_reports_{reportId}_users"
     /v15/users/{userId}: 
       get: 
         responses: 
@@ -2559,7 +2559,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUser"
+        operationId: "get__v15_users_{userId}"
     /v14/exports/monitoring/health: 
       get: 
         responses: 
@@ -2589,7 +2589,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_exports_monitoring_health"
     /v14/metrics/monitoring/health: 
       get: 
         responses: 
@@ -2619,7 +2619,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_metrics_monitoring_health"
     /v14/filters/reporting/{filterId}: 
       put: 
         responses: 
@@ -2662,7 +2662,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "updateReportingFilter"
+        operationId: "put__v14_filters_reporting_{filterId}"
       delete: 
         responses: 
           default: 
@@ -2695,7 +2695,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "deleteReportingFilter"
+        operationId: "delete__v14_filters_reporting_{filterId}"
       get: 
         responses: 
           200: 
@@ -2730,7 +2730,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportingFilter"
+        operationId: "get__v14_filters_reporting_{filterId}"
     /v14/exports/visits/estimate: 
       get: 
         responses: 
@@ -2790,7 +2790,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "estimateVisitsExport"
+        operationId: "get__v14_exports_visits_estimate"
     /v15/dimensions/{apiName}: 
       get: 
         responses: 
@@ -2817,7 +2817,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get a dimension"
         security: 
           - 
@@ -2826,7 +2826,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimension"
+        operationId: "get__v15_dimensions_{apiName}"
     /v15/exports/visits: 
       post: 
         responses: 
@@ -2931,7 +2931,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "exportVisits"
+        operationId: "post__v15_exports_visits"
     /v14/analytics/click: 
       post: 
         responses: 
@@ -2974,7 +2974,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addClickEvent"
+        operationId: "post__v14_analytics_click"
       get: 
         responses: 
           200: 
@@ -3015,7 +3015,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addClickEventViaGet"
+        operationId: "get__v14_analytics_click"
     /v14/users/monitoring/health: 
       get: 
         responses: 
@@ -3051,7 +3051,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_users_monitoring_health"
     /v15/analytics/click: 
       post: 
         responses: 
@@ -3094,7 +3094,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addClickEvent"
+        operationId: "post__v15_analytics_click"
       get: 
         responses: 
           200: 
@@ -3135,7 +3135,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addClickEventViaGet"
+        operationId: "get__v15_analytics_click"
     /v15/metrics/status: 
       get: 
         responses: 
@@ -3165,7 +3165,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_metrics_status"
     /v15/filters/permissions/{filterId}: 
       put: 
         responses: 
@@ -3208,7 +3208,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "updatePermissionFilter"
+        operationId: "put__v15_filters_permissions_{filterId}"
       delete: 
         responses: 
           default: 
@@ -3241,7 +3241,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "deletePermissionFilter"
+        operationId: "delete__v15_filters_permissions_{filterId}"
       get: 
         responses: 
           200: 
@@ -3276,7 +3276,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getPermissionFilter"
+        operationId: "get__v15_filters_permissions_{filterId}"
     /v15/exports: 
       post: 
         responses: 
@@ -3399,7 +3399,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "export"
+        operationId: "post__v15_exports"
       get: 
         responses: 
           200: 
@@ -3431,7 +3431,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExports"
+        operationId: "get__v15_exports"
     /v15/exports/monitoring/health: 
       get: 
         responses: 
@@ -3461,7 +3461,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_exports_monitoring_health"
     /v15/analytics/visit: 
       delete: 
         responses: 
@@ -3489,7 +3489,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "invalidateUserCurrentVisit"
+        operationId: "delete__v15_analytics_visit"
       get: 
         responses: 
           200: 
@@ -3530,7 +3530,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getUserCurrentVisit"
+        operationId: "get__v15_analytics_visit"
     /v14/dimensions/custom/{apiName}: 
       put: 
         responses: 
@@ -3578,7 +3578,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "createOrEditDimension"
+        operationId: "put__v14_dimensions_custom_{apiName}"
       delete: 
         responses: 
           default: 
@@ -3609,7 +3609,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "deleteDimension"
+        operationId: "delete__v14_dimensions_custom_{apiName}"
       get: 
         responses: 
           200: 
@@ -3642,7 +3642,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimension"
+        operationId: "get__v14_dimensions_custom_{apiName}"
     /v14/dimensions: 
       get: 
         responses: 
@@ -3688,7 +3688,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimensions"
+        operationId: "get__v14_dimensions"
     /v14/dimensions/status: 
       get: 
         responses: 
@@ -3718,7 +3718,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_dimensions_status"
     /v14/dimensions/custom/status: 
       get: 
         responses: 
@@ -3746,7 +3746,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_dimensions_custom_status"
     /v14/users/{userId}/filters: 
       put: 
         responses: 
@@ -3789,7 +3789,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setFiltersOnUser"
+        operationId: "put__v14_users_{userId}_filters"
       get: 
         responses: 
           200: 
@@ -3824,7 +3824,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getFiltersByUser"
+        operationId: "get__v14_users_{userId}_filters"
     /v14/reports/{reportId}: 
       put: 
         responses: 
@@ -3867,7 +3867,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "updateReport"
+        operationId: "put__v14_reports_{reportId}"
       delete: 
         responses: 
           default: 
@@ -3900,7 +3900,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "deleteReport"
+        operationId: "delete__v14_reports_{reportId}"
       get: 
         responses: 
           200: 
@@ -3937,7 +3937,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReport"
+        operationId: "get__v14_reports_{reportId}"
     /v15/stats/combinedData: 
       get: 
         responses: 
@@ -4074,7 +4074,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCombinedData"
+        operationId: "get__v15_stats_combinedData"
     /v14/analytics/custom: 
       post: 
         responses: 
@@ -4117,7 +4117,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addCustomEventViaPost"
+        operationId: "post__v14_analytics_custom"
       get: 
         responses: 
           200: 
@@ -4158,7 +4158,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addCustomEventViaGet"
+        operationId: "get__v14_analytics_custom"
     /v14/analytics/visit: 
       delete: 
         responses: 
@@ -4186,7 +4186,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "invalidateUserCurrentVisit"
+        operationId: "delete__v14_analytics_visit"
       get: 
         responses: 
           200: 
@@ -4227,7 +4227,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getUserCurrentVisit"
+        operationId: "get__v14_analytics_visit"
     /v14/stats/graphDataPoints: 
       get: 
         responses: 
@@ -4314,7 +4314,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getGraphAggregatedData"
+        operationId: "get__v14_stats_graphDataPoints"
     /v15/admin/account: 
       put: 
         responses: 
@@ -4353,7 +4353,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "editAccount"
+        operationId: "put__v15_admin_account"
       get: 
         responses: 
           200: 
@@ -4384,7 +4384,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "getAccount"
+        operationId: "get__v15_admin_account"
     /v14/filters/reporting: 
       post: 
         responses: 
@@ -4421,7 +4421,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "createReportingFilters"
+        operationId: "post__v14_filters_reporting"
       get: 
         responses: 
           200: 
@@ -4450,7 +4450,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportingFilters"
+        operationId: "get__v14_filters_reporting"
     /v15/dimensions/{dimension}/values: 
       get: 
         responses: 
@@ -4519,7 +4519,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get the values for a dimension"
         security: 
           - 
@@ -4528,7 +4528,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "listValues"
+        operationId: "get__v15_dimensions_{dimension}_values"
     /v14/analytics/monitoring/health: 
       get: 
         responses: 
@@ -4558,7 +4558,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_analytics_monitoring_health"
     /v15/exports/estimate: 
       get: 
         responses: 
@@ -4643,7 +4643,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "estimateExport"
+        operationId: "get__v15_exports_estimate"
     /v15/groups/status: 
       get: 
         responses: 
@@ -4675,7 +4675,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_groups_status"
     /v14/exports: 
       post: 
         responses: 
@@ -4766,7 +4766,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "export"
+        operationId: "post__v14_exports"
       get: 
         responses: 
           200: 
@@ -4798,7 +4798,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExports"
+        operationId: "get__v14_exports"
     /v15/dimensions/custom/{apiName}: 
       put: 
         responses: 
@@ -4837,7 +4837,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Create or edit a custom dimension"
         security: 
           - 
@@ -4846,7 +4846,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "createOrEditDimension"
+        operationId: "put__v15_dimensions_custom_{apiName}"
       delete: 
         responses: 
           default: 
@@ -4868,7 +4868,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Delete a custom dimension"
         security: 
           - 
@@ -4877,7 +4877,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "deleteDimension"
+        operationId: "delete__v15_dimensions_custom_{apiName}"
       get: 
         responses: 
           200: 
@@ -4901,7 +4901,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get a custom dimension"
         security: 
           - 
@@ -4910,7 +4910,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimension"
+        operationId: "get__v15_dimensions_custom_{apiName}"
     /v14/dimensions/{apiName}: 
       get: 
         responses: 
@@ -4946,7 +4946,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimension"
+        operationId: "get__v14_dimensions_{apiName}"
     /v15/users/status: 
       get: 
         responses: 
@@ -4982,7 +4982,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_users_status"
     /v15/stats/status: 
       get: 
         responses: 
@@ -5012,7 +5012,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_stats_status"
     /v15/analytics/searches: 
       post: 
         responses: 
@@ -5059,7 +5059,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEvents"
+        operationId: "post__v15_analytics_searches"
       get: 
         responses: 
           200: 
@@ -5102,7 +5102,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEventsViaGet"
+        operationId: "get__v15_analytics_searches"
     /v15/dimensions/custom/{dimension}/values: 
       get: 
         responses: 
@@ -5169,7 +5169,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get the values for a custom dimension"
         security: 
           - 
@@ -5178,7 +5178,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "listValues"
+        operationId: "get__v15_dimensions_custom_{dimension}_values"
     /v15/reports: 
       post: 
         responses: 
@@ -5215,7 +5215,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "createReport"
+        operationId: "post__v15_reports"
       get: 
         responses: 
           200: 
@@ -5260,7 +5260,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getAllReportsForType"
+        operationId: "get__v15_reports"
     /v15/exports/{exportId}: 
       delete: 
         responses: 
@@ -5294,7 +5294,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "deleteExport"
+        operationId: "delete__v15_exports_{exportId}"
       get: 
         responses: 
           200: 
@@ -5336,7 +5336,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExport"
+        operationId: "get__v15_exports_{exportId}"
     /v15/users/{userId}/filters: 
       put: 
         responses: 
@@ -5379,7 +5379,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setFiltersOnUser"
+        operationId: "put__v15_users_{userId}_filters"
       get: 
         responses: 
           200: 
@@ -5421,7 +5421,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getFiltersByUser"
+        operationId: "get__v15_users_{userId}_filters"
     /v14/dimensions/custom/{dimension}/values: 
       get: 
         responses: 
@@ -5497,7 +5497,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "listValues"
+        operationId: "get__v14_dimensions_custom_{dimension}_values"
     /v14/stats/monitoring/health: 
       get: 
         responses: 
@@ -5527,7 +5527,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_stats_monitoring_health"
     /v15/admin/redshift/endpoint/status: 
       post: 
         responses: 
@@ -5575,7 +5575,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "updateRedshiftClusterStatus"
+        operationId: "post__v15_admin_redshift_endpoint_status"
     /v15/groups/{groupId}/reports: 
       put: 
         responses: 
@@ -5618,7 +5618,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setAllowedReportsOnGroup"
+        operationId: "put__v15_groups_{groupId}_reports"
       get: 
         responses: 
           200: 
@@ -5660,7 +5660,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportsByGroup"
+        operationId: "get__v15_groups_{groupId}_reports"
     /v15/stats/visitsGraphDataPoints: 
       get: 
         responses: 
@@ -5750,7 +5750,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getVisitsGraphDataPoints"
+        operationId: "get__v15_stats_visitsGraphDataPoints"
     /v14/metrics/{metricName}: 
       get: 
         responses: 
@@ -5786,7 +5786,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getMetric"
+        operationId: "get__v14_metrics_{metricName}"
     /v15/stats/visitsMetrics: 
       get: 
         responses: 
@@ -5863,7 +5863,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getVisitsMetrics"
+        operationId: "get__v15_stats_visitsMetrics"
     /v15/groups/{groupId}: 
       get: 
         responses: 
@@ -5901,7 +5901,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "getGroup"
+        operationId: "get__v15_groups_{groupId}"
     /v14/stats/combinedData: 
       get: 
         responses: 
@@ -6038,7 +6038,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCombinedData"
+        operationId: "get__v14_stats_combinedData"
     /v15/analytics/monitoring/health: 
       get: 
         responses: 
@@ -6068,7 +6068,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_analytics_monitoring_health"
     /v14/exports/estimate: 
       get: 
         responses: 
@@ -6137,7 +6137,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "estimateExport"
+        operationId: "get__v14_exports_estimate"
     /v14/stats/visits: 
       post: 
         responses: 
@@ -6165,7 +6165,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "updateVisits"
+        operationId: "post__v14_stats_visits"
       get: 
         responses: 
           200: 
@@ -6276,7 +6276,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getVisitsStatistics"
+        operationId: "get__v14_stats_visits"
     /v15/reports/monitoring/health: 
       get: 
         responses: 
@@ -6312,7 +6312,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_reports_monitoring_health"
     /v15/metrics: 
       get: 
         responses: 
@@ -6342,7 +6342,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getMetrics"
+        operationId: "get__v15_metrics"
     /v15/metrics/{metricName}: 
       get: 
         responses: 
@@ -6378,7 +6378,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getMetric"
+        operationId: "get__v15_metrics_{metricName}"
     /v14/stats/globalData: 
       get: 
         responses: 
@@ -6474,7 +6474,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getGlobalAggregatedData"
+        operationId: "get__v14_stats_globalData"
     /v14/metrics: 
       get: 
         responses: 
@@ -6504,7 +6504,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getMetrics"
+        operationId: "get__v14_metrics"
     /v14/users/status: 
       get: 
         responses: 
@@ -6540,7 +6540,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_users_status"
     /v14/reports/status: 
       get: 
         responses: 
@@ -6576,7 +6576,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_reports_status"
     /v15/analytics/view: 
       post: 
         responses: 
@@ -6619,7 +6619,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addViewEventViaPost"
+        operationId: "post__v15_analytics_view"
     /v15/reports/{reportId}/access: 
       put: 
         responses: 
@@ -6660,7 +6660,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setReportAccesses"
+        operationId: "put__v15_reports_{reportId}_access"
       get: 
         responses: 
           200: 
@@ -6695,7 +6695,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportAccesses"
+        operationId: "get__v15_reports_{reportId}_access"
     /v15/users/monitoring/health: 
       get: 
         responses: 
@@ -6731,7 +6731,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_users_monitoring_health"
     /v14/stats/incoherentEvents/seen: 
       post: 
         responses: 
@@ -6771,7 +6771,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "markIncoherentEventsAsSeen"
+        operationId: "post__v14_stats_incoherentEvents_seen"
     /v14/exports/visits: 
       post: 
         responses: 
@@ -6853,7 +6853,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "exportVisits"
+        operationId: "post__v14_exports_visits"
     /v14/filters/monitoring/health: 
       get: 
         responses: 
@@ -6889,7 +6889,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_filters_monitoring_health"
     /v15/analytics/search: 
       post: 
         responses: 
@@ -6932,7 +6932,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEvent"
+        operationId: "post__v15_analytics_search"
       get: 
         responses: 
           200: 
@@ -6973,7 +6973,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEventViaGet"
+        operationId: "get__v15_analytics_search"
     /v14/dimensions/custom: 
       post: 
         responses: 
@@ -7034,7 +7034,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "createCustomDimension"
+        operationId: "post__v14_dimensions_custom"
       get: 
         responses: 
           200: 
@@ -7070,7 +7070,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCustomDimensions"
+        operationId: "get__v14_dimensions_custom"
     /v15/dimensions/status: 
       get: 
         responses: 
@@ -7091,7 +7091,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get the dimensions service status"
         security: 
           - 
@@ -7100,7 +7100,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_dimensions_status"
     /v15/metrics/monitoring/health: 
       get: 
         responses: 
@@ -7130,7 +7130,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_metrics_monitoring_health"
     /v15/dimensions/monitoring/health: 
       get: 
         responses: 
@@ -7151,7 +7151,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Health check for the dimensions service"
         security: 
           - 
@@ -7160,7 +7160,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_dimensions_monitoring_health"
     /v14/dimensions/custom/monitoring/health: 
       get: 
         responses: 
@@ -7188,7 +7188,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_dimensions_custom_monitoring_health"
     /v15/reports/templates/{templateId}: 
       get: 
         responses: 
@@ -7232,7 +7232,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getTemplate"
+        operationId: "get__v15_reports_templates_{templateId}"
     /v15/groups: 
       get: 
         responses: 
@@ -7264,7 +7264,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "getAllGroups"
+        operationId: "get__v15_groups"
     /v15/dimensions: 
       get: 
         responses: 
@@ -7301,7 +7301,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get all the dimensions"
         security: 
           - 
@@ -7310,7 +7310,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getDimensions"
+        operationId: "get__v15_dimensions"
     /v14/analytics/search: 
       post: 
         responses: 
@@ -7353,7 +7353,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEvent"
+        operationId: "post__v14_analytics_search"
       get: 
         responses: 
           200: 
@@ -7394,7 +7394,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEventViaGet"
+        operationId: "get__v14_analytics_search"
     /v15/stats/incoherentEvents/seen: 
       post: 
         responses: 
@@ -7434,7 +7434,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "markIncoherentEventsAsSeen"
+        operationId: "post__v15_stats_incoherentEvents_seen"
     /v14/analytics/searches: 
       post: 
         responses: 
@@ -7481,7 +7481,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEvents"
+        operationId: "post__v14_analytics_searches"
       get: 
         responses: 
           200: 
@@ -7524,7 +7524,7 @@
           - 
             v7: 
               - "writeUA"
-        operationId: "addSearchEventsViaGet"
+        operationId: "get__v14_analytics_searches"
     /v14/metrics/status: 
       get: 
         responses: 
@@ -7554,7 +7554,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v14_metrics_status"
     /v14/stats/incoherentEvents: 
       get: 
         responses: 
@@ -7619,7 +7619,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getIncoherentEvents"
+        operationId: "get__v14_stats_incoherentEvents"
     /v15/dimensions/custom/monitoring/health: 
       get: 
         responses: 
@@ -7638,7 +7638,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Health check for the custom dimensions service"
         security: 
           - 
@@ -7647,7 +7647,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_dimensions_custom_monitoring_health"
     /v15/filters/reporting/{filterId}: 
       put: 
         responses: 
@@ -7690,7 +7690,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "updateReportingFilter"
+        operationId: "put__v15_filters_reporting_{filterId}"
       delete: 
         responses: 
           default: 
@@ -7723,7 +7723,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "deleteReportingFilter"
+        operationId: "delete__v15_filters_reporting_{filterId}"
       get: 
         responses: 
           200: 
@@ -7758,7 +7758,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportingFilter"
+        operationId: "get__v15_filters_reporting_{filterId}"
     /v15/filters/reporting: 
       post: 
         responses: 
@@ -7795,7 +7795,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "createReportingFilters"
+        operationId: "post__v15_filters_reporting"
       get: 
         responses: 
           200: 
@@ -7824,7 +7824,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportingFilters"
+        operationId: "get__v15_filters_reporting"
     /v15/filters/status: 
       get: 
         responses: 
@@ -7860,7 +7860,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_filters_status"
     /v15/exports/status: 
       get: 
         responses: 
@@ -7890,7 +7890,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceStatus"
+        operationId: "get__v15_exports_status"
     /v15/dimensions/exportables: 
       get: 
         responses: 
@@ -7927,7 +7927,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get all the exportable dimensions"
         security: 
           - 
@@ -7936,7 +7936,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getExportableDimensions"
+        operationId: "get__v15_dimensions_exportables"
     /v15/groups/monitoring/health: 
       get: 
         responses: 
@@ -7968,7 +7968,7 @@
               - "readUA"
               - "administrate"
               - "administrateUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v15_groups_monitoring_health"
     /v15/dimensions/custom/{event}/suggestions: 
       get: 
         responses: 
@@ -8024,7 +8024,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get a list of dimensions that have data but are not created yet"
         security: 
           - 
@@ -8033,7 +8033,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCustomDimensionSuggestions"
+        operationId: "get__v15_dimensions_custom_{event}_suggestions"
     /v15/users/{userId}/reports: 
       put: 
         responses: 
@@ -8076,7 +8076,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setAllowedReportsOnUser"
+        operationId: "put__v15_users_{userId}_reports"
       get: 
         responses: 
           200: 
@@ -8125,7 +8125,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getReportsByUser"
+        operationId: "get__v15_users_{userId}_reports"
     /v14/stats/topQueries: 
       get: 
         responses: 
@@ -8160,7 +8160,7 @@
             type: "integer"
             name: "pageSize"
           - 
-            description: "The response's page to access, starting at 1."
+            description: "The response's page to access, starting at 0."
             format: "int32"
             default: 0
             required: false
@@ -8179,7 +8179,7 @@
           - 
             v7: 
               - "executeQuery"
-        operationId: "getTopQueriesByFrequency"
+        operationId: "get__v14_stats_topQueries"
     /v14/filters/permissions/{filterId}/users: 
       put: 
         responses: 
@@ -8222,7 +8222,7 @@
           - 
             v7: 
               - "administrate"
-        operationId: "setUsersRestrictedByPermissionFilter"
+        operationId: "put__v14_filters_permissions_{filterId}_users"
       get: 
         responses: 
           200: 
@@ -8259,7 +8259,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUsersRestrictedByPermissionFilter"
+        operationId: "get__v14_filters_permissions_{filterId}_users"
     /v14/reports/{reportId}/users: 
       put: 
         responses: 
@@ -8302,7 +8302,7 @@
           - 
             v7: 
               - "administrateUA"
-        operationId: "setAllowedUsersOnReport"
+        operationId: "put__v14_reports_{reportId}_users"
       get: 
         responses: 
           200: 
@@ -8337,7 +8337,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getUsersAllowedOnReport"
+        operationId: "get__v14_reports_{reportId}_users"
     /v14/dimensions/monitoring/health: 
       get: 
         responses: 
@@ -8367,7 +8367,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getServiceHealth"
+        operationId: "get__v14_dimensions_monitoring_health"
     /v15/exports/visits/estimate: 
       get: 
         responses: 
@@ -8427,7 +8427,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "estimateVisitsExport"
+        operationId: "get__v15_exports_visits_estimate"
     /v15/dimensions/custom: 
       post: 
         responses: 
@@ -8479,7 +8479,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Create a custom dimension"
         security: 
           - 
@@ -8488,7 +8488,7 @@
           - 
             v7: 
               - "readUA"
-        operationId: "createCustomDimension"
+        operationId: "post__v15_dimensions_custom"
       get: 
         responses: 
           200: 
@@ -8515,7 +8515,7 @@
         produces: 
           - "application/json"
         tags: 
-          - "Dimensions API, Version 15"
+          - "Dimensions API - Version 15"
         summary: "Get all the custom dimensions"
         security: 
           - 
@@ -8524,40 +8524,40 @@
           - 
             v7: 
               - "readUA"
-        operationId: "getCustomDimensions"
+        operationId: "get__v15_dimensions_custom"
   tags: 
-    - 
-      name: "Analytics API - Version 14"
-    - 
-      name: "Groups API - Version 15"
-    - 
-      name: "Metrics API - Version 15"
-    - 
-      name: "Exports API - Version 15"
-    - 
-      name: "Users API - Version 14"
     - 
       name: "Exports API - Version 14"
     - 
-      name: "Administration API - Version 15"
+      name: "Filters API - Version 15"
     - 
-      name: "Dimensions API, Version 15"
-    - 
-      name: "Reports API - Version 15"
-    - 
-      name: "Metrics API - Version 14"
-    - 
-      name: "Reports API - Version 14"
-    - 
-      name: "Users API - Version 15"
+      name: "Users API - Version 14"
     - 
       name: "Dimensions API - Version 14"
     - 
-      name: "Filters API - Version 14"
+      name: "Users API - Version 15"
+    - 
+      name: "Analytics API - Version 14"
+    - 
+      name: "Reports API - Version 15"
+    - 
+      name: "Groups API - Version 15"
+    - 
+      name: "Metrics API - Version 14"
+    - 
+      name: "Dimensions API - Version 15"
+    - 
+      name: "Exports API - Version 15"
+    - 
+      name: "Administration API - Version 15"
     - 
       name: "Statistics API - Version 15"
     - 
-      name: "Filters API - Version 15"
+      name: "Metrics API - Version 15"
+    - 
+      name: "Reports API - Version 14"
+    - 
+      name: "Filters API - Version 14"
     - 
       name: "Analytics API - Version 15"
     - 
@@ -8567,13 +8567,13 @@
     v8: 
       flow: "implicit"
       type: "oauth2"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
       scopes: 
         full: ""
     v7: 
       flow: "implicit"
       type: "oauth2"
-      authorizationUrl: "https://cloudplatform.coveo.com/oauth/authorize"
+      authorizationUrl: "https://cloudplatformstaging.coveo.com/oauth/authorize"
       scopes: 
         writeUA: "Write to the Usage Analytics service"
         administrateUA: "Perform usage analytics administrator reserved operations"
@@ -8746,6 +8746,9 @@
         documentTitle: 
           type: "string"
           description: "The title of the document that was clicked."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         documentCategory: 
           type: "string"
           description: "The category of the clicked document."
@@ -8989,6 +8992,9 @@
             $ref: "#/definitions/ResultModelV15"
           type: "array"
           description: "The results of this search event"
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         userAgent: 
           type: "string"
           description: "The user agent string of the end user's browser"
@@ -9375,6 +9381,9 @@
         splitTestRunName: 
           type: "string"
           description: "The name of the A/B test run, if one is active."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         title: 
           type: "string"
           description: "The title of the page"
@@ -9704,6 +9713,9 @@
         splitTestRunName: 
           type: "string"
           description: "The name of the A/B test run, if one is active."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
         anonymous: 
           default: false
           type: "boolean"

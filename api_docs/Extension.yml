@@ -11,6 +11,7 @@
   paths: 
     /rest/organizations/{organizationId}/extensions/{extensionId}/disable: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/disable_post"
         responses: 
           201: 
             description: "Created"
@@ -57,6 +58,7 @@
         operationId: "disableExtensionUsingPOST"
     /rest/organizations/{organizationId}/extensions/{extensionId}/versions/{versionId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -100,8 +102,55 @@
         consumes: 
           - "application/json"
         operationId: "getExtensionVersionUsingGET"
+    /rest/globalextensions: 
+      get: 
+        uiOperationId: "/rest/globalextensions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ExtensionModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Global Extensions"
+        x-pretty-name: "getExtensions"
+        summary: "Get all extensions of all organizations"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionsUsingGET"
     /rest/organizations/{organizationId}/extensions/{extensionId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -149,6 +198,7 @@
           - "application/json"
         operationId: "updateExtensionUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -183,6 +233,7 @@
           - "application/json"
         operationId: "deleteExtensionUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -220,8 +271,58 @@
         consumes: 
           - "application/json"
         operationId: "getExtensionUsingGET"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/test: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/test_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionTestExecutionReportModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ExtensionTestModel"
+            description: "extensionTestModel"
+            required: true
+            name: "extensionTestModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "testExtension"
+        summary: "Test an extension"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "testExtensionUsingPOST"
     /rest/organizations/{organizationId}/extensions/{extensionId}/enable: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/enable_post"
         responses: 
           201: 
             description: "Created"
@@ -261,6 +362,7 @@
         operationId: "enableExtensionUsingPOST"
     /rest/organizations/{organizationId}/extensions/{extensionId}/versions: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions_get"
         responses: 
           200: 
             description: "OK"
@@ -302,6 +404,7 @@
         operationId: "getExtensionVersionsUsingGET"
     /rest/organizations/{organizationId}/extensions: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/extensions_post"
         responses: 
           201: 
             description: "Created"
@@ -341,6 +444,7 @@
           - "application/json"
         operationId: "createExtensionUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/extensions_get"
         responses: 
           200: 
             description: "OK"
@@ -378,16 +482,87 @@
     - 
       name: "Indexing Pipeline Extensions"
       description: "Extension Service Resource"
+    - 
+      name: "Global Extensions"
+      description: "Global Extension Service Resource"
   basePath: "/"
   securityDefinitions: 
     oauth2: 
       flow: "implicit"
       type: "oauth2"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
       scopes: 
         full: "Required"
-  host: "platform.cloud.coveo.com:443"
+  host: "platformqa.cloud.coveo.com:443"
   definitions: 
+    LogEntryModel: 
+      type: "object"
+      properties: 
+        comment: 
+          type: "string"
+        date: 
+          type: "string"
+        duration: 
+          type: "number"
+          format: "double"
+        severity: 
+          enum: 
+            - "DEBUG"
+            - "DETAIL"
+            - "NORMAL"
+            - "IMPORTANT"
+            - "WARNING"
+            - "ERROR"
+            - "FATAL"
+            - "NOTIFICATION"
+          type: "string"
+        fields: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+    PageModel«ExtensionModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/ExtensionModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    ExtensionDisableModel: 
+      type: "object"
+      properties: 
+        reason: 
+          type: "string"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        name: 
+          type: "string"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+        permissions: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    ExtensionTestExecutionReportModel: 
+      type: "object"
+      properties: 
+        document: 
+          $ref: "#/definitions/ExtensionTestDocumentModel"
+        logs: 
+          items: 
+            $ref: "#/definitions/LogEntryModel"
+          type: "array"
+        result: 
+          $ref: "#/definitions/ExtensionTestResultModel"
     ExtensionHealthModel: 
       type: "object"
       properties: 
@@ -400,10 +575,14 @@
             - "PROBLEMATIC"
             - "UNKNOWN"
           type: "string"
-    JsonStringIdWrapper: 
+    PermissionLevelModel: 
       type: "object"
       properties: 
-        id: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSetModel"
+          type: "array"
+        name: 
           type: "string"
     ExtensionContentVersionModel: 
       type: "object"
@@ -413,11 +592,17 @@
           format: "int64"
         id: 
           type: "string"
-    ExtensionDisableModel: 
+    MetadataValueModel: 
       type: "object"
       properties: 
-        reason: 
+        origin: 
           type: "string"
+        values: 
+          additionalProperties: 
+            items: 
+              type: "string"
+            type: "array"
+          type: "object"
     ExtensionDisabledStatusModel: 
       type: "object"
       properties: 
@@ -426,17 +611,11 @@
           format: "int64"
         reason: 
           type: "string"
-    ExtensionStatusModel: 
+    JsonStringIdWrapper: 
       type: "object"
       properties: 
-        disabledStatus: 
-          $ref: "#/definitions/ExtensionDisabledStatusModel"
-        timeoutHealth: 
-          $ref: "#/definitions/ExtensionHealthModel"
-        durationHealth: 
-          $ref: "#/definitions/ExtensionHealthModel"
-        dailyStatistics: 
-          $ref: "#/definitions/ExtensionStatisticsModel"
+        id: 
+          type: "string"
     EditExtensionModel: 
       type: "object"
       properties: 
@@ -454,6 +633,64 @@
         description: 
           type: "string"
         name: 
+          type: "string"
+    ExtensionTestModel: 
+      type: "object"
+      properties: 
+        versionId: 
+          type: "string"
+        document: 
+          $ref: "#/definitions/ExtensionTestDocumentModel"
+        parameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+    SinglePermissionModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        securityProvider: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        identityType: 
+          enum: 
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+            - "UNKNOWN"
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        allowed: 
+          type: "boolean"
+        identity: 
           type: "string"
     ExtensionModel: 
       type: "object"
@@ -491,12 +728,38 @@
           type: "string"
         name: 
           type: "string"
+    ExtensionTestDocumentModel: 
+      type: "object"
+      properties: 
+        permissions: 
+          items: 
+            $ref: "#/definitions/PermissionLevelModel"
+          type: "array"
+        id: 
+          type: "string"
+        metadata: 
+          items: 
+            $ref: "#/definitions/MetadataValueModel"
+          type: "array"
     ExtensionUsedByModel: 
       type: "object"
       properties: 
         sourceId: 
           type: "string"
         sourceName: 
+          type: "string"
+    ExtensionTestResultModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "DISABLED"
+            - "EXECUTION_ERROR"
+            - "REJECTED"
+            - "SUCCESS"
+            - "TIMEOUT"
+          type: "string"
+        reason: 
           type: "string"
     ExtensionStatisticsModel: 
       type: "object"
@@ -516,5 +779,16 @@
         averageDurationInSeconds: 
           type: "number"
           format: "double"
+    ExtensionStatusModel: 
+      type: "object"
+      properties: 
+        disabledStatus: 
+          $ref: "#/definitions/ExtensionDisabledStatusModel"
+        timeoutHealth: 
+          $ref: "#/definitions/ExtensionHealthModel"
+        durationHealth: 
+          $ref: "#/definitions/ExtensionHealthModel"
+        dailyStatistics: 
+          $ref: "#/definitions/ExtensionStatisticsModel"
   swagger: "2.0"
 

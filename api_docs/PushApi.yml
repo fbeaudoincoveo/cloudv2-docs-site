@@ -1,7 +1,7 @@
 ---
   info: 
     version: "2016-03-03T13:22:11Z"
-    title: "Push API"
+    title: "Push API - QA"
   paths: 
     /organizations/{organizationId}/sources/{sourceId}/status: 
       post: 
@@ -1334,6 +1334,12 @@
             name: "organizationId"
             in: "path"
           - 
+            required: false
+            type: "string"
+            description: "compressionType"
+            name: "compressionType"
+            in: "query"
+          - 
             schema: 
               $ref: "#/definitions/DocumentBody"
             required: true
@@ -1515,9 +1521,9 @@
       scopes: 
         full: "Required"
       flow: "implicit"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
       type: "oauth2"
-  host: "push.cloud.coveo.com/v1"
+  host: "pushqa.cloud.coveo.com/v1"
   definitions: 
     GatewayTimeoutError: 
       type: "object"
