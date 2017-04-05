@@ -27,10 +27,10 @@ def push(debug=False):
     call("git push", shell=True)
 
 
-def create_pull_request(access_token, name, head, base, debug=False):
+def create_pull_request(access_token, title, head, base, debug=False):
     uri = "https://api.github.com/repos/coveo/cloudv2-docs-site/pulls"
-    headers = dumps({'Authorization': access_token})
-    body = {'name': name, 'head': head, 'base': base}
+    headers = dumps({'Authorization': 'token %s' % access_token})
+    body = {'title': title, 'head': head, 'base': base}
     pull_request = basic_post(uri, headers, body)
     if debug:
         print pull_request.content
