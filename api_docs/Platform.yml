@@ -1,0 +1,3528 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "www.coveo.com"
+      name: "Coveo"
+      email: "support@coveo.com"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/backups/page: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationBackupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            items: 
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "organizationId"
+          - 
+            description: "filter"
+            required: false
+            type: "string"
+            name: "filter"
+            in: "query"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            description: "sortBy"
+            default: "backupName"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "asc"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "getBackupPage"
+        summary: "Get a page of the list of available backups for the environment"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getBackupPageUsingGET"
+    /rest/organizations/{organizationId}/license: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/LicenseModel"
+            description: "license"
+            required: true
+            name: "license"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "updateLicense"
+        summary: "Update the organization's license"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateLicenseUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/LicenseModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "getLicense"
+        summary: "Get the organization's license"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseUsingGET"
+    /rest/licensetemplates/{templateName}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the license template"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/LicenseTemplateModel"
+            description: "licenseTemplate"
+            required: true
+            name: "licenseTemplate"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License Templates"
+        x-pretty-name: "updateLicenseTemplate"
+        summary: "Update a license template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateLicenseTemplateUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "Name of the license template"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License Templates"
+        x-pretty-name: "deleteLicenseTemplate"
+        summary: "Delete a license template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteLicenseTemplateUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/LicenseTemplateModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the license template"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License Templates"
+        x-pretty-name: "getLicenseTemplate"
+        summary: "Get a license template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseTemplateUsingGET"
+    /rest/organizations/{organizationId}/support: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "activate"
+            required: true
+            type: "boolean"
+            name: "activate"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "changeSupportStatus"
+        summary: "Change the organization support status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "changeSupportStatusUsingPUT"
+    /rest/backups/organizations/page: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PageModel«string»"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "getOrganizationsWithBackupsPage"
+        summary: "Get a page of the list of organizations with available backups"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationsWithBackupsPageUsingGET"
+    /rest/import: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the backup"
+            required: false
+            type: "string"
+            name: "backupName"
+            in: "query"
+          - 
+            description: "Whether to launch provisioning at the end or not"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "launchProvisioning"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "importBackup"
+        summary: "Imports an existing backup into a new organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "importBackupUsingPOST"
+    /rest/organizations/{organizationId}/duplicate: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "Name of the new organization"
+            required: true
+            type: "string"
+            name: "newOrganizationName"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "duplicateOrganization"
+        summary: "Duplicates an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "duplicateOrganizationUsingPOST"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/synchronize: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "synchronizeCluster"
+        summary: "Synchronize an organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "synchronizeClusterUsingPOST"
+    /rest/organizations/{organizationId}/status: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganizationStatus"
+        summary: "Get the organization status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationStatusUsingGET"
+    /rest/organizations/{organizationId}/readonly: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "readOnly"
+            required: true
+            type: "boolean"
+            name: "readOnly"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "setReadOnly"
+        summary: "Set an organization in read-only or read-write"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setReadOnlyUsingPUT"
+    /rest/organizations/{organizationId}/backups: 
+      post: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "backupOrganization"
+        summary: "Backups the content of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "backupOrganizationUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationBackupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "getOrganizationBackups"
+        summary: "Lists the available backups for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationBackupsUsingGET"
+    /rest/organizations/{organizationId}/restore: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "Name of the backup"
+            required: true
+            type: "string"
+            name: "backupName"
+            in: "query"
+          - 
+            description: "Whether to launch recover of the organization or not"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "launchRecover"
+          - 
+            description: "Whether to rebuild the sources at the end of recover operation"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuildSources"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "restoreOrganization"
+        summary: "Restores a backup of an existing organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "restoreOrganizationUsingPOST"
+    /rest/organizations/{organizationId}/license/sync: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "syncWithDefaultLicense"
+        summary: "Syncs a license with the default license. Adjusts available connectors, allowed schedules and visibilities."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "syncWithDefaultLicenseUsingPOST"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/status: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ProvisioningStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "getProvisioningStatus"
+        summary: "Get an organization cluster provisioning status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getProvisioningStatusUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/versions: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationComponentsModel"
+            description: "versions"
+            required: true
+            name: "versions"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "setOrganizationClusterComponentVersions"
+        summary: "Set the component versions for organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setOrganizationClusterComponentVersionsUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationComponentsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "getOrganizationClusterComponentVersions"
+        summary: "Get the component versions for organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationClusterComponentVersionsUsingGET"
+    /rest/organizationtemplates: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationTemplateModel"
+            description: "organizationTemplate"
+            required: true
+            name: "organizationTemplate"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Templates"
+        x-pretty-name: "createOrganizationTemplate"
+        summary: "Creates an organization template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrganizationTemplateUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationTemplateModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Templates"
+        x-pretty-name: "getOrganizationTemplates"
+        summary: "Get all organization templates"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationTemplatesUsingGET"
+    /rest/organizations/{organizationId}/launchprovisioning: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "launchProvisioning"
+        summary: "Launches the provisioning of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "launchProvisioningUsingPOST"
+    /rest/organizations/{organizationId}/license/{sectionName}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+          - 
+            schema: 
+              type: "object"
+            description: "licenseSection"
+            required: true
+            name: "licenseSection"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "updateLicenseSection"
+        summary: "Update a section of the license"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateLicenseSectionUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "deleteLicenseSection"
+        summary: "Deletes a section of the license"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteLicenseSectionUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "getLicenseSection"
+        summary: "Get an organization license section"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseSectionUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/NodeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "getOrganizationNodes"
+        summary: "Get all nodes of an organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationNodesUsingGET"
+    /rest/organizations/{organizationId}/exports/logins: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "numberOfDays"
+            format: "int32"
+            default: 31
+            required: false
+            in: "query"
+            type: "integer"
+            name: "numberOfDays"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations Exports"
+        x-pretty-name: "getLoginsExport"
+        summary: "Get the login activity for the organization."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLoginsExportUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/start: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "nodeId"
+            required: true
+            type: "string"
+            name: "nodeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "startNode"
+        summary: "Start a node"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "startNodeUsingPOST"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/dump: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "agentId"
+            required: true
+            type: "string"
+            name: "agentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Agents"
+        x-pretty-name: "dumpAgent"
+        summary: "Dumps an agent"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "dumpAgentUsingPOST"
+    /rest/infrastructure/organizations/readonly: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "readOnly"
+            required: true
+            type: "boolean"
+            name: "readOnly"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations Infrastructure"
+        x-pretty-name: "setReadOnly"
+        summary: "Set organizations in read-only or read-write"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setReadOnlyUsingPUT"
+    /rest/packages: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ComponentInfoModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Packages"
+        x-pretty-name: "getComponentInfoList"
+        summary: "Get the list of all component information"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getComponentInfoListUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/AgentModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Agents"
+        x-pretty-name: "getAgents"
+        summary: "Get all the agents of an organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAgentsUsingGET"
+    /rest/organizations/{organizationId}/clusters/live: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationClusterModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "getOrganizationLiveCluster"
+        summary: "Get live cluster for organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationLiveClusterUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/upgrade: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "agentId"
+            required: true
+            type: "string"
+            name: "agentId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/VersionModel"
+            description: "version"
+            required: true
+            name: "version"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Agents"
+        x-pretty-name: "upgradeAgentNodes"
+        summary: "Upgrades all nodes of the provided component on the specified agent"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "upgradeAgentNodesUsingPUT"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/stop: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "nodeId"
+            required: true
+            type: "string"
+            name: "nodeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "stopNode"
+        summary: "Stop a node"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "stopNodeUsingPOST"
+    /rest/organizations/{organizationId}/clusters: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationClusterModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Clusters"
+        x-pretty-name: "getOrganizationClusters"
+        summary: "Get all clusters for organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationClustersUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrade: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "nodeId"
+            required: true
+            type: "string"
+            name: "nodeId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/VersionModel"
+            description: "version"
+            required: true
+            name: "version"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "upgradeNode"
+        summary: "Upgrade a node"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "upgradeNodeUsingPUT"
+    /rest/organizations/{organizationId}/resetTopology: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "resetTopology"
+        summary: "Resets the topology of a non-provisioned organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "resetTopologyUsingPOST"
+    /rest/organizations/{organizationId}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationModel"
+            description: "organizationModel"
+            required: true
+            name: "organizationModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "updateOrganization"
+        summary: "Updates a single organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateOrganizationUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "deleteOrganization"
+        summary: "Delete an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteOrganizationUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganization"
+        summary: "Get a single organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationUsingGET"
+    /rest/logging: 
+      post: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              $ref: "#/definitions/ExceptionLogModel"
+            description: "exceptionLogModel"
+            required: true
+            name: "exceptionLogModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Exception Logging"
+        x-pretty-name: "logException"
+        summary: "Logs an exception"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "logExceptionUsingPOST"
+    /rest/organizations/{organizationId}/template/{templateName}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "templateName"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "applyOrganizationTemplate"
+        summary: "Apply an organization template to an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "applyOrganizationTemplateUsingPUT"
+    /rest/aws/instances/agents: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/AWSAgentInstanceModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        description: "Get the list of instance that are agents"
+        produces: 
+          - "*/*"
+        tags: 
+          - "AWS"
+        x-pretty-name: "getAgents"
+        summary: "Get the agent machines"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAgentsUsingGET"
+    /rest/organizations/{organizationId}/license/template: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+            description: "licenseTemplate"
+            required: true
+            name: "licenseTemplate"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "applyTemplate"
+        summary: "Apply a license template to the organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "applyTemplateUsingPUT"
+    /rest/aws/instances/agents/{agentId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/AWSAgentInstanceModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        description: "Get a specific agent"
+        parameters: 
+          - 
+            description: "id of the agent"
+            required: true
+            type: "string"
+            name: "agentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "AWS"
+        x-pretty-name: "getAgent"
+        summary: "Get a specific agent"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAgentUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/stop: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "stopNodes"
+        summary: "Stop all nodes of the organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "stopNodesUsingPOST"
+    /rest/infrastructure/organizations: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/OrganizationCreatedModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "name"
+            required: true
+            type: "string"
+            name: "name"
+            in: "query"
+          - 
+            description: "owner"
+            required: false
+            type: "string"
+            name: "owner"
+            in: "query"
+          - 
+            description: "licenseTemplate"
+            required: false
+            type: "string"
+            name: "licenseTemplate"
+            in: "query"
+          - 
+            description: "organizationTemplate"
+            required: false
+            type: "string"
+            name: "organizationTemplate"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationCreationModel"
+            description: "organizationCreationModel"
+            required: true
+            name: "organizationCreationModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations Infrastructure"
+        x-pretty-name: "internalCreateOrganization"
+        summary: "Create an organization with specific machine architecture"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "internalCreateOrganizationUsingPOST"
+    /rest/organizations/license/sync: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "syncWithDefaultLicenseGlobal"
+        summary: "Syncs all licenses with the default license. Adjusts available connectors, allowed schedules and visibilities."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "syncWithDefaultLicenseGlobalUsingPOST"
+    /rest/organizations: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/OrganizationCreatedModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "name"
+            required: true
+            type: "string"
+            name: "name"
+            in: "query"
+          - 
+            description: "owner"
+            required: false
+            type: "string"
+            name: "owner"
+            in: "query"
+          - 
+            description: "licenseTemplate"
+            required: false
+            type: "string"
+            name: "licenseTemplate"
+            in: "query"
+          - 
+            description: "organizationTemplate"
+            required: false
+            type: "string"
+            name: "organizationTemplate"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "createOrganization"
+        summary: "Create an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrganizationUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "additionalFields"
+            items: 
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "additionalFields"
+          - 
+            description: "filter"
+            required: false
+            type: "string"
+            name: "filter"
+            in: "query"
+          - 
+            description: "sortBy"
+            default: "displayName"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "ASC"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganizations"
+        summary: "Gets all organizations"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationsUsingGET"
+    /rest/licensetemplates: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              $ref: "#/definitions/LicenseTemplateModel"
+            description: "licenseTemplate"
+            required: true
+            name: "licenseTemplate"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License Templates"
+        x-pretty-name: "createLicenseTemplate"
+        summary: "Create a new license template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createLicenseTemplateUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/LicenseTemplateModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License Templates"
+        x-pretty-name: "getLicenseTemplates"
+        summary: "Get all license templates"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseTemplatesUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/dumps: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "nodeId"
+            required: true
+            type: "string"
+            name: "nodeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "generateDumps"
+        summary: "Generate dumps for a node"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "generateDumpsUsingPOST"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrades: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/NodeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "nodeId"
+            required: true
+            type: "string"
+            name: "nodeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "getNodeUpgrades"
+        summary: "Get all upgrade possibilities of a node"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getNodeUpgradesUsingGET"
+    /rest/backups: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationBackupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "getBackups"
+        summary: "Lists the available backups of the environment"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getBackupsUsingGET"
+    /rest/organizationtemplates/{templateName}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "templateName"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationTemplateModel"
+            description: "organizationTemplate"
+            required: true
+            name: "organizationTemplate"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Templates"
+        x-pretty-name: "updateOrganizationTemplate"
+        summary: "Update an organization template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateOrganizationTemplateUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "templateName"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Templates"
+        x-pretty-name: "deleteOrganizationTemplate"
+        summary: "Delete an organization template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteOrganizationTemplateUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationTemplateModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "templateName"
+            required: true
+            type: "string"
+            name: "templateName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Templates"
+        x-pretty-name: "getOrganizationTemplate"
+        summary: "Get an organization template"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationTemplateUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "agentId"
+            required: true
+            type: "string"
+            name: "agentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Agents"
+        x-pretty-name: "unregisterAgent"
+        summary: "Unregisters an agent"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "unregisterAgentUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/AgentModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "agentId"
+            required: true
+            type: "string"
+            name: "agentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Agents"
+        x-pretty-name: "getAgent"
+        summary: "Get a single agent"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAgentUsingGET"
+    /rest/packages/versions: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ComponentInfoModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Packages"
+        x-pretty-name: "getAvailableComponentList"
+        summary: "Get the list of all the available components and their versions"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAvailableComponentListUsingGET"
+    /rest/organizations/{organizationId}/recover: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Name of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "Whether to rebuild the sources at the end of recover operation"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuildSources"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Operations"
+        x-pretty-name: "recoverOrganization"
+        summary: "Recovers an organization by recreating its constituents from scratch"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "recoverOrganizationUsingPOST"
+    /rest/organizations/{organizationId}/license/snapshots/{snapshotId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "snapshotId"
+            required: false
+            type: "string"
+            name: "snapshotId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "getSnapshot"
+        summary: "Gets a license snapshot"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSnapshotUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/start: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Nodes"
+        x-pretty-name: "startNodes"
+        summary: "Start all nodes of the organization cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "startNodesUsingPOST"
+  tags: 
+    - 
+      name: "Organizations"
+      description: "Organization Service Resource"
+    - 
+      name: "AWS"
+      description: "AWS Service Resource"
+    - 
+      name: "License Templates"
+      description: "License Template Service Resource"
+    - 
+      name: "Organization Operations"
+      description: "Organization Operation Service Resource"
+    - 
+      name: "Organizations Infrastructure"
+      description: "Infrastructure Organization Service Resource"
+    - 
+      name: "Exception Logging"
+      description: "Exception Logging Service Resource"
+    - 
+      name: "Organization Clusters"
+      description: "Organization Cluster Service Resource"
+    - 
+      name: "License"
+      description: "License Service Resource"
+    - 
+      name: "Organizations Exports"
+      description: "Exports Resource"
+    - 
+      name: "Nodes"
+      description: "Organization Node Service Resource"
+    - 
+      name: "Packages"
+      description: "Package Service Resource"
+    - 
+      name: "Organization Templates"
+      description: "Organization Template Service Resource"
+    - 
+      name: "Agents"
+      description: "Organization Agent Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com:443"
+  definitions: 
+    InstanceInfoModel: 
+      type: "object"
+      properties: 
+        description: 
+          type: "string"
+        parameters: 
+          items: 
+            type: "string"
+          type: "array"
+        name: 
+          type: "string"
+    ClusterTopologyModel: 
+      type: "object"
+      properties: 
+        indexers: 
+          items: 
+            $ref: "#/definitions/ClusterIndexerModel"
+          type: "array"
+        indexerMgrRateUri: 
+          type: "string"
+        indexerMgrTagUri: 
+          type: "string"
+        securityCaches: 
+          items: 
+            $ref: "#/definitions/ClusterSecurityCacheModel"
+          type: "array"
+        secCacheJobUri: 
+          type: "string"
+        topologyId: 
+          type: "string"
+        rabbitServerId: 
+          type: "string"
+        secClusterSyncUri: 
+          type: "string"
+        blobstoreUri: 
+          type: "string"
+        securityProviders: 
+          items: 
+            $ref: "#/definitions/ClusterSecurityProviderModel"
+          type: "array"
+        crawlers: 
+          items: 
+            $ref: "#/definitions/ClusterCrawlerModel"
+          type: "array"
+        dpmDocUri: 
+          type: "string"
+        indexDocUri: 
+          type: "string"
+        agents: 
+          items: 
+            $ref: "#/definitions/ClusterAgentModel"
+          type: "array"
+    NodeModel: 
+      type: "object"
+      properties: 
+        status: 
+          $ref: "#/definitions/NodeStatusModel"
+        name: 
+          type: "string"
+        componentName: 
+          type: "string"
+        indexId: 
+          type: "string"
+        adminURI: 
+          type: "string"
+        id: 
+          type: "string"
+        version: 
+          type: "string"
+        params: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        isCustom: 
+          type: "boolean"
+        latestVersion: 
+          type: "string"
+        agentId: 
+          type: "string"
+        instanceType: 
+          type: "string"
+    OrganizationOwnerModel: 
+      type: "object"
+      properties: 
+        email: 
+          type: "string"
+    PageModel«OrganizationModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/OrganizationModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    NodeStatusModel: 
+      type: "object"
+      properties: 
+        status: 
+          type: "string"
+        timestamp: 
+          type: "string"
+        message: 
+          type: "string"
+        severity: 
+          type: "string"
+    AWSAgentInstanceModel: 
+      type: "object"
+      properties: 
+        privateDNS: 
+          type: "string"
+        amiId: 
+          type: "string"
+        instanceState: 
+          enum: 
+            - "pending"
+            - "running"
+            - "shutting-down"
+            - "terminated"
+            - "stopping"
+            - "stopped"
+          type: "string"
+        id: 
+          type: "string"
+        publicIP: 
+          type: "string"
+        platform: 
+          enum: 
+            - "windows"
+            - "otherLinux"
+          type: "string"
+        launchTime: 
+          type: "string"
+          format: "date-time"
+        publicDNS: 
+          type: "string"
+        agentId: 
+          type: "string"
+        instanceType: 
+          type: "string"
+        privateIPAddress: 
+          type: "string"
+    OrganizationCreationModel: 
+      type: "object"
+      properties: 
+        machineSpec: 
+          $ref: "#/definitions/MachineSpecModel"
+        forceWindowsAgent: 
+          type: "boolean"
+        organizationComponents: 
+          $ref: "#/definitions/OrganizationComponentsModel"
+    ClusterIndexerModel: 
+      type: "object"
+      properties: 
+        indexerDocUri: 
+          type: "string"
+        componentPlatform: 
+          type: "string"
+        searchServerUri: 
+          type: "string"
+        name: 
+          type: "string"
+        componentName: 
+          type: "string"
+        componentVersion: 
+          type: "string"
+        adminUri: 
+          type: "string"
+        indexerRateUri: 
+          type: "string"
+        indexerTagUri: 
+          type: "string"
+        searchPort: 
+          type: "integer"
+          format: "int32"
+        adminPort: 
+          type: "integer"
+          format: "int32"
+        agentId: 
+          type: "string"
+        id: 
+          type: "string"
+    AgentModel: 
+      type: "object"
+      properties: 
+        status: 
+          $ref: "#/definitions/NodeStatusModel"
+        description: 
+          type: "string"
+        platform: 
+          type: "string"
+        version: 
+          type: "string"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    StorageSpecModel: 
+      type: "object"
+      properties: 
+        storageType: 
+          enum: 
+            - "STANDARD"
+            - "SSD"
+            - "PROVISIONED_SSD"
+          type: "string"
+        sizeInGigabytes: 
+          type: "integer"
+          format: "int32"
+        sizeInGibibytes: 
+          type: "integer"
+          format: "int32"
+        numberOfIops: 
+          type: "integer"
+          format: "int32"
+    ConnectorInformationModel: 
+      type: "object"
+      properties: 
+        sourceVisibilities: 
+          items: 
+            enum: 
+              - "PRIVATE"
+              - "SECURED"
+              - "SHARED"
+            type: "string"
+          type: "array"
+        type: 
+          enum: 
+            - "AMAZONS3"
+            - "BOX"
+            - "BOX_ENTERPRISE"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CONFLUENCE2_HOSTED"
+            - "CUSTOM"
+            - "DROPBOX"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EXCHANGE"
+            - "GMAIL"
+            - "GMAIL_DOMAIN_WIDE"
+            - "GMAIL_SINGLE_USER"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "GOOGLE_DRIVE_SINGLE_USER"
+            - "JIRA2"
+            - "JIRA2_HOSTED"
+            - "JIVE"
+            - "JIVE_HOSTED"
+            - "LITHIUM"
+            - "MICROSOFT_DYNAMICS"
+            - "PUSH"
+            - "RSS"
+            - "SALESFORCE"
+            - "SHAREPOINT_ONLINE"
+            - "SITECORE"
+            - "SITEMAP"
+            - "TWITTER2"
+            - "WEB2"
+            - "YOUTUBE"
+          type: "string"
+        allowedSchedules: 
+          items: 
+            $ref: "#/definitions/AllowedScheduleModel"
+          type: "array"
+        allowed: 
+          type: "boolean"
+    LicenseTemplateModel: 
+      type: "object"
+      properties: 
+        additionalInfo: 
+          type: "string"
+        publicTemplate: 
+          type: "boolean"
+        name: 
+          type: "string"
+        productName: 
+          enum: 
+            - "COVEO_CLOUD"
+            - "DYNAMICS"
+            - "SALESFORCE"
+            - "SITECORE"
+          type: "string"
+        validityPeriodInDays: 
+          type: "integer"
+          format: "int32"
+        monitoringLevel: 
+          type: "string"
+        allowedSourceTypes: 
+          items: 
+            type: "string"
+          type: "array"
+        properties: 
+          type: "object"
+    MachineSpecModel: 
+      type: "object"
+      properties: 
+        architecture: 
+          enum: 
+            - "T2_NANO"
+            - "T2_MICRO"
+            - "T2_SMALL"
+            - "T2_MEDIUM"
+            - "T2_LARGE"
+            - "T2_XLARGE"
+            - "T2_2XLARGE"
+            - "M3_MEDIUM"
+            - "M3_LARGE"
+            - "M3_XLARGE"
+            - "M3_2XLARGE"
+            - "C3_LARGE"
+            - "C3_XLARGE"
+            - "C3_2XLARGE"
+            - "C3_4XLARGE"
+            - "C3_8XLARGE"
+            - "R3_LARGE"
+            - "R3_XLARGE"
+            - "R3_2XLARGE"
+            - "R3_4XLARGE"
+            - "R3_8XLARGE"
+            - "R4_LARGE"
+            - "R4_XLARGE"
+            - "R4_2XLARGE"
+            - "R4_4XLARGE"
+            - "R4_8XLARGE"
+            - "R4_16XLARGE"
+            - "M4_LARGE"
+            - "M4_XLARGE"
+            - "M4_2XLARGE"
+            - "M4_4XLARGE"
+            - "M4_10XLARGE"
+            - "C4_LARGE"
+            - "C4_XLARGE"
+            - "C4_2XLARGE"
+            - "C4_4XLARGE"
+            - "C4_8XLARGE"
+          type: "string"
+        storageSpec: 
+          $ref: "#/definitions/StorageSpecModel"
+    OrganizationClusterModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        clusterTopology: 
+          $ref: "#/definitions/ClusterTopologyModel"
+        componentVersions: 
+          $ref: "#/definitions/OrganizationComponentsModel"
+        id: 
+          type: "string"
+        liveCluster: 
+          type: "boolean"
+    OrganizationStatusModel: 
+      type: "object"
+      properties: 
+        readOnly: 
+          type: "boolean"
+        provisioningStatus: 
+          $ref: "#/definitions/LightProvisioningStatusModel"
+        supportActivated: 
+          type: "boolean"
+    StackTraceElement: 
+      type: "object"
+      properties: 
+        lineNumber: 
+          type: "integer"
+          format: "int32"
+        methodName: 
+          type: "string"
+        fileName: 
+          type: "string"
+    OrganizationCreatedModel: 
+      type: "object"
+      properties: 
+        apiKey: 
+          $ref: "#/definitions/ApiKeyModel"
+        id: 
+          type: "string"
+    ProvisioningResourceStatusModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "QUEUED_TO_CREATE"
+            - "QUEUED_TO_REMOVE"
+            - "CREATING"
+            - "REMOVING"
+            - "PAUSED"
+            - "COMPLETED"
+            - "ERROR"
+          type: "string"
+        name: 
+          type: "string"
+        createdDate: 
+          type: "integer"
+          format: "int64"
+        id: 
+          type: "string"
+        error: 
+          type: "string"
+        type: 
+          type: "string"
+        numberOfRetries: 
+          type: "integer"
+          format: "int32"
+    ClusterCrawlerModel: 
+      type: "object"
+      properties: 
+        componentPlatform: 
+          type: "string"
+        name: 
+          type: "string"
+        componentName: 
+          type: "string"
+        componentVersion: 
+          type: "string"
+        adminUri: 
+          type: "string"
+        adminPort: 
+          type: "integer"
+          format: "int32"
+        agentId: 
+          type: "string"
+        id: 
+          type: "string"
+    VersionModel: 
+      type: "object"
+      properties: 
+        componentName: 
+          type: "string"
+        version: 
+          type: "string"
+    ComponentInfoModel: 
+      type: "object"
+      properties: 
+        target: 
+          type: "string"
+        platform: 
+          type: "string"
+        name: 
+          type: "string"
+        instances: 
+          items: 
+            $ref: "#/definitions/InstanceInfoModel"
+          type: "array"
+        version: 
+          type: "string"
+        description: 
+          type: "string"
+    ClusterSecurityProviderModel: 
+      type: "object"
+      properties: 
+        componentPlatform: 
+          type: "string"
+        name: 
+          type: "string"
+        componentName: 
+          type: "string"
+        componentVersion: 
+          type: "string"
+        adminUri: 
+          type: "string"
+        useDefaultConfiguration: 
+          type: "boolean"
+        adminPort: 
+          type: "integer"
+          format: "int32"
+        agentId: 
+          type: "string"
+        type: 
+          type: "string"
+        id: 
+          type: "string"
+    LicenseModel: 
+      type: "object"
+      properties: 
+        additionalInfo: 
+          type: "string"
+        productName: 
+          enum: 
+            - "COVEO_CLOUD"
+            - "DYNAMICS"
+            - "SALESFORCE"
+            - "SITECORE"
+          type: "string"
+        connectors: 
+          items: 
+            $ref: "#/definitions/ConnectorInformationModel"
+          type: "array"
+        expirationDate: 
+          type: "integer"
+          format: "int64"
+        monitoringLevel: 
+          type: "string"
+        type: 
+          type: "string"
+        properties: 
+          type: "object"
+    RealmModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    ComponentVersionsModel: 
+      type: "object"
+      properties: 
+        indexerVersions: 
+          items: 
+            type: "string"
+          type: "array"
+        securityProviderVersions: 
+          items: 
+            type: "string"
+          type: "array"
+        connectorsVersion: 
+          items: 
+            type: "string"
+          type: "array"
+        securityCacheVersions: 
+          items: 
+            type: "string"
+          type: "array"
+    ClusterAgentModel: 
+      type: "object"
+      properties: 
+        machineSpec: 
+          $ref: "#/definitions/MachineSpecModel"
+        storages: 
+          items: 
+            $ref: "#/definitions/StorageSpecModel"
+          type: "array"
+        id: 
+          type: "string"
+    AllowedScheduleModel: 
+      type: "object"
+      properties: 
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        scheduleFrequencies: 
+          items: 
+            enum: 
+              - "MINUTELY"
+              - "HOURLY"
+              - "DAILY"
+              - "WEEKLY"
+              - "MONTHLY"
+            type: "string"
+          type: "array"
+    PageModel«string»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            type: "string"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    ExceptionLogModel: 
+      type: "object"
+      properties: 
+        stackTrace: 
+          items: 
+            $ref: "#/definitions/StackTraceElement"
+          type: "array"
+        culprit: 
+          type: "string"
+        tags: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        serverName: 
+          type: "string"
+        errorMessage: 
+          type: "string"
+        platform: 
+          type: "string"
+        extras: 
+          type: "object"
+    UserModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/UserRealmModel"
+          type: "array"
+        socialUser: 
+          type: "boolean"
+        enabled: 
+          type: "boolean"
+        additionalInformation: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        emailAliases: 
+          items: 
+            type: "string"
+          type: "array"
+        samlIdentityProviderId: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        locked: 
+          type: "boolean"
+        providerUsername: 
+          type: "string"
+        expired: 
+          type: "boolean"
+        email: 
+          type: "string"
+        credentialsExpired: 
+          type: "boolean"
+    OrganizationTemplateModel: 
+      type: "object"
+      properties: 
+        apiKeyTemplate: 
+          type: "string"
+        publicTemplate: 
+          type: "boolean"
+        privilegeMaskId: 
+          type: "string"
+        licenseTemplateName: 
+          type: "string"
+        name: 
+          type: "string"
+    ProvisioningStatusModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "ERROR"
+            - "HEALTHY"
+          type: "string"
+        currentProvisioningProgress: 
+          type: "number"
+          format: "float"
+        initialProvisioningDone: 
+          type: "boolean"
+        ongoing: 
+          type: "boolean"
+        lastProvisioningCompletedDate: 
+          type: "integer"
+          format: "int64"
+        retryScheduled: 
+          type: "boolean"
+        resources: 
+          items: 
+            $ref: "#/definitions/ProvisioningResourceStatusModel"
+          type: "array"
+    LightProvisioningStatusModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "ERROR"
+            - "HEALTHY"
+          type: "string"
+        ongoing: 
+          type: "boolean"
+        currentProvisioningProgress: 
+          type: "number"
+          format: "float"
+        lastProvisioningCompletedDate: 
+          type: "integer"
+          format: "int64"
+        initialProvisioningDone: 
+          type: "boolean"
+    OrganizationComponentsModel: 
+      type: "object"
+      properties: 
+        securityProviderVersion: 
+          type: "string"
+        indexerVersion: 
+          type: "string"
+        securityCacheVersion: 
+          type: "string"
+        connectorsVersion: 
+          type: "string"
+    OrganizationModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        license: 
+          $ref: "#/definitions/LicenseModel"
+        readOnly: 
+          type: "boolean"
+        emailNotificationsEnabled: 
+          type: "boolean"
+        createdDate: 
+          type: "integer"
+          format: "int64"
+        owner: 
+          $ref: "#/definitions/OrganizationOwnerModel"
+        provisioningStatus: 
+          $ref: "#/definitions/LightProvisioningStatusModel"
+        id: 
+          type: "string"
+    ClusterSecurityCacheModel: 
+      type: "object"
+      properties: 
+        componentPlatform: 
+          type: "string"
+        secCacheSyncUri: 
+          type: "string"
+        name: 
+          type: "string"
+        componentName: 
+          type: "string"
+        componentVersion: 
+          type: "string"
+        adminUri: 
+          type: "string"
+        adminPort: 
+          type: "integer"
+          format: "int32"
+        agentId: 
+          type: "string"
+        id: 
+          type: "string"
+    ComponentInfoModel2: 
+      type: "object"
+      properties: 
+        platform: 
+          type: "string"
+        version: 
+          type: "string"
+        name: 
+          type: "string"
+    ApiKeyModel: 
+      type: "object"
+      properties: 
+        deniedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        displayName: 
+          type: "string"
+        description: 
+          type: "string"
+        allowedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        privileges: 
+          items: 
+            $ref: "#/definitions/PrivilegeModel"
+          type: "array"
+        enabled: 
+          type: "boolean"
+        value: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        createdBy: 
+          $ref: "#/definitions/UserModel"
+        createdDate: 
+          type: "string"
+          format: "date-time"
+        id: 
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    OrganizationBackupModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        creationDate: 
+          type: "string"
+          format: "date-time"
+        backupName: 
+          type: "string"
+        size: 
+          type: "integer"
+          format: "int64"
+    PageModel«OrganizationBackupModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/OrganizationBackupModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    AWSInstanceModel: 
+      type: "object"
+      properties: 
+        privateDNS: 
+          type: "string"
+        amiId: 
+          type: "string"
+        instanceState: 
+          enum: 
+            - "pending"
+            - "running"
+            - "shutting-down"
+            - "terminated"
+            - "stopping"
+            - "stopped"
+          type: "string"
+        id: 
+          type: "string"
+        publicIP: 
+          type: "string"
+        platform: 
+          enum: 
+            - "windows"
+            - "otherLinux"
+          type: "string"
+        launchTime: 
+          type: "string"
+          format: "date-time"
+        publicDNS: 
+          type: "string"
+        instanceType: 
+          type: "string"
+        privateIPAddress: 
+          type: "string"
+    PrivilegeModel: 
+      type: "object"
+      properties: 
+        owner: 
+          type: "string"
+        targetDomain: 
+          type: "string"
+        type: 
+          type: "string"
+        targetIds: 
+          items: 
+            type: "string"
+          type: "array"
+    UserRealmModel: 
+      type: "object"
+      properties: 
+        member: 
+          type: "boolean"
+        realm: 
+          $ref: "#/definitions/RealmModel"
+  swagger: "2.0"
+

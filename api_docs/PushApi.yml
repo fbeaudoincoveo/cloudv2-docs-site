@@ -1,0 +1,1639 @@
+---
+  info: 
+    version: "2016-03-03T13:22:11Z"
+    title: "Push API"
+  paths: 
+    /organizations/{organizationId}/sources/{sourceId}/status: 
+      post: 
+        responses: 
+          201: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "statusType"
+            name: "statusType"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "sourceId"
+            name: "sourceId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+        tags: 
+          - "source"
+        produces: 
+          - "application/json"
+        x-pretty-name: "setSourceStatus"
+        summary: "Set the source status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+    /organizations/{organizationId}/sources/{sourceId}/documents/olderthan: 
+      delete: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "sourceId"
+            name: "sourceId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            required: false
+            type: "string"
+            description: "queueDelay"
+            name: "queueDelay"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "document"
+        x-pretty-name: "deleteDocumentsOlderThan"
+        summary: "Delete old documents from a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/sources/{sourceId}/documents/batch: 
+      put: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "sourceId"
+            name: "sourceId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "fileId"
+            name: "fileId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "document"
+        x-pretty-name: "addUpdateDeleteBatchedDocument"
+        summary: "Add, update or delete a large number of encrypted documents in a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/providers/{providerId}/permissions: 
+      put: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "providerId"
+            name: "providerId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/IdentityBody"
+            required: true
+            description: "IdentityBody"
+            name: "IdentityBody"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "identity"
+        x-pretty-name: "addUpdateIdentity"
+        summary: "Add or update an identity in a security identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+      delete: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "providerId"
+            name: "providerId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/Identity"
+            required: true
+            description: "Identity"
+            name: "Identity"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "identity"
+        x-pretty-name: "deleteIdentity"
+        summary: "Delete an identity from a security identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/files: 
+      post: 
+        responses: 
+          201: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            schema: 
+              $ref: "#/definitions/PostFileResponse"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+        tags: 
+          - "file"
+        produces: 
+          - "application/json"
+        x-pretty-name: "getPresignedUploadUrl"
+        summary: "Get a large file container"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+    /organizations/{organizationId}/providers/{providerId}/permissions/batch: 
+      put: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "providerId"
+            name: "providerId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "fileId"
+            name: "fileId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/IdentityBody"
+            required: true
+            description: "IdentityBody"
+            name: "IdentityBody"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "identity"
+        x-pretty-name: "addUpdateDeleteBatchedIdentity"
+        summary: "Add, update or delete a large number of identities in a security identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/providers/{providerId}/permissions/olderthan: 
+      delete: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "providerId"
+            name: "providerId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+        tags: 
+          - "identity"
+        produces: 
+          - "application/json"
+        x-pretty-name: "deleteIdentityOlderThan"
+        summary: "Delete old identities from a security identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+    /organizations/{organizationId}/providers/{providerId}/mappings: 
+      put: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            description: "providerId"
+            name: "providerId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/MappedIdentityBody"
+            required: true
+            description: "MappedIdentityBody"
+            name: "MappedIdentityBody"
+            in: "body"
+        tags: 
+          - "identity"
+        x-pretty-name: "addUpdateMappedIdentity"
+        summary: "Add or update a mapped identity in a security identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/sources/{sourceId}/documents: 
+      put: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "sourceId"
+            name: "sourceId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "documentId"
+            name: "documentId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/DocumentBody"
+            required: true
+            description: "DocumentBody"
+            name: "DocumentBody"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "document"
+        x-pretty-name: "addUpdateDocument"
+        summary: "Add or update a document in a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+      delete: 
+        responses: 
+          202: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/GatewayTimeoutError"
+        parameters: 
+          - 
+            required: false
+            type: "string"
+            description: "orderingId"
+            name: "orderingId"
+            in: "query"
+          - 
+            required: false
+            type: "string"
+            description: "deleteChildren"
+            name: "deleteChildren"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "sourceId"
+            name: "sourceId"
+            in: "path"
+          - 
+            required: true
+            type: "string"
+            description: "documentId"
+            name: "documentId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            description: "organizationId"
+            name: "organizationId"
+            in: "path"
+        tags: 
+          - "document"
+        produces: 
+          - "application/json"
+        x-pretty-name: "deleteDocument"
+        summary: "Delete a document and optionally its children from a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+  schemes: 
+    - "https"
+  tags: 
+    - 
+      description: "File"
+      name: "file"
+    - 
+      description: "Document"
+      name: "document"
+    - 
+      description: "Identity"
+      name: "identity"
+    - 
+      description: "Source status"
+      name: "source"
+    - 
+      description: "API documentation"
+      name: "apidoc"
+  securityDefinitions: 
+    oauth2: 
+      scopes: 
+        full: "Required"
+      flow: "implicit"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      type: "oauth2"
+  host: "push.cloud.coveo.com/v1"
+  definitions: 
+    GatewayTimeoutError: 
+      type: "object"
+      properties: 
+        message: 
+          type: "string"
+    IdentityBody: 
+      type: "object"
+      properties: 
+        WellKnowns: 
+          items: 
+            $ref: "#/definitions/Identity"
+          type: "array"
+        Members: 
+          items: 
+            $ref: "#/definitions/Identity"
+          type: "array"
+        Identity: 
+          $ref: "#/definitions/Identity"
+    DocumentBody: 
+      type: "object"
+      properties: 
+        CompressedBinaryData: 
+          type: "string"
+        CompressedBinaryDataFileId: 
+          type: "string"
+        ParentId: 
+          type: "string"
+        FileExtension: 
+          type: "string"
+        Data: 
+          type: "string"
+        Permissions: 
+          items: 
+            $ref: "#/definitions/PermissionsSets"
+          type: "array"
+    MappedIdentity: 
+      type: "object"
+      properties: 
+        AdditionalInfo: 
+          additionalProperties: "string"
+          type: "object"
+        Type: 
+          enum: 
+            - "UNKNOWN"
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+          type: "string"
+        Name: 
+          type: "string"
+        Provider: 
+          type: "string"
+    Empty: 
+      type: "object"
+    Error: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+        message: 
+          type: "string"
+    PermissionsSets: 
+      type: "object"
+      properties: 
+        DeniedPermissions: 
+          type: "object"
+          properties: 
+            IdentityType: 
+              type: "string"
+            Identity: 
+              type: "string"
+        AllowedPermissions: 
+          type: "object"
+          properties: 
+            IdentityType: 
+              type: "string"
+            Identity: 
+              type: "string"
+    PostFileResponse: 
+      schema: 
+        $ref: "#/definitions/PresignedUploadUrl"
+    PresignedUploadUrl: 
+      type: "object"
+      properties: 
+        uploadUri: 
+          type: "string"
+        fileId: 
+          type: "string"
+    MappedIdentityBody: 
+      type: "object"
+      properties: 
+        WellKnowns: 
+          items: 
+            $ref: "#/definitions/Identity"
+          type: "array"
+        Mappings: 
+          items: 
+            $ref: "#/definitions/MappedIdentity"
+          type: "array"
+        Identity: 
+          $ref: "#/definitions/Identity"
+    Identity: 
+      type: "object"
+      properties: 
+        AdditionalInfo: 
+          additionalProperties: "string"
+          type: "object"
+        Type: 
+          enum: 
+            - "UNKNOWN"
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+          type: "string"
+        Name: 
+          type: "string"
+  swagger: "2.0"
+
