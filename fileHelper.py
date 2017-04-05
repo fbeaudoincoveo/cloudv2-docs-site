@@ -1,4 +1,5 @@
 from subprocess import call
+import os.path
 
 
 def create_file_from_data(data, file_to_create, debug=False):
@@ -13,3 +14,9 @@ def create_yaml_file_from_json_file(input_json_file, output_yaml_file, debug=Fal
     if debug:
         print "Creating YAML file %s from JSON file %s" % (output_yaml_file, input_json_file)
     call("json2yaml %s > %s" % (input_json_file, output_yaml_file), shell=True)
+
+
+def file_exists(file_to_find, debug=False):
+    if debug:
+        print "Trying to locate %s" % file_to_find
+    return os.path.exists(file_to_find)
