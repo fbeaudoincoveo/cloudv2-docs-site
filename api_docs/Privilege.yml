@@ -11,7 +11,6 @@
   paths: 
     /rest/organizations/{organizationId}/privileges/apikeys: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/privileges/apikeys_get"
         responses: 
           200: 
             description: "OK"
@@ -47,7 +46,6 @@
         operationId: "getApiKeyPrivilegesUsingGET"
     /rest/organizations/{organizationId}/apikeys: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/apikeys_post"
         responses: 
           201: 
             description: "Created"
@@ -87,7 +85,6 @@
           - "application/json"
         operationId: "createApiKeyUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/apikeys_get"
         responses: 
           200: 
             description: "OK"
@@ -123,7 +120,6 @@
         operationId: "getApiKeysUsingGET"
     /rest/organizations/{organizationId}/privileges/masks: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/privileges/masks_put"
         responses: 
           200: 
             description: "OK"
@@ -166,7 +162,6 @@
         operationId: "updateOrganizationPrivilegeMasksUsingPUT"
     /rest/globalgroups/{globalGroupId}: 
       put: 
-        uiOperationId: "/rest/globalgroups/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -206,7 +201,6 @@
           - "application/json"
         operationId: "updateGlobalGroupUsingPUT"
       delete: 
-        uiOperationId: "/rest/globalgroups/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -235,7 +229,6 @@
           - "application/json"
         operationId: "deleteGlobalGroupUsingDELETE"
       get: 
-        uiOperationId: "/rest/globalgroups/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -269,7 +262,6 @@
         operationId: "getGlobalGroupUsingGET"
     /rest/privileges/token: 
       post: 
-        uiOperationId: "/rest/privileges/token_post"
         responses: 
           200: 
             description: "OK"
@@ -306,7 +298,6 @@
           - "application/json"
         operationId: "getGlobalPrivilegesForTokenUsingPostUsingPOST"
       get: 
-        uiOperationId: "/rest/privileges/token_get"
         responses: 
           200: 
             description: "OK"
@@ -348,7 +339,6 @@
         operationId: "getGlobalPrivilegesForTokenUsingGET"
     /rest/privileges/me: 
       get: 
-        uiOperationId: "/rest/privileges/me_get"
         responses: 
           200: 
             description: "OK"
@@ -377,7 +367,6 @@
         operationId: "getGlobalPrivilegesForAuthenticationUsingGET"
     /rest/organizations/{organizationId}/groups: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups_post"
         responses: 
           201: 
             description: "Created"
@@ -424,7 +413,6 @@
           - "application/json"
         operationId: "createGroupUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups_get"
         responses: 
           200: 
             description: "OK"
@@ -460,7 +448,6 @@
         operationId: "getGroupsUsingGET"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}/activate: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/activate_put"
         responses: 
           201: 
             description: "Created"
@@ -500,7 +487,6 @@
         operationId: "activateApiKeyUsingPUT"
     /rest/organizations/{organizationId}/groups/{groupId}/members/{username}: 
       delete: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -541,7 +527,6 @@
           - "application/json"
         operationId: "deleteGroupMemberUsingDELETE"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -587,7 +572,6 @@
         operationId: "getGroupMemberUsingGET"
     /rest/globalgroups/{globalGroupId}/members: 
       post: 
-        uiOperationId: "/rest/globalgroups/paramId/members_post"
         responses: 
           201: 
             description: "Created"
@@ -627,7 +611,6 @@
           - "application/json"
         operationId: "addGlobalGroupMemberUsingPOST"
       get: 
-        uiOperationId: "/rest/globalgroups/paramId/members_get"
         responses: 
           200: 
             description: "OK"
@@ -663,7 +646,6 @@
         operationId: "getGlobalGroupMembersUsingGET"
     /rest/templates/apikeys/{apiKeyTemplateId}: 
       get: 
-        uiOperationId: "/rest/templates/apikeys/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -697,7 +679,6 @@
         operationId: "getApiKeyTemplateUsingGET"
     /rest/organizations/{organizationId}/realms: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/realms_post"
         responses: 
           201: 
             description: "Created"
@@ -737,7 +718,6 @@
           - "application/json"
         operationId: "addRealmsToGroupsUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/realms_get"
         responses: 
           200: 
             description: "OK"
@@ -773,7 +753,6 @@
         operationId: "getOrganizationRealmsUsingGET"
     /rest/organizations/{organizationId}/members/{username}: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/members/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -821,7 +800,6 @@
           - "application/json"
         operationId: "updateOrganizationMemberUsingPUT"
       delete: 
-        uiOperationId: "/rest/organizations/paramId/members/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -856,7 +834,6 @@
           - "application/json"
         operationId: "deleteOrganizationMemberUsingDELETE"
       get: 
-        uiOperationId: "/rest/organizations/paramId/members/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -896,7 +873,6 @@
         operationId: "getOrganizationMemberUsingGET"
     /rest/globalgroups/{globalGroupId}/members/{username}: 
       delete: 
-        uiOperationId: "/rest/globalgroups/paramId/members/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -931,7 +907,6 @@
           - "application/json"
         operationId: "deleteGlobalGroupMemberUsingDELETE"
       get: 
-        uiOperationId: "/rest/globalgroups/paramId/members/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -971,7 +946,6 @@
         operationId: "getGlobalGroupMemberUsingGET"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}/disable: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/disable_put"
         responses: 
           201: 
             description: "Created"
@@ -1011,7 +985,6 @@
         operationId: "disableApiKeyUsingPUT"
     /rest/organizations/{organizationId}/groups/{groupId}/invites: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_post"
         responses: 
           200: 
             description: "OK"
@@ -1066,7 +1039,6 @@
           - "application/json"
         operationId: "inviteMemberUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_get"
         responses: 
           200: 
             description: "OK"
@@ -1108,7 +1080,6 @@
         operationId: "getInvitesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/members: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_post"
         responses: 
           201: 
             description: "Created"
@@ -1161,7 +1132,6 @@
           - "application/json"
         operationId: "addGroupMemberUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_get"
         responses: 
           200: 
             description: "OK"
@@ -1203,7 +1173,6 @@
         operationId: "getGroupMembersUsingGET"
     /rest/organizations/{organizationId}/members: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/members_put"
         responses: 
           200: 
             description: "OK"
@@ -1256,7 +1225,6 @@
           - "application/json"
         operationId: "updateOrganizationMembersUsingPUT"
       get: 
-        uiOperationId: "/rest/organizations/paramId/members_get"
         responses: 
           200: 
             description: "OK"
@@ -1292,7 +1260,6 @@
         operationId: "getOrganizationMembersUsingGET"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1338,7 +1305,6 @@
           - "application/json"
         operationId: "updateApiKeyUsingPUT"
       delete: 
-        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1373,7 +1339,6 @@
           - "application/json"
         operationId: "deleteApiKeyUsingDELETE"
       get: 
-        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1413,7 +1378,6 @@
         operationId: "getApiKeyUsingGET"
     /rest/organizations/{organizationId}/privileges/token: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/privileges/token_post"
         responses: 
           200: 
             description: "OK"
@@ -1456,7 +1420,6 @@
           - "application/json"
         operationId: "getOrganizationMemberPrivilegesUsingPostUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/privileges/token_get"
         responses: 
           200: 
             description: "OK"
@@ -1504,7 +1467,6 @@
         operationId: "getOrganizationMemberPrivilegesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/decline: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/decline_post"
         responses: 
           201: 
             description: "Created"
@@ -1544,7 +1506,6 @@
         operationId: "declineInviteUsingPOST"
     /rest/organizations/{organizationId}/groups/{groupId}: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1597,7 +1558,6 @@
           - "application/json"
         operationId: "updateGroupUsingPUT"
       delete: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1632,7 +1592,6 @@
           - "application/json"
         operationId: "deleteGroupUsingDELETE"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1672,7 +1631,6 @@
         operationId: "getGroupUsingGET"
     /rest/organizations/{organizationId}/privileges: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/privileges_get"
         responses: 
           200: 
             description: "OK"
@@ -1708,7 +1666,6 @@
         operationId: "getOrganizationPrivilegesUsingGET"
     /rest/privileges/masks: 
       post: 
-        uiOperationId: "/rest/privileges/masks_post"
         responses: 
           200: 
             description: "OK"
@@ -1744,7 +1701,6 @@
           - "application/json"
         operationId: "createPrivilegeMaskUsingPOST"
       get: 
-        uiOperationId: "/rest/privileges/masks_get"
         responses: 
           200: 
             description: "OK"
@@ -1773,7 +1729,6 @@
         operationId: "getPrivilegeMasksUsingGET"
     /rest/invites: 
       get: 
-        uiOperationId: "/rest/invites_get"
         responses: 
           200: 
             description: "OK"
@@ -1802,7 +1757,6 @@
         operationId: "getInvitesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/{usernameOrEmail}: 
       delete: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1844,7 +1798,6 @@
         operationId: "deleteInviteUsingDELETE"
     /rest/organizations/{organizationId}/members/privileges: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/members/privileges_get"
         responses: 
           200: 
             description: "OK"
@@ -1880,10 +1833,11 @@
         operationId: "getOrganizationMemberPrivilegesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/realms: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_post"
         responses: 
           201: 
             description: "Created"
+          204: 
+            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
@@ -1924,7 +1878,6 @@
           - "application/json"
         operationId: "addGroupRealmUsingPOST"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_get"
         responses: 
           200: 
             description: "OK"
@@ -1966,7 +1919,6 @@
         operationId: "getGroupRealmsUsingGET"
     /rest/organizations/{organizationId}/members/{username}/groups: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/members/paramId/groups_get"
         responses: 
           200: 
             description: "OK"
@@ -2008,7 +1960,6 @@
         operationId: "getMemberGroupsUsingGET"
     /rest/globalprivileges: 
       get: 
-        uiOperationId: "/rest/globalprivileges_get"
         responses: 
           200: 
             description: "OK"
@@ -2037,7 +1988,6 @@
         operationId: "getGlobalPrivilegesUsingGET"
     /rest/organizations/{organizationId}/realms/{realmId}: 
       put: 
-        uiOperationId: "/rest/organizations/paramId/realms/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -2086,7 +2036,6 @@
         operationId: "updateRealmsInGroupsUsingPUT"
     /rest/privilege/evaluate: 
       post: 
-        uiOperationId: "/rest/privilege/evaluate_post"
         responses: 
           200: 
             description: "OK"
@@ -2123,7 +2072,6 @@
         operationId: "evaluateUsingPOST"
     /rest/organizations/{organizationId}/groups/{groupId}/realms/{realmId}: 
       delete: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2164,7 +2112,6 @@
           - "application/json"
         operationId: "deleteGroupRealmUsingDELETE"
       get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2210,7 +2157,6 @@
         operationId: "getGroupRealmUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/invites/accept: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/accept_post"
         responses: 
           201: 
             description: "Created"
@@ -2250,7 +2196,6 @@
         operationId: "acceptInviteUsingPOST"
     /rest/globalgroups/{globalGroupId}/realms/{realmId}: 
       delete: 
-        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2285,7 +2230,6 @@
           - "application/json"
         operationId: "deleteGlobalGroupRealmUsingDELETE"
       get: 
-        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2325,7 +2269,6 @@
         operationId: "getGlobalGroupRealmUsingGET"
     /rest/globalgroups/{globalGroupId}/realms: 
       post: 
-        uiOperationId: "/rest/globalgroups/paramId/realms_post"
         responses: 
           201: 
             description: "Created"
@@ -2365,7 +2308,6 @@
           - "application/json"
         operationId: "addGlobalGroupRealmUsingPOST"
       get: 
-        uiOperationId: "/rest/globalgroups/paramId/realms_get"
         responses: 
           200: 
             description: "OK"
@@ -2401,7 +2343,6 @@
         operationId: "getGlobalGroupRealmsUsingGET"
     /rest/oauth2clients/{clientId}/privileges: 
       put: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_put"
         responses: 
           200: 
             description: "OK"
@@ -2443,7 +2384,6 @@
           - "application/json"
         operationId: "updateClientPrivilegeUsingPUT"
       delete: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_delete"
         responses: 
           200: 
             description: "OK"
@@ -2476,7 +2416,6 @@
           - "application/json"
         operationId: "deleteClientPrivilegeUsingDELETE"
       get: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_get"
         responses: 
           200: 
             description: "OK"
@@ -2510,7 +2449,6 @@
         operationId: "getClientPrivilegeUsingGET"
     /rest/organizations/{organizationId}/privileges/me: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/privileges/me_get"
         responses: 
           200: 
             description: "OK"
@@ -2546,7 +2484,6 @@
         operationId: "getOrganizationMemberPrivilegesUsingGET"
     /rest/templates/apikeys: 
       get: 
-        uiOperationId: "/rest/templates/apikeys_get"
         responses: 
           200: 
             description: "OK"
@@ -2575,7 +2512,6 @@
         operationId: "getApiKeyTemplatesUsingGET"
     /rest/organizations/{organizationId}/invites: 
       get: 
-        uiOperationId: "/rest/organizations/paramId/invites_get"
         responses: 
           200: 
             description: "OK"
@@ -2611,7 +2547,6 @@
         operationId: "getOrganizationInvitesUsingGET"
     /rest/privileges/masks/{privilegeMaskId}: 
       put: 
-        uiOperationId: "/rest/privileges/masks/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -2653,7 +2588,6 @@
           - "application/json"
         operationId: "updatePrivilegeMaskUsingPUT"
       delete: 
-        uiOperationId: "/rest/privileges/masks/paramId_delete"
         responses: 
           200: 
             description: "OK"
@@ -2684,7 +2618,6 @@
           - "application/json"
         operationId: "deletePrivilegeMaskUsingDELETE"
       get: 
-        uiOperationId: "/rest/privileges/masks/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2718,7 +2651,6 @@
         operationId: "getPrivilegeMaskUsingGET"
     /rest/globalgroups: 
       post: 
-        uiOperationId: "/rest/globalgroups_post"
         responses: 
           201: 
             description: "Created"
@@ -2752,7 +2684,6 @@
           - "application/json"
         operationId: "createGlobalGroupUsingPOST"
       get: 
-        uiOperationId: "/rest/globalgroups_get"
         responses: 
           200: 
             description: "OK"
@@ -2839,10 +2770,10 @@
     oauth2: 
       flow: "implicit"
       type: "oauth2"
-      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       scopes: 
         full: "Required"
-  host: "platformqa.cloud.coveo.com:443"
+  host: "platform.cloud.coveo.com:443"
   definitions: 
     PrivilegeRequestModel: 
       type: "object"
