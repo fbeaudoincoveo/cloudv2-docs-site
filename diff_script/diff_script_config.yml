@@ -1,7 +1,7 @@
 ---
   debug: True # Setting this to False will execute the script in "silent" mode.
   repository:
-    accessToken: 0a451742631a7f3e51594c90f645e11da06c5d87 # This must allow to create PRs on public GitHub repositories.
+    accessToken: 0a451742631a7f3e51594c90f645e11da06c5d87 # This must allow to create PRs on public GitHub repositories. BTW, this access token doesn't work ;)
     tempOutputJsonPath: ./temp_json/ # This is where the temporary JSONs are saved. Will be deleted when script is done.
     outputYamlPath: ../api_docs/ # This is where the YAMLs are saved. Essential for the diff.
     mdPagesPath: ../pages/api_explorer/ # This is where the md pages will be created if they don't already exist.
