@@ -23,9 +23,7 @@ def file_exists(file_to_find, debug=False):
     return os.path.exists(file_to_find)
 
 
-def load_yaml_config_file(file_to_load, debug=False):
-    if debug:
-        print "Loading %s config file..." % file_to_load
+def load_yaml_config_file(file_to_load):
     stream = open(file_to_load, "r")
     config_data = yaml.load(stream)
     stream.close()

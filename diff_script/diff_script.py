@@ -8,9 +8,9 @@ from datetime import datetime
 
 
 CONFIG_FILE = "./diff_script_config.yml"
-DEBUG = True
 
-configData = fileHelper.load_yaml_config_file(CONFIG_FILE, DEBUG)
+configData = fileHelper.load_yaml_config_file(CONFIG_FILE)
+DEBUG = configData["debug"]
 
 
 class Repository:

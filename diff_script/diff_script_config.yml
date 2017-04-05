@@ -1,4 +1,5 @@
 ---
+  debug: True
   repository:
     accessToken: 0a451742631a7f3e51594c90f645e11da06c5d87
     tempOutputJsonPath: ./temp_json/
