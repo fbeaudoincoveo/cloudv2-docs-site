@@ -1,16 +1,381 @@
 ---
-  swagger: "2.0"
   info: 
-    description: "API for Coveo Platform"
-    title: "Coveo Platform API"
     termsOfService: "Coveo API terms of service"
     contact: 
-      name: "Coveo"
       url: "www.coveo.com"
+      name: "Coveo"
       email: "support@coveo.com"
+    description: "API for Coveo Platform"
     license: {}
-  host: "platform.cloud.coveo.com:443"
-  basePath: "/"
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/saml/identityproviders: 
+      post: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+            description: "samlIdentityProviderModel"
+            required: true
+            name: "samlIdentityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "createIdentityProvider"
+        summary: "Add an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createIdentityProviderUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SamlIdentityProviderModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getIdentityProviders"
+        summary: "Get all identity providers for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIdentityProvidersUsingGET"
+    /rest/oauth2clients/{clientId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OAuth2ClientModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "clientId"
+            required: false
+            type: "string"
+            name: "clientId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "OAuth2 Clients"
+        x-pretty-name: "getClient"
+        summary: "Get oauth2 client in authorization server"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getClientUsingGET"
+    /rest/organizations/{organizationId}/saml/identityproviders/{id}: 
+      put: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "id"
+            required: false
+            type: "string"
+            name: "id"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+            description: "samlIdentityProviderModel"
+            required: true
+            name: "samlIdentityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "updateIdentityProvider"
+        summary: "Update an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateIdentityProviderUsingPUT"
+      delete: 
+        responses: 
+          200: 
+            description: "OK"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "id"
+            required: false
+            type: "string"
+            name: "id"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "deleteIdentityProvider"
+        summary: "Delete an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteIdentityProviderUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "id"
+            required: false
+            type: "string"
+            name: "id"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getIdentityProvider"
+        summary: "Get an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIdentityProviderUsingGET"
+    /rest/users/{username}/realms: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Users"
+        x-pretty-name: "getAllExistingRealmsForUser"
+        summary: "Get a single user's realms"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAllExistingRealmsForUserUsingGET"
+    /rest/oauth2clients: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OAuth2ClientModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "OAuth2 Clients"
+        x-pretty-name: "getClients"
+        summary: "Get all oauth2 clients in authorization server"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getClientsUsingGET"
+    /rest/users/{username}: 
+      put: 
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/UserModel"
+            description: "userModel"
+            required: true
+            name: "userModel"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Users"
+        summary: "updateUserAdditionalInformation"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateUserAdditionalInformationUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/UserModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Username of the user"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Users"
+        x-pretty-name: "getUser"
+        summary: "Get a single user"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getUserUsingGET"
   tags: 
     - 
       name: "Saml Identity Providers"
@@ -21,382 +386,78 @@
     - 
       name: "Users"
       description: "User Resource"
-  paths: 
-    /rest/oauth2clients: 
-      get: 
-        tags: 
-          - "OAuth2 Clients"
-        summary: "Get all oauth2 clients in authorization server"
-        operationId: "getClientsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/OAuth2ClientModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getClients"
-    /rest/oauth2clients/{clientId}: 
-      get: 
-        tags: 
-          - "OAuth2 Clients"
-        summary: "Get oauth2 client in authorization server"
-        operationId: "getClientUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "clientId"
-            in: "path"
-            description: "clientId"
-            required: false
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/OAuth2ClientModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getClient"
-    /rest/organizations/{organizationId}/saml/identityproviders: 
-      get: 
-        tags: 
-          - "Saml Identity Providers"
-        summary: "Get all identity providers for this organization"
-        operationId: "getIdentityProvidersUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: false
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SamlIdentityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIdentityProviders"
-      post: 
-        tags: 
-          - "Saml Identity Providers"
-        summary: "Add an identity provider"
-        operationId: "createIdentityProviderUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: false
-            type: "string"
-          - 
-            in: "body"
-            name: "samlIdentityProviderModel"
-            description: "samlIdentityProviderModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "createIdentityProvider"
-    /rest/organizations/{organizationId}/saml/identityproviders/{id}: 
-      get: 
-        tags: 
-          - "Saml Identity Providers"
-        summary: "Get an identity provider"
-        operationId: "getIdentityProviderUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: false
-            type: "string"
-          - 
-            name: "id"
-            in: "path"
-            description: "id"
-            required: false
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIdentityProvider"
-      put: 
-        tags: 
-          - "Saml Identity Providers"
-        summary: "Update an identity provider"
-        operationId: "updateIdentityProviderUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: false
-            type: "string"
-          - 
-            name: "id"
-            in: "path"
-            description: "id"
-            required: false
-            type: "string"
-          - 
-            in: "body"
-            name: "samlIdentityProviderModel"
-            description: "samlIdentityProviderModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateIdentityProvider"
-      delete: 
-        tags: 
-          - "Saml Identity Providers"
-        summary: "Delete an identity provider"
-        operationId: "deleteIdentityProviderUsingDELETE"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: false
-            type: "string"
-          - 
-            name: "id"
-            in: "path"
-            description: "id"
-            required: false
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "deleteIdentityProvider"
-    /rest/users/{username}: 
-      get: 
-        tags: 
-          - "Users"
-        summary: "Get a single user"
-        operationId: "getUserUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "username"
-            in: "path"
-            description: "Username of the user"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/UserModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getUser"
-      put: 
-        tags: 
-          - "Users"
-        summary: "updateUserAdditionalInformation"
-        operationId: "updateUserAdditionalInformationUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "username"
-            in: "path"
-            description: "username"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "userModel"
-            description: "userModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/UserModel"
-        responses: 
-          200: 
-            description: "OK"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-    /rest/users/{username}/realms: 
-      get: 
-        tags: 
-          - "Users"
-        summary: "Get a single user's realms"
-        operationId: "getAllExistingRealmsForUserUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "application/json"
-        parameters: 
-          - 
-            name: "username"
-            in: "path"
-            description: "username"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/RealmModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getAllExistingRealmsForUser"
+  basePath: "/"
   securityDefinitions: 
     oauth2: 
+      flow: "implicit"
       type: "oauth2"
       authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
-      flow: "implicit"
       scopes: 
         full: "Required"
+  host: "platform.cloud.coveo.com:443"
   definitions: 
+    SamlIdentityProviderModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        postBindingEndpoint: 
+          type: "string"
+        x509Certificate: 
+          type: "string"
+        entityId: 
+          type: "string"
+        id: 
+          type: "string"
+    UserModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/UserRealmModel"
+          type: "array"
+        socialUser: 
+          type: "boolean"
+        enabled: 
+          type: "boolean"
+        additionalInformation: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        emailAliases: 
+          items: 
+            type: "string"
+          type: "array"
+        samlIdentityProviderId: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        locked: 
+          type: "boolean"
+        providerUsername: 
+          type: "string"
+        expired: 
+          type: "boolean"
+        email: 
+          type: "string"
+        credentialsExpired: 
+          type: "boolean"
     RealmModel: 
       type: "object"
       properties: 
@@ -405,7 +466,6 @@
         id: 
           type: "string"
         provider: 
-          type: "string"
           enum: 
             - "SALESFORCE"
             - "SALESFORCE_SANDBOX"
@@ -413,124 +473,64 @@
             - "OFFICE365"
             - "SAML"
             - "OTHER"
-    UserModel: 
-      type: "object"
-      properties: 
-        additionalInformation: 
-          type: "object"
-          additionalProperties: 
-            type: "string"
-        credentialsExpired: 
-          type: "boolean"
-        displayName: 
-          type: "string"
-        email: 
-          type: "string"
-        emailAliases: 
-          type: "array"
-          items: 
-            type: "string"
-        enabled: 
-          type: "boolean"
-        expired: 
-          type: "boolean"
-        lastLogin: 
-          type: "integer"
-          format: "int64"
-        locked: 
-          type: "boolean"
-        provider: 
-          type: "string"
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
-        providerUsername: 
-          type: "string"
-        realms: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/UserRealmModel"
-        samlIdentityProviderId: 
-          type: "string"
-        socialUser: 
-          type: "boolean"
-        username: 
-          type: "string"
-    SamlIdentityProviderModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        entityId: 
-          type: "string"
-        id: 
-          type: "string"
-        organizationId: 
-          type: "string"
-        postBindingEndpoint: 
-          type: "string"
-        x509Certificate: 
           type: "string"
     OAuth2ClientModel: 
       type: "object"
       properties: 
-        accessTokenValiditySeconds: 
-          type: "integer"
-          format: "int32"
-        additionalInformation: 
-          type: "object"
-        allowedIPs: 
-          type: "array"
+        scopes: 
           items: 
             type: "string"
-        authorizedGrantTypes: 
           type: "array"
-          items: 
-            type: "string"
         autoApproveAllScopes: 
           type: "boolean"
-        autoApproveScopes: 
-          type: "array"
+        registeredRedirectUri: 
           items: 
             type: "string"
-        clientAuthorities: 
           type: "array"
+        allowedIPs: 
           items: 
             type: "string"
-        clientId: 
-          type: "string"
+          type: "array"
+        additionalInformation: 
+          type: "object"
         enabled: 
           type: "boolean"
         organizationRequiredInTokens: 
           type: "boolean"
+        clientId: 
+          type: "string"
+        resourceIds: 
+          items: 
+            type: "string"
+          type: "array"
+        accessTokenValiditySeconds: 
+          type: "integer"
+          format: "int32"
+        tokensRevokableOnLogoutEndpoint: 
+          type: "boolean"
+        clientAuthorities: 
+          items: 
+            type: "string"
+          type: "array"
+        authorizedGrantTypes: 
+          items: 
+            type: "string"
+          type: "array"
+        autoApproveScopes: 
+          items: 
+            type: "string"
+          type: "array"
         refreshTokenValiditySeconds: 
           type: "integer"
           format: "int32"
-        registeredRedirectUri: 
-          type: "array"
-          items: 
-            type: "string"
-        resourceIds: 
-          type: "array"
-          items: 
-            type: "string"
-        scopes: 
-          type: "array"
-          items: 
-            type: "string"
-        tokensRevokableOnLogoutEndpoint: 
-          type: "boolean"
     UserRealmModel: 
       type: "object"
       properties: 
         member: 
           type: "boolean"
-        realm: 
-          $ref: "#/definitions/RealmModel"
         realmModel: 
           $ref: "#/definitions/RealmModel"
+        realm: 
+          $ref: "#/definitions/RealmModel"
+  swagger: "2.0"
 

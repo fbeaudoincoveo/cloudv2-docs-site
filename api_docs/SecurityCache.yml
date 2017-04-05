@@ -1,192 +1,91 @@
 ---
-  swagger: "2.0"
   info: 
-    description: "API for Coveo Platform"
-    title: "Coveo Platform API"
     termsOfService: "Coveo API terms of service"
     contact: 
-      name: "Coveo"
       url: "www.coveo.com"
+      name: "Coveo"
       email: "support@coveo.com"
+    description: "API for Coveo Platform"
     license: {}
-  host: "platform.cloud.coveo.com:443"
-  basePath: "/"
-  tags: 
-    - 
-      name: "Security Providers"
-      description: "Security Provider Service Resource"
-    - 
-      name: "Security Cache"
-      description: "Security Cache Service Resource"
+    title: "Coveo Platform API"
   paths: 
-    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get all security providers for an organization's cluster"
-        operationId: "getSecurityProvidersForClusterUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "organizationClusterId"
-            in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
+    /rest/organizations/{organizationId}/securitycache/refresh: 
+      post: 
         responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSecurityProvidersForCluster"
-    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get a single security provider for an organization's cluster"
-        operationId: "getSecurityProviderForClusterUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "organizationClusterId"
-            in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSecurityProviderForCluster"
-      put: 
-        tags: 
-          - "Security Providers"
-        summary: "Create or update a security provider for an organization's cluster"
-        operationId: "createOrUpdateSecurityProviderForClusterUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "organizationClusterId"
-            in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "securityProviderModel"
-            description: "securityProviderModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
           201: 
             description: "Created"
+          204: 
+            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refresh"
+        summary: "Triggers a refresh on the security cache"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "createOrUpdateSecurityProviderForCluster"
-      delete: 
-        tags: 
-          - "Security Providers"
-        summary: "Remove a security provider from an organization's cluster"
-        operationId: "removeSecurityProviderForClusterUsingDELETE"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
+        operationId: "refreshUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "organizationClusterId"
+            name: "organizationId"
             in: "path"
-            description: "organizationClusterId"
+          - 
+            description: "providerId"
             required: true
             type: "string"
-          - 
-            name: "securityProviderId"
+            name: "providerId"
             in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refreshProvider"
+        summary: "Triggers a refresh on a security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshProviderUsingPOST"
+    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/raw: 
+      put: 
         responses: 
+          201: 
+            description: "Created"
           204: 
             description: "No Content"
             schema: 
@@ -195,103 +94,52 @@
             description: "Unauthorized"
           403: 
             description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "removeSecurityProviderForCluster"
-    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/raw: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get the raw configuration of a security provider for an organization's cluster"
-        operationId: "getSecurityProviderRawForClusterUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "organizationClusterId"
-            in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
           404: 
             description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSecurityProviderRawForCluster"
-      put: 
-        tags: 
-          - "Security Providers"
-        summary: "Create or update the raw configuration of a security provider for an organization's cluster"
-        operationId: "createOrUpdateSecurityProviderRawForClusterUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "organizationClusterId"
+            name: "organizationId"
             in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
           - 
-            name: "securityProviderId"
-            in: "path"
             description: "securityProviderId"
             required: true
             type: "string"
+            name: "securityProviderId"
+            in: "path"
           - 
-            name: "forceUpdate"
-            in: "query"
             description: "forceUpdate"
-            required: false
-            type: "boolean"
             default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "forceUpdate"
           - 
-            in: "body"
-            name: "securityProviderConfig"
-            description: "securityProviderConfig"
-            required: true
             schema: 
               $ref: "#/definitions/RawSecurityProviderConfig"
+            description: "securityProviderConfig"
+            required: true
+            name: "securityProviderConfig"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProviderRaw"
+        summary: "Create or update the raw configuration of a security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderRawUsingPUT"
+      get: 
         responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
+          200: 
+            description: "OK"
             schema: 
               $ref: "#/definitions/SecurityProviderModel"
           401: 
@@ -300,674 +148,132 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviderRaw"
+        summary: "Get the raw configuration of a security provider for an organization"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "createOrUpdateSecurityProviderRawForCluster"
-    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
-      delete: 
-        tags: 
-          - "Security Providers"
-        summary: "Remove a reference from a security provider"
-        operationId: "removeReferenceFromSecurityProviderForClusterUsingDELETE"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
+        operationId: "getSecurityProviderRawUsingGET"
+    /rest/organizations/{organizationId}/securitycache/refresh/entity: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "organizationClusterId"
+            name: "organizationId"
             in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityCacheMemberModel"
+            description: "memberModel"
+            required: true
+            name: "memberModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refreshEntity"
+        summary: "Refreshes a single entity in the security cache"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshEntityUsingPOST"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
             description: "organizationClusterId"
             required: true
             type: "string"
-          - 
-            name: "securityProviderId"
+            name: "organizationClusterId"
             in: "path"
+          - 
             description: "securityProviderId"
             required: true
             type: "string"
-          - 
-            name: "referenceType"
+            name: "securityProviderId"
             in: "path"
-            description: "referenceType"
-            required: true
-            type: "string"
+          - 
             enum: 
               - "SOURCE"
               - "SECURITY_PROVIDER"
-          - 
-            name: "referenceId"
+            description: "referenceType"
+            required: true
             in: "path"
+            type: "string"
+            name: "referenceType"
+          - 
             description: "referenceId"
             required: true
             type: "string"
-        responses: 
-          204: 
-            description: "No Content"
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
+            name: "referenceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
         x-pretty-name: "removeReferenceFromSecurityProviderForCluster"
-    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/sources/{sourceId}/securityproviders/: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get all security providers for a source in an organization's cluster"
-        operationId: "getSecurityProvidersForSourceUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "organizationClusterId"
-            in: "path"
-            description: "organizationClusterId"
-            required: true
-            type: "string"
-          - 
-            name: "sourceId"
-            in: "path"
-            description: "sourceId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
+        summary: "Remove a reference from a security provider"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "getSecurityProvidersForSource"
-    /rest/organizations/{organizationId}/securitycache/entities/{providerId}: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get the entities for a specified security provider"
-        operationId: "getEntitiesUsingGET"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "providerId"
-            in: "path"
-            description: "providerId"
-            required: true
-            type: "string"
-          - 
-            name: "states"
-            in: "query"
-            description: "states"
-            required: false
-            type: "array"
-            items: 
-              type: "string"
-              enum: 
-                - "UNKNOWN"
-                - "UP_TO_DATE"
-                - "NOT_UPDATED"
-                - "OUT_OF_DATE"
-                - "IN_ERROR"
-                - "DISABLED"
-            collectionFormat: "multi"
-            enum: 
-              - "UNKNOWN"
-              - "UP_TO_DATE"
-              - "NOT_UPDATED"
-              - "OUT_OF_DATE"
-              - "IN_ERROR"
-              - "DISABLED"
-          - 
-            name: "page"
-            in: "query"
-            description: "page"
-            required: false
-            type: "integer"
-            default: 0
-            format: "int32"
-          - 
-            name: "perPage"
-            in: "query"
-            description: "perPage"
-            required: false
-            type: "integer"
-            default: 100
-            format: "int32"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SIDModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getEntities"
-    /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get the members for a specified security provider"
-        operationId: "getMembersUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "providerId"
-            in: "path"
-            description: "providerId"
-            required: true
-            type: "string"
-          - 
-            name: "states"
-            in: "query"
-            description: "states"
-            required: false
-            type: "array"
-            items: 
-              type: "string"
-              enum: 
-                - "UNKNOWN"
-                - "UP_TO_DATE"
-                - "NOT_UPDATED"
-                - "OUT_OF_DATE"
-                - "IN_ERROR"
-                - "DISABLED"
-            collectionFormat: "multi"
-            enum: 
-              - "UNKNOWN"
-              - "UP_TO_DATE"
-              - "NOT_UPDATED"
-              - "OUT_OF_DATE"
-              - "IN_ERROR"
-              - "DISABLED"
-          - 
-            name: "page"
-            in: "query"
-            description: "page"
-            required: false
-            type: "integer"
-            default: 0
-            format: "int32"
-          - 
-            name: "perPage"
-            in: "query"
-            description: "perPage"
-            required: false
-            type: "integer"
-            default: 100
-            format: "int32"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                type: "string"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getMembers"
-    /rest/organizations/{organizationId}/securitycache/refresh: 
-      post: 
-        tags: 
-          - "Security Cache"
-        summary: "Triggers a refresh on the security cache"
-        operationId: "refreshUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "refresh"
-    /rest/organizations/{organizationId}/securitycache/refresh/entity: 
-      post: 
-        tags: 
-          - "Security Cache"
-        summary: "Refreshes a single entity in the security cache"
-        operationId: "refreshEntityUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "memberModel"
-            description: "memberModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/SecurityCacheMemberModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "refreshEntity"
-    /rest/organizations/{organizationId}/securitycache/schedule: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get the security cache refresh schedule"
-        operationId: "getScheduleUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        deprecated: true
-        x-pretty-name: "getSchedule"
-      put: 
-        tags: 
-          - "Security Cache"
-        summary: "Update the security cache refresh schedule"
-        operationId: "updateRefreshScheduleUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "scheduleModel"
-            description: "scheduleModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        deprecated: true
-        x-pretty-name: "updateRefreshSchedule"
-    /rest/organizations/{organizationId}/securitycache/schedules: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get the security cache schedules"
-        operationId: "getSchedulesUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSchedules"
-    /rest/organizations/{organizationId}/securitycache/schedules/{scheduleId}: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get a security cache schedule"
-        operationId: "getScheduleByIdUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "scheduleId"
-            in: "path"
-            description: "scheduleId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getScheduleById"
-      put: 
-        tags: 
-          - "Security Cache"
-        summary: "Update a security cache schedule"
-        operationId: "updateScheduleUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "scheduleId"
-            in: "path"
-            description: "scheduleId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "scheduleModel"
-            description: "scheduleModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ScheduleModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateSchedule"
-    /rest/organizations/{organizationId}/securitycache/status: 
-      get: 
-        tags: 
-          - "Security Cache"
-        summary: "Get the security cache status"
-        operationId: "getStatusUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SecurityCacheStatusModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getStatus"
-    /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
-      post: 
-        tags: 
-          - "Security Cache"
-        summary: "Triggers a refresh on a security provider"
-        operationId: "refreshProviderUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "providerId"
-            in: "path"
-            description: "providerId"
-            required: true
-            type: "string"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "refreshProvider"
-    /rest/organizations/{organizationId}/securityproviders: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get all security providers for an organization"
-        operationId: "getSecurityProvidersUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSecurityProviders"
+        operationId: "removeReferenceFromSecurityProviderForClusterUsingDELETE"
     /rest/organizations/{organizationId}/securityproviders/snapshots/{snapshotId}: 
       get: 
-        tags: 
-          - "Security Providers"
-        summary: "Gets a security provider config snapshot"
-        operationId: "getSnapshotUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "snapshotId"
-            in: "path"
-            description: "snapshotId"
-            required: true
-            type: "string"
         responses: 
           200: 
             description: "OK"
@@ -979,84 +285,86 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "snapshotId"
+            required: true
+            type: "string"
+            name: "snapshotId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSnapshot"
+        summary: "Gets a security provider config snapshot"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "getSnapshot"
-    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get a single security provider for an organization"
-        operationId: "getSecurityProviderUsingGET"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
+        operationId: "getSnapshotUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/sources/{sourceId}/securityproviders/: 
+      get: 
         responses: 
           200: 
             description: "OK"
             schema: 
-              $ref: "#/definitions/SecurityProviderModel"
+              items: 
+                $ref: "#/definitions/SecurityProviderModel"
+              type: "array"
           401: 
             description: "Unauthorized"
           403: 
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProvidersForSource"
+        summary: "Get all security providers for a source in an organization's cluster"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "getSecurityProvider"
-      put: 
-        tags: 
-          - "Security Providers"
-        summary: "Create or update a security provider for an organization"
-        operationId: "createOrUpdateSecurityProviderUsingPUT"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "securityProviderModel"
-            description: "securityProviderModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
+        operationId: "getSecurityProvidersForSourceUsingGET"
+    /rest/organizations/{organizationId}/securitycache/schedule: 
+      put: 
         responses: 
           200: 
             description: "OK"
             schema: 
-              $ref: "#/definitions/SecurityProviderModel"
+              $ref: "#/definitions/ScheduleModel"
           201: 
             description: "Created"
           401: 
@@ -1065,34 +373,341 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "scheduleModel"
+            required: true
+            name: "scheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "updateRefreshSchedule"
+        summary: "Update the security cache refresh schedule"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "createOrUpdateSecurityProvider"
-      delete: 
-        tags: 
-          - "Security Providers"
-        summary: "Remove a security provider from an organization"
-        operationId: "removeSecurityProviderUsingDELETE"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
+        operationId: "updateRefreshScheduleUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "securityProviderId"
+            name: "organizationId"
             in: "path"
-            description: "securityProviderId"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getSchedule"
+        summary: "Get the security cache refresh schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getScheduleUsingGET"
+    /rest/organizations/{organizationId}/securityproviders: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SecurityProviderModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
             required: true
             type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviders"
+        summary: "Get all security providers for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProvidersUsingGET"
+    /rest/organizations/{organizationId}/securitycache/schedules: 
+      get: 
         responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getSchedules"
+        summary: "Get the security cache schedules"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSchedulesUsingGET"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                type: "string"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getMembers"
+        summary: "Get the members for a specified security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMembersUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SecurityProviderModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProvidersForCluster"
+        summary: "Get all security providers for an organization's cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProvidersForClusterUsingGET"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SIDModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getEntities"
+        summary: "Get the entities for a specified security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getEntitiesUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/raw: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
           204: 
             description: "No Content"
             schema: 
@@ -1101,91 +716,58 @@
             description: "Unauthorized"
           403: 
             description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "removeSecurityProvider"
-    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/raw: 
-      get: 
-        tags: 
-          - "Security Providers"
-        summary: "Get the raw configuration of a security provider for an organization"
-        operationId: "getSecurityProviderRawUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "securityProviderId"
-            in: "path"
-            description: "securityProviderId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SecurityProviderModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
           404: 
             description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSecurityProviderRaw"
-      put: 
-        tags: 
-          - "Security Providers"
-        summary: "Create or update the raw configuration of a security provider for an organization"
-        operationId: "createOrUpdateSecurityProviderRawUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "securityProviderId"
+            name: "organizationId"
             in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
             description: "securityProviderId"
             required: true
             type: "string"
+            name: "securityProviderId"
+            in: "path"
           - 
-            name: "forceUpdate"
-            in: "query"
             description: "forceUpdate"
-            required: false
-            type: "boolean"
             default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "forceUpdate"
           - 
-            in: "body"
-            name: "securityProviderConfig"
-            description: "securityProviderConfig"
-            required: true
             schema: 
               $ref: "#/definitions/RawSecurityProviderConfig"
+            description: "securityProviderConfig"
+            required: true
+            name: "securityProviderConfig"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProviderRawForCluster"
+        summary: "Create or update the raw configuration of a security provider for an organization's cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderRawForClusterUsingPUT"
+      get: 
         responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
+          200: 
+            description: "OK"
             schema: 
               $ref: "#/definitions/SecurityProviderModel"
           401: 
@@ -1194,49 +776,300 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviderRawForCluster"
+        summary: "Get the raw configuration of a security provider for an organization's cluster"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "createOrUpdateSecurityProviderRaw"
-    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
-      delete: 
-        tags: 
-          - "Security Providers"
-        summary: "Remove a reference from a security provider"
-        operationId: "removeReferenceFromSecurityProviderUsingDELETE"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
+        operationId: "getSecurityProviderRawForClusterUsingGET"
+    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}: 
+      put: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "securityProviderId"
+            name: "organizationId"
             in: "path"
+          - 
             description: "securityProviderId"
             required: true
             type: "string"
-          - 
-            name: "referenceType"
+            name: "securityProviderId"
             in: "path"
-            description: "referenceType"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+            description: "securityProviderModel"
+            required: true
+            name: "securityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProvider"
+        summary: "Create or update a security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
             required: true
             type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "removeSecurityProvider"
+        summary: "Remove a security provider from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeSecurityProviderUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProvider"
+        summary: "Get a single security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProviderUsingGET"
+    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+          - 
             enum: 
               - "SOURCE"
               - "SECURITY_PROVIDER"
-          - 
-            name: "referenceId"
+            description: "referenceType"
+            required: true
             in: "path"
+            type: "string"
+            name: "referenceType"
+          - 
             description: "referenceId"
             required: true
             type: "string"
+            name: "referenceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "removeReferenceFromSecurityProvider"
+        summary: "Remove a reference from a security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeReferenceFromSecurityProviderUsingDELETE"
+    /rest/organizations/{organizationId}/securitycache/status: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityCacheStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getStatus"
+        summary: "Get the security cache status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getStatusUsingGET"
+    /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}: 
+      put: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+            description: "securityProviderModel"
+            required: true
+            name: "securityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProviderForCluster"
+        summary: "Create or update a security provider for an organization's cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderForClusterUsingPUT"
+      delete: 
         responses: 
           204: 
             description: "No Content"
@@ -1246,99 +1079,352 @@
             description: "Unauthorized"
           403: 
             description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "removeSecurityProviderForCluster"
+        summary: "Remove a security provider from an organization's cluster"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "removeReferenceFromSecurityProvider"
+        consumes: 
+          - "application/json"
+        operationId: "removeSecurityProviderForClusterUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "organizationClusterId"
+            required: true
+            type: "string"
+            name: "organizationClusterId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviderForCluster"
+        summary: "Get a single security provider for an organization's cluster"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProviderForClusterUsingGET"
+    /rest/organizations/{organizationId}/securitycache/schedules/{scheduleId}: 
+      put: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "scheduleModel"
+            required: true
+            name: "scheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "updateSchedule"
+        summary: "Update a security cache schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateScheduleUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getScheduleById"
+        summary: "Get a security cache schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getScheduleByIdUsingGET"
+  tags: 
+    - 
+      name: "Security Providers"
+      description: "Security Provider Service Resource"
+    - 
+      name: "Security Cache"
+      description: "Security Cache Service Resource"
+  basePath: "/"
   securityDefinitions: 
     oauth2: 
+      flow: "implicit"
       type: "oauth2"
       authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
-      flow: "implicit"
       scopes: 
         full: "Required"
+  host: "platform.cloud.coveo.com:443"
   definitions: 
-    UserIdentity: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        password: 
-          type: "string"
-        userName: 
-          type: "string"
-    UserIdentityModel: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        password: 
-          type: "string"
-        username: 
-          type: "string"
-    SecurityProviderStatisticsModel: 
-      type: "object"
-      properties: 
-        numberOfEntitiesByState: 
-          type: "object"
-          additionalProperties: 
-            type: "integer"
-            format: "int32"
-        numberOfEntitiesInError: 
-          type: "integer"
-          format: "int32"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
     SecurityCacheStatusModel: 
       type: "object"
       properties: 
         currentStatus: 
           $ref: "#/definitions/SecurityCacheCurrentStatusModel"
+        statistics: 
+          $ref: "#/definitions/SecurityCacheStatisticsModel"
+        organizationClusterId: 
+          type: "string"
         lastRefreshOperation: 
           $ref: "#/definitions/SecurityCacheLastRefreshOperationModel"
         nextRefreshOperation: 
           $ref: "#/definitions/NextOperation"
-        organizationClusterId: 
-          type: "string"
-        statistics: 
-          $ref: "#/definitions/SecurityCacheStatisticsModel"
-    SecurityCacheLastRefreshOperationModel: 
+    UserIdentity: 
       type: "object"
       properties: 
-        errorCode: 
+        userName: 
           type: "string"
-        id: 
+        password: 
           type: "string"
-        numberOfEntitiesProcessed: 
+        name: 
+          type: "string"
+    UserIdentityModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        password: 
+          type: "string"
+        name: 
+          type: "string"
+    HourMinutePair: 
+      type: "object"
+      properties: 
+        minute: 
           type: "integer"
           format: "int32"
-        operationType: 
-          type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        result: 
-          type: "string"
-        timestamp: 
+        hour: 
           type: "integer"
-          format: "int64"
-    SecurityProviderCurrentStatusModel: 
+          format: "int32"
+    Parameter: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    SecurityCacheMemberInfoModel: 
+      type: "object"
+      properties: 
+        value: 
+          type: "string"
+        key: 
+          type: "string"
+    ScheduleFrequency: 
+      type: "object"
+      properties: 
+        monthDay: 
+          type: "integer"
+          format: "int32"
+        hourMinute: 
+          $ref: "#/definitions/HourMinutePair"
+        weekDays: 
+          items: 
+            enum: 
+              - "MONDAY"
+              - "TUESDAY"
+              - "WEDNESDAY"
+              - "THURSDAY"
+              - "FRIDAY"
+              - "SATURDAY"
+              - "SUNDAY"
+            type: "string"
+          type: "array"
+        value: 
+          type: "integer"
+          format: "int32"
+        type: 
+          enum: 
+            - "MINUTELY"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+            - "MONTHLY"
+          type: "string"
+    SecurityProviderModel: 
+      type: "object"
+      properties: 
+        statistics: 
+          $ref: "#/definitions/SecurityProviderStatisticsModel"
+        displayName: 
+          type: "string"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/ParameterModel"
+          type: "object"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+          type: "string"
+        organizationClusterId: 
+          type: "string"
+        caseSensitive: 
+          type: "boolean"
+        cascadingSecurityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/CascadingSecurityProvider"
+          type: "object"
+        currentStatus: 
+          $ref: "#/definitions/SecurityProviderCurrentStatusModel"
+        nodeRequired: 
+          type: "boolean"
+        lastRefreshOperation: 
+          $ref: "#/definitions/SecurityProviderLastRefreshOperationModel"
+        id: 
+          type: "string"
+        referencedBy: 
+          items: 
+            $ref: "#/definitions/SecurityProviderReferenceModel"
+          type: "array"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentityModel"
+          type: "object"
+    SecurityCacheCurrentStatusModel: 
       type: "object"
       properties: 
         numberOfEntitiesInError: 
           type: "integer"
           format: "int32"
-        numberOfEntitiesProcessed: 
-          type: "integer"
-          format: "int32"
         refreshType: 
-          type: "string"
           enum: 
             - "REBUILD"
             - "FULL_REFRESH"
@@ -1346,11 +1432,8 @@
             - "DELETION"
             - "SECURITY_CACHE_REFRESH"
             - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
-        type: 
           type: "string"
+        type: 
           enum: 
             - "CREATING"
             - "DISABLED"
@@ -1363,35 +1446,40 @@
             - "PAUSING"
             - "RESUMING"
             - "CANCELING_REFRESH"
-    HourMinutePair: 
-      type: "object"
-      properties: 
-        hour: 
-          type: "integer"
-          format: "int32"
-        minute: 
-          type: "integer"
-          format: "int32"
-    DataFile: 
-      type: "object"
-      properties: 
-        data: 
           type: "string"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+    SecurityProviderReferenceModel: 
+      type: "object"
+      properties: 
+        attributes: 
+          type: "object"
+        type: 
+          enum: 
+            - "SOURCE"
+            - "SECURITY_PROVIDER"
+          type: "string"
+        id: 
+          type: "string"
+    ParameterModel: 
+      type: "object"
+      properties: 
         sensitive: 
           type: "boolean"
+        value: 
+          type: "string"
     ScheduleModel: 
       type: "object"
       properties: 
-        enabled: 
-          type: "boolean"
-        frequency: 
-          $ref: "#/definitions/ScheduleFrequency"
-        id: 
-          type: "string"
         organizationId: 
           type: "string"
-        refreshType: 
+        resourceId: 
           type: "string"
+        refreshType: 
           enum: 
             - "REBUILD"
             - "FULL_REFRESH"
@@ -1399,27 +1487,88 @@
             - "DELETION"
             - "SECURITY_CACHE_REFRESH"
             - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        resourceId: 
           type: "string"
+        enabled: 
+          type: "boolean"
+        frequency: 
+          $ref: "#/definitions/ScheduleFrequency"
         scheduleType: 
-          type: "string"
           enum: 
             - "SECURITY_CACHE"
             - "SOURCE"
+          type: "string"
+        id: 
+          type: "string"
+    SecurityProvider: 
+      type: "object"
+      properties: 
+        typeName: 
+          type: "string"
+        name: 
+          type: "string"
+    NextOperation: 
+      type: "object"
+      properties: 
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+    SecurityCacheStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesByState: 
+          additionalProperties: 
+            type: "integer"
+            format: "int32"
+          type: "object"
+        numberOfPermissionModels: 
+          type: "integer"
+          format: "int32"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        numberOfProviders: 
+          type: "integer"
+          format: "int32"
+    SecurityCacheLastRefreshOperationModel: 
+      type: "object"
+      properties: 
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+        errorCode: 
+          type: "string"
+        result: 
+          type: "string"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        id: 
+          type: "string"
     SecurityCacheMemberModel: 
       type: "object"
       properties: 
-        infos: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/SecurityCacheMemberInfoModel"
-        lastUpdateDate: 
-          type: "integer"
-          format: "int64"
-        lastUpdateErrorDetail: 
-          type: "string"
         lastUpdateResult: 
-          type: "string"
           enum: 
             - "NONE"
             - "SUCCESS"
@@ -1431,12 +1580,15 @@
             - "SECURITY_PROVIDER_IS_UNREACHABLE"
             - "SECURITY_PROVIDER_IS_NOT_READY"
             - "UNEXPECTED_ERROR"
+          type: "string"
         name: 
           type: "string"
-        provider: 
+        lastUpdateErrorDetail: 
           type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
         state: 
-          type: "string"
           enum: 
             - "UNKNOWN"
             - "UP_TO_DATE"
@@ -1444,84 +1596,15 @@
             - "OUT_OF_DATE"
             - "IN_ERROR"
             - "DISABLED"
+          type: "string"
+        provider: 
+          type: "string"
+        infos: 
+          items: 
+            $ref: "#/definitions/SecurityCacheMemberInfoModel"
+          type: "array"
         type: 
           type: "string"
-    ParameterModel: 
-      type: "object"
-      properties: 
-        sensitive: 
-          type: "boolean"
-        value: 
-          type: "string"
-    RawSecurityProviderConfig: 
-      type: "object"
-      properties: 
-        caseSensitive: 
-          type: "boolean"
-        dataFiles: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/DataFile"
-        dbConnectionString: 
-          type: "string"
-        displayName: 
-          type: "string"
-        indexIdentifier: 
-          type: "string"
-        name: 
-          type: "string"
-        nodeRequired: 
-          type: "boolean"
-        parameters: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/Parameter"
-        securityProviders: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/SecurityProvider"
-        type: 
-          type: "string"
-          enum: 
-            - "ACTIVE_DIRECTORY"
-            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
-            - "ALFRESCO"
-            - "BOX"
-            - "CLAIMS"
-            - "CLAIMS_TO_EMAIL"
-            - "CONFLUENCE"
-            - "CONFLUENCE2"
-            - "CUSTOM"
-            - "DATABASE"
-            - "DROPBOX_FOR_BUSINESS"
-            - "EMAIL"
-            - "EXCHANGE"
-            - "EXPANDED"
-            - "FILE_SYSTEM"
-            - "GOOGLE_DRIVE_DOMAIN_WIDE"
-            - "JIRA2"
-            - "JIRA_LEGACY"
-            - "JIVE"
-            - "LDAP"
-            - "LIFERAY"
-            - "MICROSOFT_DYNAMICS"
-            - "MICROSOFT_DYNAMICS_LEGACY"
-            - "OFFICE365"
-            - "OPENTEXT_CONTENT_SERVER"
-            - "ORACLE_KNOWLEDGE"
-            - "ORACLE_UCM"
-            - "SALESFORCE"
-            - "SALESFORCE_LEGACY"
-            - "SHAREPOINT"
-            - "SITECORE"
-            - "SITECORE_LEGACY"
-            - "WEBSPHERE_WCM"
-            - "WINDCHILL"
-            - "YAMMER"
-        userIdentities: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/UserIdentity"
     SIDModel: 
       type: "object"
       properties: 
@@ -1529,69 +1612,20 @@
           type: "string"
         provider: 
           type: "string"
-    CascadingSecurityProvider: 
+    DataFile: 
       type: "object"
       properties: 
-        id: 
+        sensitive: 
+          type: "boolean"
+        data: 
           type: "string"
-        name: 
-          type: "string"
-        type: 
-          type: "string"
-          enum: 
-            - "ACTIVE_DIRECTORY"
-            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
-            - "ALFRESCO"
-            - "BOX"
-            - "CLAIMS"
-            - "CLAIMS_TO_EMAIL"
-            - "CONFLUENCE"
-            - "CONFLUENCE2"
-            - "CUSTOM"
-            - "DATABASE"
-            - "DROPBOX_FOR_BUSINESS"
-            - "EMAIL"
-            - "EXCHANGE"
-            - "EXPANDED"
-            - "FILE_SYSTEM"
-            - "GOOGLE_DRIVE_DOMAIN_WIDE"
-            - "JIRA2"
-            - "JIRA_LEGACY"
-            - "JIVE"
-            - "LDAP"
-            - "LIFERAY"
-            - "MICROSOFT_DYNAMICS"
-            - "MICROSOFT_DYNAMICS_LEGACY"
-            - "OFFICE365"
-            - "OPENTEXT_CONTENT_SERVER"
-            - "ORACLE_KNOWLEDGE"
-            - "ORACLE_UCM"
-            - "SALESFORCE"
-            - "SALESFORCE_LEGACY"
-            - "SHAREPOINT"
-            - "SITECORE"
-            - "SITECORE_LEGACY"
-            - "WEBSPHERE_WCM"
-            - "WINDCHILL"
-            - "YAMMER"
-    SecurityProvider: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        typeName: 
-          type: "string"
-    SecurityCacheCurrentStatusModel: 
+    SecurityProviderCurrentStatusModel: 
       type: "object"
       properties: 
         numberOfEntitiesInError: 
           type: "integer"
           format: "int32"
-        numberOfEntitiesProcessed: 
-          type: "integer"
-          format: "int32"
         refreshType: 
-          type: "string"
           enum: 
             - "REBUILD"
             - "FULL_REFRESH"
@@ -1599,11 +1633,8 @@
             - "DELETION"
             - "SECURITY_CACHE_REFRESH"
             - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
-        type: 
           type: "string"
+        type: 
           enum: 
             - "CREATING"
             - "DISABLED"
@@ -1616,41 +1647,17 @@
             - "PAUSING"
             - "RESUMING"
             - "CANCELING_REFRESH"
-    SecurityProviderModel: 
+          type: "string"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+    CascadingSecurityProvider: 
       type: "object"
       properties: 
-        cascadingSecurityProviders: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/CascadingSecurityProvider"
-        caseSensitive: 
-          type: "boolean"
-        currentStatus: 
-          $ref: "#/definitions/SecurityProviderCurrentStatusModel"
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-        lastRefreshOperation: 
-          $ref: "#/definitions/SecurityProviderLastRefreshOperationModel"
-        name: 
-          type: "string"
-        nodeRequired: 
-          type: "boolean"
-        organizationClusterId: 
-          type: "string"
-        parameters: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/ParameterModel"
-        referencedBy: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/SecurityProviderReferenceModel"
-        statistics: 
-          $ref: "#/definitions/SecurityProviderStatisticsModel"
         type: 
-          type: "string"
           enum: 
             - "ACTIVE_DIRECTORY"
             - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
@@ -1687,116 +1694,25 @@
             - "WEBSPHERE_WCM"
             - "WINDCHILL"
             - "YAMMER"
-        userIdentities: 
-          type: "object"
-          additionalProperties: 
-            $ref: "#/definitions/UserIdentityModel"
-    SecurityProviderReferenceModel: 
-      type: "object"
-      properties: 
-        attributes: 
-          type: "object"
+          type: "string"
         id: 
           type: "string"
-        type: 
+        name: 
           type: "string"
-          enum: 
-            - "SOURCE"
-            - "SECURITY_PROVIDER"
-    Parameter: 
-      type: "object"
-      properties: 
-        sensitive: 
-          type: "boolean"
-        value: 
-          type: "string"
-    SecurityCacheMemberInfoModel: 
-      type: "object"
-      properties: 
-        key: 
-          type: "string"
-        value: 
-          type: "string"
-    ScheduleFrequency: 
-      type: "object"
-      properties: 
-        hourMinute: 
-          $ref: "#/definitions/HourMinutePair"
-        monthDay: 
-          type: "integer"
-          format: "int32"
-        type: 
-          type: "string"
-          enum: 
-            - "MINUTELY"
-            - "HOURLY"
-            - "DAILY"
-            - "WEEKLY"
-            - "MONTHLY"
-        value: 
-          type: "integer"
-          format: "int32"
-        weekDays: 
-          type: "array"
-          items: 
-            type: "string"
-            enum: 
-              - "MONDAY"
-              - "TUESDAY"
-              - "WEDNESDAY"
-              - "THURSDAY"
-              - "FRIDAY"
-              - "SATURDAY"
-              - "SUNDAY"
-    SecurityCacheStatisticsModel: 
-      type: "object"
-      properties: 
-        numberOfEntitiesByState: 
-          type: "object"
-          additionalProperties: 
-            type: "integer"
-            format: "int32"
-        numberOfEntitiesInError: 
-          type: "integer"
-          format: "int32"
-        numberOfPermissionModels: 
-          type: "integer"
-          format: "int32"
-        numberOfProviders: 
-          type: "integer"
-          format: "int32"
-        totalNumberOfEntities: 
-          type: "integer"
-          format: "int32"
     SecurityProviderLastRefreshOperationModel: 
       type: "object"
       properties: 
-        errorCode: 
-          type: "string"
-        id: 
-          type: "string"
+        timestamp: 
+          type: "integer"
+          format: "int64"
         numberOfEntitiesProcessed: 
           type: "integer"
           format: "int32"
-        operationType: 
+        errorCode: 
           type: "string"
-          enum: 
-            - "REBUILD"
-            - "FULL_REFRESH"
-            - "INCREMENTAL_REFRESH"
-            - "DELETION"
-            - "SECURITY_CACHE_REFRESH"
-            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
         result: 
           type: "string"
-        timestamp: 
-          type: "integer"
-          format: "int64"
-    NextOperation: 
-      type: "object"
-      properties: 
         operationType: 
-          type: "string"
           enum: 
             - "REBUILD"
             - "FULL_REFRESH"
@@ -1804,7 +1720,91 @@
             - "DELETION"
             - "SECURITY_CACHE_REFRESH"
             - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
-        timestamp: 
+          type: "string"
+        id: 
+          type: "string"
+    RawSecurityProviderConfig: 
+      type: "object"
+      properties: 
+        dataFiles: 
+          additionalProperties: 
+            $ref: "#/definitions/DataFile"
+          type: "object"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/Parameter"
+          type: "object"
+        securityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/SecurityProvider"
+          type: "object"
+        caseSensitive: 
+          type: "boolean"
+        dbConnectionString: 
+          type: "string"
+        displayName: 
+          type: "string"
+        indexIdentifier: 
+          type: "string"
+        nodeRequired: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+          type: "string"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentity"
+          type: "object"
+    SecurityProviderStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
           type: "integer"
-          format: "int64"
+          format: "int32"
+        numberOfEntitiesByState: 
+          additionalProperties: 
+            type: "integer"
+            format: "int32"
+          type: "object"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+  swagger: "2.0"
 
