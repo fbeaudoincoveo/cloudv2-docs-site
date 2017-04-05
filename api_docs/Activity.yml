@@ -1,8 +1,5 @@
 ---
   info: 
-    description: "API for Coveo Platform DOWNStREAM"
-    title: "Coveo Platform API"
-
     termsOfService: "Coveo API terms of service"
     contact: 
       url: "www.coveo.com"
