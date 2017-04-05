@@ -33,4 +33,9 @@ def create_pull_request(access_token, title, head, base, debug=False):
     body = {'title': title, 'head': head, 'base': base}
     pull_request = basic_post(uri, headers, body)
     if debug:
+        print "Access token: %s" % access_token
+        print "Title: %s" % title
+        print "Head: %s" % head
+        print "Base: %s" % base
+        print "Status code: %s" % pull_request.status_code
         print pull_request.content
