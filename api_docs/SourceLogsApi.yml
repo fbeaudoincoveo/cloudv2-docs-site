@@ -1,7 +1,7 @@
 ---
   info: 
     version: "2016-03-03T13:22:11Z"
-    title: "Document Logs API"
+    title: "Document Logs API - QA"
   paths: 
     /organizations/{organizationId}: 
       post: 
@@ -501,9 +501,9 @@
       scopes: 
         full: "Required"
       flow: "implicit"
-      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      authorizationUrl: "https://platformqa.cloud.coveo.com/oauth/authorize"
       type: "oauth2"
-  host: "f6ptflc2i7.execute-api.us-east-1.amazonaws.com/v1"
+  host: "9iy4ni2uy9.execute-api.us-east-1.amazonaws.com/v1"
   definitions: 
     DocumentLogResults: 
       items: 
