@@ -1,56 +1,1552 @@
 ---
-  swagger: "2.0"
   info: 
-    description: "API for Coveo Platform"
-    title: "Coveo Platform API"
     termsOfService: "Coveo API terms of service"
     contact: 
-      name: "Coveo"
       url: "www.coveo.com"
+      name: "Coveo"
       email: "support@coveo.com"
+    description: "API for Coveo Platform"
     license: {}
-  host: "platform.cloud.coveo.com:443"
-  basePath: "/"
-  tags: 
-    - 
-      name: "Index Backups"
-      description: "Index Backups Service Resource"
-    - 
-      name: "Fields"
-      description: "Field Resource"
-    - 
-      name: "Index Slices"
-      description: "Index Slice Resource"
-    - 
-      name: "Index"
-      description: "Index Service Resource"
-    - 
-      name: "Default Fields"
-      description: "Default Field Service Resource"
+    title: "Coveo Platform API"
   paths: 
-    /rest/defaultfields/versions/{version}/sourceType/{sourceType}: 
-      get: 
-        tags: 
-          - "Default Fields"
-        summary: "Get default fields for specified version and source type"
-        operationId: "getDefaultSourceFieldsByVersionUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
+    /rest/organizations/{organizationId}/indexes/{indexId}/raw: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
         parameters: 
           - 
-            name: "version"
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
             in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/RawIndexConfig"
+            description: "indexConfig"
+            required: true
+            name: "indexConfig"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "updateIndexRawConfig"
+        summary: "Update an index from raw configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateIndexRawConfigUsingPUT"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RawIndexConfig"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getIndexRawConfig"
+        summary: "Get the raw configuration of an index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIndexRawConfigUsingGET"
+    /rest/organizations/{organizationId}/indexes/fields/batch/delete: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fields"
+            items: 
+              type: "string"
+            required: true
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "fields"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "removeFields"
+        summary: "Removes fields from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeFieldsUsingDELETE"
+    /rest/organizations/{organizationId}/indexes/fields/batch/update: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+            description: "fieldModels"
+            required: true
+            name: "fieldModels"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "updateFields"
+        summary: "Update fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateFieldsUsingPUT"
+    /rest/organizations/{organizationId}/defaultfields: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ValueModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Default Fields"
+        x-pretty-name: "getDefaultFieldsVersionByOrganization"
+        summary: "Get default fields version for specified organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getDefaultFieldsVersionByOrganizationUsingGET"
+    /rest/organizations/{organizationId}/indexes: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/CreateIndexModel"
+            description: "createIndexModel"
+            required: false
+            name: "createIndexModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "createIndex"
+        summary: "Add an index to the organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createIndexUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/IndexModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getIndexes"
+        summary: "Get the list of indexes for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIndexesUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/content: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "deleteIndexContent"
+        summary: "Delete the content of the selected index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteIndexContentUsingDELETE"
+    /rest/organizations/{organizationId}/indexes/{indexId}/commit: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "forceCommit"
+        summary: "Force commit of the selected index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "forceCommitUsingPOST"
+    /rest/organizations/{organizationId}/indexes/{indexId}/resize: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ResizeStorageModel"
+            description: "resizeStorageModel"
+            required: true
+            name: "resizeStorageModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "resizeIndex"
+        summary: "Increase the storage size of the selected index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "resizeIndexUsingPOST"
+    /rest/organizations/{organizationId}/indexes/{indexId}: 
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "deleteIndex"
+        summary: "Deletes the index and its associated pipeline"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteIndexUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/IndexModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getIndex"
+        summary: "Get a single index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIndexUsingGET"
+    /rest/organizations/{organizationId}/indexes/snapshots/{snapshotId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: false
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "snapshotId"
+            required: false
+            type: "string"
+            name: "snapshotId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getSnapshot"
+        summary: "Gets an index config snapshot"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSnapshotUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/synchronize: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "copyFromId"
+            required: true
+            type: "string"
+            name: "copyFromId"
+            in: "query"
+          - 
+            description: "compressData"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "compressData"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "synchronizeIndex"
+        summary: "Synchronize an index with another one"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "synchronizeIndexUsingPOST"
+    /rest/organizations/{organizationId}/indexbackups: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/IndexBackupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Index Backups"
+        x-pretty-name: "getOrganizationIndexBackups"
+        summary: "Get all index backups for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationIndexBackupsUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/online: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "isOnline"
+            required: true
+            type: "boolean"
+            name: "isOnline"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "setOnline"
+        summary: "Set an index online or offline"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setOnlineUsingPUT"
+    /rest/organizations/{organizationId}/indexes/fields: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/FieldModel"
+            description: "fieldModel"
+            required: true
+            name: "fieldModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "createField"
+        summary: "Creates a field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createFieldUsingPOST"
+    /rest/organizations/{organizationId}/indexes/{indexId}/slices/{sliceId}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "sliceId"
+            format: "int32"
+            required: true
+            in: "path"
+            type: "integer"
+            name: "sliceId"
+          - 
+            schema: 
+              $ref: "#/definitions/IndexSliceModel"
+            description: "slice"
+            required: true
+            name: "slice"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index Slices"
+        x-pretty-name: "updateSlice"
+        summary: "Update a slice of an index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateSliceUsingPUT"
+    /rest/organizations/{organizationId}/indexes/{indexId}/restore: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/IndexBackupModel"
+            description: "backupModel"
+            required: true
+            name: "backupModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "restoreIndex"
+        summary: "Restore the content of the selected index to a previous backup"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "restoreIndexUsingPOST"
+    /rest/organizations/{organizationId}/indexes/page/fields: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            enum: 
+              - "LONG"
+              - "LONG_64"
+              - "DOUBLE"
+              - "DATE"
+              - "STRING"
+            description: "type"
+            required: false
+            in: "query"
+            type: "string"
+            name: "type"
+          - 
+            description: "filter"
+            required: false
+            type: "string"
+            name: "filter"
+            in: "query"
+          - 
+            description: "sortBy"
+            default: "name"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "ASC"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            enum: 
+              - "ALL"
+              - "USER"
+              - "SYSTEM"
+            description: "origin"
+            default: "ALL"
+            required: false
+            in: "query"
+            type: "string"
+            name: "origin"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "getFields"
+        summary: "Get a page of fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldsUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/stats: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/IndexStatisticsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getIndexStatistics"
+        summary: "Get the stats for an index."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIndexStatisticsUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions/effective: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PermissionSetModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "documentId"
+            required: true
+            type: "string"
+            name: "documentId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            enum: 
+              - "ALL"
+              - "ALLOWED"
+              - "DENIED"
+            description: "includedEntities"
+            default: "ALL"
+            required: false
+            in: "query"
+            type: "string"
+            name: "includedEntities"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getEffectivePermissions"
+        summary: "Get the effective permissions for a document with filters"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getEffectivePermissionsUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/slices: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/IndexSliceModel"
+            description: "slice"
+            required: true
+            name: "slice"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index Slices"
+        x-pretty-name: "addSlice"
+        summary: "Add a slice to an index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addSliceUsingPOST"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/IndexSliceModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index Slices"
+        x-pretty-name: "getSlices"
+        summary: "Get slices of an index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSlicesUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/backup: 
+      post: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "backupIndex"
+        summary: "Backup the content of the selected index"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "backupIndexUsingPOST"
+    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/DocumentPermissionModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "documentId"
+            required: true
+            type: "string"
+            name: "documentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getPermissions"
+        summary: "Get the permission model for a document"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getPermissionsUsingGET"
+    /rest/organizations/{organizationId}/indexbackups/page: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/IndexBackupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            items: 
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "indexId"
+          - 
+            description: "backupId"
+            items: 
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "backupId"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            description: "sortBy"
+            default: "backupId"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "asc"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index Backups"
+        x-pretty-name: "getIndexBackupPage"
+        summary: "Get a page of a list of index backups."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIndexBackupPageUsingGET"
+    /rest/organizations/{organizationId}/indexes/fields/batch/create: 
+      post: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+            description: "fieldModels"
+            required: true
+            name: "fieldModels"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "createFields"
+        summary: "Creates fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createFieldsUsingPOST"
+    /rest/organizations/{organizationId}/indexes/raw: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/RawIndexConfig"
+            description: "indexConfig"
+            required: true
+            name: "indexConfig"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "updateIndexesRawConfig"
+        summary: "Update all the indexes from raw configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateIndexesRawConfigUsingPUT"
+    /rest/organizations/{organizationId}/indexes/{indexId}/readonly: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "isReadOnly"
+            required: true
+            type: "boolean"
+            name: "isReadOnly"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "setReadOnly"
+        summary: "Set an index in read-only or read-write"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setReadOnlyUsingPUT"
+    /rest/organizations/{organizationId}/indexes/fields/{fieldId}: 
+      put: 
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/FieldModel"
+            description: "fieldModel"
+            required: true
+            name: "fieldModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "updateField"
+        summary: "Update a field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateFieldUsingPUT"
+      delete: 
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "removeField"
+        summary: "Removes a specific field from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeFieldUsingDELETE"
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/FieldModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "getField"
+        summary: "Get a single field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldUsingGET"
+    /rest/defaultfields/versions/{version}/sourceType/{sourceType}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/DefaultSourceFieldsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
             description: "version"
             required: true
             type: "string"
-          - 
-            name: "sourceType"
+            name: "version"
             in: "path"
-            description: "sourceType"
-            required: true
-            type: "string"
+          - 
             enum: 
               - "AMAZONS3"
               - "BOX"
@@ -82,483 +1578,26 @@
               - "TWITTER2"
               - "WEB2"
               - "YOUTUBE"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/DefaultSourceFieldsModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getDefaultSourceFieldsByVersion"
-    /rest/organizations/{organizationId}/defaultfields: 
-      get: 
+            description: "sourceType"
+            required: true
+            in: "path"
+            type: "string"
+            name: "sourceType"
+        produces: 
+          - "*/*"
         tags: 
           - "Default Fields"
-        summary: "Get default fields version for specified organization"
-        operationId: "getDefaultFieldsVersionByOrganizationUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ValueModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
+        x-pretty-name: "getDefaultSourceFieldsByVersion"
+        summary: "Get default fields for specified version and source type"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "getDefaultFieldsVersionByOrganization"
-    /rest/organizations/{organizationId}/indexbackups: 
-      get: 
-        tags: 
-          - "Index Backups"
-        summary: "Get all index backups for an organization"
-        operationId: "getOrganizationIndexBackupsUsingGET"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/IndexBackupModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        deprecated: true
-        x-pretty-name: "getOrganizationIndexBackups"
-    /rest/organizations/{organizationId}/indexbackups/page: 
-      get: 
-        tags: 
-          - "Index Backups"
-        summary: "Get a page of a list of index backups."
-        operationId: "getIndexBackupPageUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "query"
-            description: "indexId"
-            required: false
-            type: "array"
-            items: 
-              type: "string"
-            collectionFormat: "multi"
-          - 
-            name: "backupId"
-            in: "query"
-            description: "backupId"
-            required: false
-            type: "array"
-            items: 
-              type: "string"
-            collectionFormat: "multi"
-          - 
-            name: "from"
-            in: "query"
-            description: "from"
-            required: false
-            type: "integer"
-            format: "int64"
-          - 
-            name: "to"
-            in: "query"
-            description: "to"
-            required: false
-            type: "integer"
-            format: "int64"
-          - 
-            name: "sortBy"
-            in: "query"
-            description: "sortBy"
-            required: false
-            type: "string"
-            default: "backupId"
-          - 
-            name: "order"
-            in: "query"
-            description: "order"
-            required: false
-            type: "string"
-            default: "asc"
-          - 
-            name: "page"
-            in: "query"
-            description: "page"
-            required: false
-            type: "integer"
-            default: 0
-            format: "int32"
-          - 
-            name: "perPage"
-            in: "query"
-            description: "perPage"
-            required: false
-            type: "integer"
-            default: 100
-            format: "int32"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/IndexBackupModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIndexBackupPage"
-    /rest/organizations/{organizationId}/indexbackups/{indexId}: 
-      get: 
-        tags: 
-          - "Index Backups"
-        summary: "Get all backups for an index"
-        operationId: "getIndexBackupsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/IndexBackupModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        deprecated: true
-        x-pretty-name: "getIndexBackups"
-    /rest/organizations/{organizationId}/indexes: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get the list of indexes for an organization"
-        operationId: "getIndexesUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/IndexModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIndexes"
-      post: 
-        tags: 
-          - "Index"
-        summary: "Add an index to the organization"
-        operationId: "createIndexUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "createIndexModel"
-            description: "createIndexModel"
-            required: false
-            schema: 
-              $ref: "#/definitions/CreateIndexModel"
-        responses: 
-          201: 
-            description: "Created"
-            schema: 
-              $ref: "#/definitions/JsonStringIdWrapper"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "createIndex"
-    /rest/organizations/{organizationId}/indexes/fields: 
-      post: 
-        tags: 
-          - "Fields"
-        summary: "Creates a field for an organization"
-        operationId: "createFieldUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "fieldModel"
-            description: "fieldModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/FieldModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "createField"
-    /rest/organizations/{organizationId}/indexes/fields/batch/create: 
-      post: 
-        tags: 
-          - "Fields"
-        summary: "Creates fields for an organization"
-        operationId: "createFieldsUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "fieldModels"
-            description: "fieldModels"
-            required: true
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/FieldModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "createFields"
-    /rest/organizations/{organizationId}/indexes/fields/batch/delete: 
-      delete: 
-        tags: 
-          - "Fields"
-        summary: "Removes fields from an organization"
-        operationId: "removeFieldsUsingDELETE"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "fields"
-            in: "query"
-            description: "fields"
-            required: true
-            type: "array"
-            items: 
-              type: "string"
-            collectionFormat: "multi"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "removeFields"
-    /rest/organizations/{organizationId}/indexes/fields/batch/update: 
-      put: 
-        tags: 
-          - "Fields"
-        summary: "Update fields for an organization"
-        operationId: "updateFieldsUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "fieldModels"
-            description: "fieldModels"
-            required: true
-            schema: 
-              type: "array"
-              items: 
-                $ref: "#/definitions/FieldModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateFields"
+        operationId: "getDefaultSourceFieldsByVersionUsingGET"
     /rest/organizations/{organizationId}/indexes/fields/synchronize: 
       post: 
-        tags: 
-          - "Fields"
-        summary: "Synchronizes fields for an organization"
-        operationId: "synchronizeFieldsUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
         responses: 
           201: 
             description: "Created"
@@ -570,1152 +1609,355 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
-        security: 
+        parameters: 
           - 
-            oauth2: 
-              - "full"
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
         x-pretty-name: "synchronizeFields"
-    /rest/organizations/{organizationId}/indexes/fields/{fieldId}: 
-      get: 
-        tags: 
-          - "Fields"
-        summary: "Get a single field for an organization"
-        operationId: "getFieldUsingGET"
+        summary: "Synchronizes fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "fieldId"
-            in: "path"
-            description: "fieldId"
-            required: true
-            type: "string"
+        operationId: "synchronizeFieldsUsingPOST"
+    /rest/organizations/{organizationId}/indexbackups/{indexId}: 
+      get: 
         responses: 
           200: 
             description: "OK"
             schema: 
-              $ref: "#/definitions/FieldModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getField"
-      put: 
-        tags: 
-          - "Fields"
-        summary: "Update a field for an organization"
-        operationId: "updateFieldUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "fieldId"
-            in: "path"
-            description: "fieldId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "fieldModel"
-            description: "fieldModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/FieldModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateField"
-      delete: 
-        tags: 
-          - "Fields"
-        summary: "Removes a specific field from an organization"
-        operationId: "removeFieldUsingDELETE"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "fieldId"
-            in: "path"
-            description: "fieldId"
-            required: true
-            type: "string"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "removeField"
-    /rest/organizations/{organizationId}/indexes/page/fields: 
-      get: 
-        tags: 
-          - "Fields"
-        summary: "Get a page of fields for an organization"
-        operationId: "getFieldsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "type"
-            in: "query"
-            description: "type"
-            required: false
-            type: "string"
-            enum: 
-              - "LONG"
-              - "LONG_64"
-              - "DOUBLE"
-              - "DATE"
-              - "STRING"
-          - 
-            name: "filter"
-            in: "query"
-            description: "filter"
-            required: false
-            type: "string"
-          - 
-            name: "sortBy"
-            in: "query"
-            description: "sortBy"
-            required: false
-            type: "string"
-            default: "name"
-          - 
-            name: "order"
-            in: "query"
-            description: "order"
-            required: false
-            type: "string"
-            default: "ASC"
-          - 
-            name: "page"
-            in: "query"
-            description: "page"
-            required: false
-            type: "integer"
-            default: 0
-            format: "int32"
-          - 
-            name: "perPage"
-            in: "query"
-            description: "perPage"
-            required: false
-            type: "integer"
-            default: 100
-            format: "int32"
-          - 
-            name: "origin"
-            in: "query"
-            description: "origin"
-            required: false
-            type: "string"
-            default: "ALL"
-            enum: 
-              - "ALL"
-              - "USER"
-              - "SYSTEM"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "array"
               items: 
-                $ref: "#/definitions/FieldModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getFields"
-    /rest/organizations/{organizationId}/indexes/raw: 
-      put: 
-        tags: 
-          - "Index"
-        summary: "Update all the indexes from raw configuration"
-        operationId: "updateIndexesRawConfigUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "indexConfig"
-            description: "indexConfig"
-            required: true
-            schema: 
-              $ref: "#/definitions/RawIndexConfig"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateIndexesRawConfig"
-    /rest/organizations/{organizationId}/indexes/snapshots/{snapshotId}: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Gets an index config snapshot"
-        operationId: "getSnapshotUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "Id of the organization"
-            required: false
-            type: "string"
-          - 
-            name: "snapshotId"
-            in: "path"
-            description: "snapshotId"
-            required: false
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "object"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSnapshot"
-    /rest/organizations/{organizationId}/indexes/{indexId}: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get a single index"
-        operationId: "getIndexUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/IndexModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIndex"
-      delete: 
-        tags: 
-          - "Index"
-        summary: "Deletes the index and its associated pipeline"
-        operationId: "deleteIndexUsingDELETE"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "deleteIndex"
-    /rest/organizations/{organizationId}/indexes/{indexId}/backup: 
-      post: 
-        tags: 
-          - "Index"
-        summary: "Backup the content of the selected index"
-        operationId: "backupIndexUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/JsonStringIdWrapper"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "backupIndex"
-    /rest/organizations/{organizationId}/indexes/{indexId}/commit: 
-      post: 
-        tags: 
-          - "Index"
-        summary: "Force commit of the selected index"
-        operationId: "forceCommitUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "forceCommit"
-    /rest/organizations/{organizationId}/indexes/{indexId}/content: 
-      delete: 
-        tags: 
-          - "Index"
-        summary: "Delete the content of the selected index"
-        operationId: "deleteIndexContentUsingDELETE"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "deleteIndexContent"
-    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get the permission model for a document"
-        operationId: "getPermissionsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            name: "documentId"
-            in: "path"
-            description: "documentId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/DocumentPermissionModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getPermissions"
-    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions/effective: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get the effective permissions for a document with filters"
-        operationId: "getEffectivePermissionsUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            name: "documentId"
-            in: "path"
-            description: "documentId"
-            required: true
-            type: "string"
-          - 
-            name: "states"
-            in: "query"
-            description: "states"
-            required: false
-            type: "array"
-            items: 
-              type: "string"
-              enum: 
-                - "UNKNOWN"
-                - "UP_TO_DATE"
-                - "NOT_UPDATED"
-                - "OUT_OF_DATE"
-                - "IN_ERROR"
-                - "DISABLED"
-            collectionFormat: "multi"
-            enum: 
-              - "UNKNOWN"
-              - "UP_TO_DATE"
-              - "NOT_UPDATED"
-              - "OUT_OF_DATE"
-              - "IN_ERROR"
-              - "DISABLED"
-          - 
-            name: "page"
-            in: "query"
-            description: "page"
-            required: false
-            type: "integer"
-            default: 0
-            format: "int32"
-          - 
-            name: "perPage"
-            in: "query"
-            description: "perPage"
-            required: false
-            type: "integer"
-            default: 100
-            format: "int32"
-          - 
-            name: "includedEntities"
-            in: "query"
-            description: "includedEntities"
-            required: false
-            type: "string"
-            default: "ALL"
-            enum: 
-              - "ALL"
-              - "ALLOWED"
-              - "DENIED"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/PermissionSetModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getEffectivePermissions"
-    /rest/organizations/{organizationId}/indexes/{indexId}/online: 
-      put: 
-        tags: 
-          - "Index"
-        summary: "Set an index online or offline"
-        operationId: "setOnlineUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            name: "isOnline"
-            in: "query"
-            description: "isOnline"
-            required: true
-            type: "boolean"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "setOnline"
-    /rest/organizations/{organizationId}/indexes/{indexId}/raw: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get the raw configuration of an index"
-        operationId: "getIndexRawConfigUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/RawIndexConfig"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getIndexRawConfig"
-      put: 
-        tags: 
-          - "Index"
-        summary: "Update an index from raw configuration"
-        operationId: "updateIndexRawConfigUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "indexConfig"
-            description: "indexConfig"
-            required: true
-            schema: 
-              $ref: "#/definitions/RawIndexConfig"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateIndexRawConfig"
-    /rest/organizations/{organizationId}/indexes/{indexId}/readonly: 
-      put: 
-        tags: 
-          - "Index"
-        summary: "Set an index in read-only or read-write"
-        operationId: "setReadOnlyUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            name: "isReadOnly"
-            in: "query"
-            description: "isReadOnly"
-            required: true
-            type: "boolean"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "setReadOnly"
-    /rest/organizations/{organizationId}/indexes/{indexId}/resize: 
-      post: 
-        tags: 
-          - "Index"
-        summary: "Increase the storage size of the selected index"
-        operationId: "resizeIndexUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "resizeStorageModel"
-            description: "resizeStorageModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/ResizeStorageModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "resizeIndex"
-    /rest/organizations/{organizationId}/indexes/{indexId}/restore: 
-      post: 
-        tags: 
-          - "Index"
-        summary: "Restore the content of the selected index to a previous backup"
-        operationId: "restoreIndexUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "backupModel"
-            description: "backupModel"
-            required: true
-            schema: 
-              $ref: "#/definitions/IndexBackupModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "restoreIndex"
-    /rest/organizations/{organizationId}/indexes/{indexId}/slices: 
-      get: 
-        tags: 
-          - "Index Slices"
-        summary: "Get slices of an index"
-        operationId: "getSlicesUsingGET"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
+                $ref: "#/definitions/IndexBackupModel"
               type: "array"
-              items: 
-                $ref: "#/definitions/IndexSliceModel"
           401: 
             description: "Unauthorized"
           403: 
             description: "Forbidden"
           404: 
             description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "getSlices"
-      post: 
-        tags: 
-          - "Index Slices"
-        summary: "Add a slice to an index"
-        operationId: "addSliceUsingPOST"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
         parameters: 
           - 
-            name: "organizationId"
-            in: "path"
             description: "organizationId"
             required: true
             type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            in: "body"
-            name: "slice"
-            description: "slice"
-            required: true
-            schema: 
-              $ref: "#/definitions/IndexSliceModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "addSlice"
-    /rest/organizations/{organizationId}/indexes/{indexId}/slices/{sliceId}: 
-      put: 
-        tags: 
-          - "Index Slices"
-        summary: "Update a slice of an index"
-        operationId: "updateSliceUsingPUT"
-        consumes: 
-          - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
             name: "organizationId"
             in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
           - 
-            name: "indexId"
-            in: "path"
             description: "indexId"
             required: true
             type: "string"
-          - 
-            name: "sliceId"
+            name: "indexId"
             in: "path"
-            description: "sliceId"
-            required: true
-            type: "integer"
-            format: "int32"
-          - 
-            in: "body"
-            name: "slice"
-            description: "slice"
-            required: true
-            schema: 
-              $ref: "#/definitions/IndexSliceModel"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "updateSlice"
-    /rest/organizations/{organizationId}/indexes/{indexId}/stats: 
-      get: 
-        tags: 
-          - "Index"
-        summary: "Get the stats for an index."
-        operationId: "getIndexStatisticsUsingGET"
-        consumes: 
-          - "application/json"
         produces: 
           - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/IndexStatisticsModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
+        deprecated: true
+        tags: 
+          - "Index Backups"
+        x-pretty-name: "getIndexBackups"
+        summary: "Get all backups for an index"
         security: 
           - 
             oauth2: 
               - "full"
-        x-pretty-name: "getIndexStatistics"
-    /rest/organizations/{organizationId}/indexes/{indexId}/synchronize: 
-      post: 
-        tags: 
-          - "Index"
-        summary: "Synchronize an index with another one"
-        operationId: "synchronizeIndexUsingPOST"
         consumes: 
           - "application/json"
-        produces: 
-          - "*/*"
-        parameters: 
-          - 
-            name: "organizationId"
-            in: "path"
-            description: "organizationId"
-            required: true
-            type: "string"
-          - 
-            name: "indexId"
-            in: "path"
-            description: "indexId"
-            required: true
-            type: "string"
-          - 
-            name: "copyFromId"
-            in: "query"
-            description: "copyFromId"
-            required: true
-            type: "string"
-          - 
-            name: "compressData"
-            in: "query"
-            description: "compressData"
-            required: false
-            type: "boolean"
-            default: false
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        x-pretty-name: "synchronizeIndex"
+        operationId: "getIndexBackupsUsingGET"
+  tags: 
+    - 
+      name: "Index Backups"
+      description: "Index Backups Service Resource"
+    - 
+      name: "Fields"
+      description: "Field Resource"
+    - 
+      name: "Index Slices"
+      description: "Index Slice Resource"
+    - 
+      name: "Index"
+      description: "Index Service Resource"
+    - 
+      name: "Default Fields"
+      description: "Default Field Service Resource"
+  basePath: "/"
   securityDefinitions: 
     oauth2: 
+      flow: "implicit"
       type: "oauth2"
       authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
-      flow: "implicit"
       scopes: 
         full: "Required"
+  host: "platform.cloud.coveo.com:443"
   definitions: 
-    PageModel«IndexBackupModel»: 
+    IndexBackupModel: 
       type: "object"
       properties: 
-        items: 
-          type: "array"
+        environment: 
+          type: "string"
+        backupId: 
+          type: "string"
+        creationDate: 
+          type: "string"
+          format: "date-time"
+        indexId: 
+          type: "string"
+        organizationId: 
+          type: "string"
+    IndexingPipelineVersionsModel: 
+      type: "object"
+      properties: 
+        indexerVersion: 
+          $ref: "#/definitions/Optional«string»"
+        securityCacheVersion: 
+          $ref: "#/definitions/Optional«string»"
+    IndexQueryHighlighterModel: 
+      type: "object"
+      properties: 
+        ignoredFields: 
+          type: "string"
+        ignoreAccents: 
+          type: "boolean"
+        useStemming: 
+          type: "boolean"
+        highlightTags: 
           items: 
-            $ref: "#/definitions/IndexBackupModel"
-        totalEntries: 
-          type: "integer"
-          format: "int64"
-        totalPages: 
+            $ref: "#/definitions/IndexHighlightTagModel"
+          type: "array"
+    IndexSliceModel: 
+      type: "object"
+      properties: 
+        documentsCacheSize: 
           type: "integer"
           format: "int32"
+        lexiconDoubleCFCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconDateCFCacheSize: 
+          type: "integer"
+          format: "int32"
+        wclmaxWords: 
+          type: "integer"
+          format: "int32"
+        id: 
+          type: "integer"
+          format: "int32"
+        tagValueCacheSize: 
+          type: "integer"
+          format: "int32"
+        termIDCacheSize: 
+          type: "integer"
+          format: "int32"
+        wclminOccurrences: 
+          type: "integer"
+          format: "int32"
+        lexiconGroupByCacheSize: 
+          type: "integer"
+          format: "int32"
+        stemExpansionMapCacheSize: 
+          type: "integer"
+          format: "int32"
+        autoIndexCompactionHistorySize: 
+          type: "integer"
+          format: "int32"
+        lexiconFieldSortCacheSize: 
+          type: "integer"
+          format: "int32"
+        description: 
+          type: "string"
+        performanceCacheMemory: 
+          type: "number"
+          format: "double"
+        lexiconCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconLong64CFCacheSize: 
+          type: "integer"
+          format: "int32"
+        externalSecurityCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconStringCFCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconQueryFieldSortCacheSize: 
+          type: "integer"
+          format: "int32"
+        name: 
+          type: "string"
+        securityInfoCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconTagCFCacheSize: 
+          type: "integer"
+          format: "int32"
+        securityIndexCacheSize: 
+          type: "integer"
+          format: "int32"
+        lexiconLongCFCacheSize: 
+          type: "integer"
+          format: "int32"
+        queryCacheSize: 
+          type: "integer"
+          format: "int32"
+    IndexStatisticsModel: 
+      type: "object"
+      properties: 
+        totalPhysicalMemory: 
+          type: "integer"
+          format: "int64"
+        realtimeDiskSpaceUsed: 
+          type: "integer"
+          format: "int64"
+        remainingDiskSpace: 
+          type: "integer"
+          format: "int64"
+        realtimeDocumentCount: 
+          type: "integer"
+          format: "int32"
+        realtimeDocumentsTotalSize: 
+          type: "integer"
+          format: "int64"
+        pendingTransactions: 
+          type: "integer"
+          format: "int32"
+        numberOfQueries: 
+          type: "integer"
+          format: "int32"
+        lastAppliedTransactionTimestamp: 
+          type: "integer"
+          format: "int64"
+        diskSpaceUsed: 
+          type: "integer"
+          format: "int64"
+        realtimePendingTransactions: 
+          type: "integer"
+          format: "int32"
+        documentsTotalSize: 
+          type: "integer"
+          format: "int64"
+        lastCommitTimestamp: 
+          type: "integer"
+          format: "int64"
+        totalMemoryUsed: 
+          type: "integer"
+          format: "int64"
+        documentCount: 
+          type: "integer"
+          format: "int32"
+        sourceStatistics: 
+          items: 
+            $ref: "#/definitions/IndexSourceStatisticsModel"
+          type: "array"
+        numberOfSlices: 
+          type: "integer"
+          format: "int32"
+    SinglePermissionModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        securityProvider: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        identityType: 
+          enum: 
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+            - "UNKNOWN"
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        allowed: 
+          type: "boolean"
+        identity: 
+          type: "string"
+    IndexSyncStatusModel: 
+      type: "object"
+      properties: 
+        totalSize: 
+          type: "integer"
+          format: "int64"
+        currentFileNumber: 
+          type: "integer"
+          format: "int32"
+        totalNumberOfFiles: 
+          type: "integer"
+          format: "int32"
+        transferredSize: 
+          type: "integer"
+          format: "int64"
+        currentFileName: 
+          type: "string"
+    StorageSpecModel: 
+      type: "object"
+      properties: 
+        storageType: 
+          enum: 
+            - "STANDARD"
+            - "SSD"
+            - "PROVISIONED_SSD"
+          type: "string"
+        sizeInGigabytes: 
+          type: "integer"
+          format: "int32"
+        sizeInGibibytes: 
+          type: "integer"
+          format: "int32"
+        numberOfIops: 
+          type: "integer"
+          format: "int32"
+    RawIndexConfig: 
+      type: "object"
+      properties: 
+        queryHighlighter: 
+          $ref: "#/definitions/IndexQueryHighlighterModel"
+        collaborativeRanking: 
+          $ref: "#/definitions/IndexCollaborativeRankingModel"
+        physicalIndex: 
+          $ref: "#/definitions/IndexPhysicalIndexModel"
+        system: 
+          $ref: "#/definitions/IndexSystemModel"
+        ranking: 
+          $ref: "#/definitions/IndexRankingModel"
     MachineSpecModel: 
       type: "object"
       properties: 
         architecture: 
-          type: "string"
           enum: 
             - "T2_NANO"
             - "T2_MICRO"
@@ -1754,801 +1996,56 @@
             - "C4_2XLARGE"
             - "C4_4XLARGE"
             - "C4_8XLARGE"
+          type: "string"
         storageSpec: 
           $ref: "#/definitions/StorageSpecModel"
-    IndexStatusModel: 
-      type: "object"
-      properties: 
-        backupStatus: 
-          $ref: "#/definitions/IndexBackupStatusModel"
-        internalStatus: 
-          type: "string"
-          enum: 
-            - "COMPUTING_STATUS"
-            - "CREATING"
-            - "IN_ERROR"
-            - "STARTING"
-            - "RUNNING"
-            - "STOPPING"
-            - "SYNCHRONIZING"
-            - "UNREACHABLE"
-            - "WAITING_FOR_CREATION"
-            - "BACKING_UP"
-            - "RESTORING_BACKUP"
-        online: 
-          type: "boolean"
-        readOnlyStatus: 
-          type: "string"
-          enum: 
-            - "READ_ONLY"
-            - "SWITCHING_TO_READ_ONLY"
-            - "SWITCHING_TO_READ_WRITE"
-            - "READ_WRITE"
-        stats: 
-          $ref: "#/definitions/IndexStatisticsModel"
-        syncStatus: 
-          $ref: "#/definitions/IndexSyncStatusModel"
     Optional«string»: 
       type: "object"
-    ValueModel: 
-      type: "object"
-      properties: 
-        value: 
-          type: "string"
-    IndexQueryHighlighterModel: 
-      type: "object"
-      properties: 
-        highlightTags: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/IndexHighlightTagModel"
-        ignoreAccents: 
-          type: "boolean"
-        ignoredFields: 
-          type: "string"
-        useStemming: 
-          type: "boolean"
-    IndexSystemModel: 
-      type: "object"
-      properties: 
-        bTreeShrinkFreeSpaceThreshold: 
-          type: "number"
-          format: "double"
-        documentDuplicateFactor: 
-          type: "integer"
-          format: "int32"
-        documentLimitWarning: 
-          type: "integer"
-          format: "int32"
-        documentsChunkToDefragment: 
-          type: "integer"
-          format: "int32"
-        documentsChunkToDefragmentOffPeak: 
-          type: "integer"
-          format: "int32"
-        documentsFragmentationTarget: 
-          type: "number"
-          format: "double"
-        enableInternalLiveTagging: 
-          type: "boolean"
-        enableLiveTagging: 
-          type: "boolean"
-        enableQueryMetrics: 
-          type: "boolean"
-        enableSearchDebugArgument: 
-          type: "boolean"
-        enableServiceIndexMetrics: 
-          type: "boolean"
-        enableTransactionsIndexMetrics: 
-          type: "boolean"
-        enableWordCorrectorLexicon: 
-          type: "boolean"
-        freeSpaceBeforeRebalancingBTree: 
-          type: "integer"
-          format: "int32"
-        freeSpaceBeforeRebalancingBTreeDuringCleanup: 
-          type: "integer"
-          format: "int32"
-        indexingBlockerMode: 
-          type: "string"
-        indexingPriority: 
-          type: "string"
-        limitSystemFileCacheSize: 
-          type: "boolean"
-        maxBTreeFlushPendingMemoryMB: 
-          type: "integer"
-          format: "int32"
-        maxChunksCleanupPerTransactionOffPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxChunksCleanupPerTransactionPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxChunksCleanupTimePerTransactionOffPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxChunksCleanupTimePerTransactionPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxDocIDRecyclingTimePerTransactionOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxDocIDRecyclingTimePerTransactionPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxMMFFlushPendingMemoryMB: 
-          type: "integer"
-          format: "int32"
-        maxOptimizerBTreeShrinkTimeOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxOptimizerBTreeShrinkTimePeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxRecycledTermIDCleanupTimeOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxRecycledTermIDCleanupTimePeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxRecycledTermIDCleanupTimePercentOffPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxRecycledTermIDCleanupTimePercentPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxSystemFileCacheSize: 
-          type: "number"
-          format: "double"
-        maxTermDefragmentationTimeOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxTermDefragmentationTimePeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxTermDefragmentationTimePercentOffPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxTermDefragmentationTimePercentPeakPeriod: 
-          type: "number"
-          format: "double"
-        maxWriterBTreeShrinkTimeOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maxWriterBTreeShrinkTimePeakPeriod: 
-          type: "integer"
-          format: "int32"
-        maximumResults: 
-          type: "integer"
-          format: "int32"
-        maximumTermsPerQuery: 
-          type: "integer"
-          format: "int32"
-        minDocIDCountForRecycling: 
-          type: "integer"
-          format: "int32"
-        minTermIDCountForRecycling: 
-          type: "integer"
-          format: "int32"
-        minimumDiskSpace: 
-          type: "integer"
-          format: "int32"
-        numberOfBatchQueryThreads: 
-          type: "integer"
-          format: "int32"
-        numberOfQueryThreads: 
-          type: "integer"
-          format: "int32"
-        performanceCacheMemory: 
-          type: "number"
-          format: "double"
-        performanceMinimumCacheMemory: 
-          type: "integer"
-          format: "int32"
-        performanceMode: 
-          type: "string"
-        processPriority: 
-          type: "string"
-        recyclingThresholdMultiplierInIndexingMode: 
-          type: "number"
-          format: "double"
-        streamCompressionMethod: 
-          type: "string"
-        systemFileCacheTrimInterval: 
-          type: "integer"
-          format: "int32"
-        termsChunksToDefragmentPerTransactionOffPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        termsChunksToDefragmentPerTransactionPeakPeriod: 
-          type: "integer"
-          format: "int32"
-        transactionMaxDocumentsSize: 
-          type: "integer"
-          format: "int32"
-        transactionUpdateFrequency: 
-          type: "integer"
-          format: "int32"
-    IndexHighlightTagModel: 
-      type: "object"
-      properties: 
-        end: 
-          type: "string"
-        id: 
-          type: "integer"
-          format: "int32"
-        start: 
-          type: "string"
-    IndexModel: 
-      type: "object"
-      properties: 
-        agentId: 
-          type: "string"
-        id: 
-          type: "string"
-        machineSpec: 
-          $ref: "#/definitions/MachineSpecModel"
-        name: 
-          type: "string"
-        organizationClusterId: 
-          type: "string"
-        status: 
-          $ref: "#/definitions/IndexStatusModel"
-        storages: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/StorageSpecModel"
-    IndexSourceStatisticsModel: 
-      type: "object"
-      properties: 
-        collectionId: 
-          type: "integer"
-          format: "int32"
-        documentCount: 
-          type: "integer"
-          format: "int64"
-        documentTotalSize: 
-          type: "integer"
-          format: "int64"
-        sourceId: 
-          type: "integer"
-          format: "int32"
-    ConfigSIDDeclaratorModel: 
-      type: "object"
-      properties: 
-        declaration: 
-          type: "string"
-        id: 
-          type: "integer"
-          format: "int32"
-        provider: 
-          type: "string"
-    IndexingPipelineVersionsModel: 
-      type: "object"
-      properties: 
-        indexerVersion: 
-          $ref: "#/definitions/Optional«string»"
-        securityCacheVersion: 
-          $ref: "#/definitions/Optional«string»"
-    SinglePermissionModel: 
-      type: "object"
-      properties: 
-        additionalInfo: 
-          type: "object"
-          additionalProperties: 
-            type: "string"
-        allowed: 
-          type: "boolean"
-        identity: 
-          type: "string"
-        identityType: 
-          type: "string"
-          enum: 
-            - "USER"
-            - "GROUP"
-            - "VIRTUAL_GROUP"
-            - "UNKNOWN"
-        lastUpdateDate: 
-          type: "integer"
-          format: "int64"
-        lastUpdateErrorDetail: 
-          type: "string"
-        lastUpdateResult: 
-          type: "string"
-          enum: 
-            - "NONE"
-            - "SUCCESS"
-            - "ACCESS_DENIED"
-            - "TIMED_OUT"
-            - "ENTITY_IS_INVALID"
-            - "ENTITY_IS_UNAVAILABLE"
-            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
-            - "SECURITY_PROVIDER_IS_UNREACHABLE"
-            - "SECURITY_PROVIDER_IS_NOT_READY"
-            - "UNEXPECTED_ERROR"
-        securityProvider: 
-          type: "string"
-        state: 
-          type: "string"
-          enum: 
-            - "UNKNOWN"
-            - "UP_TO_DATE"
-            - "NOT_UPDATED"
-            - "OUT_OF_DATE"
-            - "IN_ERROR"
-            - "DISABLED"
-    IndexStatisticsModel: 
-      type: "object"
-      properties: 
-        diskSpaceUsed: 
-          type: "integer"
-          format: "int64"
-        documentCount: 
-          type: "integer"
-          format: "int32"
-        documentsTotalSize: 
-          type: "integer"
-          format: "int64"
-        lastAppliedTransactionTimestamp: 
-          type: "integer"
-          format: "int64"
-        lastCommitTimestamp: 
-          type: "integer"
-          format: "int64"
-        numberOfQueries: 
-          type: "integer"
-          format: "int32"
-        numberOfSlices: 
-          type: "integer"
-          format: "int32"
-        pendingTransactions: 
-          type: "integer"
-          format: "int32"
-        realtimeDiskSpaceUsed: 
-          type: "integer"
-          format: "int64"
-        realtimeDocumentCount: 
-          type: "integer"
-          format: "int32"
-        realtimeDocumentsTotalSize: 
-          type: "integer"
-          format: "int64"
-        realtimePendingTransactions: 
-          type: "integer"
-          format: "int32"
-        remainingDiskSpace: 
-          type: "integer"
-          format: "int64"
-        sourceStatistics: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/IndexSourceStatisticsModel"
-        totalMemoryUsed: 
-          type: "integer"
-          format: "int64"
-        totalPhysicalMemory: 
-          type: "integer"
-          format: "int64"
-    PermissionSetModel: 
-      type: "object"
-      properties: 
-        anonymousAllowed: 
-          type: "boolean"
-        lastUpdatedDate: 
-          type: "integer"
-          format: "int64"
-        name: 
-          type: "string"
-        permissions: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/SinglePermissionModel"
-        state: 
-          type: "string"
-          enum: 
-            - "UNKNOWN"
-            - "VALID"
-            - "PENDING"
-            - "INCOMPLETE"
-            - "IN_ERROR"
     IndexBackupStatusModel: 
       type: "object"
       properties: 
+        transferredSize: 
+          type: "integer"
+          format: "int64"
+        totalSize: 
+          type: "integer"
+          format: "int64"
         currentFileName: 
           type: "string"
+        totalNumberOfFiles: 
+          type: "integer"
+          format: "int32"
         currentFileNumber: 
           type: "integer"
           format: "int32"
         operation: 
           type: "string"
-        totalNumberOfFiles: 
-          type: "integer"
-          format: "int32"
-        totalSize: 
-          type: "integer"
-          format: "int64"
-        transferredSize: 
-          type: "integer"
-          format: "int64"
     ResizeStorageModel: 
       type: "object"
       properties: 
         sizeInGibibytes: 
           type: "integer"
           format: "int32"
-    IndexBackupModel: 
+    ConfigSIDDeclaratorModel: 
       type: "object"
       properties: 
-        backupId: 
+        provider: 
           type: "string"
-        creationDate: 
-          type: "string"
-          format: "date-time"
-        environment: 
-          type: "string"
-        indexId: 
-          type: "string"
-        organizationId: 
-          type: "string"
-    IndexSyncStatusModel: 
-      type: "object"
-      properties: 
-        currentFileName: 
-          type: "string"
-        currentFileNumber: 
-          type: "integer"
-          format: "int32"
-        totalNumberOfFiles: 
-          type: "integer"
-          format: "int32"
-        totalSize: 
-          type: "integer"
-          format: "int64"
-        transferredSize: 
-          type: "integer"
-          format: "int64"
-    IndexRankingModel: 
-      type: "object"
-      properties: 
-        adjacencyMult: 
-          type: "integer"
-          format: "int32"
-        collaborativeRankingMult: 
-          type: "integer"
-          format: "int32"
-        conceptMult: 
-          type: "integer"
-          format: "int32"
-        customDocumentWeightMult: 
-          type: "integer"
-          format: "int32"
-        docDateMult: 
-          type: "integer"
-          format: "int32"
-        formattedMult: 
-          type: "integer"
-          format: "int32"
-        languageMult: 
-          type: "integer"
-          format: "int32"
-        linkRankMult: 
-          type: "integer"
-          format: "int32"
-        numberOfResultsCollaborative: 
-          type: "integer"
-          format: "int32"
-        numberOfResultsToRefine: 
-          type: "integer"
-          format: "int32"
-        qualityMult: 
-          type: "integer"
-          format: "int32"
-        rankingHeuristic: 
-          type: "string"
-        rankingHeuristicUseIndexSize: 
-          type: "boolean"
-        sourceReputationMult: 
-          type: "integer"
-          format: "int32"
-        summaryMult: 
-          type: "integer"
-          format: "int32"
-        tFIDFMult: 
-          type: "integer"
-          format: "int32"
-        termCasingMult: 
-          type: "integer"
-          format: "int32"
-        termCorrelationMult: 
-          type: "integer"
-          format: "int32"
-        titleMult: 
-          type: "integer"
-          format: "int32"
-        uRIMult: 
-          type: "integer"
-          format: "int32"
-    PermissionLevelModel: 
-      type: "object"
-      properties: 
-        name: 
-          type: "string"
-        permissionSets: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/PermissionSetModel"
-    FieldModel: 
-      type: "object"
-      properties: 
-        dateFormat: 
-          type: "string"
-        description: 
-          type: "string"
-        facet: 
-          type: "boolean"
-        includeInQuery: 
-          type: "boolean"
-        includeInResults: 
-          type: "boolean"
-        mergeWithLexicon: 
-          type: "boolean"
-        multiValueFacet: 
-          type: "boolean"
-        multiValueFacetTokenizers: 
-          type: "string"
-        name: 
-          type: "string"
-        ranking: 
-          type: "boolean"
-        smartDateFacet: 
-          type: "boolean"
-        sort: 
-          type: "boolean"
-        stemming: 
-          type: "boolean"
-        system: 
-          type: "boolean"
-        type: 
-          type: "string"
-          enum: 
-            - "LONG"
-            - "LONG_64"
-            - "DOUBLE"
-            - "DATE"
-            - "STRING"
-        useCacheForComputedFacet: 
-          type: "boolean"
-        useCacheForNestedQuery: 
-          type: "boolean"
-        useCacheForNumericQuery: 
-          type: "boolean"
-        useCacheForSort: 
-          type: "boolean"
-    StorageSpecModel: 
-      type: "object"
-      properties: 
-        numberOfIops: 
-          type: "integer"
-          format: "int32"
-        sizeInGibibytes: 
-          type: "integer"
-          format: "int32"
-        sizeInGigabytes: 
-          type: "integer"
-          format: "int32"
-        storageType: 
-          type: "string"
-          enum: 
-            - "STANDARD"
-            - "SSD"
-            - "PROVISIONED_SSD"
-    PageModel«FieldModel»: 
-      type: "object"
-      properties: 
-        items: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/FieldModel"
-        totalEntries: 
-          type: "integer"
-          format: "int64"
-        totalPages: 
-          type: "integer"
-          format: "int32"
-    IndexCollaborativeRankingModel: 
-      type: "object"
-      properties: 
-        automaticRatingRatio: 
-          type: "number"
-          format: "double"
-        cacheSize: 
-          type: "integer"
-          format: "int32"
-        enabled: 
-          type: "boolean"
-        globalManualRatingRatio: 
-          type: "number"
-          format: "double"
-        groupAutomaticRatingRatio: 
-          type: "number"
-          format: "double"
-        historyCacheSize: 
-          type: "integer"
-          format: "int32"
-        oldRatingsFadeOutRatio: 
-          type: "number"
-          format: "double"
-        oldRatingsFadeOutTime: 
-          type: "integer"
-          format: "int32"
-        userAutomaticRatingRatio: 
-          type: "number"
-          format: "double"
-        validGroups: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/ConfigSIDDeclaratorModel"
-    RawIndexConfig: 
-      type: "object"
-      properties: 
-        collaborativeRanking: 
-          $ref: "#/definitions/IndexCollaborativeRankingModel"
-        physicalIndex: 
-          $ref: "#/definitions/IndexPhysicalIndexModel"
-        queryHighlighter: 
-          $ref: "#/definitions/IndexQueryHighlighterModel"
-        ranking: 
-          $ref: "#/definitions/IndexRankingModel"
-        system: 
-          $ref: "#/definitions/IndexSystemModel"
-    JsonStringIdWrapper: 
-      type: "object"
-      properties: 
-        id: 
-          type: "string"
-    CreateIndexModel: 
-      type: "object"
-      properties: 
-        copyFromAgent: 
-          type: "string"
-        copyFromId: 
-          type: "string"
-        machineSpec: 
-          $ref: "#/definitions/MachineSpecModel"
-        organizationClusterId: 
-          type: "string"
-        parameters: 
-          type: "object"
-          additionalProperties: 
-            type: "string"
-        type: 
-          type: "string"
-          enum: 
-            - "Coveo"
-            - "Elasticsearch"
-        versions: 
-          $ref: "#/definitions/IndexingPipelineVersionsModel"
-    IndexPhysicalIndexModel: 
-      type: "object"
-      properties: 
-        applyStemmingOnExactPhraseTerms: 
-          type: "boolean"
-        description: 
-          type: "string"
-        enableRealtimeIndexing: 
-          type: "boolean"
-        groupByMaxToCache: 
-          type: "integer"
-          format: "int32"
-        languagesSettings: 
-          type: "string"
-        name: 
-          type: "string"
-        normalizerUnicodeSetExclusion: 
-          type: "string"
-        performanceCacheMemory: 
-          type: "number"
-          format: "double"
-        realtimeIndexingDocumentsThreshold: 
-          type: "integer"
-          format: "int32"
-        realtimeIndexingStartThreshold: 
-          type: "integer"
-          format: "int32"
-        uniqueTermsPerDocument: 
-          type: "integer"
-          format: "int32"
-        wildcardsNumberOfLeadingChars: 
-          type: "integer"
-          format: "int32"
-        wildcardsNumberOfTerms: 
-          type: "integer"
-          format: "int32"
-    IndexSliceModel: 
-      type: "object"
-      properties: 
-        autoIndexCompactionHistorySize: 
-          type: "integer"
-          format: "int32"
-        description: 
-          type: "string"
-        documentsCacheSize: 
-          type: "integer"
-          format: "int32"
-        externalSecurityCacheSize: 
-          type: "integer"
-          format: "int32"
         id: 
           type: "integer"
           format: "int32"
-        lexiconCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconDateCFCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconDoubleCFCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconFieldSortCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconGroupByCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconLong64CFCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconLongCFCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconQueryFieldSortCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconStringCFCacheSize: 
-          type: "integer"
-          format: "int32"
-        lexiconTagCFCacheSize: 
-          type: "integer"
-          format: "int32"
-        name: 
+        declaration: 
           type: "string"
-        performanceCacheMemory: 
-          type: "number"
-          format: "double"
-        queryCacheSize: 
-          type: "integer"
-          format: "int32"
-        securityIndexCacheSize: 
-          type: "integer"
-          format: "int32"
-        securityInfoCacheSize: 
-          type: "integer"
-          format: "int32"
-        stemExpansionMapCacheSize: 
-          type: "integer"
-          format: "int32"
-        tagValueCacheSize: 
-          type: "integer"
-          format: "int32"
-        termIDCacheSize: 
-          type: "integer"
-          format: "int32"
-        wclmaxWords: 
-          type: "integer"
-          format: "int32"
-        wclminOccurrences: 
-          type: "integer"
-          format: "int32"
     DefaultSourceFieldsModel: 
       type: "object"
       properties: 
         defaultFields: 
-          type: "array"
           items: 
             $ref: "#/definitions/FieldModel"
-        sourceType: 
+          type: "array"
+        version: 
           type: "string"
+        sourceType: 
           enum: 
             - "AMAZONS3"
             - "BOX"
@@ -2580,24 +2077,527 @@
             - "TWITTER2"
             - "WEB2"
             - "YOUTUBE"
-        version: 
           type: "string"
+    IndexCollaborativeRankingModel: 
+      type: "object"
+      properties: 
+        automaticRatingRatio: 
+          type: "number"
+          format: "double"
+        groupAutomaticRatingRatio: 
+          type: "number"
+          format: "double"
+        globalManualRatingRatio: 
+          type: "number"
+          format: "double"
+        enabled: 
+          type: "boolean"
+        validGroups: 
+          items: 
+            $ref: "#/definitions/ConfigSIDDeclaratorModel"
+          type: "array"
+        oldRatingsFadeOutRatio: 
+          type: "number"
+          format: "double"
+        userAutomaticRatingRatio: 
+          type: "number"
+          format: "double"
+        cacheSize: 
+          type: "integer"
+          format: "int32"
+        historyCacheSize: 
+          type: "integer"
+          format: "int32"
+        oldRatingsFadeOutTime: 
+          type: "integer"
+          format: "int32"
     DocumentPermissionModel: 
       type: "object"
       properties: 
-        lastUpdatedDate: 
-          type: "integer"
-          format: "int64"
-        permissionLevels: 
-          type: "array"
-          items: 
-            $ref: "#/definitions/PermissionLevelModel"
         state: 
-          type: "string"
           enum: 
             - "UNKNOWN"
             - "VALID"
             - "PENDING"
             - "INCOMPLETE"
             - "IN_ERROR"
+          type: "string"
+        permissionLevels: 
+          items: 
+            $ref: "#/definitions/PermissionLevelModel"
+          type: "array"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+    IndexSourceStatisticsModel: 
+      type: "object"
+      properties: 
+        sourceId: 
+          type: "integer"
+          format: "int32"
+        documentTotalSize: 
+          type: "integer"
+          format: "int64"
+        documentCount: 
+          type: "integer"
+          format: "int64"
+        collectionId: 
+          type: "integer"
+          format: "int32"
+    PageModel«FieldModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/FieldModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    ValueModel: 
+      type: "object"
+      properties: 
+        value: 
+          type: "string"
+    PermissionLevelModel: 
+      type: "object"
+      properties: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSetModel"
+          type: "array"
+        name: 
+          type: "string"
+    FieldModel: 
+      type: "object"
+      properties: 
+        multiValueFacetTokenizers: 
+          type: "string"
+        includeInResults: 
+          type: "boolean"
+        description: 
+          type: "string"
+        ranking: 
+          type: "boolean"
+        dateFormat: 
+          type: "string"
+        multiValueFacet: 
+          type: "boolean"
+        useCacheForComputedFacet: 
+          type: "boolean"
+        system: 
+          type: "boolean"
+        sort: 
+          type: "boolean"
+        facet: 
+          type: "boolean"
+        stemming: 
+          type: "boolean"
+        useCacheForNumericQuery: 
+          type: "boolean"
+        mergeWithLexicon: 
+          type: "boolean"
+        useCacheForSort: 
+          type: "boolean"
+        useCacheForNestedQuery: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "LONG"
+            - "LONG_64"
+            - "DOUBLE"
+            - "DATE"
+            - "STRING"
+          type: "string"
+        includeInQuery: 
+          type: "boolean"
+        smartDateFacet: 
+          type: "boolean"
+        name: 
+          type: "string"
+    CreateIndexModel: 
+      type: "object"
+      properties: 
+        parameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        versions: 
+          $ref: "#/definitions/IndexingPipelineVersionsModel"
+        machineSpec: 
+          $ref: "#/definitions/MachineSpecModel"
+        copyFromId: 
+          type: "string"
+        organizationClusterId: 
+          type: "string"
+        copyFromAgent: 
+          type: "string"
+        type: 
+          enum: 
+            - "Coveo"
+            - "Elasticsearch"
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    IndexSystemModel: 
+      type: "object"
+      properties: 
+        minimumDiskSpace: 
+          type: "integer"
+          format: "int32"
+        freeSpaceBeforeRebalancingBTreeDuringCleanup: 
+          type: "integer"
+          format: "int32"
+        documentDuplicateFactor: 
+          type: "integer"
+          format: "int32"
+        maxDocIDRecyclingTimePerTransactionOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        maxTermDefragmentationTimePercentPeakPeriod: 
+          type: "number"
+          format: "double"
+        indexingBlockerMode: 
+          type: "string"
+        termsChunksToDefragmentPerTransactionOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        maxChunksCleanupPerTransactionPeakPeriod: 
+          type: "number"
+          format: "double"
+        maxMMFFlushPendingMemoryMB: 
+          type: "integer"
+          format: "int32"
+        maxOptimizerBTreeShrinkTimeOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        maxRecycledTermIDCleanupTimePeakPeriod: 
+          type: "integer"
+          format: "int32"
+        termsChunksToDefragmentPerTransactionPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        indexingPriority: 
+          type: "string"
+        maxWriterBTreeShrinkTimeOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        transactionUpdateFrequency: 
+          type: "integer"
+          format: "int32"
+        maxOptimizerBTreeShrinkTimePeakPeriod: 
+          type: "integer"
+          format: "int32"
+        numberOfBatchQueryThreads: 
+          type: "integer"
+          format: "int32"
+        maxWriterBTreeShrinkTimePeakPeriod: 
+          type: "integer"
+          format: "int32"
+        maxSystemFileCacheSize: 
+          type: "number"
+          format: "double"
+        maximumResults: 
+          type: "integer"
+          format: "int32"
+        maximumTermsPerQuery: 
+          type: "integer"
+          format: "int32"
+        limitSystemFileCacheSize: 
+          type: "boolean"
+        transactionMaxDocumentsSize: 
+          type: "integer"
+          format: "int32"
+        maxTermDefragmentationTimePercentOffPeakPeriod: 
+          type: "number"
+          format: "double"
+        numberOfQueryThreads: 
+          type: "integer"
+          format: "int32"
+        enableServiceIndexMetrics: 
+          type: "boolean"
+        streamCompressionMethod: 
+          type: "string"
+        maxRecycledTermIDCleanupTimePercentPeakPeriod: 
+          type: "number"
+          format: "double"
+        maxChunksCleanupTimePerTransactionPeakPeriod: 
+          type: "number"
+          format: "double"
+        maxBTreeFlushPendingMemoryMB: 
+          type: "integer"
+          format: "int32"
+        enableTransactionsIndexMetrics: 
+          type: "boolean"
+        enableWordCorrectorLexicon: 
+          type: "boolean"
+        documentsChunkToDefragmentOffPeak: 
+          type: "integer"
+          format: "int32"
+        documentsChunkToDefragment: 
+          type: "integer"
+          format: "int32"
+        maxDocIDRecyclingTimePerTransactionPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        recyclingThresholdMultiplierInIndexingMode: 
+          type: "number"
+          format: "double"
+        maxChunksCleanupTimePerTransactionOffPeakPeriod: 
+          type: "number"
+          format: "double"
+        performanceCacheMemory: 
+          type: "number"
+          format: "double"
+        enableQueryMetrics: 
+          type: "boolean"
+        maxTermDefragmentationTimeOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        documentLimitWarning: 
+          type: "integer"
+          format: "int32"
+        performanceMinimumCacheMemory: 
+          type: "integer"
+          format: "int32"
+        minTermIDCountForRecycling: 
+          type: "integer"
+          format: "int32"
+        bTreeShrinkFreeSpaceThreshold: 
+          type: "number"
+          format: "double"
+        freeSpaceBeforeRebalancingBTree: 
+          type: "integer"
+          format: "int32"
+        processPriority: 
+          type: "string"
+        documentsFragmentationTarget: 
+          type: "number"
+          format: "double"
+        maxChunksCleanupPerTransactionOffPeakPeriod: 
+          type: "number"
+          format: "double"
+        enableInternalLiveTagging: 
+          type: "boolean"
+        maxRecycledTermIDCleanupTimeOffPeakPeriod: 
+          type: "integer"
+          format: "int32"
+        performanceMode: 
+          type: "string"
+        minDocIDCountForRecycling: 
+          type: "integer"
+          format: "int32"
+        enableLiveTagging: 
+          type: "boolean"
+        maxRecycledTermIDCleanupTimePercentOffPeakPeriod: 
+          type: "number"
+          format: "double"
+        enableSearchDebugArgument: 
+          type: "boolean"
+        maxTermDefragmentationTimePeakPeriod: 
+          type: "integer"
+          format: "int32"
+        systemFileCacheTrimInterval: 
+          type: "integer"
+          format: "int32"
+    IndexStatusModel: 
+      type: "object"
+      properties: 
+        stats: 
+          $ref: "#/definitions/IndexStatisticsModel"
+        backupStatus: 
+          $ref: "#/definitions/IndexBackupStatusModel"
+        readOnlyStatus: 
+          enum: 
+            - "READ_ONLY"
+            - "SWITCHING_TO_READ_ONLY"
+            - "SWITCHING_TO_READ_WRITE"
+            - "READ_WRITE"
+          type: "string"
+        internalStatus: 
+          enum: 
+            - "COMPUTING_STATUS"
+            - "CREATING"
+            - "IN_ERROR"
+            - "STARTING"
+            - "RUNNING"
+            - "STOPPING"
+            - "SYNCHRONIZING"
+            - "UNREACHABLE"
+            - "WAITING_FOR_CREATION"
+            - "BACKING_UP"
+            - "RESTORING_BACKUP"
+          type: "string"
+        syncStatus: 
+          $ref: "#/definitions/IndexSyncStatusModel"
+        online: 
+          type: "boolean"
+    IndexPhysicalIndexModel: 
+      type: "object"
+      properties: 
+        languagesSettings: 
+          type: "string"
+        description: 
+          type: "string"
+        enableRealtimeIndexing: 
+          type: "boolean"
+        realtimeIndexingDocumentsThreshold: 
+          type: "integer"
+          format: "int32"
+        performanceCacheMemory: 
+          type: "number"
+          format: "double"
+        normalizerUnicodeSetExclusion: 
+          type: "string"
+        realtimeIndexingStartThreshold: 
+          type: "integer"
+          format: "int32"
+        groupByMaxToCache: 
+          type: "integer"
+          format: "int32"
+        uniqueTermsPerDocument: 
+          type: "integer"
+          format: "int32"
+        applyStemmingOnExactPhraseTerms: 
+          type: "boolean"
+        wildcardsNumberOfTerms: 
+          type: "integer"
+          format: "int32"
+        wildcardsNumberOfLeadingChars: 
+          type: "integer"
+          format: "int32"
+        name: 
+          type: "string"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "VALID"
+            - "PENDING"
+            - "INCOMPLETE"
+            - "IN_ERROR"
+          type: "string"
+        name: 
+          type: "string"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+        permissions: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    IndexHighlightTagModel: 
+      type: "object"
+      properties: 
+        start: 
+          type: "string"
+        end: 
+          type: "string"
+        id: 
+          type: "integer"
+          format: "int32"
+    IndexModel: 
+      type: "object"
+      properties: 
+        status: 
+          $ref: "#/definitions/IndexStatusModel"
+        name: 
+          type: "string"
+        machineSpec: 
+          $ref: "#/definitions/MachineSpecModel"
+        organizationClusterId: 
+          type: "string"
+        storages: 
+          items: 
+            $ref: "#/definitions/StorageSpecModel"
+          type: "array"
+        agentId: 
+          type: "string"
+        id: 
+          type: "string"
+    IndexRankingModel: 
+      type: "object"
+      properties: 
+        rankingHeuristicUseIndexSize: 
+          type: "boolean"
+        sourceReputationMult: 
+          type: "integer"
+          format: "int32"
+        collaborativeRankingMult: 
+          type: "integer"
+          format: "int32"
+        rankingHeuristic: 
+          type: "string"
+        adjacencyMult: 
+          type: "integer"
+          format: "int32"
+        termCorrelationMult: 
+          type: "integer"
+          format: "int32"
+        customDocumentWeightMult: 
+          type: "integer"
+          format: "int32"
+        numberOfResultsToRefine: 
+          type: "integer"
+          format: "int32"
+        titleMult: 
+          type: "integer"
+          format: "int32"
+        linkRankMult: 
+          type: "integer"
+          format: "int32"
+        termCasingMult: 
+          type: "integer"
+          format: "int32"
+        qualityMult: 
+          type: "integer"
+          format: "int32"
+        formattedMult: 
+          type: "integer"
+          format: "int32"
+        tFIDFMult: 
+          type: "integer"
+          format: "int32"
+        conceptMult: 
+          type: "integer"
+          format: "int32"
+        numberOfResultsCollaborative: 
+          type: "integer"
+          format: "int32"
+        uRIMult: 
+          type: "integer"
+          format: "int32"
+        docDateMult: 
+          type: "integer"
+          format: "int32"
+        languageMult: 
+          type: "integer"
+          format: "int32"
+        summaryMult: 
+          type: "integer"
+          format: "int32"
+    PageModel«IndexBackupModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/IndexBackupModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+  swagger: "2.0"
 
