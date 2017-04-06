@@ -56,7 +56,7 @@ repository = Repository()
 platform = Platform()
 
 gitHelper.checkout(repository.upstreamBranch, DEBUG)
-if not fileHelper.file_exists(repository.mdPagesPath):
+if not fileHelper.file_exists(repository.tempOutputJsonPath):
     directoryHelper.make_directory(repository.tempOutputJsonPath, DEBUG)
 
 for api in platform.apiList:
