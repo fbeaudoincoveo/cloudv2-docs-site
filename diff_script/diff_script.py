@@ -78,8 +78,9 @@ for api in platform.apiList:
         markdownFile = repository.mdPagesPath + api + ".md"
 
         if not fileHelper.file_exists(markdownFile, DEBUG):
-            mdData = "---\nlayout: swaggerui2_page\ntitle: \'" + api + "\'\ncategories: api_docs\nswagger: " + \
-                     yamlFile + "\npermalink: " + repository.mdPagesPath + api + "\n---"
+            mdData = "---\nlayout: " + configData["repository"]["mdLayout"] + "\ntitle: \'" + api + \
+                     "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
+                     api + "\n---"
             fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
             gitHelper.add(markdownFile, DEBUG)
