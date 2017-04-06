@@ -1,5 +1,5 @@
 ---
-layout: redoc_page
+layout: swaggerui2_page
 title: 'Platform'
 categories: api_docs
 swagger: ../api_docs/Platform.yml

@@ -8527,41 +8527,41 @@
         operationId: "getCustomDimensions"
   tags: 
     - 
-      name: "Analytics API - Version 14"
-    - 
-      name: "Groups API - Version 15"
-    - 
-      name: "Metrics API - Version 15"
-    - 
-      name: "Exports API - Version 15"
-    - 
-      name: "Users API - Version 14"
-    - 
-      name: "Exports API - Version 14"
-    - 
-      name: "Administration API - Version 15"
-    - 
-      name: "Dimensions API, Version 15"
-    - 
-      name: "Reports API - Version 15"
-    - 
-      name: "Metrics API - Version 14"
-    - 
-      name: "Reports API - Version 14"
+      name: "Filters API - Version 15"
     - 
       name: "Users API - Version 15"
     - 
-      name: "Dimensions API - Version 14"
+      name: "Statistics API - Version 14"
     - 
-      name: "Filters API - Version 14"
+      name: "Analytics API - Version 14"
+    - 
+      name: "Dimensions API, Version 15"
     - 
       name: "Statistics API - Version 15"
     - 
-      name: "Filters API - Version 15"
+      name: "Administration API - Version 15"
+    - 
+      name: "Metrics API - Version 14"
+    - 
+      name: "Exports API - Version 14"
+    - 
+      name: "Dimensions API - Version 14"
+    - 
+      name: "Metrics API - Version 15"
+    - 
+      name: "Groups API - Version 15"
+    - 
+      name: "Reports API - Version 14"
     - 
       name: "Analytics API - Version 15"
     - 
-      name: "Statistics API - Version 14"
+      name: "Reports API - Version 15"
+    - 
+      name: "Exports API - Version 15"
+    - 
+      name: "Filters API - Version 14"
+    - 
+      name: "Users API - Version 14"
   basePath: "/rest/ua"
   securityDefinitions: 
     v8: 

@@ -8,7 +8,6 @@
     description: "API for Coveo Platform"
     license: {}
     title: "Coveo Platform API"
-    version: "1.0"
   paths: 
     /rest/organizations/{organizationId}/activities/permissions: 
       get: 

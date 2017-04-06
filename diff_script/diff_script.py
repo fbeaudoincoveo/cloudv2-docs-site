@@ -56,7 +56,8 @@ repository = Repository()
 platform = Platform()
 
 gitHelper.checkout(repository.upstreamBranch, DEBUG)
-directoryHelper.make_directory(repository.tempOutputJsonPath, DEBUG)
+if not fileHelper.file_exists(repository.tempOutputJsonPath):
+    directoryHelper.make_directory(repository.tempOutputJsonPath, DEBUG)
 
 for api in platform.apiList:
 
@@ -77,14 +78,14 @@ for api in platform.apiList:
         gitHelper.add(yamlFile, DEBUG)
 
         markdownFile = repository.mdPagesPath + api + ".md"
+        if not fileHelper.file_exists(repository.mdPagesPath):
+            directoryHelper.make_directory(repository.mdPagesPath)
+        mdData = "---\nlayout: " + repository.mdLayout + "\ntitle: \'" + api + \
+                 "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
+                 api + "\n---"
+        fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
-        if not fileHelper.file_exists(markdownFile, DEBUG):
-            mdData = "---\nlayout: " + repository.mdLayout + "\ntitle: \'" + api + \
-                     "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
-                     api + "\n---"
-            fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
-
-            gitHelper.add(markdownFile, DEBUG)
+        gitHelper.add(markdownFile, DEBUG)
 
     else:
         print "Could not get Swagger specification from " + swaggerSpecificationPath + " ."

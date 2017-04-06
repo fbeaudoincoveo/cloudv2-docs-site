@@ -1,5 +1,5 @@
 ---
-layout: redoc_page
+layout: swaggerui2_page
 title: 'UsageAnalytics'
 categories: api_docs
 swagger: ../api_docs/UsageAnalytics.yml
