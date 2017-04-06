@@ -1,10 +1,11 @@
 from subprocess import call
+import os
 
 
 def make_directory(directory_to_create, debug=False):
     if debug:
         print "Creating directory: %s." % directory_to_create
-    call("mkdir %s" % directory_to_create, shell=True)
+    os.makedirs(directory_to_create)
 
 
 def recursively_delete_directory(directory_to_delete, debug=False):
