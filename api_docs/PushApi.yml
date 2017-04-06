@@ -2,7 +2,6 @@
   info: 
     version: "2016-03-03T13:22:11Z"
     title: "Push API"
-    version: "1.0"
   paths: 
     /organizations/{organizationId}/sources/{sourceId}/status: 
       post: 
