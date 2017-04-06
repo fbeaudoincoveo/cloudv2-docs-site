@@ -1,17 +1,18 @@
 ---
-  debug: True
+  debug: True # Setting this to False will execute the script in "silent" mode.
   repository:
-    accessToken: 0a451742631a7f3e51594c90f645e11da06c5d87
-    tempOutputJsonPath: ./temp_json/
-    outputYamlPath: ../api_docs/
-    mdPagesPath: ../pages/api_explorer/
-    upstreamBranch: upstream_api_spec_changes
-    baseBranch: master
-    baseCommitMessage: Upstream_update_
-    pullRequestMessage: Upstream_update_request
+    accessToken: 0a451742631a7f3e51594c90f645e11da06c5d87 # This must allow to create PRs on public GitHub repositories. BTW, this access token doesn't work ;)
+    tempOutputJsonPath: ./temp_json/ # This is where the temporary JSONs are saved. Will be deleted when script is done.
+    outputYamlPath: ../api_docs/ # This is where the YAMLs are saved. Essential for the diff.
+    mdPagesPath: ../pages/api_explorer/ # This is where the md pages will be created if they don't already exist.
+    mdLayout: redoc_page # Use either "redoc_page", "swaggerui2_page" or "swaggerui3_page".
+    upstreamBranch: upstream_api_spec_changes # This is the branch that the script checkouts when it runs.
+    baseBranch: master # This is the branch to send the PRs to.
+    baseCommitMessage: Upstream_update_ # The datetime will be added to this commit message.
+    pullRequestMessage: Upstream_update_request # This is the PR message to use.
   platform:
-    environment: ""
-    apiList:
+    environment: "" # Use either "" (for Prod environment), "qa" or "dev".
+    apiList: # The list of apis to try to load from the Coveo platform site.
       - Platform
       - Index
       - SecurityCache
@@ -25,7 +26,7 @@
       - AuthorizationServer
       - Notification
       - SearchApi
-    methodList:
+    methodList: # The list of methods allowed by the Swagger specification.
       - get
       - put
       - post
@@ -33,6 +34,6 @@
       - options
       - head
       - patch
-    host1: https://platform
+    host1: https://platform # The "environment" variable will be added between "host1" and "host2".
     host2: .cloud.coveo.com
-    apiDocsPath: /api-docs/
+    apiDocsPath: /api-docs/ # This is where the JSON specs are on the Coveo platform site.

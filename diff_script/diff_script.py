@@ -19,6 +19,7 @@ class Repository:
         self.tempOutputJsonPath = configData["repository"]["tempOutputJsonPath"]
         self.outputYamlPath = configData["repository"]["outputYamlPath"]
         self.mdPagesPath = configData["repository"]["mdPagesPath"]
+        self.mdLayout = configData["repository"]["mdLayout"]
         self.upstreamBranch = configData["repository"]["upstreamBranch"]
         self.baseBranch = configData["repository"]["baseBranch"]
         self.baseCommitMessage = configData["repository"]["baseCommitMessage"]
@@ -78,8 +79,9 @@ for api in platform.apiList:
         markdownFile = repository.mdPagesPath + api + ".md"
 
         if not fileHelper.file_exists(markdownFile, DEBUG):
-            mdData = "---\nlayout: swaggerui2_page\ntitle: \'" + api + "\'\ncategories: api_docs\nswagger: " + \
-                     yamlFile + "\npermalink: " + repository.mdPagesPath + api + "\n---"
+            mdData = "---\nlayout: " + repository.mdLayout + "\ntitle: \'" + api + \
+                     "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
+                     api + "\n---"
             fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
             gitHelper.add(markdownFile, DEBUG)
