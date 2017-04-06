@@ -24,6 +24,7 @@ class Repository:
         self.baseBranch = configData["repository"]["baseBranch"]
         self.baseCommitMessage = configData["repository"]["baseCommitMessage"]
         self.pullRequestMessage = configData["repository"]["pullRequestMessage"]
+        self.ghPagesSiteName = "/" + configData["repository"]["ghPagesSiteName"]
 
 
 class Platform:
@@ -82,7 +83,7 @@ for api in platform.apiList:
             directoryHelper.make_directory(repository.mdPagesPath)
         mdData = "---\nlayout: " + repository.mdLayout + "\ntitle: \'" + api + \
                  "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
-                 api + "\n---"
+                 api + "\nghPagesSiteName: " + repository.ghPagesSiteName + "\n---"
         fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
         gitHelper.add(markdownFile, DEBUG)
