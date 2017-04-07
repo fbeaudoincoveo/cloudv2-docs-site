@@ -22,7 +22,8 @@
     <script src={{"/swaggerui/v3/dist/swagger-ui-standalone-preset.js" | relative_url}}> </script>
 
     <script>
-      var ymlUrl = window.location.hostname == "127.0.0.1" ? "{{swagger}}" : "{{gh_pages_site_name}}" + "{{swagger}}";
+      var ymlUrl = window.location.hostname == "127.0.0.1" || window.location.hostname == "localhost" ? "{{swagger}}" :
+        "{{gh_pages_site_name}}" + "{{swagger}}";
 
       window.onload = function() {
         // Build a system
