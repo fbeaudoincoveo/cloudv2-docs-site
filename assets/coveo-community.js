@@ -43,7 +43,7 @@ function isMobile(){
 
 // Set the Coveo Cloud Organization search and analytics tokens
 var siteOrigin= 'CoveoDocs'; //Take the value from https://search.coveo.com/JS/TechDoc.js
-var SuggestionScope = '@syssource=("ohclouden")'; //Search Box suggestion filter ex: @syssource=("ohclouden")
+var SuggestionScope = '@syssource=("CloudV2DocsSite")'; //Search Box suggestion filter ex: @syssource=("ohclouden")
 var searchToken = 'xx1b26c04d-9505-4a61-bab2-ff29d6d4efc1'; //API Key allowing to query
 var uaToken = searchToken; // API Key for allowing to push Usage analytics events
 var hostname = window.location.hostname; //To manage dev/staging/prod environment
@@ -78,7 +78,7 @@ $(function(){
                     populateOmniBoxEventArgs.closeOmnibox();
                     Coveo.SearchEndpoint.endpoints["default"]
                         .search({
-                            q: '@systitle=="' + valueSelected + '"',
+                            q: '@docstitle=="' + valueSelected + '"',
                             aq: SuggestionScope
                         })
                         .done(function (results) {
