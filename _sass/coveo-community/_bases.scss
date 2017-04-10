@@ -421,8 +421,9 @@ header {
 		position: relative;
 		display: flex;
 		nav {
-			width: 85%;
+			width: 100%;
             text-align: center;
+			padding: 0 20px;
 			ul {
 				font-size: 0;
 				text-align: center;
