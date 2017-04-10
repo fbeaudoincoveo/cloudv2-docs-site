@@ -1,0 +1,48 @@
+// Define defaults for each variable.
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+// $base-font-family: Lato, Arial, sans-serif !default;
+$base-font-family: Lato, Arial, sans-serif;
+$base-font-size:   16px !default;
+$base-font-weight: 400 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+
+$spacing-unit:     30px !default;
+
+$text-color:       #111 !default;
+$background-color: #fdfdfd !default;
+$brand-color:      #2a7ae2 !default;
+
+/*  Colors  */
+$noir:   #000;
+$blanc:  #fff;
+$orange: #F58020;
+$bleuMarin: #263E55;
+$bleuMarin2: #18456C;
+
+
+// Width of the content area
+$content-width:    800px !default;
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//   .wrapper {
+//     padding-right: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+//   }
+// }
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+// Import partials.
+@import
+  "coveo-community/mixins",
+  "coveo-community/bases"
+;
