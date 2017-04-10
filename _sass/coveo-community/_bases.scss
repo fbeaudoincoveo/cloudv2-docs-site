@@ -1,7 +1,4 @@
-/*
-	Bases
-
-*/
+/* Bases */
 
 html {
 	    -webkit-font-smoothing:subpixel-antialiased !important;
@@ -25,6 +22,9 @@ header {
 	* {
 		box-sizing: border-box;
 		-webkit-font-smoothing:subpixel-antialiased !important;
+	}
+	.currentSite {
+		border-bottom: 4px solid $orange !important;
 	}
 	.currentSiteName{
 		text-align: left;
@@ -535,6 +535,16 @@ header {
 			@include ipad-and-below{display:none;}
 			@include below-1024{ul li{display:inline-block;}}
 		}
+		#apiExplorerMenu {
+			> a.currentSection {
+			  border-bottom: 4px solid $orange !important;
+			  padding-bottom: 14px;
+			}
+			ul li a.currentApi {
+				background-color: $orange;
+				color: $blanc;
+			}
+		}
 	}
 	.bottomHeader {
 		background-color: #E6ECF0;
@@ -550,69 +560,7 @@ header {
 			.magic-box-suggestions.magic-box-hasSuggestion {border-color: #BCC3CA   !important;}
 			.magic-box .magic-box-suggestions .magic-box-suggestion {   color: #373737  ;}
 		}
-		/*.searchContainer {
-			margin: 0 auto;
-			max-width: 800px;
-			position: relative;
-			> * {
-				float: left;
-			}
-			input[type="search"] {
-				width: 99%;
-				border-radius: 4px;
-				//-webkit-border-radius: 0px;
-				border: 1px solid #B2BDC5;
-				border-right: none;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				-webkit-appearance: none;
-				font-size: 24px;
-				font-family: Lato;
-				font-weight: 700;
-				color: #1D4F76;
-				padding: 10px 55px 10px 20px;
-				box-sizing: border-box;
-				height:51px;
-				@include ipad-and-below {padding-left:10px;}
-			}
-			.sb-icon-search,
-			input[type="submit"] {
-				position: absolute;
-				right: 0;
-				top: 0;
-				height: 51px;
-				width: 60px;
-				padding: 0;
-				margin: 0;
-				border-radius:0;
-				border-top-right-radius: 4px;
-				border-bottom-right-radius: 4px;
-				background-color: #fff;
 
-			}
-			input[type="submit"] {
-				border: 1px #b2bdc5 solid;
-				-webkit-appearance: none;
-				z-index: 2;
-				background-color: transparent;
-			}
-			.sb-icon-search {
-				z-index: 1;
-				//background-color:red;
-				&:before {
-					content: "";
-					display: block;
-					width: 20px;
-					height: 20px;
-					background: transparent url("../img/search.png") no-repeat left top;
-					top: 50%;
-					position: absolute;
-					margin-top: -10px;
-					left: 50%;
-					margin-left: -8px;
-				}
-			}
-		}*/
 	}
 	.full {
 		width: 100%;
@@ -634,7 +582,7 @@ header {
 	zoom: 1;
 }
 .hide {
-	diplay: none;
+	display: none;
 }
 
 .magic-box-input .magic-box-underlay, .magic-box .magic-box-input > input{
@@ -650,6 +598,4 @@ header {
 .magic-box .magic-box-suggestions .coveo-highlight{
     font-weight:bold !important;
 }
-.magic-box .magic-box-input .magic-box-underlay .magic-box-ghost-text{
-	//line-height: 48px;
-}
+

@@ -23,31 +23,6 @@
         </li>
       </ul>
     </nav>
-
-    <!--<div class="info-perso">
-      <ul class="floated loginregister">
-        <li><a href="#login">Log in</a></li>
-        <li><a href="#register">Register</a></li>
-      </ul>
-    </div>-->
-
-    <!-- //Connected -->
-    <!-- <div class="info-perso">
-        <ul class="with-sub">
-            <li>
-                <a href="#" class="connected">
-                    <img src="img/user-default.png" alt="User Default" />
-                    <span class="nom">Shannon Butler</span>
-                    <i class="arrow"></i>
-                </a>
-                <ul>
-                    <li><a href="#manage">Manage Profile</a></li>
-                    <li><a href="#logout">Log out</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div> -->
-
   </div>
 
   <div class="middleHeader clear">
@@ -58,22 +33,16 @@
         <li><a href="#">Glossary</a></li>
       </ul>
       <ul class="externalbox with-sub">
-        <li>
+        <li id="apiExplorerMenu">
           <a href="#" class="sub">API Explorer
             <i class="arrow"></i>
           </a>
           <ul>
-            {% for p in site.pages %}{% if p.url contains "/api_explorer/" %}<li><a class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></li>{% endif %}{% endfor %}
+            {% for p in site.pages %}{% if p.url contains "/api_explorer/" %}<li><a id="{{ p.title | split: '/'| last }}" class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></li>{% endif %}{% endfor %}
           </ul>
         </li>
       </ul>
     </nav>
-    <div class="cont-share-switch">
-      <!-- <ul class="floated">
-          <li><a title="Share topic" href="#" class="share"><i class="share"></i></a></li>
-          <li class="switchLanguage"><a href="/fr">FR</a> | <a href="/en" class="current">EN</a></li>
-      </ul> -->
-    </div>
   </div>
 
   <div class="bottomHeader">
