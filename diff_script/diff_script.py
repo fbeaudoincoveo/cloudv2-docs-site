@@ -5,40 +5,13 @@ import json
 import re
 import directoryHelper
 from datetime import datetime
+import config_classes
 
 
 CONFIG_FILE = "./diff_script_config.yml"
 
 configData = fileHelper.load_yaml_config_file(CONFIG_FILE)
 DEBUG = configData["debug"]
-
-
-class Repository:
-    def __init__(self):
-        self.accessToken = configData["repository"]["accessToken"]
-        self.tempOutputJsonPath = configData["repository"]["tempOutputJsonPath"]
-        self.outputYamlPath = configData["repository"]["outputYamlPath"]
-        self.mdPagesPath = configData["repository"]["mdPagesPath"]
-        self.mdLayout = configData["repository"]["mdLayout"]
-        self.upstreamBranch = configData["repository"]["upstreamBranch"]
-        self.baseBranch = configData["repository"]["baseBranch"]
-        self.baseCommitMessage = configData["repository"]["baseCommitMessage"]
-        self.pullRequestMessage = configData["repository"]["pullRequestMessage"]
-        self.ghPagesSiteName = "/" + configData["repository"]["ghPagesSiteName"]
-
-
-class Platform:
-    def __init__(self):
-        self.environment = configData["platform"]["environment"]
-        self.apiList = configData["platform"]["apiList"]
-        self.methodList = configData["platform"]["methodList"]
-        self.host1 = configData["platform"]["host1"]
-        self.host2 = configData["platform"]["host2"]
-        self.apiDocsPath = configData["platform"]["apiDocsPath"]
-
-    def get_host(self):
-        return self.host1 + self.environment + self.host2
-
 
 # This removes the "_1" that sometimes appear at the end of operationIds in the Swagger JSON as a result of the multiple
 # proxy instances.
@@ -53,8 +26,8 @@ def clean_json_data(data):
     data = json.dumps(data)
     return data
 
-repository = Repository()
-platform = Platform()
+repository = config_classes.Repository(configData)
+platform = config_classes.Platform(configData)
 
 gitHelper.checkout(repository.upstreamBranch, DEBUG)
 if not fileHelper.file_exists(repository.tempOutputJsonPath):

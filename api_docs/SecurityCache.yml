@@ -12,6 +12,7 @@
   paths: 
     /rest/organizations/{organizationId}/securitycache/refresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh_post"
         responses: 
           201: 
             description: "Created"
@@ -45,6 +46,7 @@
         operationId: "refreshUsingPOST"
     /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/paramId/refresh_post"
         responses: 
           201: 
             description: "Created"
@@ -84,6 +86,7 @@
         operationId: "refreshProviderUsingPOST"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/raw: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_put"
         responses: 
           201: 
             description: "Created"
@@ -138,6 +141,7 @@
           - "application/json"
         operationId: "createOrUpdateSecurityProviderRawUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_get"
         responses: 
           200: 
             description: "OK"
@@ -177,6 +181,7 @@
         operationId: "getSecurityProviderRawUsingGET"
     /rest/organizations/{organizationId}/securitycache/refresh/entity: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh/entity_post"
         responses: 
           201: 
             description: "Created"
@@ -217,6 +222,7 @@
         operationId: "refreshEntityUsingPOST"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/paramId/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -275,6 +281,7 @@
         operationId: "removeReferenceFromSecurityProviderForClusterUsingDELETE"
     /rest/organizations/{organizationId}/securityproviders/snapshots/{snapshotId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/snapshots/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -314,6 +321,7 @@
         operationId: "getSnapshotUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/sources/{sourceId}/securityproviders/: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/sources/paramId/securityproviders_get"
         responses: 
           200: 
             description: "OK"
@@ -361,6 +369,7 @@
         operationId: "getSecurityProvidersForSourceUsingGET"
     /rest/organizations/{organizationId}/securitycache/schedule: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_put"
         responses: 
           200: 
             description: "OK"
@@ -403,6 +412,7 @@
           - "application/json"
         operationId: "updateRefreshScheduleUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_get"
         responses: 
           200: 
             description: "OK"
@@ -437,6 +447,7 @@
         operationId: "getScheduleUsingGET"
     /rest/organizations/{organizationId}/securityproviders: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders_get"
         responses: 
           200: 
             description: "OK"
@@ -472,6 +483,7 @@
         operationId: "getSecurityProvidersUsingGET"
     /rest/organizations/{organizationId}/securitycache/schedules: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules_get"
         responses: 
           200: 
             description: "OK"
@@ -505,13 +517,12 @@
         operationId: "getSchedulesUsingGET"
     /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId/members_get"
         responses: 
           200: 
             description: "OK"
             schema: 
-              items: 
-                type: "string"
-              type: "array"
+              $ref: "#/definitions/PageModel«SecurityCacheMemberModel»"
           401: 
             description: "Unauthorized"
           403: 
@@ -570,6 +581,11 @@
             in: "query"
             type: "integer"
             name: "perPage"
+          - 
+            required: true
+            type: "string"
+            name: "usePageModel"
+            in: "query"
         produces: 
           - "*/*"
         tags: 
@@ -585,6 +601,7 @@
         operationId: "getMembersUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders_get"
         responses: 
           200: 
             description: "OK"
@@ -626,13 +643,12 @@
         operationId: "getSecurityProvidersForClusterUsingGET"
     /rest/organizations/{organizationId}/securitycache/entities/{providerId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId_get"
         responses: 
           200: 
             description: "OK"
             schema: 
-              items: 
-                $ref: "#/definitions/SIDModel"
-              type: "array"
+              $ref: "#/definitions/PageModel«SIDModel»"
           401: 
             description: "Unauthorized"
           403: 
@@ -691,6 +707,11 @@
             in: "query"
             type: "integer"
             name: "perPage"
+          - 
+            required: true
+            type: "string"
+            name: "usePageModel"
+            in: "query"
         produces: 
           - "*/*"
         tags: 
@@ -706,6 +727,7 @@
         operationId: "getEntitiesUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}/raw: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/raw_put"
         responses: 
           201: 
             description: "Created"
@@ -766,6 +788,7 @@
           - "application/json"
         operationId: "createOrUpdateSecurityProviderRawForClusterUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId/raw_get"
         responses: 
           200: 
             description: "OK"
@@ -811,6 +834,7 @@
         operationId: "getSecurityProviderRawForClusterUsingGET"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -858,6 +882,7 @@
           - "application/json"
         operationId: "createOrUpdateSecurityProviderUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -894,6 +919,7 @@
           - "application/json"
         operationId: "removeSecurityProviderUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -933,6 +959,7 @@
         operationId: "getSecurityProviderUsingGET"
     /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/{referenceType}/{referenceId}: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/paramId/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -985,6 +1012,7 @@
         operationId: "removeReferenceFromSecurityProviderUsingDELETE"
     /rest/organizations/{organizationId}/securitycache/status: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/status_get"
         responses: 
           200: 
             description: "OK"
@@ -1018,6 +1046,7 @@
         operationId: "getStatusUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/securityproviders/{securityProviderId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -1071,6 +1100,7 @@
           - "application/json"
         operationId: "createOrUpdateSecurityProviderForClusterUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1113,6 +1143,7 @@
           - "application/json"
         operationId: "removeSecurityProviderForClusterUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/securityproviders/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1158,6 +1189,7 @@
         operationId: "getSecurityProviderForClusterUsingGET"
     /rest/organizations/{organizationId}/securitycache/schedules/{scheduleId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -1205,6 +1237,7 @@
           - "application/json"
         operationId: "updateScheduleUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1454,6 +1487,19 @@
         numberOfEntitiesProcessed: 
           type: "integer"
           format: "int32"
+    PageModel«SIDModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/SIDModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
     SecurityProviderReferenceModel: 
       type: "object"
       properties: 
@@ -1566,6 +1612,19 @@
           type: "string"
         id: 
           type: "string"
+    PageModel«SecurityCacheMemberModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/SecurityCacheMemberModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
     SecurityCacheMemberModel: 
       type: "object"
       properties: 

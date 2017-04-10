@@ -12,6 +12,7 @@
   paths: 
     /rest/organizations/{organizationId}/subscriptions/me/{subscriptionId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -59,6 +60,7 @@
           - "application/json"
         operationId: "editSubscriptionForCurrentUserUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -93,6 +95,7 @@
           - "application/json"
         operationId: "deleteCurrentUserSubscriptionByIdUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -132,6 +135,7 @@
         operationId: "getCurrentUserSubscriptionByIdUsingGET"
     /rest/organizations/{organizationId}/subscriptions: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions_post"
         responses: 
           201: 
             description: "Created"
@@ -171,6 +175,7 @@
           - "application/json"
         operationId: "createSubscriptionUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions_get"
         responses: 
           200: 
             description: "OK"
@@ -206,6 +211,7 @@
         operationId: "getSubscriptionsUsingGET"
     /rest/organizations/{organizationId}/subscriptions/{subscriptionId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -253,6 +259,7 @@
           - "application/json"
         operationId: "editSubscriptionUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -287,6 +294,7 @@
           - "application/json"
         operationId: "deleteSubscriptionByIdUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -326,6 +334,7 @@
         operationId: "getSubscriptionByIdUsingGET"
     /rest/subscriptions: 
       post: 
+        uiOperationId: "/rest/subscriptions_post"
         responses: 
           201: 
             description: "Created"
@@ -359,6 +368,7 @@
           - "application/json"
         operationId: "createSubscriptionUsingPOST"
       get: 
+        uiOperationId: "/rest/subscriptions_get"
         responses: 
           200: 
             description: "OK"
@@ -387,6 +397,7 @@
         operationId: "getSubscriptionsUsingGET"
     /rest/subscriptions/{subscriptionId}: 
       put: 
+        uiOperationId: "/rest/subscriptions/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -428,6 +439,7 @@
           - "application/json"
         operationId: "editSubscriptionUsingPUT"
       delete: 
+        uiOperationId: "/rest/subscriptions/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -456,6 +468,7 @@
           - "application/json"
         operationId: "deleteSubscriptionByIdUsingDELETE"
       get: 
+        uiOperationId: "/rest/subscriptions/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -489,6 +502,7 @@
         operationId: "getSubscriptionByIdUsingGET"
     /rest/organizations/{organizationId}/subscriptions/me: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me_post"
         responses: 
           201: 
             description: "Created"
@@ -528,6 +542,7 @@
           - "application/json"
         operationId: "createSubscriptionForCurrentUserUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/subscriptions/me_get"
         responses: 
           200: 
             description: "OK"
@@ -581,32 +596,24 @@
     SubscriptionModel: 
       type: "object"
       properties: 
-        operations: 
-          items: 
-            type: "string"
-          type: "array"
         description: 
           type: "string"
         parameters: 
           additionalProperties: 
             type: "string"
           type: "object"
-        resultTypes: 
-          items: 
-            type: "string"
-          type: "array"
+        organizationId: 
+          type: "string"
         lastModified: 
           type: "integer"
           format: "int64"
-        userId: 
-          type: "string"
-        resourceTypes: 
-          items: 
-            type: "string"
-          type: "array"
+        enabled: 
+          type: "boolean"
         createdDate: 
           type: "integer"
           format: "int64"
+        pattern: 
+          $ref: "#/definitions/SubscriptionPatternModel"
         type: 
           enum: 
             - "EMAIL"
@@ -615,22 +622,18 @@
           type: "string"
         id: 
           type: "string"
+        userId: 
+          type: "string"
         name: 
           type: "string"
-    EditSubscriptionModel: 
+    SubscriptionPatternModel: 
       type: "object"
       properties: 
-        operations: 
-          items: 
-            type: "string"
-          type: "array"
-        description: 
-          type: "string"
-        parameters: 
+        content: 
           additionalProperties: 
             type: "string"
           type: "object"
-        resultTypes: 
+        operations: 
           items: 
             type: "string"
           type: "array"
@@ -638,6 +641,23 @@
           items: 
             type: "string"
           type: "array"
+        resultTypes: 
+          items: 
+            type: "string"
+          type: "array"
+    EditSubscriptionModel: 
+      type: "object"
+      properties: 
+        description: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        pattern: 
+          $ref: "#/definitions/SubscriptionPatternModel"
+        enabled: 
+          type: "boolean"
         type: 
           enum: 
             - "EMAIL"

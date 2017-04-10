@@ -10,6 +10,7 @@
     baseBranch: master # This is the branch to send the PRs to.
     baseCommitMessage: Upstream_update_ # The datetime will be added to this commit message.
     pullRequestMessage: Upstream_update_request # This is the PR message to use.
+    ghPagesHostName: https://coveo.github.io
     ghPagesSiteName: cloudv2-docs-site # Must specify GH pages site name to be able to render yml.
   platform:
     environment: "" # Use either "" (for Prod environment), "qa" or "dev".
@@ -38,3 +39,9 @@
     host1: https://platform # The "environment" variable will be added between "host1" and "host2".
     host2: .cloud.coveo.com
     apiDocsPath: /api-docs/ # This is where the JSON specs are on the Coveo platform site.
+    pushApiHost: https://push.cloud.coveo.com
+    pushApiOrganization: coveodocumentationtest
+    pushApiSource: coveodocumentationtest-qcz34kxmwrgoq2gxpxpxhs2fhq
+    pushApiPath: /v1/organizations/{pushApiOrganization}/sources/{pushApiSource}/documents
+    pushApiKey:
+

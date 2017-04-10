@@ -12,6 +12,7 @@
   paths: 
     /rest/backups/page: 
       get: 
+        uiOperationId: "/rest/backups/page_get"
         responses: 
           200: 
             description: "OK"
@@ -100,6 +101,7 @@
         operationId: "getBackupPageUsingGET"
     /rest/organizations/{organizationId}/license: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/license_put"
         responses: 
           201: 
             description: "Created"
@@ -139,6 +141,7 @@
           - "application/json"
         operationId: "updateLicenseUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/license_get"
         responses: 
           200: 
             description: "OK"
@@ -172,6 +175,7 @@
         operationId: "getLicenseUsingGET"
     /rest/licensetemplates/{templateName}: 
       put: 
+        uiOperationId: "/rest/licensetemplates/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -211,6 +215,7 @@
           - "application/json"
         operationId: "updateLicenseTemplateUsingPUT"
       delete: 
+        uiOperationId: "/rest/licensetemplates/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -239,6 +244,7 @@
           - "application/json"
         operationId: "deleteLicenseTemplateUsingDELETE"
       get: 
+        uiOperationId: "/rest/licensetemplates/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -272,6 +278,7 @@
         operationId: "getLicenseTemplateUsingGET"
     /rest/organizations/{organizationId}/support: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/support_put"
         responses: 
           201: 
             description: "Created"
@@ -311,6 +318,7 @@
         operationId: "changeSupportStatusUsingPUT"
     /rest/backups/organizations/page: 
       get: 
+        uiOperationId: "/rest/backups/organizations/page_get"
         responses: 
           200: 
             description: "OK"
@@ -354,6 +362,7 @@
         operationId: "getOrganizationsWithBackupsPageUsingGET"
     /rest/import: 
       post: 
+        uiOperationId: "/rest/import_post"
         responses: 
           201: 
             description: "Created"
@@ -394,6 +403,7 @@
         operationId: "importBackupUsingPOST"
     /rest/organizations/{organizationId}/duplicate: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/duplicate_post"
         responses: 
           201: 
             description: "Created"
@@ -433,6 +443,7 @@
         operationId: "duplicateOrganizationUsingPOST"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/synchronize: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/synchronize_post"
         responses: 
           201: 
             description: "Created"
@@ -472,6 +483,7 @@
         operationId: "synchronizeClusterUsingPOST"
     /rest/organizations/{organizationId}/status: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/status_get"
         responses: 
           200: 
             description: "OK"
@@ -505,6 +517,7 @@
         operationId: "getOrganizationStatusUsingGET"
     /rest/organizations/{organizationId}/readonly: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/readonly_put"
         responses: 
           201: 
             description: "Created"
@@ -544,6 +557,7 @@
         operationId: "setReadOnlyUsingPUT"
     /rest/organizations/{organizationId}/backups: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/backups_post"
         responses: 
           200: 
             description: "OK"
@@ -578,6 +592,7 @@
           - "application/json"
         operationId: "backupOrganizationUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/backups_get"
         responses: 
           200: 
             description: "OK"
@@ -613,6 +628,7 @@
         operationId: "getOrganizationBackupsUsingGET"
     /rest/organizations/{organizationId}/restore: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/restore_post"
         responses: 
           201: 
             description: "Created"
@@ -666,6 +682,7 @@
         operationId: "restoreOrganizationUsingPOST"
     /rest/organizations/{organizationId}/license/sync: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/license/sync_post"
         responses: 
           201: 
             description: "Created"
@@ -699,6 +716,7 @@
         operationId: "syncWithDefaultLicenseUsingPOST"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/status: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/status_get"
         responses: 
           200: 
             description: "OK"
@@ -738,6 +756,7 @@
         operationId: "getProvisioningStatusUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/versions: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/versions_put"
         responses: 
           201: 
             description: "Created"
@@ -783,6 +802,7 @@
           - "application/json"
         operationId: "setOrganizationClusterComponentVersionsUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/versions_get"
         responses: 
           200: 
             description: "OK"
@@ -822,6 +842,7 @@
         operationId: "getOrganizationClusterComponentVersionsUsingGET"
     /rest/organizationtemplates: 
       post: 
+        uiOperationId: "/rest/organizationtemplates_post"
         responses: 
           201: 
             description: "Created"
@@ -855,6 +876,7 @@
           - "application/json"
         operationId: "createOrganizationTemplateUsingPOST"
       get: 
+        uiOperationId: "/rest/organizationtemplates_get"
         responses: 
           200: 
             description: "OK"
@@ -883,6 +905,7 @@
         operationId: "getOrganizationTemplatesUsingGET"
     /rest/organizations/{organizationId}/launchprovisioning: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/launchprovisioning_post"
         responses: 
           201: 
             description: "Created"
@@ -916,6 +939,7 @@
         operationId: "launchProvisioningUsingPOST"
     /rest/organizations/{organizationId}/license/{sectionName}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/license/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -961,6 +985,7 @@
           - "application/json"
         operationId: "updateLicenseSectionUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/license/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -995,6 +1020,7 @@
           - "application/json"
         operationId: "deleteLicenseSectionUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/license/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1034,6 +1060,7 @@
         operationId: "getLicenseSectionUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes_get"
         responses: 
           200: 
             description: "OK"
@@ -1075,6 +1102,7 @@
         operationId: "getOrganizationNodesUsingGET"
     /rest/organizations/{organizationId}/exports/logins: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/exports/logins_get"
         responses: 
           200: 
             description: "OK"
@@ -1114,6 +1142,7 @@
         operationId: "getLoginsExportUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/start: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/start_post"
         responses: 
           201: 
             description: "Created"
@@ -1159,6 +1188,7 @@
         operationId: "startNodeUsingPOST"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/dump: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId/dump_post"
         responses: 
           201: 
             description: "Created"
@@ -1204,6 +1234,7 @@
         operationId: "dumpAgentUsingPOST"
     /rest/infrastructure/organizations/readonly: 
       put: 
+        uiOperationId: "/rest/infrastructure/organizations/readonly_put"
         responses: 
           201: 
             description: "Created"
@@ -1237,6 +1268,7 @@
         operationId: "setReadOnlyUsingPUT"
     /rest/packages: 
       get: 
+        uiOperationId: "/rest/packages_get"
         responses: 
           200: 
             description: "OK"
@@ -1265,6 +1297,7 @@
         operationId: "getComponentInfoListUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents_get"
         responses: 
           200: 
             description: "OK"
@@ -1306,6 +1339,7 @@
         operationId: "getAgentsUsingGET"
     /rest/organizations/{organizationId}/clusters/live: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/live_get"
         responses: 
           200: 
             description: "OK"
@@ -1339,6 +1373,7 @@
         operationId: "getOrganizationLiveClusterUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}/upgrade: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId/upgrade_put"
         responses: 
           201: 
             description: "Created"
@@ -1391,6 +1426,7 @@
         operationId: "upgradeAgentNodesUsingPUT"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/stop: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/stop_post"
         responses: 
           201: 
             description: "Created"
@@ -1436,6 +1472,7 @@
         operationId: "stopNodeUsingPOST"
     /rest/organizations/{organizationId}/clusters: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters_get"
         responses: 
           200: 
             description: "OK"
@@ -1471,6 +1508,7 @@
         operationId: "getOrganizationClustersUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrade: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/upgrade_put"
         responses: 
           201: 
             description: "Created"
@@ -1523,6 +1561,7 @@
         operationId: "upgradeNodeUsingPUT"
     /rest/organizations/{organizationId}/resetTopology: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/resetTopology_post"
         responses: 
           201: 
             description: "Created"
@@ -1556,6 +1595,7 @@
         operationId: "resetTopologyUsingPOST"
     /rest/organizations/{organizationId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1595,6 +1635,7 @@
           - "application/json"
         operationId: "updateOrganizationUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1623,6 +1664,7 @@
           - "application/json"
         operationId: "deleteOrganizationUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1656,6 +1698,7 @@
         operationId: "getOrganizationUsingGET"
     /rest/logging: 
       post: 
+        uiOperationId: "/rest/logging_post"
         responses: 
           200: 
             description: "OK"
@@ -1692,6 +1735,7 @@
         operationId: "logExceptionUsingPOST"
     /rest/organizations/{organizationId}/template/{templateName}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/template/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1744,6 +1788,7 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        uiOperationId: "/rest/aws/instances/agents_get"
         description: "Get the list of instance that are agents"
         produces: 
           - "*/*"
@@ -1760,6 +1805,7 @@
         operationId: "getAgentsUsingGET"
     /rest/organizations/{organizationId}/license/template: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/license/template_put"
         responses: 
           201: 
             description: "Created"
@@ -1813,6 +1859,7 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        uiOperationId: "/rest/aws/instances/agents/paramId_get"
         description: "Get a specific agent"
         parameters: 
           - 
@@ -1836,6 +1883,7 @@
         operationId: "getAgentUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/stop: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/stop_post"
         responses: 
           201: 
             description: "Created"
@@ -1875,6 +1923,7 @@
         operationId: "stopNodesUsingPOST"
     /rest/infrastructure/organizations: 
       post: 
+        uiOperationId: "/rest/infrastructure/organizations_post"
         responses: 
           201: 
             description: "Created"
@@ -1933,6 +1982,7 @@
         operationId: "internalCreateOrganizationUsingPOST"
     /rest/organizations/license/sync: 
       post: 
+        uiOperationId: "/rest/organizations/license/sync_post"
         responses: 
           201: 
             description: "Created"
@@ -1959,6 +2009,7 @@
         operationId: "syncWithDefaultLicenseGlobalUsingPOST"
     /rest/organizations: 
       post: 
+        uiOperationId: "/rest/organizations_post"
         responses: 
           201: 
             description: "Created"
@@ -2009,6 +2060,7 @@
           - "application/json"
         operationId: "createOrganizationUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations_get"
         responses: 
           200: 
             description: "OK"
@@ -2083,6 +2135,7 @@
         operationId: "getOrganizationsUsingGET"
     /rest/licensetemplates: 
       post: 
+        uiOperationId: "/rest/licensetemplates_post"
         responses: 
           201: 
             description: "Created"
@@ -2116,6 +2169,7 @@
           - "application/json"
         operationId: "createLicenseTemplateUsingPOST"
       get: 
+        uiOperationId: "/rest/licensetemplates_get"
         responses: 
           200: 
             description: "OK"
@@ -2144,6 +2198,7 @@
         operationId: "getLicenseTemplatesUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/dumps: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/dumps_post"
         responses: 
           201: 
             description: "Created"
@@ -2189,6 +2244,7 @@
         operationId: "generateDumpsUsingPOST"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/{nodeId}/upgrades: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/paramId/upgrades_get"
         responses: 
           200: 
             description: "OK"
@@ -2236,6 +2292,7 @@
         operationId: "getNodeUpgradesUsingGET"
     /rest/backups: 
       get: 
+        uiOperationId: "/rest/backups_get"
         responses: 
           200: 
             description: "OK"
@@ -2265,6 +2322,7 @@
         operationId: "getBackupsUsingGET"
     /rest/organizationtemplates/{templateName}: 
       put: 
+        uiOperationId: "/rest/organizationtemplates/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -2304,6 +2362,7 @@
           - "application/json"
         operationId: "updateOrganizationTemplateUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizationtemplates/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2332,6 +2391,7 @@
           - "application/json"
         operationId: "deleteOrganizationTemplateUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizationtemplates/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2365,6 +2425,7 @@
         operationId: "getOrganizationTemplateUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/agents/{agentId}: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2405,6 +2466,7 @@
           - "application/json"
         operationId: "unregisterAgentUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/agents/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2450,6 +2512,7 @@
         operationId: "getAgentUsingGET"
     /rest/packages/versions: 
       get: 
+        uiOperationId: "/rest/packages/versions_get"
         responses: 
           200: 
             description: "OK"
@@ -2476,6 +2539,7 @@
         operationId: "getAvailableComponentListUsingGET"
     /rest/organizations/{organizationId}/recover: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/recover_post"
         responses: 
           201: 
             description: "Created"
@@ -2516,6 +2580,7 @@
         operationId: "recoverOrganizationUsingPOST"
     /rest/organizations/{organizationId}/license/snapshots/{snapshotId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/license/snapshots/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2555,6 +2620,7 @@
         operationId: "getSnapshotUsingGET"
     /rest/organizations/{organizationId}/clusters/{organizationClusterId}/nodes/start: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/clusters/paramId/nodes/start_post"
         responses: 
           201: 
             description: "Created"
@@ -2884,6 +2950,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"

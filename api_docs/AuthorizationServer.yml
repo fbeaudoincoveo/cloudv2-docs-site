@@ -28,7 +28,7 @@
         parameters: 
           - 
             description: "organizationId"
-            required: false
+            required: true
             type: "string"
             name: "organizationId"
             in: "path"
@@ -69,7 +69,7 @@
         parameters: 
           - 
             description: "organizationId"
-            required: false
+            required: true
             type: "string"
             name: "organizationId"
             in: "path"
@@ -121,6 +121,39 @@
         consumes: 
           - "application/json"
         operationId: "getClientUsingGET"
+    /rest/realms/{realmId}: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RealmModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the realm to get"
+            required: true
+            type: "string"
+            name: "realmId"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Realms"
+        x-pretty-name: "getRealm"
+        summary: "Get the realm matching the specified id."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getRealmUsingGET"
     /rest/organizations/{organizationId}/saml/identityproviders/{id}: 
       put: 
         responses: 
@@ -139,13 +172,13 @@
         parameters: 
           - 
             description: "organizationId"
-            required: false
+            required: true
             type: "string"
             name: "organizationId"
             in: "path"
           - 
             description: "id"
-            required: false
+            required: true
             type: "string"
             name: "id"
             in: "path"
@@ -182,13 +215,13 @@
         parameters: 
           - 
             description: "organizationId"
-            required: false
+            required: true
             type: "string"
             name: "organizationId"
             in: "path"
           - 
             description: "id"
-            required: false
+            required: true
             type: "string"
             name: "id"
             in: "path"
@@ -220,13 +253,13 @@
         parameters: 
           - 
             description: "organizationId"
-            required: false
+            required: true
             type: "string"
             name: "organizationId"
             in: "path"
           - 
             description: "id"
-            required: false
+            required: true
             type: "string"
             name: "id"
             in: "path"
@@ -306,6 +339,75 @@
         consumes: 
           - "application/json"
         operationId: "getClientsUsingGET"
+    /rest/organizations/{organizationId}/saml/certificate: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Certificate"
+        x-pretty-name: "getPlatformPublicCertificate"
+        summary: "Get the Coveo Cloud Platform Saml public certificate."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getPlatformPublicCertificateUsingGET"
+    /rest/realms: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "realmIds"
+            items: 
+              type: "string"
+            required: true
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "realmIds"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Realms"
+        x-pretty-name: "getRealms"
+        summary: "Get realms by ids."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getRealmsUsingGET"
     /rest/users/{username}: 
       put: 
         responses: 
@@ -377,7 +479,45 @@
         consumes: 
           - "application/json"
         operationId: "getUserUsingGET"
+    /rest/realms/{realmId}/members: 
+      get: 
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/UserModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the realm to retrieve the users for"
+            required: true
+            type: "string"
+            name: "realmId"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Realms"
+        x-pretty-name: "getRealmMembers"
+        summary: "Get all members for a realm."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getRealmMembersUsingGET"
   tags: 
+    - 
+      name: "Saml Certificate"
+      description: "Saml Certificate Resource"
     - 
       name: "Saml Identity Providers"
       description: "Saml Identity Provider Resource"
@@ -387,6 +527,9 @@
     - 
       name: "Users"
       description: "User Resource"
+    - 
+      name: "Realms"
+      description: "Realm Resource"
   basePath: "/"
   securityDefinitions: 
     oauth2: 

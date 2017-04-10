@@ -12,6 +12,7 @@
   paths: 
     /rest/organizations/{organizationId}/indexes/{indexId}/raw: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/raw_put"
         responses: 
           201: 
             description: "Created"
@@ -57,6 +58,7 @@
           - "application/json"
         operationId: "updateIndexRawConfigUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/raw_get"
         responses: 
           200: 
             description: "OK"
@@ -96,6 +98,7 @@
         operationId: "getIndexRawConfigUsingGET"
     /rest/organizations/{organizationId}/indexes/fields/batch/delete: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/delete_delete"
         responses: 
           204: 
             description: "No Content"
@@ -134,6 +137,7 @@
         operationId: "removeFieldsUsingDELETE"
     /rest/organizations/{organizationId}/indexes/fields/batch/update: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/update_put"
         responses: 
           201: 
             description: "Created"
@@ -176,6 +180,7 @@
         operationId: "updateFieldsUsingPUT"
     /rest/organizations/{organizationId}/defaultfields: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/defaultfields_get"
         responses: 
           200: 
             description: "OK"
@@ -209,6 +214,7 @@
         operationId: "getDefaultFieldsVersionByOrganizationUsingGET"
     /rest/organizations/{organizationId}/indexes: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes_post"
         responses: 
           201: 
             description: "Created"
@@ -248,6 +254,7 @@
           - "application/json"
         operationId: "createIndexUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes_get"
         responses: 
           200: 
             description: "OK"
@@ -283,6 +290,7 @@
         operationId: "getIndexesUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/content: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/content_delete"
         responses: 
           204: 
             description: "No Content"
@@ -318,6 +326,7 @@
         operationId: "deleteIndexContentUsingDELETE"
     /rest/organizations/{organizationId}/indexes/{indexId}/commit: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/commit_post"
         responses: 
           201: 
             description: "Created"
@@ -357,6 +366,7 @@
         operationId: "forceCommitUsingPOST"
     /rest/organizations/{organizationId}/indexes/{indexId}/resize: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/resize_post"
         responses: 
           201: 
             description: "Created"
@@ -403,6 +413,7 @@
         operationId: "resizeIndexUsingPOST"
     /rest/organizations/{organizationId}/indexes/{indexId}: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -437,6 +448,7 @@
           - "application/json"
         operationId: "deleteIndexUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -476,6 +488,7 @@
         operationId: "getIndexUsingGET"
     /rest/organizations/{organizationId}/indexes/snapshots/{snapshotId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/snapshots/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -515,6 +528,7 @@
         operationId: "getSnapshotUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/synchronize: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/synchronize_post"
         responses: 
           201: 
             description: "Created"
@@ -567,6 +581,7 @@
         operationId: "synchronizeIndexUsingPOST"
     /rest/organizations/{organizationId}/indexbackups: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexbackups_get"
         responses: 
           200: 
             description: "OK"
@@ -603,6 +618,7 @@
         operationId: "getOrganizationIndexBackupsUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/online: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/online_put"
         responses: 
           201: 
             description: "Created"
@@ -648,6 +664,7 @@
         operationId: "setOnlineUsingPUT"
     /rest/organizations/{organizationId}/indexes/fields: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields_post"
         responses: 
           201: 
             description: "Created"
@@ -688,6 +705,7 @@
         operationId: "createFieldUsingPOST"
     /rest/organizations/{organizationId}/indexes/{indexId}/slices/{sliceId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -741,6 +759,7 @@
         operationId: "updateSliceUsingPUT"
     /rest/organizations/{organizationId}/indexes/{indexId}/restore: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/restore_post"
         responses: 
           201: 
             description: "Created"
@@ -787,6 +806,7 @@
         operationId: "restoreIndexUsingPOST"
     /rest/organizations/{organizationId}/indexes/page/fields: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/page/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -881,6 +901,7 @@
         operationId: "getFieldsUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/stats: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/stats_get"
         responses: 
           200: 
             description: "OK"
@@ -920,11 +941,12 @@
         operationId: "getIndexStatisticsUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions/effective: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions/effective_get"
         responses: 
           200: 
             description: "OK"
             schema: 
-              $ref: "#/definitions/PermissionSetModel"
+              $ref: "#/definitions/PageModel«SinglePermissionModel»"
           401: 
             description: "Unauthorized"
           403: 
@@ -1015,6 +1037,7 @@
         operationId: "getEffectivePermissionsUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/slices: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices_post"
         responses: 
           201: 
             description: "Created"
@@ -1060,6 +1083,7 @@
           - "application/json"
         operationId: "addSliceUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/slices_get"
         responses: 
           200: 
             description: "OK"
@@ -1101,6 +1125,7 @@
         operationId: "getSlicesUsingGET"
     /rest/organizations/{organizationId}/indexes/{indexId}/backup: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/backup_post"
         responses: 
           200: 
             description: "OK"
@@ -1142,6 +1167,7 @@
         operationId: "backupIndexUsingPOST"
     /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions_get"
         responses: 
           200: 
             description: "OK"
@@ -1187,6 +1213,7 @@
         operationId: "getPermissionsUsingGET"
     /rest/organizations/{organizationId}/indexbackups/page: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexbackups/page_get"
         responses: 
           200: 
             description: "OK"
@@ -1284,6 +1311,7 @@
         operationId: "getIndexBackupPageUsingGET"
     /rest/organizations/{organizationId}/indexes/fields/batch/create: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/create_post"
         responses: 
           201: 
             description: "Created"
@@ -1326,6 +1354,7 @@
         operationId: "createFieldsUsingPOST"
     /rest/organizations/{organizationId}/indexes/raw: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/raw_put"
         responses: 
           201: 
             description: "Created"
@@ -1366,6 +1395,7 @@
         operationId: "updateIndexesRawConfigUsingPUT"
     /rest/organizations/{organizationId}/indexes/{indexId}/readonly: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/readonly_put"
         responses: 
           201: 
             description: "Created"
@@ -1411,6 +1441,7 @@
         operationId: "setReadOnlyUsingPUT"
     /rest/organizations/{organizationId}/indexes/fields/{fieldId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1456,6 +1487,7 @@
           - "application/json"
         operationId: "updateFieldUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1490,6 +1522,7 @@
           - "application/json"
         operationId: "removeFieldUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1529,6 +1562,7 @@
         operationId: "getFieldUsingGET"
     /rest/defaultfields/versions/{version}/sourceType/{sourceType}: 
       get: 
+        uiOperationId: "/rest/defaultfields/versions/paramId/sourceType/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1559,6 +1593,7 @@
               - "DROPBOX"
               - "DROPBOX_FOR_BUSINESS"
               - "EXCHANGE"
+              - "EXCHANGE_ENTERPRISE"
               - "GMAIL"
               - "GMAIL_DOMAIN_WIDE"
               - "GMAIL_SINGLE_USER"
@@ -1599,6 +1634,7 @@
         operationId: "getDefaultSourceFieldsByVersionUsingGET"
     /rest/organizations/{organizationId}/indexes/fields/synchronize: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/synchronize_post"
         responses: 
           201: 
             description: "Created"
@@ -1632,6 +1668,7 @@
         operationId: "synchronizeFieldsUsingPOST"
     /rest/organizations/{organizationId}/indexbackups/{indexId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/indexbackups/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1716,9 +1753,13 @@
       type: "object"
       properties: 
         indexerVersion: 
+          type: "string"
+        securityCacheVersionAsOptional: 
+          $ref: "#/definitions/Optional«string»"
+        indexerVersionAsOptional: 
           $ref: "#/definitions/Optional«string»"
         securityCacheVersion: 
-          $ref: "#/definitions/Optional«string»"
+          type: "string"
     IndexQueryHighlighterModel: 
       type: "object"
       properties: 
@@ -2058,6 +2099,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -2480,14 +2522,6 @@
       properties: 
         anonymousAllowed: 
           type: "boolean"
-        state: 
-          enum: 
-            - "UNKNOWN"
-            - "VALID"
-            - "PENDING"
-            - "INCOMPLETE"
-            - "IN_ERROR"
-          type: "string"
         name: 
           type: "string"
         lastUpdatedDate: 
@@ -2596,6 +2630,19 @@
         items: 
           items: 
             $ref: "#/definitions/IndexBackupModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    PageModel«SinglePermissionModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
           type: "array"
         totalEntries: 
           type: "integer"

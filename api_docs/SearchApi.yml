@@ -464,21 +464,38 @@
         operationId: "token"
         tags: 
           - "Search"
-        summary: "Create the search token."
+        summary: "Create a search token"
+        description: |
+          *Search tokens* are special JSON web tokens (see [https://jwt.io/](https://jwt.io/)) which can be used to
+          execute queries on the Coveo Cloud V2 Platform as a specific user. Search tokens are intended to be used in
+          JavaScript code running in a web browser, typically along with the Coveo JavaScript Search Framework (see
+          [JavaScript Search Framework V1 Home](https://developers.coveo.com/x/OIGfAQ)).
+
+          A search token automatically expires after a certain amount of time (24 hours).
+
+          Typically, you will want to use search token authentication when the users of your search page are
+          authenticated, and some (or all) of your indexed content is secured. In such a use case, each user
+          transparently gets a unique search token, allowing the search interface to securely return only the items
+          which the user has the right to see.
         produces: 
           - "application/json"
         parameters: 
           - 
             name: "body"
-            description: "The token's information."
+            description: "The information about the token."
             required: true
             in: "body"
             schema: 
               $ref: "#/definitions/RestTokenParams"
         responses: 
-          200: 
+          200:
+            description: "Success"
             schema: 
-              type: "TokenModel"
+              #type: "TokenModel"
+              $ref: "#/definitions/TokenModel"
+            examples:
+              application/json:
+                token: "fzKjcHdjPJKJVaJ2OjK0fSwiZXhwIJpYXQiOjE0lQGN"
     /rest/organizations/{organizationId}/indexes/onpremises/status: 
       get: 
         operationId: "loadOnPremisesIndexStatus"
@@ -599,7 +616,7 @@
         responses: 
           200: 
             schema: 
-              $ref: "#/definitions/Nothing$"
+              $ref: ""
     /rest/search/fields: 
       get: 
         operationId: "fields"
@@ -2512,7 +2529,18 @@
         operationId: "createSharePointAuthentication"
         tags: 
           - "Organizations"
-        summary: "Creates a new SharePoint authentication in an organization"
+        summary: "Create a new SharePoint authentication in an organization"
+        description: |
+          When querying documents indexed from a SharePoint server relying on claims authentication, it is necessary to
+          obtain certain special information from the SharePoint server to allow the end users to see the documents they
+          have access to (see
+          [The Claims-Based Identity Model](https://msdn.microsoft.com/en-ca/library/ee517291.aspx)). There is no way
+          for the Coveo index to obtain this information directly from SharePoint; it can only be computed when the
+          querying user is logged into SharePoint. This means that the web browser must perform a round-trip to
+          SharePoint and back before it is possible to query the content.
+
+          The Coveo Search API provides a simple process to automate those steps. The only external requirement is that
+          before performing queries, the end user must be redirected to a special URL.
         parameters: 
           - 
             name: "sharepoint"
@@ -2523,14 +2551,20 @@
               $ref: "#/definitions/IncomingSharePointAuthentication"
           - 
             name: "organizationId"
-            description: "The organization ID"
+            description: "The organization ID."
             required: true
             in: "path"
             type: "string"
-        responses: 
-          200: 
+        responses:
+# Changed to 201 - this is the actual response.
+          #200
+          201:
+            description: "Created"
             schema: 
               $ref: "#/definitions/CreatedSharePointAuthentication"
+            examples:
+              application/json:
+                id: "b5g86444-739i-4945-u9z0-0u0hp37n674b"
       get: 
         operationId: "listSharePointAuthentications"
         tags: 
@@ -3495,7 +3529,8 @@
           format: "int32"
         protocol: 
           type: "string"
-    IncomingSearchPage: 
+    IncomingSearchPage:
+      type: "object"
       properties: 
         name: 
           type: "string"
@@ -3505,23 +3540,40 @@
           type: "string"
     List[Throwable]: 
       properties: {}
-    RestUserId: 
+    RestUserId:
+      type: "object"
       properties: 
         name: 
           type: "string"
+          example: "john_doe@some-domain.com"
+          description: >
+            The name of this user ID (e.g., `john_doe@some-domain.com`).
         provider: 
           type: "string"
-        infos: 
+          example: "Email Security Provider"
+          description: >
+            The security provider of this user ID (e.g., `Email Security Provider`).
+        infos:
           type: "array"
-          items: 
+          description: >
+            This is a legacy parameter.
+          items:
             type: "string"
         type: 
           type: "string"
-        authCookie: 
+          example: "User"
+          description: >
+            The type of this user ID (e.g., `User`).
+        authCookie:
           type: "string"
-        password: 
+          description: >
+            This is a legacy parameter.
+        password:
           type: "string"
-    IncomingMoveStatement: 
+          description: >
+            This is a legacy parameter.
+    IncomingMoveStatement:
+      type: "object"
       properties: 
         position: 
           type: "integer"
@@ -3548,38 +3600,84 @@
           type: "string"
         message: 
           type: "string"
-    RestTokenParams: 
+    RestTokenParams:
+      type: "object"
       properties: 
         userGroups: 
           type: "array"
+          example:
+            - "Tech Support"
+            - "Employee"
+          description: >
+            The groups that the user or list of users to associate this search token with belong to.
+
+            A group can be any arbitrary string.
           items: 
             type: "string"
-        userDisplayName: 
+        userDisplayName:
           type: "string"
+          example: "John Doe"
+          description: >
+            The display name of the user or list of users to associate this search token with.
         searchHub: 
           type: "string"
-        superUserToken: 
+          example: "Search"
+          description: >
+            The searchhub to enforce on this search token.
+
+            The searchhub is an important parameter for the analytics service, the Coveo Machine Learning service, and
+            the query pipeline.
+        superUserToken:
           type: "string"
-        scope: 
+          description: >
+            Coveo uses this parameter internally in its Salesforce integration.
+        scope:
           type: "integer"
           format: "int32"
-        salesforceUser: 
+          description: >
+            This is a legacy parameter.
+        salesforceUser:
           type: "string"
-        salesforceFallbackToAdmin: 
+          description: >
+            Coveo uses this parameter internally in its Salesforce integration.
+        salesforceFallbackToAdmin:
           type: "boolean"
+          description: >
+            Coveo uses this parameter internally in its Salesforce integration.
         pipeline: 
           type: "string"
+          example: "Tech Support Query Pipeline"
+          description: >
+            The query pipeline to use when performing queries using this search token (see
+            [Managing Query Pipelines](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=128)).
+
+            If you specify a value for this parameter, the query pipeline you specify takes precedence over the possible
+            output of all other query pipeline mechanisms when using this search token (see
+            [Query Pipeline Routing Mechanisms and Rules](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=164)).
         filter: 
           type: "string"
+          example: "@objecttype=Case"
+          description: >
+            The query expression filter to add to queries when performing queries using the search token (see
+            [Coveo Query Syntax Reference](http://www.coveo.com/go?dest=adminhelp70&lcid=9&context=10005)).
+
+            You can use this value to generate tokens that can only query a subset of the documents in an index (e.g.,
+            `@objecttype=Case`).
         userIds: 
           type: "array"
+          description: >
+            The list of `RestUserId` to associate with this search token.
           items: 
             $ref: "#/definitions/RestUserId"
-        expiration: 
+        expiration:
           type: "integer"
           format: "int32"
-        salesforceCommunityUrl: 
+          description: >
+            This parameter is deprecated.
+        salesforceCommunityUrl:
           type: "string"
+          description: >
+            Coveo uses this parameter internally in its Salesforce integration.
     Throwable: 
       properties: 
         detailMessage: 
@@ -3594,10 +3692,13 @@
           type: "array"
           items: 
             $ref: "#/definitions/Throwable"
-    TokenModel: 
+    TokenModel:
+      type: "object"
       properties: 
         token: 
           type: "string"
+          description: >
+            The search token.
     RestGroupBy: 
       properties: 
         sortCriteria: 
@@ -3688,7 +3789,8 @@
           format: "int32"
         protocol: 
           type: "string"
-    IncomingOAuthHandshake: 
+    IncomingOAuthHandshake:
+      type: "object"
       properties: 
         redirectUri: 
           type: "string"
@@ -3712,7 +3814,8 @@
           type: "string"
         normalizeWeight: 
           type: "boolean"
-    IncomingPipeline: 
+    IncomingPipeline:
+      type: "object"
       properties: 
         name: 
           type: "string"
@@ -3748,7 +3851,8 @@
           type: "string"
         html: 
           type: "string"
-    IncomingStatement: 
+    IncomingStatement:
+      type: "object"
       properties: 
         parent: 
           type: "string"
@@ -3764,24 +3868,47 @@
           type: "string"
         position: 
           type: "string"
-    CreatedSharePointAuthentication: 
+    CreatedSharePointAuthentication:
+      type: "object"
       properties: 
         id: 
           type: "string"
-    IncomingSharePointAuthentication: 
+          description: >
+            The ID of the created SharePoint authentication.
+    IncomingSharePointAuthentication:
+      type: "object"
       properties: 
         secret: 
           type: "string"
+          description: >
+            The string to use to sign claims information (using HMACSHA1). This should be a random string. The longer
+            the string, the more secure.
         name: 
           type: "string"
+          description: >
+            The name of the SharePoint server.
         provider: 
           type: "string"
+          description: >
+            The name of the SharePoint security provider in your index configuration.
         uri: 
           type: "string"
+          description: >
+            The full URI of the page that serves the claims information.
         expiration: 
           type: "integer"
           format: "int32"
-    IncomingSamlAuthentication: 
+          description: >
+            How much time (in milliseconds) it takes for the browser cookie that stores the claims information to
+            expire. If you set this parameter to 0, the cookie expires at the end of a browser session.
+      example:
+        name: "mySharePointServer1"
+        uri: "http://uri/to/the/page/that/serves/the/claims/information/SearchApiClaims.aspx"
+        provider: "My SharePoint Claims Security Provider Name"
+        secret: "-+d@.}&3HMT)dc$tZ:x4u{*KB&T9#G.O%?cQ2vO^aW:Nmxtw3@LQLp,C&)PL8wN"
+        expiration: 86400000
+    IncomingSamlAuthentication:
+      type: "object"
       properties: 
         name: 
           type: "string"
@@ -3796,7 +3923,8 @@
         expiration: 
           type: "integer"
           format: "int32"
-    IncomingCondition: 
+    IncomingCondition:
+      type: "object"
       properties: 
         id: 
           type: "string"
@@ -3822,5 +3950,11 @@
           type: "string"
         fieldName: 
           type: "string"
-  securityDefinitions: {}
+  securityDefinitions:
+    oauth2:
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes:
+        full: "Required"
 
