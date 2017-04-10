@@ -11,6 +11,7 @@
   paths: 
     /rest/organizations/{organizationId}/activities/permissions: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/permissions_get"
         responses: 
           200: 
             description: "OK"
@@ -62,6 +63,7 @@
         operationId: "getPermissionsActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/cancel: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/cancel_post"
         responses: 
           201: 
             description: "Created"
@@ -107,6 +109,7 @@
         operationId: "cancelSourceActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/index: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/index_get"
         responses: 
           200: 
             description: "OK"
@@ -158,6 +161,7 @@
         operationId: "getIndexActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities_post"
         responses: 
           200: 
             description: "OK"
@@ -232,6 +236,7 @@
         operationId: "getAllActivitiesForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -289,6 +294,7 @@
         operationId: "getSourceActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/pushapi/{activityOperation}: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/pushapi/paramId_post"
         responses: 
           200: 
             description: "OK"
@@ -354,6 +360,7 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
+              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"
@@ -378,6 +385,7 @@
         operationId: "createOrUpdatePushApiActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/pause: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/pause_post"
         responses: 
           201: 
             description: "Created"
@@ -417,6 +425,7 @@
         operationId: "notifyPauseUsingPOST"
     /rest/organizations/{organizationId}/activities/public: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/public_post"
         responses: 
           200: 
             description: "OK"
@@ -491,6 +500,7 @@
         operationId: "getAllPublicActivitiesForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/facets: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/facets_post"
         responses: 
           200: 
             description: "OK"
@@ -547,6 +557,7 @@
         operationId: "getActivitiesFacetsForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/resume: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/resume_post"
         responses: 
           201: 
             description: "Created"
@@ -586,6 +597,7 @@
         operationId: "notifyResumeUsingPOST"
     /rest/organizations/{organizationId}/activities/provisioning: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/provisioning_get"
         responses: 
           200: 
             description: "OK"
@@ -643,6 +655,7 @@
         operationId: "getProvisioningActivitiesUsingGET"
     /rest/activities: 
       post: 
+        uiOperationId: "/rest/activities_post"
         responses: 
           200: 
             description: "OK"
@@ -711,6 +724,7 @@
         operationId: "getAllActivitiesUsingPOST"
     /rest/organizations/{organizationId}/activities/extension: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/extension_get"
         responses: 
           200: 
             description: "OK"
@@ -762,6 +776,7 @@
         operationId: "getExtensionActivitiesUsingGET"
     /rest/activities/facets: 
       post: 
+        uiOperationId: "/rest/activities/facets_post"
         responses: 
           200: 
             description: "OK"
@@ -812,6 +827,7 @@
         operationId: "getAllActivitiesFacetsUsingPOST"
     /rest/organizations/{organizationId}/activities/license: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/license_get"
         responses: 
           200: 
             description: "OK"
@@ -863,6 +879,7 @@
         operationId: "getLicenseActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/apikey: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/apikey_get"
         responses: 
           200: 
             description: "OK"
@@ -914,6 +931,7 @@
         operationId: "getApiKeyActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/{activityId}/start: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/start_post"
         responses: 
           201: 
             description: "Created"
@@ -953,6 +971,7 @@
         operationId: "notifyStartUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/error: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/error_post"
         responses: 
           201: 
             description: "Created"
@@ -999,6 +1018,7 @@
         operationId: "notifyErrorUsingPOST"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/pause: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/pause_post"
         responses: 
           201: 
             description: "Created"
@@ -1044,6 +1064,7 @@
         operationId: "pauseSourceActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1085,6 +1106,7 @@
         operationId: "deleteSourceActivityUsingDELETE"
     /rest/organizations/{organizationId}/activities/{activityId}/success: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/success_post"
         responses: 
           201: 
             description: "Created"
@@ -1124,6 +1146,7 @@
         operationId: "notifySuccessUsingPOST"
     /rest/organizations/{organizationId}/activities/create: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/create_post"
         responses: 
           201: 
             description: "Created"
@@ -1164,6 +1187,7 @@
         operationId: "createActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/resume: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/resume_post"
         responses: 
           201: 
             description: "Created"
@@ -1209,6 +1233,7 @@
         operationId: "resumeSourceActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/abort: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/abort_post"
         responses: 
           201: 
             description: "Created"
@@ -1255,6 +1280,7 @@
         operationId: "notifyAbortUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/progress: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/progress_post"
         responses: 
           201: 
             description: "Created"
@@ -1301,6 +1327,7 @@
         operationId: "notifyProgressUsingPOST"
     /rest/organizations/{organizationId}/activities/fields: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -1352,6 +1379,7 @@
         operationId: "getFieldActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/{activityId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1391,6 +1419,7 @@
         operationId: "getActivityByIdUsingGET"
     /rest/organizations/{organizationId}/activities/facets/public: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/activities/facets/public_post"
         responses: 
           200: 
             description: "OK"
@@ -1447,6 +1476,7 @@
         operationId: "getPublicActivitiesFacetsForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/organization: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/activities/organization_get"
         responses: 
           200: 
             description: "OK"
@@ -1608,6 +1638,7 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
+            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -1636,6 +1667,8 @@
             - "SUCCESS"
             - "ERROR"
             - "ABORT"
+          type: "string"
+        errorDetail: 
           type: "string"
         snapshotId: 
           type: "string"
@@ -1683,6 +1716,7 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
+            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -1773,6 +1807,7 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
+              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"
@@ -1892,6 +1927,7 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
+            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"
@@ -1960,6 +1996,7 @@
             - "CONFIG_CREATE"
             - "CHANGE_READ_ONLY"
             - "CHANGE_ONLINE"
+            - "TEST"
             - "UPGRADE"
             - "SCHEDULE_CREATE"
             - "SCHEDULE_CHANGE"

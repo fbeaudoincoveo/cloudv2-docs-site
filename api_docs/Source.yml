@@ -11,6 +11,7 @@
   paths: 
     /rest/sourceTokenRetriever/gmail/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/gmail/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -42,6 +43,7 @@
         operationId: "authorizeGmailUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -103,6 +105,7 @@
           - "application/json"
         operationId: "updateSourceUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_delete"
         responses: 
           200: 
             description: "OK"
@@ -141,6 +144,7 @@
           - "application/json"
         operationId: "deleteSourceUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -180,6 +184,7 @@
         operationId: "getSourceUsingGET"
     /rest/sourceTokenRetriever/dropbox/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/dropbox/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -218,6 +223,7 @@
         operationId: "authorizeDropboxUsingGET"
     /rest/sourceconfiguration/salesforce/objects: 
       post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_post"
         responses: 
           200: 
             description: "OK"
@@ -276,6 +282,7 @@
           - "application/json"
         operationId: "refreshObjectsUsingPOST"
       get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_get"
         responses: 
           200: 
             description: "OK"
@@ -352,6 +359,7 @@
         operationId: "getObjectsUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -412,6 +420,7 @@
           - "application/json"
         operationId: "updateMappingTypeSettingsUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -459,6 +468,7 @@
           - "application/json"
         operationId: "deleteMappingTypeUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -504,6 +514,7 @@
         operationId: "getMappingTypeSettingsUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/stopRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/stopRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -545,6 +556,7 @@
         operationId: "stopRefreshUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/schedules: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_post"
         responses: 
           201: 
             description: "Created"
@@ -590,6 +602,7 @@
           - "application/json"
         operationId: "createSourceScheduleUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_get"
         responses: 
           200: 
             description: "OK"
@@ -631,6 +644,7 @@
         operationId: "getSourceSchedulesUsingGET"
     /rest/sourceTokenRetriever/box/personal/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/box/personal/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -668,6 +682,7 @@
         operationId: "getBoxPersonalTokensUsingGET"
     /rest/organizations/{organizationId}/sources/raw: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/raw_post"
         responses: 
           201: 
             description: "Created"
@@ -722,6 +737,7 @@
         operationId: "createRawSourceUsingPOST"
     /rest/globalsources: 
       get: 
+        uiOperationId: "/rest/globalsources_get"
         responses: 
           200: 
             description: "OK"
@@ -767,6 +783,7 @@
         operationId: "getAllSourcesUsingGET"
     /rest/defaultmappings/versions/{version}/sourceType/{sourceType}: 
       get: 
+        uiOperationId: "/rest/defaultmappings/versions/paramId/sourceType/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -797,6 +814,7 @@
               - "DROPBOX"
               - "DROPBOX_FOR_BUSINESS"
               - "EXCHANGE"
+              - "EXCHANGE_ENTERPRISE"
               - "GMAIL"
               - "GMAIL_DOMAIN_WIDE"
               - "GMAIL_SINGLE_USER"
@@ -837,6 +855,7 @@
         operationId: "getDefaultSourceMappingsByVersionUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_post"
         responses: 
           201: 
             description: "Created"
@@ -889,6 +908,7 @@
           - "application/json"
         operationId: "addMappingTypesUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_get"
         responses: 
           200: 
             description: "OK"
@@ -930,6 +950,7 @@
         operationId: "getMappingTypesUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules/{ruleId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -996,6 +1017,7 @@
           - "application/json"
         operationId: "updateMappingTypeSettingsRuleUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1049,6 +1071,7 @@
           - "application/json"
         operationId: "deleteMappingTypeSettingsRuleUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1100,6 +1123,7 @@
         operationId: "getMappingTypeSettingsRuleUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/raw: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_put"
         responses: 
           200: 
             description: "OK"
@@ -1161,6 +1185,7 @@
           - "application/json"
         operationId: "updateRawSourceUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_get"
         responses: 
           200: 
             description: "OK"
@@ -1200,6 +1225,7 @@
         operationId: "getRawSourceUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/fullRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/fullRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -1241,6 +1267,7 @@
         operationId: "fullRefreshUsingPOST"
     /rest/sourceTokenRetriever/box/personal/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/box/personal/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -1272,6 +1299,7 @@
         operationId: "authorizeBoxPersonalUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/light: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/light_get"
         responses: 
           200: 
             description: "OK"
@@ -1311,6 +1339,7 @@
         operationId: "getLightSourceUsingGET"
     /rest/sourceconfiguration/salesforce/parseOTG: 
       post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/parseOTG_post"
         responses: 
           200: 
             description: "OK"
@@ -1349,6 +1378,7 @@
         operationId: "parseOTGUsingPOST"
     /rest/organizations/{organizationId}/defaultmappings: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/defaultmappings_get"
         responses: 
           200: 
             description: "OK"
@@ -1382,6 +1412,7 @@
         operationId: "getDefaultMappingsVersionByOrganizationUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/pauseRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/pauseRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -1423,6 +1454,7 @@
         operationId: "pauseRefreshUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/startRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/startRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -1464,6 +1496,7 @@
         operationId: "startRefreshUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/extensions: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_put"
         responses: 
           200: 
             description: "OK"
@@ -1516,6 +1549,7 @@
           - "application/json"
         operationId: "setSourceExtensionsUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_get"
         responses: 
           200: 
             description: "OK"
@@ -1555,6 +1589,7 @@
         operationId: "getSourceExtensionsUsingGET"
     /rest/organizations/{organizationId}/sources/fields/{fieldId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -1600,6 +1635,7 @@
           - "application/json"
         operationId: "updateFieldUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -1634,6 +1670,7 @@
           - "application/json"
         operationId: "removeFieldUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -1680,6 +1717,7 @@
         operationId: "getFieldUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/applyChanges: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/applyChanges_post"
         responses: 
           201: 
             description: "Created"
@@ -1719,6 +1757,7 @@
         operationId: "applyChangesUsingPOST"
     /rest/sourceTokenRetriever/dropbox/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/dropbox/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -1764,6 +1803,7 @@
         operationId: "getDropboxTokensUsingGET"
     /rest/organizations/{organizationId}/sources/fields/batch/create: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/create_post"
         responses: 
           201: 
             description: "Created"
@@ -1806,6 +1846,7 @@
         operationId: "createFieldsUsingPOST"
     /rest/sourceTokenRetriever/gmail/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/gmail/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -1843,6 +1884,7 @@
         operationId: "getGmailTokensUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/rebuild: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/rebuild_post"
         responses: 
           200: 
             description: "OK"
@@ -1884,6 +1926,7 @@
         operationId: "rebuildUsingPOST"
     /rest/sourceTokenRetriever/gmail/personal/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/gmail/personal/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -1921,6 +1964,7 @@
         operationId: "getGmailPersonalTokensUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/enable: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/enable_post"
         responses: 
           200: 
             description: "OK"
@@ -1962,6 +2006,7 @@
         operationId: "enableUsingPOST"
     /rest/sourceconfiguration/salesforce/schema: 
       post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_post"
         responses: 
           200: 
             description: "OK"
@@ -2020,6 +2065,7 @@
           - "application/json"
         operationId: "refreshSchemaUsingPOST"
       get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_get"
         responses: 
           200: 
             description: "OK"
@@ -2096,6 +2142,7 @@
         operationId: "getSchemaUsingGET"
     /rest/organizations/{organizationId}/sources/fields/batch/update: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/update_put"
         responses: 
           201: 
             description: "Created"
@@ -2138,6 +2185,7 @@
         operationId: "updateFieldsUsingPUT"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_post"
         responses: 
           201: 
             description: "Created"
@@ -2190,6 +2238,7 @@
           - "application/json"
         operationId: "addCommonMappingSettingsRuleUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_get"
         responses: 
           200: 
             description: "OK"
@@ -2231,6 +2280,7 @@
         operationId: "getCommonMappingSettingsRulesUsingGET"
     /rest/sourceTokenRetriever/drive/personal/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/drive/personal/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -2262,6 +2312,7 @@
         operationId: "authorizeDrivePersonalUsingGET"
     /rest/organizations/{organizationId}/sources: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources_post"
         responses: 
           201: 
             description: "Created"
@@ -2315,6 +2366,7 @@
           - "application/json"
         operationId: "createSourceUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources_get"
         responses: 
           200: 
             description: "OK"
@@ -2350,6 +2402,7 @@
         operationId: "getSourcesUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/resumeRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/resumeRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -2389,8 +2442,61 @@
         consumes: 
           - "application/json"
         operationId: "resumeRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/tasks/abort: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/tasks/abort_post"
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "activityId"
+            required: true
+            type: "string"
+            name: "activityId"
+            in: "query"
+          - 
+            description: "abortReason"
+            required: true
+            type: "string"
+            name: "abortReason"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "abortTaskForActivity"
+        summary: "Abort a source task related to a given activity."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "abortTaskForActivityUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/incrementalRefresh: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/incrementalRefresh_post"
         responses: 
           200: 
             description: "OK"
@@ -2432,6 +2538,7 @@
         operationId: "incrementalRefreshUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_put"
         responses: 
           200: 
             description: "OK"
@@ -2486,6 +2593,7 @@
           - "application/json"
         operationId: "updateCommonMappingSettingsUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_get"
         responses: 
           200: 
             description: "OK"
@@ -2525,6 +2633,7 @@
         operationId: "getCommonMappingSettingsUsingGET"
     /rest/organizations/{organizationId}/sources/snapshots/{snapshotId}: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/snapshots/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -2564,6 +2673,7 @@
         operationId: "getSnapshotUsingGET"
     /rest/sourceTokenRetriever/salesforce/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/salesforce/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -2608,6 +2718,7 @@
         operationId: "authorizeSalesforceUsingGET"
     /rest/organizations/{organizationId}/sources/fields/batch/delete: 
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields/batch/delete_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2646,6 +2757,7 @@
         operationId: "removeFieldsUsingDELETE"
     /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/evict: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/evict_post"
         responses: 
           200: 
             description: "OK"
@@ -2685,6 +2797,7 @@
         operationId: "evictSchemaForSourceUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/schedules/{scheduleId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_put"
         responses: 
           201: 
             description: "Created"
@@ -2736,6 +2849,7 @@
           - "application/json"
         operationId: "updateSourceScheduleUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -2777,6 +2891,7 @@
         operationId: "deleteSourceScheduleUsingDELETE"
     /rest/organizations/{organizationId}/sources/page/fields: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/page/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -2878,6 +2993,7 @@
         operationId: "getFieldsUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_post"
         responses: 
           201: 
             description: "Created"
@@ -2936,6 +3052,7 @@
           - "application/json"
         operationId: "addMappingTypeSettingRuleUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_get"
         responses: 
           200: 
             description: "OK"
@@ -2983,6 +3100,7 @@
         operationId: "getMappingTypeSettingRulesUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_put"
         responses: 
           200: 
             description: "OK"
@@ -3037,6 +3155,7 @@
           - "application/json"
         operationId: "updateMappingsConfigurationUsingPUT"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_get"
         responses: 
           200: 
             description: "OK"
@@ -3076,6 +3195,7 @@
         operationId: "getMappingsConfigurationUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/objects/{objectName}/fields: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/objects/paramId/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -3123,6 +3243,7 @@
         operationId: "getFieldsForSourceUsingGET"
     /rest/sourceTokenRetriever/drive/personal/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/drive/personal/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -3160,6 +3281,7 @@
         operationId: "getDrivePersonalTokensUsingGET"
     /rest/sourceconfiguration/salesforce/generateOTG: 
       post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/generateOTG_post"
         responses: 
           200: 
             description: "OK"
@@ -3196,8 +3318,98 @@
         consumes: 
           - "application/json"
         operationId: "generateOTGUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/pushRefresh: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/pushRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            enum: 
+              - "ORG_PROVISIONING_CHECK"
+              - "SOURCE_CREATE"
+              - "SOURCE_DELETE"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "ROLLBACK_TO"
+              - "REFRESH_CANCEL"
+              - "SOURCE_PAUSE"
+              - "SOURCE_RESUME"
+              - "PUSH_SOURCE_CREATE"
+              - "PUSH_CONFIG_CHANGE"
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "TEST"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+            description: "activityOperation"
+            required: true
+            in: "query"
+            type: "string"
+            name: "activityOperation"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "setPushRefreshStatus"
+        summary: "Sets the refreshing state of a push source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setPushRefreshStatusUsingPOST"
     /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules/{ruleId}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -3258,6 +3470,7 @@
           - "application/json"
         operationId: "updateCommonMappingSettingsRuleUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_delete"
         responses: 
           204: 
             description: "No Content"
@@ -3305,6 +3518,7 @@
           - "application/json"
         operationId: "deleteCommonMappingSettingsRuleUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -3350,6 +3564,7 @@
         operationId: "getCommonMappingSettingsRuleUsingGET"
     /rest/sourceTokenRetriever/gmail/personal/authorize: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/gmail/personal/authorize_get"
         responses: 
           200: 
             description: "OK"
@@ -3381,6 +3596,7 @@
         operationId: "authorizeGmailPersonalUsingGET"
     /rest/organizations/{organizationId}/sources/{sourceId}/disable: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/disable_post"
         responses: 
           200: 
             description: "OK"
@@ -3422,6 +3638,7 @@
         operationId: "disableUsingPOST"
     /rest/organizations/{organizationId}/sources/fields: 
       post: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields_post"
         responses: 
           201: 
             description: "Created"
@@ -3461,6 +3678,7 @@
           - "application/json"
         operationId: "createFieldUsingPOST"
       get: 
+        uiOperationId: "/rest/organizations/paramId/sources/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -3510,6 +3728,7 @@
         operationId: "getFieldsUsingGET"
     /rest/sourceTokenRetriever/salesforce/tokens: 
       get: 
+        uiOperationId: "/rest/sourceTokenRetriever/salesforce/tokens_get"
         responses: 
           200: 
             description: "OK"
@@ -3568,6 +3787,7 @@
         operationId: "getSalesforceTokensUsingGET"
     /rest/sourceconfiguration/salesforce/objects/{objectName}/fields: 
       post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_post"
         responses: 
           200: 
             description: "OK"
@@ -3632,6 +3852,7 @@
           - "application/json"
         operationId: "refreshFieldsUsingPOST"
       get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_get"
         responses: 
           200: 
             description: "OK"
@@ -4334,6 +4555,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -4384,6 +4606,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -4488,6 +4711,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -4981,6 +5205,7 @@
             - "DROPBOX"
             - "DROPBOX_FOR_BUSINESS"
             - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
             - "GMAIL"
             - "GMAIL_DOMAIN_WIDE"
             - "GMAIL_SINGLE_USER"
@@ -5195,14 +5420,6 @@
       properties: 
         anonymousAllowed: 
           type: "boolean"
-        state: 
-          enum: 
-            - "UNKNOWN"
-            - "VALID"
-            - "PENDING"
-            - "INCOMPLETE"
-            - "IN_ERROR"
-          type: "string"
         name: 
           type: "string"
         lastUpdatedDate: 
@@ -5305,6 +5522,7 @@
               - "CONFIG_CREATE"
               - "CHANGE_READ_ONLY"
               - "CHANGE_ONLINE"
+              - "TEST"
               - "UPGRADE"
               - "SCHEDULE_CREATE"
               - "SCHEDULE_CHANGE"

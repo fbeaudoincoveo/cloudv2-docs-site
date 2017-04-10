@@ -1334,6 +1334,12 @@
             name: "organizationId"
             in: "path"
           - 
+            required: false
+            type: "string"
+            description: "compressionType"
+            name: "compressionType"
+            in: "query"
+          - 
             schema: 
               $ref: "#/definitions/DocumentBody"
             required: true
