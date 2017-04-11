@@ -7,7 +7,7 @@
       email: "support@coveo.com"
     description: "API for Coveo Platform"
     license: {}
-    title: "Coveo Platform API"
+    title: "Notification API Reference - Coveo Cloud V2"
     version: "1.0"
   paths: 
     /rest/organizations/{organizationId}/subscriptions/me/{subscriptionId}: 
