@@ -1,7 +1,7 @@
 ---
   swagger: "2.0"
   info: 
-    title: "Coveo Search API"
+    title: "Search API Reference - Coveo Cloud"
     version: "1.0.0"
     description: "Documentation for Coveo Search API"
     termsOfService: "http://www.coveo.com/en/support/terms-agreements"

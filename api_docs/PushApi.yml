@@ -1,7 +1,7 @@
 ---
   info: 
     version: "2016-03-03T13:22:11Z"
-    title: "Push API"
+    title: "Push API Reference - Coveo Cloud V2"
   paths: 
     /organizations/{organizationId}/sources/{sourceId}/status: 
       post: 
