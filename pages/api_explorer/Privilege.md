@@ -1,8 +1,8 @@
 ---
 layout: redoc_page
-title: 'Privilege'
+title: Privilege API Reference - Coveo Cloud V2
 categories: api_docs
-swagger: ../api_docs/Privilege.yml
-permalink: ../pages/api_explorer/Privilege
+swagger: ../../api_docs/Privilege.yml
+permalink: ../../pages/api_explorer/Privilege
 ghPagesSiteName: /cloudv2-docs-site
 ---
