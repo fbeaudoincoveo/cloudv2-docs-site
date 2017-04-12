@@ -54,3 +54,5 @@ for api in platform.apiList:
 
 commitMessage = repository.baseUpstreamCommitMessage + str(datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))
 gitHelper.commit_all(commitMessage, DEBUG)
+
+gitHelper.push(DEBUG)
