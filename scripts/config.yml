@@ -2,15 +2,16 @@
   debug: True # Setting this to False will execute the script in "silent" mode.
   repository:
     accessToken: "" # This must allow to create PRs on public GitHub repositories.
-    tempOutputJsonPath: ./temp_json/ # This is where the temporary JSONs are saved. Will be deleted when script is done.
-    outputYamlPath: ../api_docs/ # This is where the YAMLs are saved. Essential for the diff.
-    mdPagesPath: ../pages/api_explorer/ # This is where the md pages will be created if they don't already exist.
+    tempOutputJsonPath: ./temp_json/ # Where to save temporary JSONs when running diff script. Deleted after script.
+    outputYamlPath: ../../api_docs/ # Where the YAMLs are.
+    mdPagesPath: ../../pages/api_explorer/ # Where to put the MD pages.
     mdLayout: redoc_page # Use either "redoc_page", "swaggerui2_page" or "swaggerui3_page".
-    upstreamBranch: upstream_api_spec_changes # This is the branch that the script checkouts when it runs.
-    baseBranch: master # This is the branch to send the PRs to.
-    baseCommitMessage: Upstream_update_ # The datetime will be added to this commit message.
-    pullRequestMessage: Upstream_update_request # This is the PR message to use.
-    ghPagesHostName: https://coveo.github.io
+    upstreamBranch: upstream_api_spec_changes # The branch that the diff script checkouts when it runs.
+    baseBranch: master # The deploy script checkouts this branch. The diff script sends its PRs to this branch.
+    baseUpstreamCommitMessage: Upstream_update_ # Base commit message used by the diff script. Datetime is added.
+    baseDeployCommitMessage: Deployment_ # Base commit message used by the deploy script. Datetime is added.
+    upstreamPullRequestMessage: Upstream_update_request # PR message used by the diff script.
+    ghPagesHostName: https://coveo.github.io # Name of page on GitHub pages.
     ghPagesSiteName: cloudv2-docs-site # Must specify GH pages site name to be able to render yml.
   platform:
     environment: "" # Use either "" (for Prod environment), "qa" or "dev".
@@ -39,9 +40,4 @@
     host1: https://platform # The "environment" variable will be added between "host1" and "host2".
     host2: .cloud.coveo.com
     apiDocsPath: /api-docs/ # This is where the JSON specs are on the Coveo platform site.
-    pushApiHost: https://push.cloud.coveo.com
-    pushApiOrganization: coveodocumentationtest
-    pushApiSource: coveodocumentationtest-qcz34kxmwrgoq2gxpxpxhs2fhq
-    pushApiPath: /v1/organizations/{pushApiOrganization}/sources/{pushApiSource}/documents
-    pushApiKey:
 

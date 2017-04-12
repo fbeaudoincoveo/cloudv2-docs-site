@@ -1,16 +1,16 @@
+import sys
+sys.path.append('../helpers')
+import directoryHelper
+import fileHelper
 import gitHelper
 import httpHelper
-import fileHelper
+import config_classes
 import json
 import re
-import directoryHelper
 from datetime import datetime
-import config_classes
 
 
-CONFIG_FILE = "./diff_script_config.yml"
-
-configData = fileHelper.load_yaml_config_file(CONFIG_FILE)
+configData = fileHelper.load_yaml_config_file()
 DEBUG = configData["debug"]
 
 # This removes the "_1" that sometimes appear at the end of operationIds in the Swagger JSON as a result of the multiple
@@ -30,8 +30,10 @@ repository = config_classes.Repository(configData)
 platform = config_classes.Platform(configData)
 
 gitHelper.checkout(repository.upstreamBranch, DEBUG)
-if not fileHelper.file_exists(repository.tempOutputJsonPath):
-    directoryHelper.make_directory(repository.tempOutputJsonPath, DEBUG)
+
+for requiredPath in [repository.tempOutputJsonPath, repository.outputYamlPath]:
+    if not fileHelper.file_exists(requiredPath, DEBUG):
+        directoryHelper.make_directory(requiredPath, DEBUG)
 
 for api in platform.apiList:
 
@@ -51,24 +53,16 @@ for api in platform.apiList:
 
         gitHelper.add(yamlFile, DEBUG)
 
-        markdownFile = repository.mdPagesPath + api + ".md"
-        if not fileHelper.file_exists(repository.mdPagesPath):
-            directoryHelper.make_directory(repository.mdPagesPath)
-        mdData = "---\nlayout: " + repository.mdLayout + "\ntitle: \'" + api + \
-                 "\'\ncategories: api_docs\nswagger: " + yamlFile + "\npermalink: " + repository.mdPagesPath + \
-                 api + "\nghPagesSiteName: " + repository.ghPagesSiteName + "\n---"
-        fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
-
-        gitHelper.add(markdownFile, DEBUG)
+        fileHelper.delete_file(jsonTempFile, DEBUG)
 
     else:
         print "Could not get Swagger specification from " + swaggerSpecificationPath + " ."
 
-directoryHelper.recursively_delete_directory(repository.tempOutputJsonPath, DEBUG)
+directoryHelper.delete_directory(repository.tempOutputJsonPath, DEBUG)
 
-commitMessage = repository.baseCommitMessage + str(datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))
+commitMessage = repository.baseUpstreamCommitMessage + str(datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))
 gitHelper.commit_all(commitMessage, DEBUG)
 
 gitHelper.push(DEBUG)
-gitHelper.create_pull_request(repository.accessToken, repository.pullRequestMessage,
+gitHelper.create_pull_request(repository.accessToken, repository.upstreamPullRequestMessage,
                               repository.upstreamBranch, repository.baseBranch, DEBUG)
