@@ -52,7 +52,7 @@ for api in platform.apiList:
     else:
         print "Could not get Swagger specification from " + fileToLoad + " ."
 
-commitMessage = repository.baseUpstreamCommitMessage + str(datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))
+commitMessage = repository.baseDeployCommitMessage + str(datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))
 gitHelper.commit_all(commitMessage, DEBUG)
 
 gitHelper.push(DEBUG)

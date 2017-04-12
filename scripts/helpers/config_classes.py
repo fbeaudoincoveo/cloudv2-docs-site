@@ -8,6 +8,7 @@ class Repository:
         self.upstreamBranch = config_data["repository"]["upstreamBranch"]
         self.baseBranch = config_data["repository"]["baseBranch"]
         self.baseUpstreamCommitMessage = config_data["repository"]["baseUpstreamCommitMessage"]
+        self.baseDeployCommitMessage = config_data["repository"]["baseDeployCommitMessage"]
         self.upstreamPullRequestMessage = config_data["repository"]["upstreamPullRequestMessage"]
         self.ghPagesSiteName = "/" + config_data["repository"]["ghPagesSiteName"]
         self.ghPagesHostName = config_data["repository"]["ghPagesHostName"]
