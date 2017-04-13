@@ -43,3 +43,26 @@ def delete_file(file_to_delete, debug=False):
 
 def load_yaml_config_file():
     return load_yaml_file("../config.yml")
+
+
+def find_between(s, first, last):
+    try:
+        start = s.index(first) + len(first)
+        end = s.index(last, start)
+        return s[start:end]
+    except ValueError:
+        return ""
+
+def replace_value_in_front_matter(md_file_to_write_in, field, new_value, debug=False):
+    if debug:
+        print "Opening %s and replacing the value of %s with %s ..." % (md_file_to_write_in, field, new_value)
+    f = open(md_file_to_write_in, "r")
+    content = f.read()
+    f.close()
+    frontMatter = find_between(content, "---", "---")
+    value = find_between(frontMatter, field + ":", "\n")
+    if value.strip() is not new_value:
+        f = open(md_file_to_write_in, "w")
+        f.write(content.replace(field + ":" + value, field + ": " + new_value))
+        print content.replace(field + ":" + value, field + ": " + new_value)
+    f.close()
