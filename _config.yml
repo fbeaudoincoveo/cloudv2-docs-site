@@ -30,4 +30,4 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - diff_script
+  - scripts
