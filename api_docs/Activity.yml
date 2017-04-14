@@ -189,17 +189,14 @@
             example: "mycoveocloudorganizationid"
           - 
             description: |
-              The number of the "page" of entries to return in the `items` array of a successful response.
+              The page number of paginated entries to return in the `items` array of a successful response.
 
-              If you use the default value, the call returns all existing "pages".
+              If you use the default value, the call returns all existing pages. If you specify a page number that does
+              not exist, the call returns an empty array (`[]`). Otherwise, this parameter works in close relationship
+              with the `perPage` parameter.
 
-              If you specify a "page" number that does not exist, the call returns an empty array (`[]`).
-
-              Otherwise, this parameter works in close relationship with the `perPage` parameter.
-
-              For example, if you set `page` to `3` and `perPage` to `25`, and the value of the `totalEntries` key in a
-              successful response is `100`, the `items` key will only contain the third "page" of entries (i.e.,
-              entries 51-75).
+              For example, if you set `page` to `3` and `perPage` to `25`, and the `totalEntries` value in a successful
+              response is `100`, the `items` key only contains entries 51-75.
             format: "int32"
             default: 0
             required: false
@@ -209,16 +206,15 @@
             example: 10
           - 
             description: |
-              The maximum number of entries per "page".
+              The maximum number of entries per page.
 
               This parameter works in close relationship with the `page` parameter.
 
-              The value of the `totalPages` key in a successful response corresponds to the value of the `totalEntries`
-              key (i.e., the number of entries that match the requirements of the call) divided by the value of the
-              `perPage` parameter, rounded up.
+              The `totalPages` value in a successful response corresponds to the `totalEntries` value (i.e., the  number
+              of entries that match the requirements of the call) divided by the `perPage` value, rounded up.
 
-              For example, if you set `perPage` to `25` and the value of the `totalEntries` in a successful response is
-              `110`, the value of the `totalPages` key will be `5` (110 divided by 25, rounded up equals 5).
+              For example, if you set `perPage` to `25` and the `totalEntries` value in a successful response is
+              `110`, the resulting `totalPages` value is `5` (110 divided by 25, rounded up equals 5).
             format: "int32"
             default: 100
             required: false
