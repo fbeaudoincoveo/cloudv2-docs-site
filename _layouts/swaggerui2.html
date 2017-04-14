@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-
-{% include swaggerui2_head.html %}
-
-<body class="swagger-section">
-
-{% include header.html %}
-
-<main class="page-content" aria-label="Content">
-    <div class="wrapper">
-        {{ content }}
-    </div>
-
-    {% include swaggerui2_header.html %}
-    <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
-    <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
-
-    {% include footer.html %}
-</main>
-</body>
+    {% include swaggerui2_head.html %}
+    <body class="swagger-section">
+        {% include coveo-community-header.html %}
+        {% include swaggerui2_header.html %}
+        <main class="page-content" aria-label="Content">
+            <div class="wrapper">
+                {{ content }}
+            </div>
+        </main>
+    </body>
 </html>
