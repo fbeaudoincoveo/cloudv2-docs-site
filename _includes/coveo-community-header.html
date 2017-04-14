@@ -37,7 +37,7 @@
             <i class="arrow"></i>
           </a>
           <ul>
-            {% for p in site.pages %}{% if p.url contains "/api_explorer/" %}<li><a id="{{ p.title | split: '/'| last }}" class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape | replace: ' Reference - Coveo Cloud V2', '' }}</a></li>{% endif %}{% endfor %}
+            {% for p in site.pages %}{% if p.url contains "/api_explorer/" %}<li><a id="{{ p.title | split: '/'| last }}" class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape | split: 'API' | first }}</a></li>{% endif %}{% endfor %}
           </ul>
         </li>
       </ul>
