@@ -3321,7 +3321,7 @@
             **Internal**
 
             Coveo uses this parameter internally in its Salesforce integration.
-          example: "for internal use by Coveo only"
+          example: ""
         salesforceFallbackToAdmin:
           type: "boolean"
           description: |
