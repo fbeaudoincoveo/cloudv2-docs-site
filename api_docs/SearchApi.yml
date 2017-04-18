@@ -638,415 +638,79 @@
         produces: 
           - "application/json"
           - "application/xml"
-        parameters: 
-          - 
-            name: "aq"
-            description: "The advanced query expression.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "cq"
-            description: "The constant query expression.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "dq"
-            description: "The disjunction query expression.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "lq"
-            description: "The large query expression.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "wildcards"
-            description: "Whether to enable wildcards on the basic expression keywords.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "questionMark"
-            description: "Whether to enable question marks with wildcards.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "partialMatch"
-            description: "Whether to enable partial matching of the basic expression keywords.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "partialMatchKeywords"
-            description: "The minimum number of keywords needed to activate partial match.\n"
-            required: false
-            defaultValue: "5"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "partialMatchThreshold"
-            description: "The threshold to use for matching documents when partial match is enabled.\n"
-            required: false
-            defaultValue: "50%"
-            in: "formData"
-            type: "string"
-          - 
-            name: "lowercaseOperators"
-            description: ""
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "firstResult"
-            description: "Index of the first result to return.\n"
-            required: false
-            defaultValue: "0"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "numberOfResults"
-            description: "The number of results to return.\n"
-            required: false
-            defaultValue: "10"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "sortCriteria"
-            description: "Sort criteria(s) to use to sort results.\n"
-            required: false
-            defaultValue: "Relevancy"
-            in: "formData"
-            type: "string"
-          - 
-            name: "sortField"
-            description: "Name of the field to use for sorting.\nDeprecated."
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "enableDuplicateFiltering"
-            description: "Whether to filter duplicates.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "parentField"
-            description: "Name of the parent field to use when loading the parent.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "childField"
-            description: "Name of the child field to use when loading the parent.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "filterFieldRange"
-            description: "Number of results that should be folded.\n"
-            required: false
-            defaultValue: "5"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "filterField"
-            description: "Name of the field to use for folding.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "excerptLength"
-            description: "Length of the generated excerpts.\n"
-            required: false
-            defaultValue: "200"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "summaryLength"
-            description: ""
-            required: false
-            defaultValue: "0"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "retrieveFirstSentences"
-            description: "Whether to retrieve the first sentences.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "groupBy"
-            description: "Definition of the facets to compute on the results.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "array"
-            items: 
-              $ref: "#/definitions/RestGroupBy"
-          - 
-            name: "fieldsToInclude"
-            description: "Fields that should be included in the query results.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "array"
-            items: 
-              type: "string"
-          - 
-            name: "fieldsToExclude"
-            description: "Fields that should be excluded from the query results.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "array"
-            items: 
-              type: "string"
-          - 
-            name: "enableDidYouMean"
-            description: "Whether to suggest query corrections.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "timezone"
-            description: "The time zone to use for dates in the query and in the results.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "enableThesaurus"
-            description: "Whether to expand the query with the thesaurus.\n"
-            required: false
-            defaultValue: "true"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "enableCollaborativeRating"
-            description: ""
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "queryFunctions"
-            description: "Definition of query functions to execute on the results.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "array"
-            items: 
-              $ref: "#/definitions/RestQueryFunction"
-          - 
-            name: "rankingFunctions"
-            description: "Definition of ranking functions to alter the ranking.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "array"
-            items: 
-              $ref: "#/definitions/RestRankingFunction"
-          - 
-            name: "maximumAge"
-            description: "The maximum age for cached query results, in milliseconds.\n"
-            required: false
-            defaultValue: "-1"
-            in: "formData"
-            type: "integer"
-            format: "int32"
-          - 
-            name: "disableQuerySyntax"
-            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "enableQuerySyntax"
-            description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
-            required: false
-            defaultValue: "true"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "syntax"
-            description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "pipeline"
-            description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "q"
-            description: "The basic query expression.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "language"
-            description: "Deprecated."
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "locale"
-            description: ""
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "tab"
-            description: "Represent the current Tab name in use.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "searchHub"
-            description: "Represents the search dimension name.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "debug"
-            description: "Whether to include debug info in the results.\n"
-            required: false
-            defaultValue: "false"
-            in: "formData"
-            type: "boolean"
-          - 
-            name: "format"
-            description: "The format of the results.\n"
-            required: false
-            defaultValue: "json"
-            in: "formData"
-            type: "string"
-          - 
-            name: "recommendation"
-            description: "Represent the current Recommendation id in use.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-          - 
-            name: "context"
-            description: "Value of the context JSON object to use.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "undefined"
-          - 
-            name: "actionsHistory"
-            description: "The action history of the current user.\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "undefined"
-          - 
-            name: "indexToken"
-            description: "A token that you can pass to always make queries using the same index\n"
-            required: false
-            defaultValue: ""
-            in: "formData"
-            type: "string"
-        responses: 
-          200: 
-            description: "No response"
-      get: 
+        parameters:
+          -
+            name: "queryParameters"
+            type: "object"
+            in: "body"
+            schema:
+              $ref: "#/definitions/IncomingQueryParameters"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              $ref: "#/definitions/OutgoingQueryResponse"
+        examples:
+          q: test
+      get:
         operationId: "search"
-        tags: 
+        tags:
           - "Search"
         summary: "Search request to the Search API"
-        produces: 
+        produces:
           - "application/json"
           - "application/xml"
-        parameters: 
-          - 
+        parameters:
+          -
             name: "aq"
             description: "The advanced query expression.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "cq"
             description: "The constant query expression.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "dq"
             description: "The disjunction query expression.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "lq"
             description: "The large query expression.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "wildcards"
             description: "Whether to enable wildcards on the basic expression keywords.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "questionMark"
             description: "Whether to enable question marks with wildcards.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "partialMatch"
             description: "Whether to enable partial matching of the basic expression keywords.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "partialMatchKeywords"
             description: "The minimum number of keywords needed to activate partial match.\n"
             required: false
@@ -1054,21 +718,21 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "partialMatchThreshold"
             description: "The threshold to use for matching documents when partial match is enabled.\n"
             required: false
             defaultValue: "50%"
             in: "query"
             type: "string"
-          - 
+          -
             name: "lowercaseOperators"
             description: ""
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "firstResult"
             description: "Index of the first result to return.\n"
             required: false
@@ -1076,7 +740,7 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "numberOfResults"
             description: "The number of results to return.\n"
             required: false
@@ -1084,42 +748,42 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "sortCriteria"
             description: "Sort criteria(s) to use to sort results.\n"
             required: false
             defaultValue: "Relevancy"
             in: "query"
             type: "string"
-          - 
+          -
             name: "sortField"
             description: "Name of the field to use for sorting.\nDeprecated."
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "enableDuplicateFiltering"
             description: "Whether to filter duplicates.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "parentField"
             description: "Name of the parent field to use when loading the parent.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "childField"
             description: "Name of the child field to use when loading the parent.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "filterFieldRange"
             description: "Number of results that should be folded.\n"
             required: false
@@ -1127,14 +791,14 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "filterField"
             description: "Name of the field to use for folding.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "excerptLength"
             description: "Length of the generated excerpts.\n"
             required: false
@@ -1142,7 +806,7 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "summaryLength"
             description: ""
             required: false
@@ -1150,87 +814,87 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "retrieveFirstSentences"
             description: "Whether to retrieve the first sentences.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "groupBy"
             description: "Definition of the facets to compute on the results.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "array"
-            items: 
+            items:
               $ref: "#/definitions/RestGroupBy"
-          - 
+          -
             name: "fieldsToInclude"
             description: "Fields that should be included in the query results.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "array"
-            items: 
+            items:
               type: "string"
-          - 
+          -
             name: "fieldsToExclude"
             description: "Fields that should be excluded from the query results.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "array"
-            items: 
+            items:
               type: "string"
-          - 
+          -
             name: "enableDidYouMean"
             description: "Whether to suggest query corrections.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "timezone"
             description: "The time zone to use for dates in the query and in the results.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "enableThesaurus"
             description: "Whether to expand the query with the thesaurus.\n"
             required: false
             defaultValue: "true"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "enableCollaborativeRating"
             description: ""
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "queryFunctions"
             description: "Definition of query functions to execute on the results.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "array"
-            items: 
+            items:
               $ref: "#/definitions/RestQueryFunction"
-          - 
+          -
             name: "rankingFunctions"
             description: "Definition of ranking functions to alter the ranking.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "array"
-            items: 
+            items:
               $ref: "#/definitions/RestRankingFunction"
-          - 
+          -
             name: "maximumAge"
             description: "The maximum age for cached query results, in milliseconds.\n"
             required: false
@@ -1238,105 +902,105 @@
             in: "query"
             type: "integer"
             format: "int32"
-          - 
+          -
             name: "disableQuerySyntax"
             description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "enableQuerySyntax"
             description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\n"
             required: false
             defaultValue: "true"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "syntax"
             description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "pipeline"
             description: "The query pipeline (pass an empty string to use an empty pipeline).\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "q"
             description: "The basic query expression.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "language"
             description: "Deprecated."
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "locale"
             description: ""
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "tab"
             description: "Represent the current Tab name in use.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "searchHub"
             description: "Represents the search dimension name.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "debug"
             description: "Whether to include debug info in the results.\n"
             required: false
             defaultValue: "false"
             in: "query"
             type: "boolean"
-          - 
+          -
             name: "format"
             description: "The format of the results.\n"
             required: false
             defaultValue: "json"
             in: "query"
             type: "string"
-          - 
+          -
             name: "recommendation"
             description: "Represent the current Recommendation id in use.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "string"
-          - 
+          -
             name: "context"
             description: "Value of the context JSON object to use.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "undefined"
-          - 
+          -
             name: "actionsHistory"
             description: "The action history of the current user.\n"
             required: false
             defaultValue: ""
             in: "query"
             type: "undefined"
-          - 
+          -
             name: "indexToken"
             description: "A token that you can pass to always make queries using the same index\n"
             required: false
@@ -2901,7 +2565,7 @@
             defaultValue: ""
             in: "formData"
             type: "array"
-            items: 
+            items:
               $ref: "#/definitions/RestQueryFunction"
           - 
             name: "rankingFunctions"
@@ -3542,7 +3206,7 @@
       properties: {}
     RestUserId:
       type: "object"
-      properties: 
+      properties:
         name: 
           type: "string"
           example: "john_doe@some-domain.com"
@@ -3699,46 +3363,146 @@
           type: "string"
           description: >
             The search token.
-    RestGroupBy: 
+    RestGroupBy:
+      type: "object"
       properties: 
         sortCriteria: 
           type: "string"
+          description: |
+            This specifies how the Group By values should be sorted by the indexer. If not specified, the default value
+            is `Score`.
+
+            The following table lists available sort criteria (the values are case-insensitive).
+
+            | Criterion                                           | Description |
+            | :-------------------------------------------------- | :---------- |
+            | `Score`                                             | Sort by score. The score is computed from the number of occurrences as well as from the position in the result set where the items having this value are appearing. Using this criterion, an item with 100 occurrences might appear after one with only 10 occurrences if those occurrences tend to appear sooner in the ranked result set. |
+            | `Occurrences`                                       | Sort by number of occurrences, with values having the highest number appearing first. |
+            | `AlphaAscending`, `AlphaDescending`                 | Sort alphabetically on the field values. |
+            | `ComputedFieldAscending`, `ComputedFieldDescending` | Sort on the values of the first computed field for each Group By value (see Computed Field Parameters). |
+            | `ChiSquare`                                         | Sort based on the relative frequency of values in the result set compared to the frequency in the whole index. This means that a value that doesn't appear often in the index but does appear often in the result set will tend to appear higher in the list. |
+            | `nosort`                                            | Do not sort the Group By values. The values will be returned in a random order. |
+
         lookupField: 
           type: "string"
+          description: |
+            Name of an additional field whose value to retrieve.
+
+            This specifies the name of an additional field whose value should be included for each returned Group By
+            value. This field value should have a 1:1 relationship with the values of the field specified using field.
+            It is typically used to load a human readable caption when Group By is performed on a field containing IDs,
+            GUIDs, etc.
+
+            This feature was used in the past to work around performance issues when using fields containing textual
+            content for facets. In recent versions of the Coveo Platform, it is no longer needed, and is typically not
+            used.
         advancedQueryOverride: 
           type: "string"
         field: 
           type: "string"
-        allowedValues: 
+          description: |
+            Name of the field on which to perform Group By.
+
+            This specifies the field on which the Group By operation is performed. The Group By will return a Group By
+            value for each distinct value of this field within the result set.
+        allowedValues:
           type: "array"
           items: 
             type: "string"
-        injectionDepth: 
+          description: |
+            List of values allowed in the Group By results.
+
+            This explicitly specifies a list of values for which Group By values should be generated. The values are
+            passed as a JSON array of strings.
+
+            Trailing wildcards can be used to include ranges of values.
+        injectionDepth:
           type: "integer"
           format: "int32"
-        thoroughLookup: 
+          description: |
+            Depth of injection scan to find missing values.
+
+            This specifies how deep the index will scan the results to identify missing Group By values. If not
+            specified, the default value is `1000`.
+
+            When executing a Group By operation, the index uses various heuristics to list all the values that are
+            appearing in the result set. In some corner cases, some values might be omitted (it's a classical trade-off
+            of precision vs performance). Using injection means that the index will explicitly scan the field values of
+            the top n results of the query, and ensure that the values present in those results are included. Using
+            higher values for this parameter may impact query performance.
+        thoroughLookup:
           type: "boolean"
+          description: |
+            Whether to scan for lookup values.
+
+            This specifies whether the index will take additional steps to locate a `lookupValue` if none is found at
+            first attempt. You should only use this option if for some reason some results in your data set don't have a
+            value for the lookup field. In most cases, this option isn't needed.
         maximumNumberOfValues: 
           type: "integer"
           format: "int32"
+          description: |
+            Maximum number of values to return.
+
+            This specifies the maximum number of values that the Group By operation will return. If not specified, the
+            default value is 10.
         disjunctionQueryOverride: 
           type: "string"
-        constantQueryOverride: 
+        constantQueryOverride:
           type: "string"
-        rangeValues: 
+          description: |
+            Override the constant query on which the Group By operation is performed.
+
+            This specifies a constant query expression on which to compute the Group By operation. By default, the
+            constant part of the query expression being executed is used.
+
+            This feature is much like the normal `queryOverride` except that the index will keep the query expression in
+            cache for faster queries. Do no put dynamic query expression in this parameter, as it will negatively impact
+            the performance.
+        rangeValues:
           type: "array"
           items: 
             $ref: "#/definitions/RestRangeValue"
-        completeFacetWithStandardValues: 
+          description: |
+            List of range values.
+
+            This explicitly specifies a list of range values for which Group By values should be generated.
+        completeFacetWithStandardValues:
           type: "boolean"
-        computedFields: 
+          description: |
+            Whether to complete facets with standard values.
+
+            This is used in conjunction with the `allowedValues` parameter.
+
+            When the number of allowed values is lower than expected, instead of just returning allowed values, it
+            returns (standard) values up to the maximum number of values.
+        computedFields:
           type: "array"
           items: 
             $ref: "#/definitions/RestComputedField"
-        queryOverride: 
+          description: |
+            Definition of the computed fields to compute for each Group By value.
+
+            This specifies an array of computed fields that should be computed for each Group By value that is returned.
+            Computed fields are used to perform aggregate operations on other fields for all the matching documents
+            having a specific value in the Group By field in the results.
+        queryOverride:
           type: "string"
-        generateAutomaticRanges: 
+          description: |
+            Override the query on which the Group By operation is performed.
+
+            This specifies a different query expression on which to compute the Group By operation. By default, the
+            query expression being executed is used.
+
+            This feature is typically used for performance reasons to retrieve Group By values on separate expressions
+            while executing a normal query in a single operation.
+        generateAutomaticRanges:
           type: "boolean"
+          description: |
+            Automatically calculate range values.
+
+            By setting the parameter `generateAutomaticRanges` to `true`, the ranges will be calculated by the Coveo
+            index.
     RestListFieldValuesParameters: 
       properties: 
         sortCriteria: 
@@ -3764,11 +3528,26 @@
           type: "string"
         queryOverride: 
           type: "string"
-    RestComputedField: 
+    RestComputedField:
+      type: "object"
       properties: 
-        field: 
+        field:
+          description: |
+            Name of the field on which to perform the aggregate operation.
+
+            This specifies the field on which the aggregate operation will be performed. This field is typically a
+            numerical value.
           type: "string"
-        operation: 
+        operation:
+          description: |
+            Aggregate operation to perform.
+
+            This specifies the operation to execute on the field value. Here is the list of available operations (the
+            values are case insensitive):
+            - `sum`: Computes the sum of all values.
+            - `average`: Computes the average of all values.
+            - `minimum`: Retrieves the smallest of all values.
+            - `maximum`: Retrieves the largest of all values.
           type: "string"
     OutgoingSharePointAuthentication: 
       properties: 
@@ -3796,9 +3575,11 @@
           type: "string"
         sandbox: 
           type: "boolean"
-    Object: 
+    Object:
+      type: "object"
       properties: {}
-    RestRangeValue: 
+    RestRangeValue:
+      type: "object"
       properties: 
         start: 
           $ref: "#/definitions/Object"
@@ -3808,12 +3589,22 @@
           type: "string"
         endInclusive: 
           type: "boolean"
-    RestRankingFunction: 
+    RestRankingFunction:
+      type: "object"
       properties: 
         expression: 
           type: "string"
+          description: |
+            The expression to execute.
+
+            The mathematical expression that calculates the ranking value to add to the result score.
         normalizeWeight: 
           type: "boolean"
+          description: |
+            Normalize the weight.
+
+            Whether to normalize the value using the standard index scale or not. If you don't want to completely
+            override the index ranking and use the qrf as a boost, you should turn this on.
     IncomingPipeline:
       type: "object"
       properties: 
@@ -3932,24 +3723,899 @@
           type: "string"
         definition: 
           type: "string"
-    CreatedSearchPage: 
+    CreatedSearchPage:
+      type: "object"
       properties: 
         id: 
           type: "string"
-    CreatedSamlAuthentication: 
+    CreatedSamlAuthentication:
+      type: "object"
       properties: 
         id: 
           type: "string"
-    CreatedOAuthHandshake: 
+    CreatedOAuthHandshake:
+      type: "object"
       properties: 
         uri: 
           type: "string"
-    RestQueryFunction: 
+    RestQueryFunction:
+      type: "object"
       properties: 
         function: 
           type: "string"
+          description: |
+            The function to execute.
+
+            The mathematical expression that calculates the value to inject in the field.
         fieldName: 
           type: "string"
+          description: |
+            Name of the field that will hold the results.
+
+            This specifies the name of the field to be generated at query time. This field can be used as a facet or as
+            a computed field.
+
+            **Note:**
+            > The field name can only contain alphanumerical characters, and must not already exist in your index.
+    IncomingQueryParameters:
+      type: "object"
+      properties:
+        aq:
+          type: "string"
+          description: |
+            The *advanced query expression*.
+
+            This part of the query expression is usually generated by code, based on various rules.
+
+            **Example:**
+            > Selecting a `Facet` value in a search page created with the Coveo JavaScript Search Framework
+            > automatically sends a new query in which it appends an expression such as
+            > `@syssfacetfield=="Selected Facet Value"` to the `aq` value.
+          required: false
+          defaultValue: ""
+          example: "(NOT @filetype=(PDF)) (@source==Forum) (@forumcategory=='Requests')"
+        cq:
+          type: "string"
+          description: |
+            The *constant query expression*.
+
+            This part of the query expression is similar to the advanced query expression (see `aq`). However, it
+            should hold expressions which are *constant* for all users of a search interface or widget.
+
+            The Search API keeps the evaluation results of the constant query expressions in a special index cache, to
+            avoid having to re-evaluate them on each query.
+
+            You must be careful not to include dynamic parts in the constant expression. Otherwise, you risk filling
+            up the cache with useless data, which might have a negative impact on performance.
+
+            **Note:**
+            > Expressions other than `cq` also benefit from caching in the index. However, using `cq` allows you to
+            > explicitly require a part of the query to be included in the cache.
+          required: false
+          defaultValue: ""
+          example: ""
+        dq:
+          type: "string"
+          description: |
+            The *disjunction query expression*.
+
+            This is the disjunctive part of the query expression which is merged with other parts of the expression
+            using an `OR` boolean operator.
+
+            When specified, the final expression evaluated by the index ends up being `(((q aq) OR (dq)) cq)`.
+          required: false
+          defaultValue: ""
+        lq:
+          type: "string"
+          description: "The large query expression.\n"
+          required: false
+          defaultValue: ""
+        wildcards:
+          type: "boolean"
+          description: |
+            Specifies whether to enable wildcards on the basic expression keywords.
+
+            Setting this parameter to `true` enables the wildcard features of the index so that keywords containing
+            wildcard characters are expanded to the possible matching keywords to broaden the query.
+          required: false
+          defaultValue: "false"
+        questionMark:
+          type: "boolean"
+          description: |
+            Specifies whether to enable question marks with wildcards.
+
+            Setting this parameter to `true` enables using the question mark character (`?`) within wildcard
+            expressions.
+          required: false
+          defaultValue: "false"
+        partialMatch:
+          type: "boolean"
+          description: |
+            Specifies whether to enable partial matching of basic expression keywords.
+
+            Setting this to `true` enables the partial match feature of the index. When this feature is enabled,
+            if the basic expression (see `q`) contains at least `partialMatchKeywords` keywords, documents containing
+            only the number of keywords specified by `partialMatchThreshold` will also match the query. When this
+            feature is not enabled, documents must contain all of the basic expression keywords to match the query.
+
+            This feature is automatically disabled if the basic expression contains special query syntax such as
+            operators or field expressions.
+          required: false
+          defaultValue: "false"
+        partialMatchKeywords:
+          type: "integer"
+          format: "int32"
+          description: |
+            The minimum number of keywords needed to activate partial match.
+
+            This specifies the minimum number of keywords needed for the partial match feature to activate (see the
+            `partialMatch` parameter). If the basic expression (see the `q` parameter) contains less than this number
+            of keywords, no transformation is applied to the query.
+          required: false
+          defaultValue: "5"
+        partialMatchThreshold:
+          type: "string"
+          description: |
+            The threshold to use for matching documents when `partialMatch` is `true`.
+
+            This specifies the minimum number of query keywords that a document must contain when partial match is
+            enabled. This value can either be an absolute number or a percentage value based on the total number of
+            keywords.
+          required: false
+          defaultValue: "50%"
+        lowercaseOperators:
+          type: "boolean"
+          description: ""
+          required: false
+          defaultValue: "false"
+        firstResult:
+          type: "integer"
+          format: "int32"
+          description: |
+            The 0-based index number of the first result to return.
+          required: false
+          defaultValue: 0
+          example: 0
+        numberOfResults:
+          type: "integer"
+          format: "int32"
+          description: |
+            The number of results to return, starting from the `firstResult` index number.
+          required: false
+          defaultValue: 10
+          example: 10
+        sortCriteria:
+          type: "string"
+          description: |
+            The sort criteria to use when sorting the results.
+
+            You can specify multiple sort criteria by separating them with commas (e.g.,
+            `@myfield1 ascending,@myfield2 ascending,@myfield3 ascending, [ ... ]`.
+
+            Multiple sort criteria only work when sorting by date or by custom fields (it is not possible to mix
+            `Relevancy` and field sorting).
+
+            Multiple sort criteria are evaluated in the order you specify them (just like an SQL `ORDER BY` clause).
+            Note that if you specify multiple sort criteria, those criteria must all have the same direction (either
+            `ascending` or `descending`), otherwise you will get and `Unsupported feature` exception.
+
+            The following table lists all available sort criteria (the values are case-insensitive).
+
+            | Criterion                               | Description |
+            | :-------------------------------------- | :---------- |
+            | `Relevancy`                             | Sort by relevancy. This uses all the configured ranking weights as well as any specified ranking expressions to rank results. |
+            | `DateAscending`, `DateDescending`       | Sort using the value of the `@sysdate` field, which is typically the last modification date of an item in the index. |
+            | `qre`                                   | Sort using only the weights applied through ranking expressions. This is much like using `Relevancy` except that automatic weights based on keyword proximity, etc., are not computed. |
+            | `nosort`                                | Do not sort the results. The order in which items are returned is essentially random. |
+            | `@field ascending`, `@field descending` | Sort using the value of a custom field. |
+            | `FieldAscending`, `FieldDescending`     | Sort using the value of a custom field specified using the `sortField` argument. **Note:** This sort criteria is deprecated. You should rather use the `@field ascending` and `@field descending` syntax. |
+          required: false
+          defaultValue: "Relevancy"
+          example: "relevancy"
+        sortField:
+          type: "string"
+          description: |
+            The name of the field to use for sorting.
+
+            **Deprecated since June 2015 release:**
+            > This parameter is deprecated. You should rather use the `@field ascending` and `@field descending`
+            > syntax (see the table in the `sortCriteria` parameter documentation).
+          required: false
+          defaultValue: ""
+        enableDuplicateFiltering:
+          type: "boolean"
+          description: |
+            Specifies whether to filter duplicates.
+
+            If you set this parameter to `true`, documents that resemble others appear only once in the results. Also,
+            the `QueryResults.FilteredResults` is populated.
+
+            **Note:**
+            > Enabling this feature may render the total result count less precise, as only the results up to those
+            > being retrieved are submitted to filtering.
+            >
+            > **Example:**
+            >> If you have 10 unique documents and then 90 duplicates ones in the results, the first result page
+            >> displays a total count of 100 results, but when the user jumps to the second page, the count drops to
+            >> 11 and only one result is displayed.
+          required: false
+          defaultValue: "false"
+        parentField:
+          type: "string"
+          description: |
+            The name of the parent field to use when loading the parent.
+
+            This specifies a field that the child should match in order to load the parent in the `parentResult` field
+            of the `QueryResult`.
+
+            Parent loading can be used to load the parent of a result in a result. To do so, you have to specify two
+            fields that will have the same value. So the `childField` value of the child field must match the
+            `parentField` value of the parent field in order for the parent to be loaded.
+          required: false
+          defaultValue: ""
+          example: "@forumparentid"
+        childField:
+          type: "string"
+          description: |
+            The name of the child field to use when loading the parent.
+
+            This specifies a field that the parent should match in order to be loaded in the `parentResult` field of
+            the `QueryResult`.
+
+            Parent loading can be used to load the parent of a result in a result. To do so, you have to specify two
+            fields that will have the same value. So the `childField` value of the child field must match the
+            `parentField` value of the parent field in order for the parent to be loaded.
+          required: false
+          defaultValue: ""
+          example: "@forumfoldingid"
+        filterFieldRange:
+          type: "integer"
+          format: "int32"
+          description: |
+            The number of results that should be folded.
+
+            This specifies the number of results that should be loaded as child results.
+          required: false
+          defaultValue: 5
+          example: 3
+        filterField:
+          type: "string"
+          description: |
+            The name of the field to use for folding.
+
+            This specifies a field on which folding should be performed.
+            Folding is a kind of duplicate filtering where only the first result with any given value of the field is
+            included in the result set. It's typically used to return only one result in a conversation, for example
+            when forum posts in a thread are indexed as separate items.
+          required: false
+          defaultValue: ""
+          example: "@forumfoldingid"
+        excerptLength:
+          type: "integer"
+          format: "int32"
+          description: |
+            The length of the generated excerpts.
+
+            This specifies the length (in number of characters) of the excerpts generated by the indexer based on the
+            keywords present in the query. The index includes the top most interesting sentences (in the order they
+            appear in the document) that fit in the specified number of characters.
+
+            **Tip:**
+            > When further clipping is performed on the `excerptLength` value (using `text-overflow: ellipsis` for
+            > example), specify a value that is close to the number of characters that will really be displayed to the
+            > user.
+          required: false
+          defaultValue: 200
+        summaryLength:
+          type: "integer"
+          format: "int32"
+          description: "The summary length."
+          required: false
+          defaultValue: "0"
+        retrieveFirstSentences:
+          type: "boolean"
+          description: |
+            Specifies whether to retrieve the first sentences.
+
+            This specifies whether the first sentences of the document should be included in the results.
+
+            **Tip:**
+            > The `retrieveFirstSentences` option is typically used instead of excerpts when displaying email items,
+            > where the first sentence of the email might be of more interest than a contextually generated excerpt.
+          required: false
+          defaultValue: "false"
+        groupBy:
+          type: array
+          items:
+            $ref: "#/definitions/RestGroupBy"
+          description: |
+            Definition of the facets to compute on the results.
+
+            This specifies an array of Group By operations that can be performed on the query results to extract
+            facets.
+          required: false
+          defaultValue: ""
+        fieldsToInclude:
+          type: "array"
+          items:
+            type: "string"
+          description: |
+            Fields that should be included in the query results.
+
+            This specifies an array of fields that should be returned for each result. Use the syntax for a JSON
+            array when passing this value through the query string (e.g., `fieldsToInclude=["foo", "bar"]`).
+
+            If not specified, all fields are returned by default
+          required: false
+          defaultValue: ""
+        fieldsToExclude:
+          type: "array"
+          items:
+            type: "string"
+          description: |
+            Fields that should be excluded from the query results.
+
+            This specifies an array of fields that should be excluded from the query results. Use the syntax for a
+            JSON array when passing this value through the query string (e.g., `fieldsToExclude=["foo", "bar"]`).
+
+            If not specified, all fields are returned by default.
+          required: false
+          defaultValue: ""
+        enableDidYouMean:
+          type: "boolean"
+          description: |
+            Whether to suggest query corrections.
+
+            This enables the query correction feature of the index. By activating this, the index returns an array of
+            `QueryCorrection` with suggested word corrections.
+          required: false
+          defaultValue: "false"
+          example: true
+        timezone:
+          type: "string"
+          description: |
+            The time zone to use for dates in the query and in the results.
+
+            Specifies in what time zone dates specified in the query are. This parameter also affects the dates
+            returned for each results. If not specified, the default time zone of the index server is used.
+
+            Time zones are referenced by their ID as specified by the well known TZ library. The list of time zones
+            available can be accessed [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+            **Note:**
+            > Starting with CES 7.0.7022 (September 2014 monthly release), the index handles daylight saving time.
+          required: false
+          defaultValue: ""
+          example: "America/New_York"
+        enableThesaurus:
+          type: "boolean"
+          description: "Whether to expand the query with the thesaurus.\n"
+          required: false
+          defaultValue: "true"
+        enableCollaborativeRating:
+          type: "boolean"
+          description: ""
+          required: false
+          defaultValue: "false"
+        queryFunctions:
+          type: "array"
+          items:
+            $ref: "#/definitions/RestQueryFunction"
+          description: |
+            Definition of query functions to execute on the results.
+
+            This specifies an array of Query Function operation that will be executed on the result.
+
+            A Query Function is a mathematical expression that you run during a request to calculate a value for each
+            result at query time, and output its result in a dynamic field.
+          required: false
+          defaultValue: ""
+        rankingFunctions:
+          type: "array"
+          items:
+            $ref: "#/definitions/RestRankingFunction"
+          description: |
+            Definition of ranking functions to alter the ranking.
+
+            This specifies an array of Ranking Function operations that will be executed on the result.
+
+            A Ranking Function is a mathematical expression that you want to run on a result at query time. Its results
+            will be added to the ranking score of the current result. You can use multiple ranking functions at the same
+            time.
+
+            **Example:**
+            > You may want to boost restaurants that are close to your user's current location using the following
+            > expression.
+            > ```
+            > /rest/search/?q=restaurants&rankingFunctions=[{"expression":"-sqrt(dist(@longitude, @latitude, 46.8167, -71.2167))","normalizeWeight":true}]
+            > ```
+            > where `46.8167`, `-71.2167` are the user's current longitude and latitude.
+            >
+            > The `normalizeWeight` maps the complete value domain to the `0` to `600` range.
+            >
+            > Let's say that the value domain returned by the `-sqrt(dist(...))` function is from for a given query is
+            > `-1000` to `0`.
+            >
+            > The result for a restaurant that has a  `-sqrt(dist(...))` value of `-500 has a boost of ``300`.
+            >
+            > The result for a restaurant that has a  `-sqrt(dist(...))` value of `-250` has a boost of `450`.
+          required: false
+          defaultValue: ""
+        maximumAge:
+          type: "integer"
+          format: "int32"
+          description: |
+            **Available since February 2016 release**
+
+            The maximum age for cached query results, in milliseconds. If results for the exact same request
+            (including user identities) are available in the in-memory cache, they will be used if they are not older
+            than the specified value. Otherwise, the query will be sent to the index.
+
+            The default value for this parameter is equivalent to 30 minutes.
+          required: false
+          defaultValue: "-1"
+        disableQuerySyntax:
+          type: "boolean"
+          description: "Whether or not to interpret special query syntax such as field references in the basic query expression (parameter q).\nDeprecated."
+          required: false
+          defaultValue: "false"
+        enableQuerySyntax:
+          type: "boolean"
+          description: |
+            Wheter to enable the special query syntax such as field references for the basic query expression (parameter
+            q).
+
+            Setting this parameter to false is equivalent to applying a No syntax block to the basic query expression.
+          required: false
+          defaultValue: "true"
+        syntax:
+          type: "string"
+          description: "Name of the query syntax to apply in the basic query expression (parameter q).\n"
+          required: false
+          defaultValue: ""
+        pipeline:
+          type: "string"
+          description: |
+            Name of the query pipeline to use.
+
+            This specifies the name of the query pipeline to use for the query. If not specified, the default value is
+            default, which means the default query pipeline will be used.  Add this parameter at the beginning of the
+            query string, for example: http://server/MySearchPage?pipeline=MyPipeline
+          required: false
+          defaultValue: ""
+        q:
+          type: "string"
+          description: |
+            The *basic query expression*.
+
+            This is typically the query expression entered by the user in a query box. Since this part of the query is
+            expected to come from user input, it is processed by the *Did You Mean* feature.
+          required: false
+          defaultValue: ""
+          example: 'this is "my query" expressino'
+        language:
+          type: "string"
+          description: "Deprecated."
+          required: false
+          defaultValue: ""
+          example: "en"
+        locale:
+          type: "string"
+          description: |
+            The locale of the query. This specifies the user's geographic region and language and is made available in
+            Query Expressions, Pipeline Conditions, and QPL.
+          required: false
+          defaultValue: ""
+        tab:
+          type: "string"
+          description: |
+            The tab value set from the JavaScript Search Framework Tab component (see Tab Component [V1] and Tab
+            Component [V0.9]). Represent the current Tab name in use.
+          required: false
+          defaultValue: ""
+          example: "All"
+        searchHub:
+          type: "string"
+          description: |
+            The hub value set from the JavaScript Search Framework Analytics component (see Analytics Component [V1] and
+            Analytics Component [V0.9]). Represents the search dimension name.
+          required: false
+          defaultValue: ""
+        debug:
+          type: "boolean"
+          description: |
+            Whether to include debug info in the results.
+
+            This specifies whether additional debug information should be included in the resulting JSON. This argument
+            is useful for troubleshooting but causes more data to be transferred back to the caller.
+          required: false
+          defaultValue: "false"
+        format:
+          type: "string"
+          description: |
+            The format of the results. Use xlsx for excel and json for JSON. By default, the service returns the results
+            in a JSON format.
+          required: false
+          defaultValue: "json"
+        recommendation:
+          type: "string"
+          description: "Represent the current Recommendation id in use.\n"
+          required: false
+          defaultValue: ""
+        context:
+          type: "undefined"
+          description: |
+            Value of the context JSON object to use.
+
+            This specifies the JSON of the Context userDefinedContext to send in the query. This then makes it available
+            to use with the QPL
+          required: false
+          defaultValue: ""
+        actionsHistory:
+          type: "undefined"
+          description: "The action history of the current user.\n"
+          required: false
+          defaultValue: ""
+        indexToken:
+          type: "string"
+          description: "A token that you can pass to always make queries using the same index\n"
+          required: false
+          defaultValue: ""
+    OutgoingQueryResponse:
+      type: "object"
+      properties:
+        totalCount:
+          type: "int"
+          format: "int32"
+          description: |
+            Total number of items matching the query.
+
+            This value tells how many items in the index are matching the query for the current user (security trimming
+            applied).
+          example: 3
+        totalCountFiltered:
+          type: "int"
+          format: "int32"
+          description: |
+            Total number of items matching the query (filtered).
+
+            This value tells how many items in the index are matching the query for the current user (security trimming
+            applied) after filtering has been applied.
+          example: 3
+        duration:
+          type: "int"
+          format: "int32"
+          description: |
+            Time needed to execute the query.
+
+            This value tells how much time in milliseconds was needed to execute the query, from the standpoint of the
+            server hosting the REST Search API. This measurement includes any network connection time needed to
+            establish a connection to the index server.
+          example: 55
+        indexDuration:
+          type: "int"
+          format: "int32"
+          description: |
+            Time needed to execute the query within the index.
+
+            This value tells how much time was spent in the index to execute the query. It does not include network
+            connection time between the REST Search API server and the index.
+          example: 43
+        requestDuration:
+          type: "int"
+          format: "int32"
+          description: |
+          example: 53
+        searchUid:
+          type: "string"
+          description: |
+          example: "a0e4773c-39c3-423c-90cd-c03a640ecde5"
+        pipeline:
+          type: "string"
+          description: |
+            Name of the query pipeline that processed the query.
+
+            This value holds the name of the query pipeline that was used to execute the query (see
+            [Managing the Query Pipeline](https://developers.coveo.com/x/KYOy)).
+          example: "default"
+        apiVersion:
+          type: "int"
+          format: "int32"
+          description: |
+          example: 2
+        index:
+          type: "string"
+          description: |
+          example: "mycoveocloudv2organizationid-cqjd206sta1xb9qyxfhhnsu294-Indexer-2-9rbfxhp1n07cth80ckzeh3zotc"
+        indexToken:
+          type: "string"
+          description: |
+          example: "EP0RxuedSqPbhRRtYQhszwu3MaHiqeTI1xnj6m2Mj3q3BfXVCiejp3W5afdtt0Ik1zVgB4vEqdrc9Zpb1NbHSHd9ngdzEMYiEoUPj3q3BfXVCiejp3W="
+        triggers:
+          type: "array"
+          description: |
+            List of actions to perform by the client.
+
+            This value holds an array of actions generated by the query pipeline based on the defined Trigger
+            statements.
+          example:
+            - ""
+        termsToHighlight:
+          type: "object"
+          example:
+            this:
+              - "thisness"
+              - "thís"
+              - "thîs"
+              - "..."
+            is:
+              - "iś"
+              - "iŝ"
+              - "iş"
+              - "..."
+            expression:
+              - "express"
+              - "expressability"
+              - "expressable"
+              - "..."
+        phrasesToHighlight:
+          type: "object"
+          example:
+            my query:
+              my:
+                - "my̓"
+                - "my͒"
+                - "mý"
+                - "..."
+              query:
+                - "quéry"
+        queryCorrections:
+          type: "array"
+          description: |
+            List of query corrections.
+
+            This value holds an array of query corrections that the index suggests. Each query correction includes the
+            following values:
+
+            - `correctedQuery`: The corrected query.
+            - `wordCorrections`: A list of word corrections and their offsets.
+              - `offset`: The offset of the corrected word.
+              - `length`: The length of the corrected word.
+              - `originalWord`: The original word.
+              - `correctedWord`: The corrected word.
+
+            This value is only included in the result if the `enableDidYouMean` flag was `true` when performing the
+            query
+          example:
+            -
+              correctedQuery: 'this is \"my query\" expression'
+              wordCorrections:
+                -
+                  offset: 19
+                  length: 10
+                  originalWord: "expressino"
+                  correctedWord: "expression"
+        groupByResults:
+          type: "array"
+          description: |
+            Group By results returned by the query.
+
+            This value holds an array of Group By results returned for the query. Group By results are included in the
+            same order as they were requested through the groupBy parameter.
+        results:
+          type: "array"
+          items:
+            $ref: "#/definitions/RestQueryResults"
+          description: |
+            Results returned by the query.
+
+            This value holds an array of results returned for the query.
+        refinedKeywords:
+          type: "array"
+    RestQueryResults:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+          description: |
+            Title of the result.
+
+            This value holds the title of the result, read from the `@systitle` field.
+          example: "Thoughts on adding a new feature"
+        uri:
+          type: "string"
+          description: |
+            URI of the result.
+
+            This value holds the URI of the result, read from the `@sysuri` field. Do not use this value to
+            hyperlinking to the item, rather use the `ClickUri` value.
+          example: "https://example.com/Root:0/topic:898/post:2"
+        printableUri:
+          type: "string"
+          description: |
+            Human readable URI of the result.
+
+            This value holds a human readable version of the result URI. Do not use this value to hyperlinking to the
+            item, rather use the `ClickUri` value.
+          example: "https://example.com/topic:898/post:2"
+        clickUri:
+          type: "string"
+          description: |
+            URI of the result for use in hyperlinks.
+
+            This value is the hyperlink version of the URI of the item. It's designed to be usable through an hyperlink
+            in a Web Browser. This value is not necessarily unique for each result.
+          example: "https://example.com/t/1/898/2"
+        uniqueId:
+          type: "string"
+          description: |
+            Unique ID for the result.
+
+            This value is a unique ID for the result across all the index. The specific content of this value should be
+            considered an opaque string.
+          example: "84.72597$https://example.com/Root:0/Topic:898/Post:2"
+        excerpt:
+          type: "string"
+          description: |
+            Excerpt for the result.
+
+            This value holds the generated contextual excerpt for the result. The excerptLength query parameter can be
+            used to control the length of the generated value.
+          example: "... we are currently working on this feature ... I can send you some feedback when it is ready ..."
+        firstSentences:
+          type: "string"
+          description: |
+            First sentences for the result.
+
+            This value holds the first sentences of the body of the result. The `excerptLength` query parameter can be
+            used to control the length of the generated value
+          example: "Hello, Thanks for reporting this. You will be pleased to learn that we are currently working on this feature. For now, you can use the following workaround ..."
+        summary:
+          type: "string"
+          description: |
+            Summary for the result.
+
+            This value holds the generated summary for the result.
+          example: ""
+        flags:
+          type: "string"
+          description: |
+            Flags for the result.
+
+            This value holds an array of flags that are set on the result.
+          example: "HasHtmlVersion"
+        hasHtmlVersion:
+          type: "boolean"
+          description: |
+            Whether result has an HTML version.
+
+            This value specifies whether the index contains an HTML version for this result.
+          example: true
+        hasMobileHtmlVersion:
+          type: "boolean"
+          description: |
+            Whether the result has a mobile HTML version.
+
+            This value specifies whether the index contains a mobile HTML version for this result.
+          example: false
+        score:
+          type: "int"
+          format: "int32"
+          description: |
+            The ranking score of the result.
+
+            This value specifies the total ranking score computed for this result.
+          example: 1581
+        percentScore:
+          type: "float"
+          description: |
+            The ranking score of the result expressed as a percentage.
+
+            This value specifies the ranking score of the result expressed as a percentage.
+          example: 89.47102
+        rankingInfo:
+          type: "string"
+          description: |
+            Debug information about the result ranking score.
+
+            When enabled, this field holds raw information generated by the index about how the result was ranked.
+          example: ""
+        rating:
+          type: "int"
+          format: "int32"
+          description: |
+          example: 3
+        isTopResult:
+          type: "boolean"
+          description: |
+            Whether the result is a Top Result.
+
+            This value specifies whether the result was included because it is a Top Result in the index configuration.
+          example: false
+        isRecommendation:
+          type: "boolean"
+          description: |
+          example: false
+        titleHighlights:
+          type: "array"
+          description: |
+            Highlights for the Title.
+
+            This value holds an array of length and offset of highlighted words and stems for the title.
+          example:
+            -
+              length: 11
+              offset: 55
+        firstSentencesHighlights:
+          type: "array"
+          description: |
+            Highlights for the First sentences.
+
+            This value holds an array of length and offset of highlighted words and stems for the first sentences.
+          example:
+            -
+              length: 5
+              offset: 129
+        excerptHighlights:
+          type: "array"
+          description: |
+            Highlights for the Excerpt.
+
+            This value holds an array of length and offset of highlighted words and stems for the excerpt.
+          example:
+            -
+              length: 5
+              offset: 88
+            -
+              length: 4
+              offset: 133
+        printableUriHighlights:
+          type: "array"
+          description: |
+            Highlights for the Printable Uri.
+
+            This value holds an array of length and offset of highlighted words and stems for the printable URI.
+        summaryHighlights:
+          type: "array"
+          description: |
+            Highlights for the Summary.
+
+            This value holds an array of length and offset of highlighted words and stems for the summary.
+        parentResult:
+          type: "string"
+          description: |
+            Parent result when parent/child loading is used.
+
+            This value holds information about the parent result when parent/child loading is being used.
+          example:
+
+        childResults:
+          type: "array"
+          description: |
+            List of filtered out child results when `filterField` is used.
+
+            This value holds an array containing the results that were filtered out when the `filterField query`
+             parameter is set to the name of a field.
+        totalNumberOfChildResults:
+          type: "int"
+          format: "int32"
+          description: |
+            Total number of child results.
+
+            This value specifies the total number of child results available in the index when the `filterField` query
+            parameter is being used.
+          example: 2
+        raw:
+          type: "object"
+          description: |
+            Values of fields for the result.
+
+            This sub-object holds all the raw field values for the result.
+
+            **Example:**
+            > The `@sysauthor` field can be accessed using `raw.sysauthor`.
+  host: "platform.cloud.coveo.com:443"
+  basepath: "/"
   securityDefinitions:
     oauth2:
       flow: "implicit"
@@ -3957,4 +4623,3 @@
       authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
       scopes:
         full: "Required"
-
