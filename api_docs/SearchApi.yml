@@ -3210,32 +3210,41 @@
         name: 
           type: "string"
           example: "john_doe@some-domain.com"
-          description: >
+          description: |
             The name of this user ID (e.g., `john_doe@some-domain.com`).
         provider: 
           type: "string"
           example: "Email Security Provider"
-          description: >
+          description: |
             The security provider of this user ID (e.g., `Email Security Provider`).
         infos:
           type: "array"
-          description: >
+          description: |
+            **Deprecated**
+
             This is a legacy parameter.
           items:
             type: "string"
+            example: ""
         type: 
           type: "string"
           example: "User"
-          description: >
+          description: |
             The type of this user ID (e.g., `User`).
         authCookie:
           type: "string"
-          description: >
+          description: |
+            **Deprecated**
+
             This is a legacy parameter.
+          example: ""
         password:
           type: "string"
-          description: >
+          description: |
+            **Deprecated**
+
             This is a legacy parameter.
+          example: ""
     IncomingMoveStatement:
       type: "object"
       properties: 
@@ -3272,7 +3281,7 @@
           example:
             - "Tech Support"
             - "Employee"
-          description: >
+          description: |
             The groups that the user or list of users to associate this search token with belong to.
 
             A group can be any arbitrary string.
@@ -3281,37 +3290,49 @@
         userDisplayName:
           type: "string"
           example: "John Doe"
-          description: >
+          description: |
             The display name of the user or list of users to associate this search token with.
         searchHub: 
           type: "string"
           example: "Search"
-          description: >
+          description: |
             The searchhub to enforce on this search token.
 
             The searchhub is an important parameter for the analytics service, the Coveo Machine Learning service, and
             the query pipeline.
         superUserToken:
           type: "string"
-          description: >
+          description: |
+            **Internal**
+
             Coveo uses this parameter internally in its Salesforce integration.
+          example: ""
         scope:
           type: "integer"
           format: "int32"
-          description: >
+          description: |
+            **Deprecated**
+
             This is a legacy parameter.
+          example: 0
         salesforceUser:
           type: "string"
-          description: >
+          description: |
+            **Internal**
+
             Coveo uses this parameter internally in its Salesforce integration.
+          example: "for internal use by Coveo only"
         salesforceFallbackToAdmin:
           type: "boolean"
-          description: >
+          description: |
+            **Internal**
+
             Coveo uses this parameter internally in its Salesforce integration.
+          example: false
         pipeline: 
           type: "string"
           example: "Tech Support Query Pipeline"
-          description: >
+          description: |
             The query pipeline to use when performing queries using this search token (see
             [Managing Query Pipelines](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=128)).
 
@@ -3321,7 +3342,7 @@
         filter: 
           type: "string"
           example: "@objecttype=Case"
-          description: >
+          description: |
             The query expression filter to add to queries when performing queries using the search token (see
             [Coveo Query Syntax Reference](http://www.coveo.com/go?dest=adminhelp70&lcid=9&context=10005)).
 
@@ -3329,19 +3350,25 @@
             `@objecttype=Case`).
         userIds: 
           type: "array"
-          description: >
+          description: |
             The list of `RestUserId` to associate with this search token.
           items: 
             $ref: "#/definitions/RestUserId"
         expiration:
           type: "integer"
           format: "int32"
-          description: >
+          description: |
+            **Deprecated**
+
             This parameter is deprecated.
+          example: 0
         salesforceCommunityUrl:
           type: "string"
-          description: >
+          description: |
+            **Internal**
+
             Coveo uses this parameter internally in its Salesforce integration.
+          example: ""
     Throwable: 
       properties: 
         detailMessage: 
@@ -3747,6 +3774,70 @@
             The function to execute.
 
             The mathematical expression that calculates the value to inject in the field.
+
+            ### ExprTK
+
+            The Coveo query function supports the syntax of the C++ Mathematical Expression Library ExprTk (see ExprTk
+            Library).
+
+            Be aware that the following statements have been disabled:
+
+            - `if / else`
+            - `while`
+            - `repeat until`
+            - `switch`
+
+            **Example:**
+            > You have a `@price` field on your items. You need a `@discountedprice` field that contains the price with
+            > a 10% discount. Your function should look like this:
+            >> ```
+            >> (function:"@price*0.9", fieldName:"@discountPrice")
+            >> ```
+
+            ### dist
+
+            The dist function was added to the supported query functions, on top of the ExprTK library functions. The
+            dist function calculates the distance as the crow flies between two sets of latitude and longitude
+            coordinates (using the Levenshtein distance algorithm) useful in geolocalization applications (see
+            [Getting Geolocalized Results in a JavaScript Search Page](https://developers.coveo.com/x/CYGfAQ)).
+
+            The dist function syntax is:
+            ```javascript
+            dist(latitude1, longitude1, latitude2, longitude2)
+            ```
+
+            The returned value is in meters.
+
+            **Example:**
+            > Your index includes geographic latitude and longitude fields for all kinds of shops. You want to
+            > calculate a distance between the current user geographic location and a restaurant location. You use the
+            > dist query function to calculate and inject a distance field at query time.
+            >> ```
+            >> /rest/search/?q=restaurants&queryFunctions=[{"function":"dist(@latitude, @longitude, 46.8167, -71.2167)","fieldName":"distance"}]
+            >> ```
+            > In the response, the distance field is added.
+            >> ```javascript
+            >> {
+            >>   "totalCount" : 2,
+            >>   "duration" : 15,
+            >>   "indexDuration" : 10,
+            >>   "exception" : {
+            >>     "code" : "1",
+            >>     "context" : ""
+            >>   },
+            >>   "queryCorrections" : [ ],
+            >>   "results" : [ {
+            >>     "title" : "Family Deli",
+            >>     ...
+            >>     "raw" : [
+            >>       "sysuri" : "http://familydeli.com",
+            >>       "distance" : "300"
+            >>     ]
+            >>     ...
+            >>   }]
+            >> }
+            >> ```
+
         fieldName: 
           type: "string"
           description: |
@@ -3807,7 +3898,8 @@
           defaultValue: ""
         lq:
           type: "string"
-          description: "The large query expression.\n"
+          description: |
+            The *large query expression*.
           required: false
           defaultValue: ""
         wildcards:
@@ -3915,9 +4007,11 @@
         sortField:
           type: "string"
           description: |
+            **Deprecated**
+
             The name of the field to use for sorting.
 
-            **Deprecated since June 2015 release:**
+            **Note:**
             > This parameter is deprecated. You should rather use the `@field ascending` and `@field descending`
             > syntax (see the table in the `sortCriteria` parameter documentation).
           required: false
@@ -4081,9 +4175,6 @@
 
             Time zones are referenced by their ID as specified by the well known TZ library. The list of time zones
             available can be accessed [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-
-            **Note:**
-            > Starting with CES 7.0.7022 (September 2014 monthly release), the index handles daylight saving time.
           required: false
           defaultValue: ""
           example: "America/New_York"
@@ -4145,8 +4236,6 @@
           type: "integer"
           format: "int32"
           description: |
-            **Available since February 2016 release**
-
             The maximum age for cached query results, in milliseconds. If results for the exact same request
             (including user identities) are available in the in-memory cache, they will be used if they are not older
             than the specified value. Otherwise, the query will be sent to the index.
