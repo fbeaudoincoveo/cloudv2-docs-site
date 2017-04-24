@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: coveo-docs-standard-page
 title: About
 permalink: /about/
 ---
