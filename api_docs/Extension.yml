@@ -5,7 +5,10 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Extension API allows you to manage and test indexing pipeline extensions.
+
+      If you need to associate an indexing pipeline extension to a sources, you must use the [Source API](Source).
     license: {}
     title: "Extension API Reference - Coveo Cloud V2"
     version: "1.0"

@@ -1,6 +1,11 @@
 ---
   info: 
     version: "2016-03-03T13:22:11Z"
+    description: |
+      The Source Logs API allows you to get detailed indexing pipeline activity information for each individual document
+      in a source.
+
+      If you need to get more generic activity information, you must use the [Activity API](Activity).
     title: "Source Logs API Reference - Coveo Cloud V2"
   paths: 
     /organizations/{organizationId}: 

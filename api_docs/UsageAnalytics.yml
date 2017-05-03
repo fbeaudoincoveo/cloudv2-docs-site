@@ -1,6 +1,13 @@
 ---
   info: 
     version: "1.0"
+    description: |
+      The Usage Analytics API allows you to log UA data, get UA statistics, and manage UA reports and exports.
+
+      The Usage Analytics API also also allows you to manage UA dimensions and metrics.
+
+      Additionally, since Coveo usage analytics have their own sets of users, groups, and permissions, the Usage
+      Analytics API allows you to manage those identities.
     title: "Usage Analytics API Reference - Coveo Cloud"
   paths: 
     /v14/exports/status: 

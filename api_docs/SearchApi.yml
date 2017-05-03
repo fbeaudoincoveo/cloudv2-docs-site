@@ -3,7 +3,13 @@
   info: 
     title: "Search API Reference - Coveo Cloud"
     version: "1.0.0"
-    description: "Documentation for Coveo Search API"
+    description: |
+      The Search API allows you to process search requests and send them to the index.
+
+      The Search API also allows you to manage and apply query pipelines.
+
+      Additionally, the Search API allows you to create search tokens, and manage SharePoint or SAML authentication
+      providers.
     termsOfService: "http://www.coveo.com/en/support/terms-agreements"
     contact: 
       name: "support@coveo.com"
