@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<script>
+  /**
+   * Dynamically adjusts the separator (vertical line between TOC and content) position in the page.
+   */
+  var setSeparatorLeftPosition = function() {
+    var tocColumnWidth = document.getElementById("column1").offsetWidth;
+    var documentHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    document.getElementById("separator").style.left = tocColumnWidth + "px";
+    document.getElementById("separator").style.height = documentHeight + "px";
+  };
+
+  window.addEventListener("DOMContentLoaded", setSeparatorLeftPosition);
+  window.addEventListener("resize", setSeparatorLeftPosition);
+</script>
+
+<div id="contentBox" style="margin:0 auto; width:100%; height:100%">
+    <div id="column1" style="float:left; margin:0; padding-top:20px; padding-right:20px; max-width:25%">
+        {% include coveo-docs-toc.html %}
+    </div>
+
+    <div id="separator" style="position:absolute; height:100%; width:2px; background-color: darkgrey"></div>
+
+    <div id="column3" style="float:left; margin:0; padding-top:20px; padding-left:20px; max-width:70%">
+        {% include coveo-docs-breadcrumbs.html %}
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">{{ page.title | escape }}</h1>
+            </header>
+
+            <div class="post-content">
+                {{ content }}
+            </div>
+
+        </article>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<ul>
+{% for f in {{include.list}} %}
+    {% assign g = f | replace: "[", "" | replace: "]", "" | replace: '"', '' %}
+    {% assign h = g | split: "," %}
+    {% if forloop.index0 > 0 %}
+        {% assign prt = h[1] | strip %}
+        {% if prt == {{include.parent}} %}
+    <li class="coveo-docs-toc-item">
+        {% assign current_path = {{include.parent_path}} | append: "/" | append: h[0] %}
+        <a class="coveo-docs-toc-link" href="{{current_path | absolute_url}}">{{h[0]}}</a>
+            {% assign p = h[0] | strip %}
+            {% assign l = {{include.list}} %}
+            {% include coveo-docs-toc-sub-element.html parent=p list=l parent_path=current_path%}
+    </li>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+</ul>

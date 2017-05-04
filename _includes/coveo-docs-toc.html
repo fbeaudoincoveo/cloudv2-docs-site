@@ -1,0 +1,49 @@
+<style>
+    li {
+        word-break: break-all;
+        padding:0px;
+        margin:0px
+    }
+</style>
+
+<div style="float:left">
+<ul class="coveo-docs-toc">
+    <li class="coveo-docs-toc-home-item">
+        <a class="coveo-docs-toc-home-link" href="{{'/' | absolute_url}}"><i class="fa fa-home" aria-hidden="true"></i></a>
+    </li>
+    <ul class="coveo-docs-toc">
+        {% assign site_sections = "" %}
+        {% assign parent_separator = "$$" %}
+        {% assign element_separator = ";;" %}
+        {% for page in site.html_pages %}
+            {% assign path_elements = page.url | split: "/" %}
+            {% for path_element in path_elements %}
+                {% unless site_sections contains path_element %}
+                    {% assign parent_index = forloop.index0 | minus: 1 %}
+                    {% assign parent = path_elements[parent_index] %}
+                    {% assign site_sections = site_sections | append: path_element | strip | append: parent_separator | append: parent | append: element_separator %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+
+        {% assign a = site_sections | split: element_separator %}
+        {% assign c = "" %}
+        {% for b in a %}
+            {% assign d = b | split: parent_separator %}
+            {% assign c = c | append: d | append: element_separator %}
+        {% endfor %}
+        {% assign e = c | split: element_separator %}
+        {% for f in e %}
+            {% assign g = f | replace: "[", "" | replace: "]", "" | replace: '"', '' %}
+            {% assign h = g | split: "," %}
+            {% unless h[1] %}
+                <li class="coveo-docs-toc-item">
+                    <a class="coveo-docs-toc-link" href="{{h[0] | absolute_url}}">{{h[0]}}</a>
+                    {% assign p = h[0] | strip %}
+                    {% include coveo-docs-toc-sub-element.html parent=p list=e parent_path=p %}
+                </li>
+            {% endunless %}
+        {% endfor %}
+    </ul>
+</ul>
+</div>

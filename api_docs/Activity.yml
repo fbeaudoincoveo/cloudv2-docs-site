@@ -1754,7 +1754,6 @@
           example: "mycoveocloudorganization"
         errorCode: 
           type: "string"
-          example: null
         result: 
           enum: 
             - "SUCCESS"
@@ -1764,17 +1763,14 @@
           example: "SUCCESS"
         errorDetail: 
           type: "string"
-          example: null
         snapshotId: 
           type: "string"
-          example: null
         duration: 
           type: "integer"
           format: "int64"
           example: 178
         resourceName: 
           type: "string"
-          example: null
         operation: 
           enum: 
             - "ORG_PROVISIONING_CHECK"
@@ -1831,9 +1827,6 @@
         content: 
           type: "object"
           example:
-            lastUpdateDate: null
-            progressDescription: null
-            errorCode: null
             backupName: "organization-mycoveocloudorganization-staging-b6qfjvlhks3ckbuvytqcbb2e58"
         state: 
           enum: 
@@ -1852,10 +1845,8 @@
           example: 1
         description: 
           type: "string"
-          example: null
         abortReason: 
           type: "string"
-          example: null
         abortedBy: 
           $ref: "#/definitions/ActivityAbortedByModel"
         organizationId: 
@@ -1866,7 +1857,6 @@
           example: "ORGANIZATION"
         organizationClusterId: 
           type: "string"
-          example: null
         section: 
           enum: 
             - "CONTENT"
