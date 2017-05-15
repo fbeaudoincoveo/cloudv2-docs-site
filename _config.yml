@@ -28,6 +28,7 @@ theme: minima
 gems:
   - jekyll-feed
   - jekyll-relative-links
+  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock
