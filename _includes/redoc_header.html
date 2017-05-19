@@ -1,40 +1,28 @@
-<!-- Top navigation placeholder -->
-<nav>
-    <ul id="links_container">
-    </ul>
-</nav>
-
 <redoc scroll-y-offset="body > nav"></redoc>
 
 {% assign name = page.title %}
 {% assign swagger = page.swagger | relative_url %}
+{% assign gh_pages_site_name = page.ghPagesSiteName %}
 
-<script src="https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js"> </script>
+<script src="../../assets/redoc.min.js"> </script>
 
 <script>
+  var ymlUrl = window.location.hostname !== "coveo.github.io" ? "{{swagger}}" : "{{gh_pages_site_name}}" + "{{swagger}}";
   // list of APIS
   var apis = [
     {
       name: "{{name}}",
-      url: "{{swagger}}"
+      url: ymlUrl
     }
   ];
 
   // initially render first API
   Redoc.init(apis[0].url);
 
-  function onClick() {
-    var url = this.getAttribute('data-link');
-    Redoc.init(url);
-  }
+  // Highlight current site, section, and API
+  $('#jsDevDocs').addClass('currentSite');
+  $('#apiExplorerMenu > a').addClass('currentSection');
+  var apiName = window.location.pathname.split('/').reverse()[0];
+  $('#'+apiName).addClass('currentApi');
 
-  // dynamically building navigation items
-  var $list = document.getElementById('links_container');
-  apis.forEach(function(api) {
-    var $listitem = document.createElement('li');
-    $listitem.setAttribute('data-link', api.url);
-    $listitem.innerText = api.name;
-    $listitem.addEventListener('click', onClick);
-    $list.appendChild($listitem);
-  });
 </script>

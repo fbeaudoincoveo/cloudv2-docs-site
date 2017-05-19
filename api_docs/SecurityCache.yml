@@ -7,7 +7,8 @@
       email: "support@coveo.com"
     description: "API for Coveo Platform"
     license: {}
-    title: "Coveo Platform API"
+    title: "Security Cache API Reference - Coveo Cloud V2"
+    version: "1.0"
   paths: 
     /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
       post: 

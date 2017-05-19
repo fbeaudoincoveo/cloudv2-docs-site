@@ -18,17 +18,15 @@ gitHelper.checkout(repository.baseBranch, DEBUG)
 if not fileHelper.file_exists(repository.mdPagesPath, DEBUG):
     directoryHelper.make_directory(repository.mdPagesPath, DEBUG)
 
-
-def format_front_matter(layout, title, categories, swagger, permalink, ghPagesSiteName):
+def format_front_matter(layout, title, categories, swagger, ghPagesSiteName):
     return "---\n" \
            "layout: %s\n" \
            "title: %s\n" \
            "categories: %s\n" \
            "swagger: %s\n" \
-           "permalink: %s\n" \
            "ghPagesSiteName: %s\n" \
            "---" % \
-            (layout, title, categories, swagger, permalink, ghPagesSiteName)
+            (layout, title, categories, swagger, ghPagesSiteName)
 
 for api in platform.apiList:
     fileToLoad = repository.outputYamlPath + api + ".yml"
@@ -42,9 +40,8 @@ for api in platform.apiList:
         title = apiTitle
         categories = "api_docs"
         swagger = fileToLoad
-        permalink = repository.mdPagesPath + api
         ghPagesSiteName = repository.ghPagesSiteName
-        mdData = format_front_matter(layout, title, categories, swagger, permalink, ghPagesSiteName)
+        mdData = format_front_matter(layout, title, categories, swagger, ghPagesSiteName)
         fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
         gitHelper.add(markdownFile, DEBUG)

@@ -7,7 +7,8 @@
       email: "support@coveo.com"
     description: "API for Coveo Platform"
     license: {}
-    title: "Coveo Platform API"
+    title: "Activity API Reference - Coveo Cloud V2"
+    version: "1.0"
   paths: 
     /rest/organizations/{organizationId}/activities/permissions: 
       get: 
@@ -206,45 +207,89 @@
             description: "Not Found"
         parameters: 
           - 
-            description: "organizationId"
+            description: |
+              The unique identifier of the organization from which to obtain entries.
             required: true
             type: "string"
             name: "organizationId"
             in: "path"
+            example: "mycoveocloudorganizationid"
           - 
-            description: "page"
+            description: |
+              The page number of paginated entries to return in the `items` array of a successful response.
+
+              If you use the default value, the call returns all existing pages. If you specify a page number that does
+              not exist, the call returns an empty array (`[]`). Otherwise, this parameter works in close relationship
+              with the `perPage` parameter.
+
+              For example, if you set `page` to `3` and `perPage` to `25`, and the `totalEntries` value in a successful
+              response is `100`, the `items` key only contains entries 51-75.
             format: "int32"
             default: 0
             required: false
             in: "query"
             type: "integer"
             name: "page"
+            example: 10
           - 
-            description: "perPage"
+            description: |
+              The maximum number of entries per page.
+
+              This parameter works in close relationship with the `page` parameter.
+
+              The `totalPages` value in a successful response corresponds to the `totalEntries` value (i.e., the  number
+              of entries that match the requirements of the call) divided by the `perPage` value, rounded up.
+
+              For example, if you set `perPage` to `25` and the `totalEntries` value in a successful response is
+              `110`, the resulting `totalPages` value is `5` (110 divided by 25, rounded up equals 5).
             format: "int32"
             default: 100
             required: false
             in: "query"
             type: "integer"
             name: "perPage"
+            example: 25
           - 
-            description: "from"
+            description: |
+              The date and time of the oldest entry to obtain. This call does not return any entry older than the value
+              you specify for this parameter.
+
+              Along with the `to` parameter, this parameter allows you to specify a date and time range from which to
+              obtain entries.
+
+              You must use ISO date and time format and specify the timezone (e.g., `2017-04-10T04:00:00.000Z`).
             format: "int64"
             required: false
             in: "query"
             type: "integer"
             name: "from"
+            example: "2017-04-10T04:00:00.000Z"
           - 
-            description: "to"
+            description: |
+             The date and time of the newest entry to obtain. This call does not return any entry newer than the value
+             you specify for this parameter.
+
+             Along with the `from` parameter, this parameter allows you to specify a date and time range from which to
+             obtain entries.
+
+             You must use ISO date and time format and specify the timezone (e.g., `2017-04-17T03:59:59.999Z`).
             format: "int64"
             required: false
             in: "query"
             type: "integer"
             name: "to"
+            example: "2017-04-17T03:59:59.999Z"
           - 
             schema: 
               $ref: "#/definitions/ActivityFacetModel"
-            description: "activityFacet"
+            description: |
+              The filters to apply when obtaining entries.
+
+              While this parameter is mandatory, you can simply pass an empty JSON (`{}`) if you do not need to apply
+              any filter.
+
+              This implies that for all keys in this model, specifying no value is equivalent to specifying all possible
+              values.
             required: true
             name: "activityFacet"
             in: "body"
@@ -253,7 +298,7 @@
         tags: 
           - "Activities"
         x-pretty-name: "getAllActivitiesForOrganization"
-        summary: "Get all activities related to an organization"
+        summary: "Get activities related to an organization"
         security: 
           - 
             oauth2: 
@@ -347,13 +392,17 @@
             description: "Not Found"
         parameters: 
           - 
-            description: "organizationId"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             required: true
             type: "string"
             name: "organizationId"
             in: "path"
           - 
-            description: "page"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int32"
             default: 0
             required: false
@@ -361,7 +410,9 @@
             type: "integer"
             name: "page"
           - 
-            description: "perPage"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int32"
             default: 100
             required: false
@@ -369,14 +420,18 @@
             type: "integer"
             name: "perPage"
           - 
-            description: "from"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int64"
             required: false
             in: "query"
             type: "integer"
             name: "from"
           - 
-            description: "to"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int64"
             required: false
             in: "query"
@@ -385,7 +440,9 @@
           - 
             schema: 
               $ref: "#/definitions/ActivityFacetModel"
-            description: "activityFacet"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             required: true
             name: "activityFacet"
             in: "body"
@@ -424,20 +481,26 @@
             description: "Not Found"
         parameters: 
           - 
-            description: "organizationId"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             required: true
             type: "string"
             name: "organizationId"
             in: "path"
           - 
-            description: "from"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int64"
             required: false
             in: "query"
             type: "integer"
             name: "from"
           - 
-            description: "to"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             format: "int64"
             required: false
             in: "query"
@@ -446,7 +509,9 @@
           - 
             schema: 
               $ref: "#/definitions/ActivityFacetModel"
-            description: "activityFacet"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             required: true
             name: "activityFacet"
             in: "body"
@@ -1150,7 +1215,9 @@
             description: "Not Found"
         parameters: 
           - 
-            description: "organizationId"
+            description: |
+             Same description as corresponding parameter in
+             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
             required: true
             type: "string"
             name: "organizationId"
@@ -1356,11 +1423,14 @@
         startDate: 
           type: "integer"
           format: "int64"
+          example: 1491797963640
         endDate: 
           type: "integer"
           format: "int64"
+          example: 1491797963818
         resourceId: 
           type: "string"
+          example: "mycoveocloudorganization"
         errorCode: 
           type: "string"
         result: 
@@ -1369,6 +1439,7 @@
             - "ERROR"
             - "ABORT"
           type: "string"
+          example: "SUCCESS"
         errorDetail: 
           type: "string"
         snapshotId: 
@@ -1376,6 +1447,7 @@
         duration: 
           type: "integer"
           format: "int64"
+          example: 178
         resourceName: 
           type: "string"
         operation: 
@@ -1423,13 +1495,18 @@
             - "SCHEDULE_CHANGE"
             - "SCHEDULE_DELETE"
           type: "string"
+          example: "BACKUP"
         id: 
           type: "string"
+          example: "2d563aaeb22b42d89cceda765fc76ef5"
         createDate: 
           type: "integer"
           format: "int64"
+          example: 1491797963547
         content: 
           type: "object"
+          example:
+            backupName: "organization-mycoveocloudorganization-staging-b6qfjvlhks3ckbuvytqcbb2e58"
         state: 
           enum: 
             - "NOT_EXECUTED"
@@ -1440,9 +1517,11 @@
             - "PAUSED"
             - "EXECUTED"
           type: "string"
+          example: "EXECUTED"
         progress: 
           type: "number"
           format: "double"
+          example: 1
         description: 
           type: "string"
         abortReason: 
@@ -1451,8 +1530,10 @@
           $ref: "#/definitions/ActivityAbortedByModel"
         organizationId: 
           type: "string"
+          example: "mycoveocloudorganization"
         resourceType: 
           type: "string"
+          example: "ORGANIZATION"
         organizationClusterId: 
           type: "string"
         section: 
@@ -1463,6 +1544,7 @@
             - "ORGANIZATION"
             - "INTERNAL"
           type: "string"
+          example: "INTERNAL"
         triggeredBy: 
           $ref: "#/definitions/ActivityTriggerByModel"
     ActivityFacetModel: 
@@ -1515,6 +1597,8 @@
               - "SCHEDULE_DELETE"
             type: "string"
           type: "array"
+          description: |
+            The list of activity operations to include.
         resultTypes: 
           items: 
             enum: 
@@ -1523,10 +1607,14 @@
               - "ABORT"
             type: "string"
           type: "array"
+          description: |
+            The list of activity result types to include.
         organizationIds: 
           items: 
             type: "string"
           type: "array"
+          description: |
+            A list of unique identifiers representing the organizations to get the activities from.
         states: 
           items: 
             enum: 
@@ -1539,14 +1627,20 @@
               - "EXECUTED"
             type: "string"
           type: "array"
+          description: |
+            The list of activity states to include.
         resourceIds: 
           items: 
             type: "string"
           type: "array"
+          description: |
+            A list of unique identifiers representing the specific resources to get the activities from.
         resourceTypes: 
           items: 
             type: "string"
           type: "array"
+          description: |
+            The list of resource types to include.
         sections: 
           items: 
             enum: 
@@ -1557,6 +1651,8 @@
               - "INTERNAL"
             type: "string"
           type: "array"
+          description: |
+            The list of sections to include.
     NotifyActivityErrorModel: 
       type: "object"
       properties: 

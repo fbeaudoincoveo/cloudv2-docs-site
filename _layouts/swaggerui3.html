@@ -2,11 +2,12 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include swaggerui3_head.html %}
+{% include coveo-community-head.html %}
 
 <body>
 
 {% include swaggerui3_header.html %}
-{% include header.html %}
+{% include coveo-community-header.html %}
 
 <main class="page-content" aria-label="Content">
     <div class="wrapper">
@@ -14,6 +15,7 @@
     </div>
 
     {% assign swagger = page.swagger | relative_url %}
+    {% assign gh_pages_site_name = page.ghPagesSiteName %}
 
     <div id="swagger-ui"></div>
 
@@ -21,10 +23,13 @@
     <script src={{"/swaggerui/v3/dist/swagger-ui-standalone-preset.js" | relative_url}}> </script>
 
     <script>
+      var ymlUrl = window.location.hostname == "127.0.0.1" || window.location.hostname == "localhost" ? "{{swagger}}" :
+        "{{gh_pages_site_name}}" + "{{swagger}}";
+
       window.onload = function() {
         // Build a system
         const ui = SwaggerUIBundle({
-          url: "{{swagger}}",
+          url: ymlUrl,
           dom_id: '#swagger-ui',
           presets: [
             SwaggerUIBundle.presets.apis,
@@ -40,8 +45,6 @@
       }
     </script>
 </main>
-
-{% include footer.html %}
 
 </body>
 
