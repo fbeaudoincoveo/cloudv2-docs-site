@@ -545,6 +545,10 @@
       properties: 
         operations: 
           $ref: "#/definitions/DocumentLogOperations"
+        resourceIds: 
+          items: 
+            type: "string"
+          type: "array"
         tasks: 
           $ref: "#/definitions/DocumentLogTasks"
         results: 

@@ -10,152 +10,9 @@
     title: "Authorization Server API Reference - Coveo Cloud V2"
     version: "1.0"
   paths: 
-    /rest/organizations/{organizationId}/saml/identityproviders: 
-      post: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/SamlIdentityProviderModel"
-            description: "samlIdentityProviderModel"
-            required: true
-            name: "samlIdentityProviderModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Saml Identity Providers"
-        x-pretty-name: "createIdentityProvider"
-        summary: "Add an identity provider"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createIdentityProviderUsingPOST"
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/SamlIdentityProviderModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Saml Identity Providers"
-        x-pretty-name: "getIdentityProviders"
-        summary: "Get all identity providers for this organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getIdentityProvidersUsingGET"
-    /rest/oauth2clients/{clientId}: 
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/OAuth2ClientModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "clientId"
-            required: false
-            type: "string"
-            name: "clientId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "OAuth2 Clients"
-        x-pretty-name: "getClient"
-        summary: "Get oauth2 client in authorization server"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getClientUsingGET"
-    /rest/realms/{realmId}: 
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/RealmModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "Id of the realm to get"
-            required: true
-            type: "string"
-            name: "realmId"
-            in: "path"
-        produces: 
-          - "application/json"
-        tags: 
-          - "Realms"
-        x-pretty-name: "getRealm"
-        summary: "Get the realm matching the specified id."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getRealmUsingGET"
     /rest/organizations/{organizationId}/saml/identityproviders/{id}: 
       put: 
+        uiOperationId: "/rest/organizations/paramId/saml/identityproviders/paramId_put"
         responses: 
           200: 
             description: "OK"
@@ -203,9 +60,8 @@
           - "application/json"
         operationId: "updateIdentityProviderUsingPUT"
       delete: 
+        uiOperationId: "/rest/organizations/paramId/saml/identityproviders/paramId_delete"
         responses: 
-          200: 
-            description: "OK"
           204: 
             description: "No Content"
           401: 
@@ -239,6 +95,7 @@
           - "application/json"
         operationId: "deleteIdentityProviderUsingDELETE"
       get: 
+        uiOperationId: "/rest/organizations/paramId/saml/identityproviders/paramId_get"
         responses: 
           200: 
             description: "OK"
@@ -276,8 +133,85 @@
         consumes: 
           - "application/json"
         operationId: "getIdentityProviderUsingGET"
+    /rest/organizations/{organizationId}/saml/identityproviders: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/saml/identityproviders_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+            description: "samlIdentityProviderModel"
+            required: true
+            name: "samlIdentityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "createIdentityProvider"
+        summary: "Add an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createIdentityProviderUsingPOST"
+      get: 
+        uiOperationId: "/rest/organizations/paramId/saml/identityproviders_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SamlIdentityProviderModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getIdentityProviders"
+        summary: "Get all identity providers for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIdentityProvidersUsingGET"
     /rest/users/{username}/realms: 
       get: 
+        uiOperationId: "/rest/users/paramId/realms_get"
         responses: 
           200: 
             description: "OK"
@@ -311,36 +245,43 @@
         consumes: 
           - "application/json"
         operationId: "getAllExistingRealmsForUserUsingGET"
-    /rest/oauth2clients: 
+    /rest/users/{username}: 
       get: 
+        uiOperationId: "/rest/users/paramId_get"
         responses: 
           200: 
             description: "OK"
             schema: 
-              items: 
-                $ref: "#/definitions/OAuth2ClientModel"
-              type: "array"
+              $ref: "#/definitions/UserModel"
           401: 
             description: "Unauthorized"
           403: 
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
         produces: 
-          - "*/*"
+          - "application/json"
         tags: 
-          - "OAuth2 Clients"
-        x-pretty-name: "getClients"
-        summary: "Get all oauth2 clients in authorization server"
+          - "Users"
+        x-pretty-name: "getUser"
+        summary: "Get a single user"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "getClientsUsingGET"
+        operationId: "getUserUsingGET"
     /rest/organizations/{organizationId}/saml/certificate: 
       get: 
+        uiOperationId: "/rest/organizations/paramId/saml/certificate_get"
         responses: 
           200: 
             description: "OK"
@@ -370,150 +311,6 @@
         consumes: 
           - "application/json"
         operationId: "getPlatformPublicCertificateUsingGET"
-    /rest/realms: 
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/RealmModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "realmIds"
-            items: 
-              type: "string"
-            required: true
-            collectionFormat: "multi"
-            in: "query"
-            type: "array"
-            name: "realmIds"
-        produces: 
-          - "application/json"
-        tags: 
-          - "Realms"
-        x-pretty-name: "getRealms"
-        summary: "Get realms by ids."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getRealmsUsingGET"
-    /rest/users/{username}: 
-      put: 
-        responses: 
-          200: 
-            description: "OK"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "username"
-            required: true
-            type: "string"
-            name: "username"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/UserModel"
-            description: "userModel"
-            required: true
-            name: "userModel"
-            in: "body"
-        produces: 
-          - "application/json"
-        tags: 
-          - "Users"
-        summary: "updateUserAdditionalInformation"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "updateUserAdditionalInformationUsingPUT"
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/UserModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "Username of the user"
-            required: true
-            type: "string"
-            name: "username"
-            in: "path"
-        produces: 
-          - "application/json"
-        tags: 
-          - "Users"
-        x-pretty-name: "getUser"
-        summary: "Get a single user"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getUserUsingGET"
-    /rest/realms/{realmId}/members: 
-      get: 
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/UserModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "Id of the realm to retrieve the users for"
-            required: true
-            type: "string"
-            name: "realmId"
-            in: "path"
-        produces: 
-          - "application/json"
-        tags: 
-          - "Realms"
-        x-pretty-name: "getRealmMembers"
-        summary: "Get all members for a realm."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getRealmMembersUsingGET"
   tags: 
     - 
       name: "Saml Certificate"
@@ -522,14 +319,8 @@
       name: "Saml Identity Providers"
       description: "Saml Identity Provider Resource"
     - 
-      name: "OAuth2 Clients"
-      description: "O Auth 2 Client Resource"
-    - 
       name: "Users"
       description: "User Resource"
-    - 
-      name: "Realms"
-      description: "Realm Resource"
   basePath: "/"
   securityDefinitions: 
     oauth2: 
@@ -618,62 +409,11 @@
             - "SAML"
             - "OTHER"
           type: "string"
-    OAuth2ClientModel: 
-      type: "object"
-      properties: 
-        scopes: 
-          items: 
-            type: "string"
-          type: "array"
-        autoApproveAllScopes: 
-          type: "boolean"
-        registeredRedirectUri: 
-          items: 
-            type: "string"
-          type: "array"
-        allowedIPs: 
-          items: 
-            type: "string"
-          type: "array"
-        additionalInformation: 
-          type: "object"
-        enabled: 
-          type: "boolean"
-        organizationRequiredInTokens: 
-          type: "boolean"
-        clientId: 
-          type: "string"
-        resourceIds: 
-          items: 
-            type: "string"
-          type: "array"
-        accessTokenValiditySeconds: 
-          type: "integer"
-          format: "int32"
-        tokensRevokableOnLogoutEndpoint: 
-          type: "boolean"
-        clientAuthorities: 
-          items: 
-            type: "string"
-          type: "array"
-        authorizedGrantTypes: 
-          items: 
-            type: "string"
-          type: "array"
-        autoApproveScopes: 
-          items: 
-            type: "string"
-          type: "array"
-        refreshTokenValiditySeconds: 
-          type: "integer"
-          format: "int32"
     UserRealmModel: 
       type: "object"
       properties: 
         member: 
           type: "boolean"
-        realmModel: 
-          $ref: "#/definitions/RealmModel"
         realm: 
           $ref: "#/definitions/RealmModel"
   swagger: "2.0"

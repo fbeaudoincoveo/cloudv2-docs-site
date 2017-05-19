@@ -18,7 +18,6 @@ gitHelper.checkout(repository.baseBranch, DEBUG)
 if not fileHelper.file_exists(repository.mdPagesPath, DEBUG):
     directoryHelper.make_directory(repository.mdPagesPath, DEBUG)
 
-
 def format_front_matter(layout, title, categories, swagger, ghPagesSiteName):
     return "---\n" \
            "layout: %s\n" \

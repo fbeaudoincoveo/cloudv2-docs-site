@@ -12,6 +12,10 @@
   paths: 
     /rest/organizations/{organizationId}/activities/permissions: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/permissions_get"
         responses: 
           200: 
@@ -62,14 +66,20 @@
         consumes: 
           - "application/json"
         operationId: "getPermissionsActivitiesUsingGET"
-    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/cancel: 
+    /rest/organizations/{organizationId}/activities/facets/public: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/cancel_post"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/activities/facets/public_post"
         responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
           201: 
             description: "Created"
-          204: 
-            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
@@ -84,32 +94,45 @@
             name: "organizationId"
             in: "path"
           - 
-            description: "sourceId"
-            required: true
-            type: "string"
-            name: "sourceId"
-            in: "path"
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
           - 
-            description: "activityId"
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+            description: "activityFacet"
             required: true
-            type: "string"
-            name: "activityId"
-            in: "path"
+            name: "activityFacet"
+            in: "body"
         produces: 
           - "*/*"
         tags: 
-          - "Source Activities"
-        x-pretty-name: "cancelSourceActivity"
-        summary: "Cancel a specific activity which is running"
+          - "Activities"
+        x-pretty-name: "getPublicActivitiesFacetsForOrganization"
+        summary: "Get activity public facets"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "cancelSourceActivityUsingPOST"
+        operationId: "getPublicActivitiesFacetsForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/index: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEX"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/index_get"
         responses: 
           200: 
@@ -162,6 +185,10 @@
         operationId: "getIndexActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities_post"
         responses: 
           200: 
@@ -281,6 +308,10 @@
         operationId: "getAllActivitiesForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/sources/{sourceId}: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/sources/paramId_get"
         responses: 
           200: 
@@ -337,139 +368,12 @@
         consumes: 
           - "application/json"
         operationId: "getSourceActivitiesUsingGET"
-    /rest/organizations/{organizationId}/activities/sources/{sourceId}/pushapi/{activityOperation}: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/pushapi/paramId_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              type: "string"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "sourceId"
-            required: true
-            type: "string"
-            name: "sourceId"
-            in: "path"
-          - 
-            enum: 
-              - "ORG_PROVISIONING_CHECK"
-              - "SOURCE_CREATE"
-              - "SOURCE_DELETE"
-              - "REBUILD"
-              - "FULL_REFRESH"
-              - "INCREMENTAL_REFRESH"
-              - "IDLE"
-              - "ROLLBACK_TO"
-              - "REFRESH_CANCEL"
-              - "SOURCE_PAUSE"
-              - "SOURCE_RESUME"
-              - "PUSH_SOURCE_CREATE"
-              - "PUSH_CONFIG_CHANGE"
-              - "COMMIT"
-              - "CREATE"
-              - "DELETE"
-              - "DISABLE"
-              - "DUPLICATE"
-              - "ENABLE"
-              - "UPDATE"
-              - "START"
-              - "STOP"
-              - "PAUSE"
-              - "RESUME"
-              - "SYNCHRONIZE"
-              - "BACKUP"
-              - "RECOVER"
-              - "REFRESH"
-              - "REFRESH_ENTITIES_IN_ERROR"
-              - "REFRESH_ENTITY"
-              - "RESIZE"
-              - "RESTORE"
-              - "IMPORT"
-              - "CONFIG_CHANGE"
-              - "CONFIG_CREATE"
-              - "CHANGE_READ_ONLY"
-              - "CHANGE_ONLINE"
-              - "TEST"
-              - "UPGRADE"
-              - "SCHEDULE_CREATE"
-              - "SCHEDULE_CHANGE"
-              - "SCHEDULE_DELETE"
-            description: "activityOperation"
-            required: true
-            in: "path"
-            type: "string"
-            name: "activityOperation"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Source Activities"
-        x-pretty-name: "createOrUpdatePushApiActivity"
-        summary: "Create a push api activity for a source"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createOrUpdatePushApiActivityUsingPOST"
-    /rest/organizations/{organizationId}/activities/{activityId}/pause: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/activities/paramId/pause_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "activityId"
-            required: true
-            type: "string"
-            name: "activityId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Activities"
-        x-pretty-name: "notifyPause"
-        summary: "Notify pause activity"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "notifyPauseUsingPOST"
     /rest/organizations/{organizationId}/activities/public: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/public_post"
         responses: 
           200: 
@@ -557,6 +461,10 @@
         operationId: "getAllPublicActivitiesForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/facets: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/facets_post"
         responses: 
           200: 
@@ -622,6 +530,10 @@
         operationId: "getActivitiesFacetsForOrganizationUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/resume: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/resume_post"
         responses: 
           201: 
@@ -662,6 +574,10 @@
         operationId: "notifyResumeUsingPOST"
     /rest/organizations/{organizationId}/activities/provisioning: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION_ADMINISTRATION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/provisioning_get"
         responses: 
           200: 
@@ -718,87 +634,12 @@
         consumes: 
           - "application/json"
         operationId: "getProvisioningActivitiesUsingGET"
-    /rest/activities: 
-      post: 
-        uiOperationId: "/rest/activities_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/ActivityModel"
-              type: "array"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int32"
-            default: 0
-            required: false
-            in: "query"
-            type: "integer"
-            name: "page"
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int32"
-            default: 100
-            required: false
-            in: "query"
-            type: "integer"
-            name: "perPage"
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "from"
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "to"
-          - 
-            schema: 
-              $ref: "#/definitions/ActivityFacetModel"
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            required: true
-            name: "activityFacet"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Activities"
-        x-pretty-name: "getAllActivities"
-        summary: "Get all activities"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getAllActivitiesUsingPOST"
     /rest/organizations/{organizationId}/activities/extension: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/extension_get"
         responses: 
           200: 
@@ -849,65 +690,12 @@
         consumes: 
           - "application/json"
         operationId: "getExtensionActivitiesUsingGET"
-    /rest/activities/facets: 
-      post: 
-        uiOperationId: "/rest/activities/facets_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ActivityFacetModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "from"
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "to"
-          - 
-            schema: 
-              $ref: "#/definitions/ActivityFacetModel"
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            required: true
-            name: "activityFacet"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Activities"
-        x-pretty-name: "getAllActivitiesFacets"
-        summary: "Get all activities facets"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getAllActivitiesFacetsUsingPOST"
     /rest/organizations/{organizationId}/activities/license: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "MANAGE_LICENSE"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/license_get"
         responses: 
           200: 
@@ -960,6 +748,10 @@
         operationId: "getLicenseActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/apikey: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/apikey_get"
         responses: 
           200: 
@@ -1012,6 +804,10 @@
         operationId: "getApiKeyActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/{activityId}/start: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/start_post"
         responses: 
           201: 
@@ -1052,6 +848,10 @@
         operationId: "notifyStartUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/error: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/error_post"
         responses: 
           201: 
@@ -1097,96 +897,12 @@
         consumes: 
           - "application/json"
         operationId: "notifyErrorUsingPOST"
-    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/pause: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/pause_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "sourceId"
-            required: true
-            type: "string"
-            name: "sourceId"
-            in: "path"
-          - 
-            description: "activityId"
-            required: true
-            type: "string"
-            name: "activityId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Source Activities"
-        x-pretty-name: "pauseSourceActivity"
-        summary: "Pause a specific activity which is running"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "pauseSourceActivityUsingPOST"
-    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}: 
-      delete: 
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId_delete"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "sourceId"
-            required: true
-            type: "string"
-            name: "sourceId"
-            in: "path"
-          - 
-            description: "activityId"
-            required: true
-            type: "string"
-            name: "activityId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Source Activities"
-        x-pretty-name: "deleteSourceActivity"
-        summary: "Delete a specific content activity which is not started"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteSourceActivityUsingDELETE"
     /rest/organizations/{organizationId}/activities/{activityId}/success: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/success_post"
         responses: 
           201: 
@@ -1212,6 +928,13 @@
             type: "string"
             name: "activityId"
             in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/NotifyActivitySuccessModel"
+            description: "notifyActivitySuccessModel"
+            required: false
+            name: "notifyActivitySuccessModel"
+            in: "body"
         produces: 
           - "*/*"
         tags: 
@@ -1227,6 +950,10 @@
         operationId: "notifySuccessUsingPOST"
     /rest/organizations/{organizationId}/activities/create: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/create_post"
         responses: 
           201: 
@@ -1266,54 +993,12 @@
         consumes: 
           - "application/json"
         operationId: "createActivityUsingPOST"
-    /rest/organizations/{organizationId}/activities/sources/{sourceId}/{activityId}/resume: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/activities/sources/paramId/paramId/resume_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "sourceId"
-            required: true
-            type: "string"
-            name: "sourceId"
-            in: "path"
-          - 
-            description: "activityId"
-            required: true
-            type: "string"
-            name: "activityId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Source Activities"
-        x-pretty-name: "resumeSourceActivity"
-        summary: "Resume a specific activity which is running"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "resumeSourceActivityUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/abort: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/abort_post"
         responses: 
           201: 
@@ -1361,6 +1046,10 @@
         operationId: "notifyAbortUsingPOST"
     /rest/organizations/{organizationId}/activities/{activityId}/progress: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/activities/paramId/progress_post"
         responses: 
           201: 
@@ -1408,6 +1097,10 @@
         operationId: "notifyProgressUsingPOST"
     /rest/organizations/{organizationId}/activities/fields: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/fields_get"
         responses: 
           200: 
@@ -1460,6 +1153,10 @@
         operationId: "getFieldActivitiesUsingGET"
     /rest/organizations/{organizationId}/activities/{activityId}: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/paramId_get"
         responses: 
           200: 
@@ -1498,16 +1195,18 @@
         consumes: 
           - "application/json"
         operationId: "getActivityByIdUsingGET"
-    /rest/organizations/{organizationId}/activities/facets/public: 
+    /rest/organizations/{organizationId}/activities/{activityId}/pause: 
       post: 
-        uiOperationId: "/rest/organizations/paramId/activities/facets/public_post"
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/activities/paramId/pause_post"
         responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ActivityFacetModel"
           201: 
             description: "Created"
+          204: 
+            description: "No Content"
           401: 
             description: "Unauthorized"
           403: 
@@ -1524,47 +1223,30 @@
             name: "organizationId"
             in: "path"
           - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "from"
-          - 
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
-            format: "int64"
-            required: false
-            in: "query"
-            type: "integer"
-            name: "to"
-          - 
-            schema: 
-              $ref: "#/definitions/ActivityFacetModel"
-            description: |
-             Same description as corresponding parameter in
-             [POST /rest/organizations/{organizationId}/activities](#operation/getAllActivitiesForOrganizationUsingPOST)
+            description: "activityId"
             required: true
-            name: "activityFacet"
-            in: "body"
+            type: "string"
+            name: "activityId"
+            in: "path"
         produces: 
           - "*/*"
         tags: 
           - "Activities"
-        x-pretty-name: "getPublicActivitiesFacetsForOrganization"
-        summary: "Get activity public facets"
+        x-pretty-name: "notifyPause"
+        summary: "Notify pause activity"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "getPublicActivitiesFacetsForOrganizationUsingPOST"
+        operationId: "notifyPauseUsingPOST"
     /rest/organizations/{organizationId}/activities/organization: 
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION_ADMINISTRATION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/activities/organization_get"
         responses: 
           200: 
@@ -1643,9 +1325,6 @@
     - 
       name: "Source Activities"
       description: "Source Activity Service Resource"
-    - 
-      name: "Global Activities"
-      description: "Global Activity Service Resource"
     - 
       name: "Permissions Activities"
       description: "Permissions Activity Service Resource"
@@ -1981,6 +1660,11 @@
           type: "string"
         errorMessage: 
           type: "string"
+    NotifyActivitySuccessModel: 
+      type: "object"
+      properties: 
+        content: 
+          type: "object"
     CreateActivityModel: 
       type: "object"
       properties: 
@@ -2002,6 +1686,8 @@
           type: "string"
         content: 
           type: "object"
+        organizationClusterId: 
+          type: "string"
         snapshotId: 
           type: "string"
         resourceName: 

@@ -12,6 +12,10 @@
   paths: 
     /rest/organizations/{organizationId}/subscriptions/me/{subscriptionId}: 
       put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_put"
         responses: 
           200: 
@@ -60,6 +64,10 @@
           - "application/json"
         operationId: "editSubscriptionForCurrentUserUsingPUT"
       delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_delete"
         responses: 
           204: 
@@ -95,6 +103,10 @@
           - "application/json"
         operationId: "deleteCurrentUserSubscriptionByIdUsingDELETE"
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/me/paramId_get"
         responses: 
           200: 
@@ -135,6 +147,10 @@
         operationId: "getCurrentUserSubscriptionByIdUsingGET"
     /rest/organizations/{organizationId}/subscriptions: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/subscriptions_post"
         responses: 
           201: 
@@ -175,6 +191,10 @@
           - "application/json"
         operationId: "createSubscriptionUsingPOST"
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions_get"
         responses: 
           200: 
@@ -211,6 +231,10 @@
         operationId: "getSubscriptionsUsingGET"
     /rest/organizations/{organizationId}/subscriptions/{subscriptionId}: 
       put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_put"
         responses: 
           200: 
@@ -259,6 +283,10 @@
           - "application/json"
         operationId: "editSubscriptionUsingPUT"
       delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_delete"
         responses: 
           204: 
@@ -294,6 +322,10 @@
           - "application/json"
         operationId: "deleteSubscriptionByIdUsingDELETE"
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SUBSCRIPTION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/paramId_get"
         responses: 
           200: 
@@ -332,176 +364,12 @@
         consumes: 
           - "application/json"
         operationId: "getSubscriptionByIdUsingGET"
-    /rest/subscriptions: 
-      post: 
-        uiOperationId: "/rest/subscriptions_post"
-        responses: 
-          201: 
-            description: "Created"
-            schema: 
-              $ref: "#/definitions/SubscriptionModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            schema: 
-              $ref: "#/definitions/EditSubscriptionModel"
-            description: "subscriptionModel"
-            required: true
-            name: "subscriptionModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Subscriptions"
-        x-pretty-name: "createSubscription"
-        summary: "Create a global subscription"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createSubscriptionUsingPOST"
-      get: 
-        uiOperationId: "/rest/subscriptions_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/SubscriptionModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Subscriptions"
-        x-pretty-name: "getSubscriptions"
-        summary: "Get global subscriptions"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getSubscriptionsUsingGET"
-    /rest/subscriptions/{subscriptionId}: 
-      put: 
-        uiOperationId: "/rest/subscriptions/paramId_put"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SubscriptionModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "subscriptionId"
-            required: true
-            type: "string"
-            name: "subscriptionId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/EditSubscriptionModel"
-            description: "subscriptionModel"
-            required: true
-            name: "subscriptionModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Subscriptions"
-        x-pretty-name: "editSubscription"
-        summary: "Edit a global subscription"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "editSubscriptionUsingPUT"
-      delete: 
-        uiOperationId: "/rest/subscriptions/paramId_delete"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "subscriptionId"
-            required: true
-            type: "string"
-            name: "subscriptionId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Subscriptions"
-        x-pretty-name: "deleteSubscriptionById"
-        summary: "Delete a global subscription"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteSubscriptionByIdUsingDELETE"
-      get: 
-        uiOperationId: "/rest/subscriptions/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/SubscriptionModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "subscriptionId"
-            required: true
-            type: "string"
-            name: "subscriptionId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Subscriptions"
-        x-pretty-name: "getSubscriptionById"
-        summary: "Get a global subscription"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getSubscriptionByIdUsingGET"
     /rest/organizations/{organizationId}/subscriptions/me: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/me_post"
         responses: 
           201: 
@@ -542,6 +410,10 @@
           - "application/json"
         operationId: "createSubscriptionForCurrentUserUsingPOST"
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/subscriptions/me_get"
         responses: 
           200: 
@@ -580,9 +452,6 @@
     - 
       name: "Subscription"
       description: "Subscription Service Resource"
-    - 
-      name: "Global Subscriptions"
-      description: "Global Subscription Service Resource"
   basePath: "/"
   securityDefinitions: 
     oauth2: 
@@ -593,9 +462,23 @@
         full: "Required"
   host: "platform.cloud.coveo.com:443"
   definitions: 
+    SubscriptionStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfSuccess: 
+          type: "integer"
+          format: "int32"
+        numberOfFailures: 
+          type: "integer"
+          format: "int32"
+        numberOfErrors: 
+          type: "integer"
+          format: "int32"
     SubscriptionModel: 
       type: "object"
       properties: 
+        statistics: 
+          $ref: "#/definitions/SubscriptionStatisticsModel"
         description: 
           type: "string"
         parameters: 
@@ -609,6 +492,13 @@
           format: "int64"
         enabled: 
           type: "boolean"
+        frequency: 
+          enum: 
+            - "LIVE"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+          type: "string"
         createdDate: 
           type: "integer"
           format: "int64"
@@ -658,6 +548,13 @@
           $ref: "#/definitions/SubscriptionPatternModel"
         enabled: 
           type: "boolean"
+        frequency: 
+          enum: 
+            - "LIVE"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+          type: "string"
         type: 
           enum: 
             - "EMAIL"
