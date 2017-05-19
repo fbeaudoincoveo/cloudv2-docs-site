@@ -9,147 +9,12 @@
     license: {}
     title: "Coveo Platform API"
   paths: 
-    /rest/organizations/{organizationId}/extensions/{extensionId}/disable: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/extensions/paramId/disable_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "extensionId"
-            required: true
-            type: "string"
-            name: "extensionId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/ExtensionDisableModel"
-            description: "extensionDisableModel"
-            required: true
-            name: "extensionDisableModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "disableExtension"
-        summary: "Disable an extension for an organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "disableExtensionUsingPOST"
-    /rest/organizations/{organizationId}/extensions/{extensionId}/versions/{versionId}: 
-      get: 
-        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ExtensionModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "extensionId"
-            required: true
-            type: "string"
-            name: "extensionId"
-            in: "path"
-          - 
-            description: "versionId"
-            required: true
-            type: "string"
-            name: "versionId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "getExtensionVersion"
-        summary: "Get the specific version of an extension for an organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getExtensionVersionUsingGET"
-    /rest/globalextensions: 
-      get: 
-        uiOperationId: "/rest/globalextensions_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/ExtensionModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "page"
-            format: "int32"
-            default: 0
-            required: false
-            in: "query"
-            type: "integer"
-            name: "page"
-          - 
-            description: "perPage"
-            format: "int32"
-            default: 100
-            required: false
-            in: "query"
-            type: "integer"
-            name: "perPage"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Extensions"
-        x-pretty-name: "getExtensions"
-        summary: "Get all extensions of all organizations"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getExtensionsUsingGET"
     /rest/organizations/{organizationId}/extensions/{extensionId}: 
       put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/extensions/paramId_put"
         responses: 
           200: 
@@ -198,6 +63,10 @@
           - "application/json"
         operationId: "updateExtensionUsingPUT"
       delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/extensions/paramId_delete"
         responses: 
           204: 
@@ -233,6 +102,10 @@
           - "application/json"
         operationId: "deleteExtensionUsingDELETE"
       get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
         uiOperationId: "/rest/organizations/paramId/extensions/paramId_get"
         responses: 
           200: 
@@ -271,8 +144,192 @@
         consumes: 
           - "application/json"
         operationId: "getExtensionUsingGET"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/versions: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ExtensionContentVersionModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensionVersions"
+        summary: "Get all available versions of an extension"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionVersionsUsingGET"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/versions/{versionId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+          - 
+            description: "versionId"
+            required: true
+            type: "string"
+            name: "versionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensionVersion"
+        summary: "Get the specific version of an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionVersionUsingGET"
+    /rest/organizations/{organizationId}/extensions: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/EditExtensionModel"
+            description: "extensionModel"
+            required: true
+            name: "extensionModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "createExtension"
+        summary: "Creates an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createExtensionUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ExtensionModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensions"
+        summary: "Get all extensions for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionsUsingGET"
     /rest/organizations/{organizationId}/extensions/{extensionId}/test: 
       post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
         uiOperationId: "/rest/organizations/paramId/extensions/paramId/test_post"
         responses: 
           200: 
@@ -320,171 +377,10 @@
         consumes: 
           - "application/json"
         operationId: "testExtensionUsingPOST"
-    /rest/organizations/{organizationId}/extensions/{extensionId}/enable: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/extensions/paramId/enable_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "extensionId"
-            required: true
-            type: "string"
-            name: "extensionId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "enableExtension"
-        summary: "Enable an extension for an organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "enableExtensionUsingPOST"
-    /rest/organizations/{organizationId}/extensions/{extensionId}/versions: 
-      get: 
-        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/ExtensionContentVersionModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "extensionId"
-            required: true
-            type: "string"
-            name: "extensionId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "getExtensionVersions"
-        summary: "Get all available versions of an extension"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getExtensionVersionsUsingGET"
-    /rest/organizations/{organizationId}/extensions: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/extensions_post"
-        responses: 
-          201: 
-            description: "Created"
-            schema: 
-              $ref: "#/definitions/JsonStringIdWrapper"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/EditExtensionModel"
-            description: "extensionModel"
-            required: true
-            name: "extensionModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "createExtension"
-        summary: "Creates an extension for an organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createExtensionUsingPOST"
-      get: 
-        uiOperationId: "/rest/organizations/paramId/extensions_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/ExtensionModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Indexing Pipeline Extensions"
-        x-pretty-name: "getExtensions"
-        summary: "Get all extensions for an organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getExtensionsUsingGET"
   tags: 
     - 
       name: "Indexing Pipeline Extensions"
       description: "Extension Service Resource"
-    - 
-      name: "Global Extensions"
-      description: "Global Extension Service Resource"
   basePath: "/"
   securityDefinitions: 
     oauth2: 
@@ -520,24 +416,17 @@
           additionalProperties: 
             type: "string"
           type: "object"
-    PageModel«ExtensionModel»: 
+    ExtensionTestExecutionReportModel: 
       type: "object"
       properties: 
-        totalPages: 
-          type: "integer"
-          format: "int32"
-        items: 
+        document: 
+          $ref: "#/definitions/ExtensionTestDocumentModel"
+        logs: 
           items: 
-            $ref: "#/definitions/ExtensionModel"
+            $ref: "#/definitions/LogEntryModel"
           type: "array"
-        totalEntries: 
-          type: "integer"
-          format: "int64"
-    ExtensionDisableModel: 
-      type: "object"
-      properties: 
-        reason: 
-          type: "string"
+        result: 
+          $ref: "#/definitions/ExtensionTestResultModel"
     PermissionSetModel: 
       type: "object"
       properties: 
@@ -552,17 +441,6 @@
           items: 
             $ref: "#/definitions/SinglePermissionModel"
           type: "array"
-    ExtensionTestExecutionReportModel: 
-      type: "object"
-      properties: 
-        document: 
-          $ref: "#/definitions/ExtensionTestDocumentModel"
-        logs: 
-          items: 
-            $ref: "#/definitions/LogEntryModel"
-          type: "array"
-        result: 
-          $ref: "#/definitions/ExtensionTestResultModel"
     ExtensionHealthModel: 
       type: "object"
       properties: 

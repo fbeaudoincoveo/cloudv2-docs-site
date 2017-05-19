@@ -664,10 +664,10 @@
             in: "query"
           - 
             schema: 
-              $ref: "#/definitions/Identity"
+              $ref: "#/definitions/BaseIdentityBody"
             required: true
-            description: "Identity"
-            name: "Identity"
+            description: "BaseIdentityBody"
+            name: "BaseIdentityBody"
             in: "body"
         produces: 
           - "application/json"
@@ -924,13 +924,6 @@
             description: "orderingId"
             name: "orderingId"
             in: "query"
-          - 
-            schema: 
-              $ref: "#/definitions/IdentityBody"
-            required: true
-            description: "IdentityBody"
-            name: "IdentityBody"
-            in: "body"
         produces: 
           - "application/json"
         tags: 
@@ -1525,6 +1518,23 @@
       type: "oauth2"
   host: "push.cloud.coveo.com/v1"
   definitions: 
+    MappedIdentity: 
+      type: "object"
+      properties: 
+        AdditionalInfo: 
+          additionalProperties: "string"
+          type: "object"
+        Type: 
+          enum: 
+            - "UNKNOWN"
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+          type: "string"
+        Name: 
+          type: "string"
+        Provider: 
+          type: "string"
     GatewayTimeoutError: 
       type: "object"
       properties: 
@@ -1560,23 +1570,11 @@
           items: 
             $ref: "#/definitions/PermissionsSets"
           type: "array"
-    MappedIdentity: 
+    BaseIdentityBody: 
       type: "object"
       properties: 
-        AdditionalInfo: 
-          additionalProperties: "string"
-          type: "object"
-        Type: 
-          enum: 
-            - "UNKNOWN"
-            - "USER"
-            - "GROUP"
-            - "VIRTUAL_GROUP"
-          type: "string"
-        Name: 
-          type: "string"
-        Provider: 
-          type: "string"
+        Identity: 
+          $ref: "#/definitions/Identity"
     Empty: 
       type: "object"
     Error: 

@@ -37,7 +37,7 @@ for requiredPath in [repository.tempOutputJsonPath, repository.outputYamlPath]:
 
 for api in platform.apiList:
 
-    swaggerSpecificationPath = platform.get_host() + platform.apiDocsPath + api
+    swaggerSpecificationPath = platform.get_host() + platform.apiDocsPath + api + "?group=public"
 
     request = httpHelper.basic_get(swaggerSpecificationPath, DEBUG)
 

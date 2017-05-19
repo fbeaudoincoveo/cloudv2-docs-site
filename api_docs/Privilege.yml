@@ -121,14 +121,16 @@
         consumes: 
           - "application/json"
         operationId: "getApiKeysUsingGET"
-    /rest/organizations/{organizationId}/privileges/masks: 
-      put: 
-        uiOperationId: "/rest/organizations/paramId/privileges/masks_put"
+    /rest/organizations/{organizationId}/members/privileges: 
+      get: 
+        uiOperationId: "/rest/organizations/paramId/members/privileges_get"
         responses: 
           200: 
             description: "OK"
-          201: 
-            description: "Created"
+            schema: 
+              items: 
+                $ref: "#/definitions/PrivilegeModel"
+              type: "array"
           401: 
             description: "Unauthorized"
           403: 
@@ -142,239 +144,19 @@
             type: "string"
             name: "organizationId"
             in: "path"
-          - 
-            schema: 
-              items: 
-                type: "string"
-              type: "array"
-            description: "privilegeMaskIds"
-            required: true
-            name: "privilegeMaskIds"
-            in: "body"
         produces: 
           - "*/*"
         tags: 
-          - "Privilege Masks"
-        x-pretty-name: "updateOrganizationPrivilegeMasks"
-        summary: "Update organization privilege masks"
+          - "Organization Members"
+        x-pretty-name: "getOrganizationMemberPrivileges"
+        summary: "Get all privileges for the authenticated member"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "updateOrganizationPrivilegeMasksUsingPUT"
-    /rest/globalgroups/{globalGroupId}: 
-      put: 
-        uiOperationId: "/rest/globalgroups/paramId_put"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/GlobalGroupModel"
-            description: "globalGroupModel"
-            required: true
-            name: "globalGroupModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Groups"
-        x-pretty-name: "updateGlobalGroup"
-        summary: "Update an existing global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "updateGlobalGroupUsingPUT"
-      delete: 
-        uiOperationId: "/rest/globalgroups/paramId_delete"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Groups"
-        x-pretty-name: "deleteGlobalGroup"
-        summary: "Delete an existing global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteGlobalGroupUsingDELETE"
-      get: 
-        uiOperationId: "/rest/globalgroups/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/GlobalGroupModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Groups"
-        x-pretty-name: "getGlobalGroup"
-        summary: "Get global group details"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalGroupUsingGET"
-    /rest/privileges/token: 
-      post: 
-        uiOperationId: "/rest/privileges/token_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/GlobalPrivilegeModel"
-              type: "array"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "accessToken"
-            required: true
-            type: "string"
-            name: "accessToken"
-            in: "query"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privileges"
-        x-pretty-name: "getGlobalPrivilegesForTokenUsingPost"
-        summary: "Get global privileges for access token."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalPrivilegesForTokenUsingPostUsingPOST"
-      get: 
-        uiOperationId: "/rest/privileges/token_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/GlobalPrivilegeModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "accessToken"
-            required: false
-            type: "string"
-            name: "accessToken"
-            in: "query"
-          - 
-            description: "X-Token-To-Validate"
-            required: false
-            type: "string"
-            name: "X-Token-To-Validate"
-            in: "header"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privileges"
-        x-pretty-name: "getGlobalPrivilegesForToken"
-        summary: "Get global privileges for access token."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalPrivilegesForTokenUsingGET"
-    /rest/privileges/me: 
-      get: 
-        uiOperationId: "/rest/privileges/me_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/GlobalPrivilegeModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privileges"
-        x-pretty-name: "getGlobalPrivilegesForAuthentication"
-        summary: "Get global privileges for user."
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalPrivilegesForAuthenticationUsingGET"
+        operationId: "getOrganizationMemberPrivilegesUsingGET"
     /rest/organizations/{organizationId}/groups: 
       post: 
         uiOperationId: "/rest/organizations/paramId/groups_post"
@@ -585,55 +367,15 @@
         consumes: 
           - "application/json"
         operationId: "getGroupMemberUsingGET"
-    /rest/globalgroups/{globalGroupId}/members: 
-      post: 
-        uiOperationId: "/rest/globalgroups/paramId/members_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            schema: 
-              $ref: "#/definitions/MemberModel"
-            description: "memberModel"
-            required: true
-            name: "memberModel"
-            in: "body"
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Members"
-        x-pretty-name: "addGlobalGroupMember"
-        summary: "Add user to the specified global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "addGlobalGroupMemberUsingPOST"
+    /rest/organizations/{organizationId}/privileges: 
       get: 
-        uiOperationId: "/rest/globalgroups/paramId/members_get"
+        uiOperationId: "/rest/organizations/paramId/privileges_get"
         responses: 
           200: 
             description: "OK"
             schema: 
               items: 
-                $ref: "#/definitions/MemberModel"
+                $ref: "#/definitions/PrivilegeModel"
               type: "array"
           401: 
             description: "Unauthorized"
@@ -643,58 +385,24 @@
             description: "Not Found"
         parameters: 
           - 
-            description: "globalGroupId"
+            description: "organizationId"
             required: true
             type: "string"
-            name: "globalGroupId"
+            name: "organizationId"
             in: "path"
         produces: 
           - "*/*"
         tags: 
-          - "Global Group Members"
-        x-pretty-name: "getGlobalGroupMembers"
-        summary: "Get all the global group's members"
+          - "Organization Privileges"
+        x-pretty-name: "getOrganizationPrivileges"
+        summary: "Get all possible privileges for the selected organization"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "getGlobalGroupMembersUsingGET"
-    /rest/templates/apikeys/{apiKeyTemplateId}: 
-      get: 
-        uiOperationId: "/rest/templates/apikeys/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/ApiKeyTemplateModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "apiKeyTemplateId"
-            required: false
-            type: "string"
-            name: "apiKeyTemplateId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Api Keys Templates"
-        x-pretty-name: "getApiKeyTemplate"
-        summary: "Get an api key template details"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getApiKeyTemplateUsingGET"
+        operationId: "getOrganizationPrivilegesUsingGET"
     /rest/organizations/{organizationId}/realms: 
       post: 
         uiOperationId: "/rest/organizations/paramId/realms_post"
@@ -894,81 +602,6 @@
         consumes: 
           - "application/json"
         operationId: "getOrganizationMemberUsingGET"
-    /rest/globalgroups/{globalGroupId}/members/{username}: 
-      delete: 
-        uiOperationId: "/rest/globalgroups/paramId/members/paramId_delete"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "username"
-            required: true
-            type: "string"
-            name: "username"
-            in: "path"
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Members"
-        x-pretty-name: "deleteGlobalGroupMember"
-        summary: "Delete a user from the specified global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteGlobalGroupMemberUsingDELETE"
-      get: 
-        uiOperationId: "/rest/globalgroups/paramId/members/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/MemberModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-          - 
-            description: "username"
-            required: true
-            type: "string"
-            name: "username"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Members"
-        x-pretty-name: "getGlobalGroupMember"
-        summary: "Get a global group user"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalGroupMemberUsingGET"
     /rest/organizations/{organizationId}/apikeys/{apiKeyId}/disable: 
       put: 
         uiOperationId: "/rest/organizations/paramId/apikeys/paramId/disable_put"
@@ -1009,103 +642,6 @@
         consumes: 
           - "application/json"
         operationId: "disableApiKeyUsingPUT"
-    /rest/organizations/{organizationId}/groups/{groupId}/invites: 
-      post: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/InviteModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "groupId"
-            required: true
-            type: "string"
-            name: "groupId"
-            in: "path"
-          - 
-            description: "sendEmail"
-            default: true
-            required: false
-            in: "query"
-            type: "boolean"
-            name: "sendEmail"
-          - 
-            schema: 
-              $ref: "#/definitions/InviteModel"
-            description: "invitedModel"
-            required: true
-            name: "invitedModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Group Invites"
-        x-pretty-name: "inviteMember"
-        summary: "Invite a user to the specified group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "inviteMemberUsingPOST"
-      get: 
-        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/InviteModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-          - 
-            description: "groupId"
-            required: true
-            type: "string"
-            name: "groupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Group Invites"
-        x-pretty-name: "getInvites"
-        summary: "Get all the group's invited members"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getInvitesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/members: 
       post: 
         uiOperationId: "/rest/organizations/paramId/groups/paramId/members_post"
@@ -1670,107 +1206,6 @@
         consumes: 
           - "application/json"
         operationId: "getGroupUsingGET"
-    /rest/organizations/{organizationId}/privileges: 
-      get: 
-        uiOperationId: "/rest/organizations/paramId/privileges_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/PrivilegeModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Organization Privileges"
-        x-pretty-name: "getOrganizationPrivileges"
-        summary: "Get all possible privileges for the selected organization"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getOrganizationPrivilegesUsingGET"
-    /rest/privileges/masks: 
-      post: 
-        uiOperationId: "/rest/privileges/masks_post"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/PrivilegeMaskModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            schema: 
-              $ref: "#/definitions/PrivilegeMaskModel"
-            description: "privilegeMaskModel"
-            required: true
-            name: "privilegeMaskModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privilege Masks"
-        x-pretty-name: "createPrivilegeMask"
-        summary: "Create privilege mask"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createPrivilegeMaskUsingPOST"
-      get: 
-        uiOperationId: "/rest/privileges/masks_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/PrivilegeMaskModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privilege Masks"
-        x-pretty-name: "getPrivilegeMasks"
-        summary: "Get privilege masks"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getPrivilegeMasksUsingGET"
     /rest/invites: 
       get: 
         uiOperationId: "/rest/invites_get"
@@ -1842,42 +1277,6 @@
         consumes: 
           - "application/json"
         operationId: "deleteInviteUsingDELETE"
-    /rest/organizations/{organizationId}/members/privileges: 
-      get: 
-        uiOperationId: "/rest/organizations/paramId/members/privileges_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/PrivilegeModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "organizationId"
-            required: true
-            type: "string"
-            name: "organizationId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Organization Members"
-        x-pretty-name: "getOrganizationMemberPrivileges"
-        summary: "Get all privileges for the authenticated member"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getOrganizationMemberPrivilegesUsingGET"
     /rest/organizations/{organizationId}/groups/{groupId}/realms: 
       post: 
         uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_post"
@@ -2006,15 +1405,70 @@
         consumes: 
           - "application/json"
         operationId: "getMemberGroupsUsingGET"
-    /rest/globalprivileges: 
+    /rest/organizations/{organizationId}/groups/{groupId}/invites: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/InviteModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "sendEmail"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmail"
+          - 
+            schema: 
+              $ref: "#/definitions/InviteModel"
+            description: "invitedModel"
+            required: true
+            name: "invitedModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "inviteMember"
+        summary: "Invite a user to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "inviteMemberUsingPOST"
       get: 
-        uiOperationId: "/rest/globalprivileges_get"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_get"
         responses: 
           200: 
             description: "OK"
             schema: 
               items: 
-                $ref: "#/definitions/GlobalPrivilegeModel"
+                $ref: "#/definitions/InviteModel"
               type: "array"
           401: 
             description: "Unauthorized"
@@ -2022,19 +1476,32 @@
             description: "Forbidden"
           404: 
             description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
         produces: 
           - "*/*"
         tags: 
-          - "Privileges"
-        x-pretty-name: "getGlobalPrivileges"
-        summary: "Get all possible global privileges"
+          - "Group Invites"
+        x-pretty-name: "getInvites"
+        summary: "Get all the group's invited members"
         security: 
           - 
             oauth2: 
               - "full"
         consumes: 
           - "application/json"
-        operationId: "getGlobalPrivilegesUsingGET"
+        operationId: "getInvitesUsingGET"
     /rest/organizations/{organizationId}/realms/{realmId}: 
       put: 
         uiOperationId: "/rest/organizations/paramId/realms/paramId_put"
@@ -2248,266 +1715,6 @@
         consumes: 
           - "application/json"
         operationId: "acceptInviteUsingPOST"
-    /rest/globalgroups/{globalGroupId}/realms/{realmId}: 
-      delete: 
-        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_delete"
-        responses: 
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "realmId"
-            required: true
-            type: "string"
-            name: "realmId"
-            in: "path"
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Realms"
-        x-pretty-name: "deleteGlobalGroupRealm"
-        summary: "Delete a realm from the specified global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteGlobalGroupRealmUsingDELETE"
-      get: 
-        uiOperationId: "/rest/globalgroups/paramId/realms/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/RealmModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-          - 
-            description: "realmId"
-            required: true
-            type: "string"
-            name: "realmId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Realms"
-        x-pretty-name: "getGlobalGroupRealm"
-        summary: "Get a global group realm"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalGroupRealmUsingGET"
-    /rest/globalgroups/{globalGroupId}/realms: 
-      post: 
-        uiOperationId: "/rest/globalgroups/paramId/realms_post"
-        responses: 
-          201: 
-            description: "Created"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            schema: 
-              $ref: "#/definitions/RealmModel"
-            description: "realmModel"
-            required: true
-            name: "realmModel"
-            in: "body"
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Realms"
-        x-pretty-name: "addGlobalGroupRealm"
-        summary: "Add a realm to the specified global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "addGlobalGroupRealmUsingPOST"
-      get: 
-        uiOperationId: "/rest/globalgroups/paramId/realms_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/RealmModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "globalGroupId"
-            required: true
-            type: "string"
-            name: "globalGroupId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Group Realms"
-        x-pretty-name: "getGlobalGroupRealms"
-        summary: "Get all the global group's realms"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalGroupRealmsUsingGET"
-    /rest/oauth2clients/{clientId}/privileges: 
-      put: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_put"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/OAuth2ClientPrivilegeModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "clientId"
-            required: true
-            type: "string"
-            name: "clientId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/OAuth2ClientPrivilegeModel"
-            description: "clientModel"
-            required: true
-            name: "clientModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "OAuth2 Client Privileges"
-        x-pretty-name: "updateClientPrivilege"
-        summary: "Update client privileges"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "updateClientPrivilegeUsingPUT"
-      delete: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_delete"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/OAuth2ClientPrivilegeModel"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "clientId"
-            required: true
-            type: "string"
-            name: "clientId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "OAuth2 Client Privileges"
-        x-pretty-name: "deleteClientPrivilege"
-        summary: "Delete client privileges"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deleteClientPrivilegeUsingDELETE"
-      get: 
-        uiOperationId: "/rest/oauth2clients/paramId/privileges_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/OAuth2ClientPrivilegeModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "clientId"
-            required: true
-            type: "string"
-            name: "clientId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "OAuth2 Client Privileges"
-        x-pretty-name: "getClientPrivilege"
-        summary: "Get client privileges"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getClientPrivilegeUsingGET"
     /rest/organizations/{organizationId}/privileges/me: 
       get: 
         uiOperationId: "/rest/organizations/paramId/privileges/me_get"
@@ -2544,35 +1751,6 @@
         consumes: 
           - "application/json"
         operationId: "getOrganizationMemberPrivilegesUsingGET"
-    /rest/templates/apikeys: 
-      get: 
-        uiOperationId: "/rest/templates/apikeys_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/ApiKeyTemplateModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Api Keys Templates"
-        x-pretty-name: "getApiKeyTemplates"
-        summary: "Get all api key templates"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getApiKeyTemplatesUsingGET"
     /rest/organizations/{organizationId}/invites: 
       get: 
         uiOperationId: "/rest/organizations/paramId/invites_get"
@@ -2609,201 +1787,10 @@
         consumes: 
           - "application/json"
         operationId: "getOrganizationInvitesUsingGET"
-    /rest/privileges/masks/{privilegeMaskId}: 
-      put: 
-        uiOperationId: "/rest/privileges/masks/paramId_put"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/PrivilegeMaskModel"
-          201: 
-            description: "Created"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "privilegeMaskId"
-            required: true
-            type: "string"
-            name: "privilegeMaskId"
-            in: "path"
-          - 
-            schema: 
-              $ref: "#/definitions/PrivilegeMaskModel"
-            description: "privilegeMaskModel"
-            required: true
-            name: "privilegeMaskModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privilege Masks"
-        x-pretty-name: "updatePrivilegeMask"
-        summary: "Update privilege mask"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "updatePrivilegeMaskUsingPUT"
-      delete: 
-        uiOperationId: "/rest/privileges/masks/paramId_delete"
-        responses: 
-          200: 
-            description: "OK"
-          204: 
-            description: "No Content"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-        parameters: 
-          - 
-            description: "privilegeMaskId"
-            required: true
-            type: "string"
-            name: "privilegeMaskId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privilege Masks"
-        x-pretty-name: "deletePrivilegeMask"
-        summary: "Delete privilege mask"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "deletePrivilegeMaskUsingDELETE"
-      get: 
-        uiOperationId: "/rest/privileges/masks/paramId_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              $ref: "#/definitions/PrivilegeMaskModel"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            description: "privilegeMaskId"
-            required: true
-            type: "string"
-            name: "privilegeMaskId"
-            in: "path"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Privilege Masks"
-        x-pretty-name: "getPrivilegeMask"
-        summary: "Get privilege mask"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getPrivilegeMaskUsingGET"
-    /rest/globalgroups: 
-      post: 
-        uiOperationId: "/rest/globalgroups_post"
-        responses: 
-          201: 
-            description: "Created"
-            schema: 
-              $ref: "#/definitions/JsonStringIdWrapper"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        parameters: 
-          - 
-            schema: 
-              $ref: "#/definitions/GlobalGroupModel"
-            description: "globalGroupModel"
-            required: true
-            name: "globalGroupModel"
-            in: "body"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Groups"
-        x-pretty-name: "createGlobalGroup"
-        summary: "Create a new global group"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "createGlobalGroupUsingPOST"
-      get: 
-        uiOperationId: "/rest/globalgroups_get"
-        responses: 
-          200: 
-            description: "OK"
-            schema: 
-              items: 
-                $ref: "#/definitions/GlobalGroupModel"
-              type: "array"
-          401: 
-            description: "Unauthorized"
-          403: 
-            description: "Forbidden"
-          404: 
-            description: "Not Found"
-        produces: 
-          - "*/*"
-        tags: 
-          - "Global Groups"
-        x-pretty-name: "getGlobalGroups"
-        summary: "Get all global groups"
-        security: 
-          - 
-            oauth2: 
-              - "full"
-        consumes: 
-          - "application/json"
-        operationId: "getGlobalGroupsUsingGET"
   tags: 
     - 
       name: "Privilege Evaluator"
       description: "Privilege Request Evaluator Resource"
-    - 
-      name: "Privilege Masks"
-      description: "Privilege Mask Resource"
-    - 
-      name: "Group Invites"
-      description: "Group Invite Resource"
-    - 
-      name: "Organization Members"
-      description: "Organization Member Resource"
-    - 
-      name: "Organization Realms"
-      description: "Organization Realm Resource"
-    - 
-      name: "Api Keys Templates"
-      description: "Api Key Template Resource"
-    - 
-      name: "Groups"
-      description: "Group Resource"
-    - 
-      name: "Global Group Realms"
-      description: "Global Group Realm Resource"
     - 
       name: "Api Keys"
       description: "Api Key Resource"
@@ -2811,26 +1798,26 @@
       name: "Organization Invites"
       description: "Organization Invite Resource"
     - 
-      name: "Global Groups"
-      description: "Global Group Resource"
-    - 
       name: "Group Realms"
       description: "Group Realm Resource"
+    - 
+      name: "Group Invites"
+      description: "Group Invite Resource"
     - 
       name: "Invites"
       description: "Invite Resource"
     - 
-      name: "Privileges"
-      description: "Global Privilege Resource"
+      name: "Organization Members"
+      description: "Organization Member Resource"
     - 
-      name: "Global Group Members"
-      description: "Global Group Member Resource"
+      name: "Organization Realms"
+      description: "Organization Realm Resource"
     - 
       name: "Group Members"
       description: "Group Member Resource"
     - 
-      name: "OAuth2 Client Privileges"
-      description: "O Auth 2 Client Privilege Resource"
+      name: "Groups"
+      description: "Group Resource"
     - 
       name: "Organization Privileges"
       description: "Organization Privilege Resource"
@@ -2844,75 +1831,6 @@
         full: "Required"
   host: "platform.cloud.coveo.com:443"
   definitions: 
-    PrivilegeRequestModel: 
-      type: "object"
-      properties: 
-        organizationId: 
-          type: "string"
-        requestedPrivilege: 
-          $ref: "#/definitions/GlobalPrivilegeModel"
-        approved: 
-          type: "boolean"
-    Collection«LightGroupModel»: 
-      type: "object"
-    IdAndDisplayNameModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-    GlobalPrivilegeModel: 
-      type: "object"
-      properties: 
-        owner: 
-          type: "string"
-        global: 
-          type: "boolean"
-        type: 
-          type: "string"
-        targetDomain: 
-          type: "string"
-        targetIds: 
-          items: 
-            type: "string"
-          type: "array"
-    LightGroupModel: 
-      type: "object"
-      properties: 
-        organizations: 
-          items: 
-            $ref: "#/definitions/IdAndDisplayNameModel"
-          type: "array"
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-    PrivilegeSetTemplateModel: 
-      type: "object"
-      properties: 
-        privilegeModels: 
-          items: 
-            $ref: "#/definitions/GlobalPrivilegeModel"
-          type: "array"
-        id: 
-          type: "string"
-    RealmModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-        provider: 
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
-          type: "string"
     InviteModel: 
       type: "object"
       properties: 
@@ -2936,6 +1854,181 @@
         providerUsername: 
           type: "string"
         email: 
+          type: "string"
+    OrganizationRealmModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        groups: 
+          items: 
+            $ref: "#/definitions/IdAndDisplayNameModel"
+          type: "array"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    PrivilegeRequestModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        requestedPrivilege: 
+          $ref: "#/definitions/GlobalPrivilegeModel"
+        approved: 
+          type: "boolean"
+    OrganizationMemberModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        email: 
+          type: "string"
+        groups: 
+          items: 
+            $ref: "#/definitions/OrganizationMemberGroupModel"
+          type: "array"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    GroupModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/RealmModel"
+          type: "array"
+        privileges: 
+          items: 
+            $ref: "#/definitions/PrivilegeModel"
+          type: "array"
+        id: 
+          type: "string"
+        deletable: 
+          type: "boolean"
+        members: 
+          items: 
+            $ref: "#/definitions/MemberModel"
+          type: "array"
+        invites: 
+          items: 
+            $ref: "#/definitions/InviteModel"
+          type: "array"
+    RealmModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    MemberModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        providerUsername: 
+          type: "string"
+        email: 
+          type: "string"
+    GlobalPrivilegeModel: 
+      type: "object"
+      properties: 
+        owner: 
+          type: "string"
+        global: 
+          type: "boolean"
+        type: 
+          type: "string"
+        targetDomain: 
+          type: "string"
+        targetIds: 
+          items: 
+            type: "string"
+          type: "array"
+    OrganizationGroupInviteModel: 
+      type: "object"
+      properties: 
+        inviter: 
+          type: "string"
+        invitedDate: 
+          type: "integer"
+          format: "int64"
+        group: 
+          $ref: "#/definitions/IdAndDisplayNameModel"
+        expirationDate: 
+          type: "integer"
+          format: "int64"
+    Collection«LightGroupModel»: 
+      type: "object"
+    IdAndDisplayNameModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+    LightGroupModel: 
+      type: "object"
+      properties: 
+        organizations: 
+          items: 
+            $ref: "#/definitions/IdAndDisplayNameModel"
+          type: "array"
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+    OrganizationMemberGroupModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
           type: "string"
     UserModel: 
       type: "object"
@@ -2984,150 +2077,27 @@
           type: "string"
         credentialsExpired: 
           type: "boolean"
-    GroupModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        realms: 
-          items: 
-            $ref: "#/definitions/RealmModel"
-          type: "array"
-        privileges: 
-          items: 
-            $ref: "#/definitions/PrivilegeModel"
-          type: "array"
-        id: 
-          type: "string"
-        deletable: 
-          type: "boolean"
-        members: 
-          items: 
-            $ref: "#/definitions/MemberModel"
-          type: "array"
-        invites: 
-          items: 
-            $ref: "#/definitions/InviteModel"
-          type: "array"
-    OrganizationMemberGroupModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-    GlobalGroupModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        members: 
-          items: 
-            $ref: "#/definitions/MemberModel"
-          type: "array"
-        privileges: 
-          items: 
-            $ref: "#/definitions/GlobalPrivilegeModel"
-          type: "array"
-        organizationActivated: 
-          type: "boolean"
-        realms: 
-          items: 
-            $ref: "#/definitions/RealmModel"
-          type: "array"
-        id: 
-          type: "string"
-    OAuth2ClientPrivilegeModel: 
-      type: "object"
-      properties: 
-        privileges: 
-          items: 
-            $ref: "#/definitions/GlobalPrivilegeModel"
-          type: "array"
-        clientId: 
-          type: "string"
-    PrivilegeMaskModel: 
-      type: "object"
-      properties: 
-        privileges: 
-          items: 
-            $ref: "#/definitions/PrivilegeModel"
-          type: "array"
-        id: 
-          type: "string"
-        organizationIds: 
-          items: 
-            type: "string"
-          type: "array"
-    OrganizationMemberModel: 
+    OrganizationInviteModel: 
       type: "object"
       properties: 
         username: 
           type: "string"
-        displayName: 
-          type: "string"
-        email: 
-          type: "string"
-        groups: 
+        groupInvites: 
           items: 
-            $ref: "#/definitions/OrganizationMemberGroupModel"
+            $ref: "#/definitions/OrganizationGroupInviteModel"
           type: "array"
-        provider: 
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
-          type: "string"
-    OrganizationRealmModel: 
-      type: "object"
-      properties: 
-        displayName: 
-          type: "string"
-        id: 
-          type: "string"
-        groups: 
-          items: 
-            $ref: "#/definitions/IdAndDisplayNameModel"
-          type: "array"
-        provider: 
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
-          type: "string"
-    JsonStringIdWrapper: 
-      type: "object"
-      properties: 
-        id: 
-          type: "string"
-    MemberModel: 
-      type: "object"
-      properties: 
-        username: 
-          type: "string"
-        displayName: 
-          type: "string"
-        lastLogin: 
-          type: "integer"
-          format: "int64"
-        provider: 
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
-          type: "string"
         providerUsername: 
           type: "string"
         email: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
           type: "string"
     ApiKeyModel: 
       type: "object"
@@ -3160,62 +2130,6 @@
           type: "string"
           format: "date-time"
         id: 
-          type: "string"
-    OrganizationGroupInviteModel: 
-      type: "object"
-      properties: 
-        inviter: 
-          type: "string"
-        invitedDate: 
-          type: "integer"
-          format: "int64"
-        group: 
-          $ref: "#/definitions/IdAndDisplayNameModel"
-        expirationDate: 
-          type: "integer"
-          format: "int64"
-    ApiKeyTemplateModel: 
-      type: "object"
-      properties: 
-        deniedIps: 
-          items: 
-            type: "string"
-          type: "array"
-        displayName: 
-          type: "string"
-        description: 
-          type: "string"
-        allowedIps: 
-          items: 
-            type: "string"
-          type: "array"
-        enabled: 
-          type: "boolean"
-        privilegeSetTemplateModel: 
-          $ref: "#/definitions/PrivilegeSetTemplateModel"
-        id: 
-          type: "string"
-    OrganizationInviteModel: 
-      type: "object"
-      properties: 
-        username: 
-          type: "string"
-        groupInvites: 
-          items: 
-            $ref: "#/definitions/OrganizationGroupInviteModel"
-          type: "array"
-        providerUsername: 
-          type: "string"
-        email: 
-          type: "string"
-        provider: 
-          enum: 
-            - "SALESFORCE"
-            - "SALESFORCE_SANDBOX"
-            - "GOOGLE"
-            - "OFFICE365"
-            - "SAML"
-            - "OTHER"
           type: "string"
     Collection«GlobalPrivilegeModel»: 
       type: "object"
