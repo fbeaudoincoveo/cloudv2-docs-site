@@ -9,8 +9,9 @@
       The Activity API allows you to log and retrieve activities related to API keys, indexing pipeline extensions,
       fields, indexes, licenses, organizations, permissions, provisioning, and sources.
 
-      If you need to retrieve detailed indexing pipeline activity information about each individual document in a
-      source, you must use the [Source Logs API](SourceLogs).
+      **Note:**
+      > If you need to retrieve detailed indexing pipeline activity information about each individual document in a
+      > source, you must use the [Source Logs API](SourceLogs).
     license: {}
     title: "Activity API Reference - Coveo Cloud V2"
     version: "1.0"
