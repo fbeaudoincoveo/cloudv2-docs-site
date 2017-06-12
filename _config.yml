@@ -33,3 +33,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - scripts
+
+collections:
+  glossary:
+    output: true

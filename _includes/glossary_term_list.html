@@ -1,0 +1,28 @@
+{% comment %}Get the list of all unique glossary term first letters{% endcomment %}
+{% capture letters %}
+  {% for term in site.glossary %}
+    {% assign l = term.title | truncate: 1, "" | upcase %}
+    {{ l }}
+  {% endfor %}
+{% endcapture %}
+{% assign all_letters = letters | strip_newlines | remove: ' ' | split:'' | sort | uniq %}
+
+<div class="glossary">
+  <h2>All Glossary Terms</h2>
+  <h3 class="alphabeticalLinks">
+    {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
+  </h3>
+  <div class="glossaryLetter">
+  {% for b in all_letters %}
+    <h3>{{ b }}</h3><a name="letter_{{b}}"></a>
+    <div class="glossaryLetterLinks">
+      {% for term in site.glossary %}
+        {% assign l = term.title | truncate: 1, "" | upcase  %}
+        {% if l == b %}
+          <span><a href="{{term.url}}">{{ term.title }}</a></span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+  </div>
+</div>

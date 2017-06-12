@@ -1,0 +1,33 @@
+---
+layout: default
+title: Coveo Cloud Glossary
+---
+{% comment %}Get the list of all unique glossary term first letters{% endcomment %}
+{% capture letters %}
+  {% for term in site.glossary %}
+    {% assign l = term.title | truncate: 1, "" | upcase %}
+    {{ l }}
+  {% endfor %}
+{% endcapture %}
+{% assign all_letters = letters | strip_newlines | remove: ' ' | split:'' | sort | uniq %}
+
+{{ content }}
+
+<div class="glossary">
+  <h3 class="alphabeticalLinks">
+    {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
+  </h3>
+  {% for b in all_letters %}<div class="glossaryLetter">
+    <h3>{{ b }}</h3><a name="letter_{{b}}"></a>
+      {% for item in site.glossary %}
+        {% assign l = item.title | truncate: 1, "" | upcase  %}
+        {% if l == b %}
+          <div class="glossaryTerm">
+            <span class="glossaryTermTitle">{{ item.title }}</span><span class="partOfSpeech"> ({{ item.partOfSpeech }})</span>
+            <div class="glossaryDefinition">{{ item.content | markdownify }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+  {% endfor %}
+</div>
