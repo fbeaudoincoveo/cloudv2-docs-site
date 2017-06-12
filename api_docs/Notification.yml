@@ -8,8 +8,9 @@
     description: |
       The Notification API allows you to manage user subscriptions in a Coveo Cloud V2 organization.
 
-      A subscription makes it possible for a user to receive email notifications when the [Activity API](Activity]
-      triggers certain activity events.
+      **Note:**
+      > A subscription makes it possible for a user to receive email notifications when the [Activity API](Activity]
+      > triggers certain activity events.
     license: {}
     title: "Notification API Reference - Coveo Cloud V2"
     version: "1.0"
