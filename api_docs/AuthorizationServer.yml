@@ -5,7 +5,9 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Authorization Server API allows you to manage the security providers you wish to make available for the users
+      of your Coveo Cloud V2 organization.
     license: {}
     title: "Authorization Server API Reference - Coveo Cloud V2"
     version: "1.0"

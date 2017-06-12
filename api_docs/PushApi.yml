@@ -2,6 +2,9 @@
   info: 
     version: "2016-03-03T13:22:11Z"
     title: "Push API Reference - Coveo Cloud V2"
+    description: |
+      The Push API allows you to push content, identities, and permissions to a Coveo Cloud V2 index, rather than
+      pulling content using standard Coveo connectors and crawlers.
   paths: 
     /organizations/{organizationId}/sources/{sourceId}/status: 
       post: 

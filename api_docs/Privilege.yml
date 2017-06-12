@@ -5,7 +5,8 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Privilege API allows to manage API keys, group members, and organization members.
     license: {}
     title: "Privilege API Reference - Coveo Cloud V2"
     version: "1.0"

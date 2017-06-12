@@ -5,7 +5,16 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Index API allows you to:
+      * Manage fields in a Coveo Cloud V2 organization index.
+      * Retrieve a document permission models and effective permissions.
+
+      **Notes:**
+      > If you need to map fields to metadata for a source, you must use the [Source API](Source).
+      >
+      > Effective permissions are evaluated using content from the security identity cache, which you can read and refresh
+      > using the [Security Cache API](SecurityCache).
     license: {}
     title: "Index API Reference - Coveo Cloud V2"
     version: "1.0"

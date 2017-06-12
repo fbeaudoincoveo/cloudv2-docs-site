@@ -5,7 +5,12 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Security Cache API allows you to: 
+      * Read data from the security identity cache. 
+      * Modify the security identity cache schedules.
+      * Refresh the security identity cache.
+      * Manage security identity providers.
     license: {}
     title: "Security Cache API Reference - Coveo Cloud V2"
     version: "1.0"

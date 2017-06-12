@@ -5,7 +5,9 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Platform API allows you to manage Coveo Cloud V2 organizations, and retrieve license and status
+      information about a Coveo Cloud V2 organization.
     license: {}
     title: "Platform API Reference - Coveo Cloud V2"
     version: "1.0"

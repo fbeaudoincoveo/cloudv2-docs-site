@@ -5,7 +5,12 @@
       url: "www.coveo.com"
       name: "Coveo"
       email: "support@coveo.com"
-    description: "API for Coveo Platform"
+    description: |
+      The Notification API allows you to manage user subscriptions in a Coveo Cloud V2 organization.
+
+      **Note:**
+      > A subscription makes it possible for a user to receive email notifications when the [Activity API](Activity]
+      > triggers certain activity events.
     license: {}
     title: "Notification API Reference - Coveo Cloud V2"
     version: "1.0"
