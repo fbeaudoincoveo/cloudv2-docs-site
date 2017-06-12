@@ -11,7 +11,7 @@
       * Manage metadata mapping rules.
       * Manage which indexing pipeline extensions apply for a source. 
 
-      **Note:**
+      **Notes:**
       > If you need to create, update, or delete fields in a Coveo Cloud V2 organization index, you must use the
       > [Index API](Index).
       >
