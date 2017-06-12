@@ -6,17 +6,17 @@
       name: "Coveo"
       email: "support@coveo.com"
     description: |
-      The Source API allows you to manage sources in a Coveo Cloud V2 organization.
+      The Source API allows you to:
+      * Manage sources in a Coveo Cloud V2 organization.
+      * Manage metadata mapping rules.
+      * Manage which indexing pipeline extensions apply for a source. 
 
-      The Source API also allows you to manage metadata mapping rules.
-
-      If you need to create, update, or delete fields in a Coveo Cloud V2 organization index, you must use the
-      [Index API](Index).
-
-      Additionally, the Source API allows you to manage which indexing pipeline extensions apply for a source.
-
-      If you need to test, create, update, or delete indexing pipeline extensions, you must use the
-      [Extension API](Extension).
+      **Note:**
+      > If you need to create, update, or delete fields in a Coveo Cloud V2 organization index, you must use the
+      > [Index API](Index).
+      >
+      > If you need to test, create, update, or delete indexing pipeline extensions, you must use the
+      >[Extension API](Extension).
     license: {}
     title: "Source API Reference - Coveo Cloud V2"
     version: "1.0"
