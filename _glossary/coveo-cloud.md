@@ -3,6 +3,7 @@ layout: glossary_term
 title: Coveo Cloud
 partOfSpeech: noun
 sidebar: ccv2_docs
+ghPagesSiteName: /cloudv2-docs-site
 ---
 
 A SaaS solutions providing relevant search results from multiple indexed systems (see [Coveo Cloud](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=1)). 
