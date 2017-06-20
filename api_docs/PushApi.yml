@@ -470,14 +470,14 @@
         description: |
           Gets a presigned Amazon S3 `uploadUri`, as well as a unique `fileId`.
 
-          The `uploadUri` grants you access to a private, encrypted Amazon S3 file container where you can safely push
-          content. Once your items have been indexed, the S3 file container is automatically deleted.
+          The `uploadUri` grants you access to a private, encrypted Amazon S3 file container where you can safely upload
+          content you wish to push. Once your items have been indexed, the S3 file container is automatically deleted.
 
           **Note:**
           > The `uploadUri` expires after 60 minutes.
 
-          This method is useful when you need to push a single large item (5 MB or more), or a batch of items and/or
-          permissions.
+          Using this method is necessary when you need to push a single large item (5 MB or more), or a batch of items
+          and/or permissions.
 
           **Request example:**
           ```http
@@ -545,7 +545,7 @@
 
           ### Using this Method
 
-          Before using this method, you need to perform the following steps:
+          In order to use this method, you need to perform the following steps:
 
           1. Get an access to a private, encrypted Amazon S3 file container using the
           [Get large file container](PushApi#operation/getPresignedUploadUrl) method.
@@ -559,7 +559,7 @@
           x-amz-server-side-encryption: AES256
           ```
 
-          The body of your request should look like this:
+          The body of your request should be similar to:
 
           ```json
           {
@@ -633,7 +633,7 @@
           ```
 
           3. Use this method to add, update, and/or delete security identities in the Coveo Cloud V2 security identity
-          provider. Use the `fileId` value you got at step 1 as the `fileId` as the corresponding query parameter value.
+          provider. Use the `fileId` value you got at step 1 as the corresponding query parameter value.
         security: 
           - 
             oauth2: 
@@ -688,7 +688,7 @@
         operationId: "deleteIdentityOlderThan"
         summary: "Delete identities older than specified value"
         description: |
-          Deletes all identities which are older than the specified ordering ID from a Coveo Cloud V2 security identity
+          Deletes all identities which are older than a specified `orderingId` from a Coveo Cloud V2 security identity
           provider.
 
           **Request example:**
@@ -739,7 +739,7 @@
               $ref: "#/definitions/MappedIdentityBody"
             required: true
             description: |
-              The identity to map and its mapping.
+              The mapped security identity to add or update.
             name: "MappedIdentityBody"
             in: "body"
         tags: 
@@ -830,8 +830,8 @@
               The data structure to push.
 
               You can add as many metadata key-value pairs as you need in `DocumentBody`. A metadata value can be
-              of any primitive type (string, number, or boolean). It can also be an array of primitives. A metadata value
-              cannot be an object.
+              of any primitive type (string, number, or boolean). It can also be an array of primitives. A metadata
+              value cannot be an object.
 
               Each key in the `DocumentBody` must be unique. The model attributes (`CompressedBinaryData`, `ParentId`,
               `Permissions`, etc.) are reserved keys. Keys are case-insensitive (i.e., the Push API considers
@@ -857,9 +857,9 @@
           ```
           ```json
           {
-            "Data:" "This text will be used to generate excerpts and a quickview."
-            "mymeta1": "My value 1",
-            "mymeta2": "My value 2",
+            "Data:" "This text will be used to generate excerpts and a quick view for the item."
+            "mymetadata1": "My value 1",
+            "mymetadata2": "My value 2",
             "Permissions": [
               {
                 "PermissionSets": [
