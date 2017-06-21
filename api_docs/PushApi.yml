@@ -739,7 +739,7 @@
               $ref: "#/definitions/MappedIdentityBody"
             required: true
             description: |
-              The mapped security identity to add or update.
+              The target identity, and the list of source identities to map the target identity with.
             name: "MappedIdentityBody"
             in: "body"
         tags: 
@@ -812,8 +812,7 @@
             $ref: "#/parameters/DocumentId"
           -
             $ref: "#/parameters/OrganizationId"
-          - 
-            required: false
+          -
             type: "string"
             name: "compressionType"
             description: |
@@ -1014,8 +1013,8 @@
           additionalProperties: "string"
           type: "object"
           description: |
-            An object which can contain any additional information you wish to provide about the identity in the form of
-            key-value pairs.
+            An object which contains additional information about the source identity in the form of key-value
+            pairs.
 
             **Sample value:**
             ```json
@@ -1032,21 +1031,26 @@
             - "VIRTUAL_GROUP"
           type: "string"
           description: |
-            The type of the identity.
+            The type of the source identity.
 
             **Sample value:**
             > `"USER"`
         Name: 
           type: "string"
           description: |
-            The name of the identity.
+            The name of the source identity.
 
             **Sample value:**
             > `"user1@example.com"`
         Provider: 
           type: "string"
           description: |
-            The security identity provider which contains the identity.
+            The unique identifier of the cascading security identity provider which contains the source identity to map
+            the target identity with.
+
+            **Note:**
+            > You only need to specify a value for this parameter if your security identity provider has multiple
+            > cascading providers.
 
             **Sample value:**
             > `"Email Security Provider"`
@@ -1250,13 +1254,13 @@
             $ref: "#/definitions/Identity"
           type: "array"
           description: |
-            The list of security identity roles which this identity belongs to.
+            The list of security identity roles which the target identity belongs to.
         Mappings: 
           items: 
             $ref: "#/definitions/MappedIdentity"
           type: "array"
           description: |
-            The list of identities to map this identity with.
+            The list of source identities to map the target identity with.
         Identity: 
           $ref: "#/definitions/Identity"
     Identity: 
@@ -1307,7 +1311,6 @@
         Name: "Sales_Representatives"
   parameters:
     OptionalOrderingId:
-      required: false
       type: "string"
       description: |
         A value that can be parsed to a 64-bit unsigned integer. This will be used by the Coveo Cloud V2 index to ensure
@@ -1343,7 +1346,7 @@
       name: "providerId"
       in: "path"
     FileId:
-      required: false
+      required: true
       type: "string"
       description: |
         The unique identifier of the file.
