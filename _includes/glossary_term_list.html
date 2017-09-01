@@ -8,7 +8,6 @@
 {% assign all_letters = letters | strip_newlines | remove: ' ' | split:'' | sort | uniq %}
 
 <div class="glossary">
-  <h2>All Glossary Terms</h2>
   <h3 class="alphabeticalLinks">
     {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
   </h3>
