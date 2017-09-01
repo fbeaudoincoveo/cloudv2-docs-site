@@ -18,7 +18,7 @@ title: Coveo Cloud Glossary
     {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
   </h3>
   {% for b in all_letters %}<div class="glossaryLetter">
-    <h3>{{ b }}</h3><a name="letter_{{b}}"></a>
+    <a name="letter_{{b}}"></a><h3>{{ b }}</h3>
       {% for item in site.glossary %}
         {% assign l = item.title | truncate: 1, "" | upcase  %}
         {% if l == b %}

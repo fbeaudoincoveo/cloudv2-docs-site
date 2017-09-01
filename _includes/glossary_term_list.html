@@ -13,7 +13,8 @@
   </h3>
   <div class="glossaryLetter">
   {% for b in all_letters %}
-    <h3>{{ b }}</h3><a name="letter_{{b}}"></a>
+    <a name="letter_{{b}}"></a>
+    <h3>{{ b }}</h3>
     <div class="glossaryLetterLinks">
       {% for term in site.glossary %}
         {% assign l = term.title | truncate: 1, "" | upcase  %}
