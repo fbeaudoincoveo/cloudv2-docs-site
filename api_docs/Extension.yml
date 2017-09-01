@@ -2,15 +2,15 @@
   info: 
     termsOfService: "Coveo API terms of service"
     contact: 
-      url: "www.coveo.com"
+      url: "https://answers.coveo.com"
       name: "Coveo"
-      email: "support@coveo.com"
+      email: ""
     description: |
-      The Extension API allows you to manage and test indexing pipeline extensions.
+      The Extension API allows you to manage the [indexing pipeline extensions]({{ site.github.url }}/glossary/indexing-pipeline-extension) for a Coveo organization. Create indexing pipeline extensions when you want to customize how to index the items of a source, such as when you want to add/modify metadata, binary streams, or permissions, or reject items.
 
       **Note:**
-      > If you need to associate an indexing pipeline extension to a sources, you must use the [Source API](Source).
-    license: {}
+      > Once an indexing pipeline extension is available in your organization, you must use the [Source API](Source#operation/setSourceExtensionsUsingPUT) to apply the extension to a source.
+    license:
     title: "Extension API Reference - Coveo Cloud V2"
     version: "1.0"
   paths: 
