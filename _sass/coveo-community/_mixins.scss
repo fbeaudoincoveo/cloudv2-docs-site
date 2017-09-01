@@ -110,7 +110,7 @@ $useIEFilters: 1;
 
 @mixin rgba-bg ($hex, $alpha, $ie: $useIEFilters) {
   @if $ie == 1 {
-    background-color: none;
+    background-color: transparent;
     $hexopac: ie-hex-str(rgba($hex, $alpha));
         filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hexopac}',EndColorStr='#{$hexopac}}');
     -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hexopac}',EndColorStr='#{$hexopac}'));
