@@ -32,15 +32,15 @@
     {% if page.product %}<meta name="product" content="{{ page.product | escape }}"/>{% endif %}
 
     <link rel="icon" href="https://s3.amazonaws.com/coveostatic/community-unified-navigation/img/favicon.png">
-    <link rel="stylesheet" href="{{ '/cloudv2-docs-site/assets/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ site.github.url }}/assets/main.css">
 
     <link href="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.318.4/css/CoveoFullSearchNewDesign.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script rel='stylesheet' type='text/css' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.318.4/js/CoveoJsSearch.WithDependencies.min.js"></script>
-    <script src="{{ '/cloudv2-docs-site/assets/coveo-community.js' | relative_url }}" charset="utf-8"></script>
+    <script src="{{ site.github.url }}/assets/coveo-community.js" charset="utf-8"></script>
 
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}">
+    <!--<link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}">-->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
 
     {% if jekyll.environment == 'production' and site.google_analytics %}
