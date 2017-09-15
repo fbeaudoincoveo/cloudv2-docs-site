@@ -7,6 +7,12 @@
    Tom Johnson's installation procedure work: 
    - [Install Jekyll on Mac](http://idratherbewriting.com/documentation-theme-jekyll/mydoc_install_jekyll_on_mac.html)
    - [Install Jekyll on Windows](http://idratherbewriting.com/documentation-theme-jekyll/mydoc_install_jekyll_on_windows.html)
+1. Intall [html-proofer](https://github.com/gjtorikian/html-proofer) to allow testing site links: 
+
+   `gem install html-proofer`
+1. Install [s3_website](https://github.com/laurilehmijoki/s3_website) to be able to push to AWS S3:
+   
+   `gem install s3_website`
 
 
 ## Build and Test Site locally
