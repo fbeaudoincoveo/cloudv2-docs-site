@@ -31,5 +31,3 @@ gem "jekyll-relative-links"
 
 gem "jekyll-sitemap"
 
-# HTML links and image validation (see https://github.com/gjtorikian/html-proofer)
-gem "html-proofer"
