@@ -7,22 +7,22 @@
 <script src="../../assets/redoc.min.js"> </script>
 
 <script>
-  var ymlUrl = window.location.hostname !== "coveo.github.io" ? "{{swagger}}" : "{{gh_pages_site_name}}" + "{{swagger}}";
-  // list of APIS
-  var apis = [
-    {
-      name: "{{name}}",
-      url: ymlUrl
-    }
-  ];
+    var ymlUrl = window.location.hostname !== "coveo.github.io" ? "{{swagger}}" : "{{gh_pages_site_name}}" + "{{swagger}}";
+    // list of APIS
+    var apis = [
+        {
+            name: "{{name}}",
+            url: ymlUrl
+        }
+    ];
 
-  // initially render first API
-  Redoc.init(apis[0].url);
+    // initially render first API
+    Redoc.init(apis[0].url);
 
-  // Highlight current site, section, and API
-  $('#jsDevDocs').addClass('currentSite');
-  $('#apiExplorerMenu > a').addClass('currentSection');
-  var apiName = window.location.pathname.split('/').reverse()[0];
-  $('#'+apiName).addClass('currentApi');
+    // Highlight current site, section, and API
+    $('#jsDevDocs').addClass('currentSite');
+    $('#apiExplorerMenu > a').addClass('currentSection');
+    var apiName = window.location.pathname.split('/').reverse()[0];
+    $('#'+apiName).addClass('currentApi');
 
 </script>
