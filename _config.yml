@@ -35,6 +35,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - scripts
+  - README.md
+  - CONTRIBUTING-CONTENT.md
 
 collections:
   glossary:
