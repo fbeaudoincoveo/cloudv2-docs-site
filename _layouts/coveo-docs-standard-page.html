@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<script>
+<!-- <script>
   /**
    * Dynamically adjusts the separator (vertical line between TOC and content) position in the page.
    */
@@ -15,14 +15,14 @@ layout: default
 
   window.addEventListener("DOMContentLoaded", setSeparatorLeftPosition);
   window.addEventListener("resize", setSeparatorLeftPosition);
-</script>
+</script> -->
 
 <div id="contentBox" style="margin:0 auto; width:100%; height:100%">
     <div id="column1" style="float:left; margin:0; padding-top:20px; padding-right:20px; max-width:25%">
         {% include coveo-docs-toc.html %}
     </div>
 
-    <div id="separator" style="position:absolute; height:100%; width:2px; background-color: darkgrey"></div>
+    <!-- <div id="separator" style="position:absolute; height:100%; width:2px; background-color: darkgrey"></div> -->
 
     <div id="column3" style="float:left; margin:0; padding-top:20px; padding-left:20px; max-width:70%">
         {% include coveo-docs-breadcrumbs.html %}
