@@ -6,6 +6,22 @@ All Coveo employees are encouraged to contribute to the content of this site. Th
 
 The best practice is to install and build the site locally and continually validate your changes (see [README.md](README.md)). 
 
+## Content Creation
+
+Instructions on how to create content. 
+
+### Index Pages
+
+Create an `index.md` page in each repo folder to prevent the server from returning a 404 error for URLS ending with a repo (`doc.site.com/path/foldername` or `doc.site.com/path/foldername/`). 
+
+At the minimum the index file should list pages in the folder. 
+
+### Permalinks 
+
+Do not set permalinks in the `_config.yml` file or in the front matter of pages. Rather use the default URL behavior that simply reproduces the repo folder structure and filename. When following the [Links](#links) section instructions, the `.md` extension is automatically switched to `.html`. 
+
+More to come about strategies to create content...
+
 ## Links
 
 Instructions to add different types of links. 
@@ -73,4 +89,3 @@ Create links to pages outside of this site using the standard Markdown link form
 ## Renaming of Moving Files
 
 There is no content management system (CMS) in Jekyll that automatically manages links between articles. So when you rename or move a file, you most find all links or references to this file and change them. 
-
