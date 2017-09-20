@@ -37,7 +37,7 @@
             <i class="arrow"></i>
           </a>
           <ul>
-            {% for p in site.pages %}{% if p.url contains "/api_explorer/" %}<li><a id="{{p.swagger | split: '/' | last | split: '.yml' | first }}" class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape | split: 'API' | first }}</a></li>{% endif %}{% endfor %}
+            {% for p in site.api-explorer %}{% if p.url contains "/api-explorer/ccv2" %}<li><a id="{{p.swagger | split: '/' | last | split: '.yml' | first }}" class="page-link" href="{{ p.url | relative_url }}">{{ p.title | escape | split: 'API' | first }}</a></li>{% endif %}{% endfor %}
           </ul>
         </li>
       </ul>
