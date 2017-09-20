@@ -42,22 +42,18 @@ function isMobile(){
 }
 
 // Set the Coveo Cloud Organization search and analytics tokens
-var siteOrigin= 'CoveoDocs'; //Take the value from https://search.coveo.com/JS/TechDoc.js
-var SuggestionScope = '@syssource=("CloudV2DocsSite")'; //Search Box suggestion filter ex: @syssource=("ohclouden")
+var siteOrigin= 'CoveoDocs'; // Telling search.coveo.com where the search request comes from
+var SuggestionScope = '@source==CoveoProductDocsStagingOnS3'; //Search Box suggestion filter ex: @syssource=("ohclouden")
 var searchToken = 'xx1b26c04d-9505-4a61-bab2-ff29d6d4efc1'; //API Key allowing to query
 var uaToken = searchToken; // API Key for allowing to push Usage analytics events
 var hostname = window.location.hostname; //To manage dev/staging/prod environment
 var TechDocSearchPage = 'https://search.coveo.com/techdocccv2.html';
-/*if (hostname == "onlinehelp.coveo.com") {
-    // Use the production org (Cloud V1 coveosearch)
-    searchToken = '7b9b9300-3901-437b-bafd-51ae596f1b16';
+if (hostname === "d3in5cp0cx0iu6.cloudfront.net" | hostname === "coveo-products-docs.s3-website-us-east-1.amazonaws.com/" || hostname === "127.0.0.1" | hostname === "localhost") {
+    // Use the "Coveo - Documentation test" Cloud V2 production org
+    searchToken = 'xx37d9ea69-1669-45da-b615-3ee13f463010';
     uaToken = searchToken;
-} else {
-    // Use the staging org (coveosupport) for UA
-    uaToken = '25b8fab8-089b-4325-8d0f-d3145dd282ec';
-    // Use the production org (coveosearch) for search
-    searchToken = '7b9b9300-3901-437b-bafd-51ae596f1b16';
-}*/
+    TechDocSearchPage = 'https://platform.cloud.coveo.com/pages/coveodocumentationtest/CoveoProductDocsStagingOnS3';
+}
 
 $(function(){
     // Define the Coveo endpoint for the search box
