@@ -13,7 +13,6 @@
     {% if page.image %}<meta property="og:image" content="{{ page.image | escape }}"/>{% endif %}
     {% if page.imagewidth %}<meta property="og:image:width" content="{{ page.imagewidth | escape }}"/>{% endif %}
     {% if page.imageheight %}<meta property="og:image:height" content="{{ page.imageheight | escape }}"/>{% endif %}
-
     {% if page.summary %}<meta property="og:description" content="{{ page.summary | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"/>{% endif %}
     <meta property="og:locale" content="en_US"/>
     {% if site.name %}<meta property="og:site_name" content="{{ site.name | escape }}"/>{% endif %}
@@ -24,8 +23,7 @@
 
     {% if page.categories %}{% for category in page.categories limit:1 %}<meta property="article:section" content="{{ category }}">{% endfor %}{% endif %}
     {% if page.tags %}{% for tag in page.tags %}<meta property="article:tag" content="{{ tag }}">{% endfor %}{% endif %}
-
-    <!-- Add Open Graph metadata -->
+    
     {% if page.author %}<meta name="author" content="{{ page.author | escape }}"/>{% endif %}
     {% if page.audience %}<meta name="audience" content="{{ page.audience | escape }}"/>{% endif %}
     {% if page.platform %}<meta name="platform" content="{{ page.platform | escape }}"/>{% endif %}
@@ -34,10 +32,10 @@
     <link rel="icon" href="https://s3.amazonaws.com/coveostatic/community-unified-navigation/img/favicon.png">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
 
-    <link href="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.318.4/css/CoveoFullSearchNewDesign.css" rel="stylesheet"/>
+    <link href="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.345.0/css/CoveoFullSearchNewDesign.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script rel='stylesheet' type='text/css' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.318.4/js/CoveoJsSearch.WithDependencies.min.js"></script>
+    <script src="https://s3.amazonaws.com/coveostatic/CoveoJsSearchV1.0.345.0/js/CoveoJsSearch.WithDependencies.min.js"></script>
     <script src="{{ site.baseurl }}/assets/coveo-community.js" charset="utf-8"></script>
 
     <!--<link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}">-->
