@@ -18,9 +18,12 @@ email: DevDocSiteAdmin@coveo.com
 description: > # this means to ignore newlines until "baseurl:"
   Coveo Cloud API documentation.
 
-baseurl: "/cloudv2-docs-site" # Needed for relative links to work in GitHub pages adding {{ site.baseurl }} to all links
+# The site base protocol & hostname (e.g. http://example.com (used by jekyll-sitemap))
+url: "https://d3in5cp0cx0iu6.cloudfront.net"
 
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# Needed for relative links to work in GitHub pages (ex.: "/cloudv2-docs-site") adding {{ site.baseurl }} to all links
+baseurl: ""
+
 twitter_username: jekyllrb
 github_username:  jekyll
 
@@ -30,6 +33,7 @@ theme: minima
 gems:
   - jekyll-feed
   - jekyll-relative-links
+  - jekyll-last-modified-at
   - jekyll-sitemap
 
 exclude:
