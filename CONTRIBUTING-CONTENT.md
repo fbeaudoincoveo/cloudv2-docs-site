@@ -43,7 +43,7 @@ As recommended in the Jekyll documentation (see [Linking to pages](https://jekyl
 where: 
 * `pathFromRoot` is the path relative to the root repo folder
 * `filename.ext` is the filename with its original extension
-``
+
 > **Examples**:
 > 
 >Linking to another page:
