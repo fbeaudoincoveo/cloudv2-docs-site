@@ -29,9 +29,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # From https://github.com/benbalter/jekyll-relative-links
 gem "jekyll-relative-links"
 
-# From https://github.com/gjtorikian/jekyll-last-modified-at
+# From https://github.com/gjtorikian/jekyll-last-modified-at to allow to get page last modified date&time
 gem "jekyll-last-modified-at"
 
-# From https://github.com/jekyll/jekyll-sitemap
+# From https://github.com/jekyll/jekyll-sitemap to get a /sitemap.xml file
 gem "jekyll-sitemap"
-
