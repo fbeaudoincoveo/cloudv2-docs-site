@@ -86,6 +86,6 @@ Create links to pages outside of this site using the standard Markdown link form
 > 
 > `[Coveo Cloud V2](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=231)`
 
-## Renaming of Moving Files
+## Renaming or Moving Files
 
-There is no content management system (CMS) in Jekyll that automatically manages links between articles. So when you rename or move a file, you most find all links or references to this file and change them. 
+There is no content management system (CMS) in Jekyll that automatically manages links between articles. When you rename or move a file, you must find and replace  all links or references to this file. 
