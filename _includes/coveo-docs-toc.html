@@ -6,12 +6,12 @@
     }
 </style>
 
-<div style="float:left">
-    <ul class="coveo-docs-toc">
-        <li class="coveo-docs-toc-home-item">
-            <a class="coveo-docs-toc-home-link" href="{{'/' | relative_url}}"><i class="fa fa-home" aria-hidden="true"></i></a>
+<div class="coveo-docs-toc">
+    <ul class="toc-list">
+        <li class="toc-home-item">
+            <a class="toc-home-link" href="{{'/' | relative_url}}"><i class="fa fa-home" aria-hidden="true"></i></a>
         </li>
-        <ul class="coveo-docs-toc">
+        <ul class="toc">
             {% assign site_sections = "" %}
             {% assign parent_separator = "$$" %}
             {% assign element_separator = ";;" %}
@@ -37,8 +37,8 @@
                 {% assign g = f | replace: "[", "" | replace: "]", "" | replace: '"', '' %}
                 {% assign h = g | split: "," %}
                 {% unless h[1] %}
-                    <li class="coveo-docs-toc-item">
-                        <a class="coveo-docs-toc-link" href="{{h[0] | relative_url}}">{{h[0]}}</a>
+                    <li class="toc-item">
+                        <a class="toc-link" href="{{h[0] | relative_url}}">{{h[0]}}</a>
                         {% assign p = h[0] | strip %}
                         {% include coveo-docs-toc-sub-element.html parent=p list=e parent_path=p %}
                     </li>

@@ -1,9 +1,9 @@
 // Define defaults for each variable.
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 
 // $base-font-family: Lato, Arial, sans-serif !default;
-$base-font-family: Lato, Arial, sans-serif;
+$base-font-family: Lato, sans-serif;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
@@ -11,7 +11,7 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
+$text-color:       #5B5B5B !default;
 $background-color: #fdfdfd !default;
 $brand-color:      #2a7ae2 !default;
 
@@ -24,7 +24,7 @@ $bleuMarin2: #18456C;
 
 
 // Width of the content area
-$content-width:    800px !default;
+$content-width:    1200px !default;
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
 
@@ -44,5 +44,8 @@ $on-laptop:        800px !default;
 // Import partials.
 @import
   "coveo-community/mixins",
-  "coveo-community/bases"
+  "coveo-community/bases",
+  "coveo-community/customization",
+  "content",
+  "glossary"
 ;

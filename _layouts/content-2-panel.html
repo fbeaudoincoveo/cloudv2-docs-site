@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<div id="contentBox">
+    <div id="left-panel" >
+        {% include coveo-docs-toc.html %}
+    </div>
+    <div id="main-panel" role="main">
+        {% include coveo-docs-breadcrumbs.html %}
+        <article class="article">
+            <div class="article-content">
+                {{ content }}
+            </div>
+        </article>
+    </div>
+</div>

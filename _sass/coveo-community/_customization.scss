@@ -1,0 +1,36 @@
+/*  Colour Palette: Grey from http://styleguide.coveo.com/d/GthysWU8RY0Q/brand#/basics/colors */
+
+$OxfordBlue: #313A45;
+$Mirage: #1E253F;
+$Nepal: #94A9BF;
+$CoveoOrange: #F58020;
+$CoveoBlue: #004990;
+
+$Grey1:   #F7F8F9;
+$Grey2:   #EFF3F7;
+$Grey3:   #E4EAED;
+$Grey4:   #CFD9E0;
+$Grey5:   #B5C4CF;
+$CoveoGrey6:   #94A9BF;
+$Grey7:   #8097AA;
+$Grey8:   #5D7289;
+$Grey9:   #4E5F71;
+$Grey10:   #37424E;
+$Grey11:   #242A31;
+
+$Blue1: #CDE7FF;
+$Blue2: #8FC9FF;
+$Blue3: #3CA0FF;
+$Blue4: #0D80EF;
+$Blue5: #0061C0;
+$CoveoBlue6: #004990;
+$Blue7: #00305C;
+$Blue8: #00284B;
+$Blue9: #00203A;
+$Blue10: #00101E;
+
+$bottom-header: #E6ECF0;
+
+.CoveoSearchbox input::placeholder {
+  color: $CoveoGrey6;
+}

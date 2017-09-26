@@ -1,6 +1,6 @@
 ---
-layout: coveo-docs-standard-page
 title: Pages
+layout: content-2-panel
 categories: test
 ghPagesSiteName: /cloudv2-docs-site
 summary: Test page to validate Jekyll features
@@ -13,7 +13,7 @@ tags:
   - platform Z
 ---
 
-# Header 1
+# {{ page.title | escape }}
 **Bold Text**
 
 ## Header 2

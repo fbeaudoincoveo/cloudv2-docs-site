@@ -1,0 +1,67 @@
+.glossary {
+  .alphabeticalLinks {
+    margin: $spacing-unit * 2 auto;
+    padding: $spacing-unit * 0.5 0;
+    border-top: 1px solid $Grey4;
+    border-bottom: 1px solid $Grey4;
+    .letterLinks {
+      margin-top: $spacing-unit * 2;
+      margin-bottom: $spacing-unit * 2;
+    }
+  }
+  .glossaryLetter {
+    margin-top: 2*$spacing-unit;
+    padding-bottom: $spacing-unit;
+    border-bottom: 1px solid $Grey4;
+  }
+  .glossaryTerm {
+    margin: $spacing-unit 0;
+    .partOfSpeech {
+      font-style: italic;
+      color: $CoveoGrey6;
+      padding-left: 0.5*$spacing-unit;
+    }
+  }
+  .glossaryTermTitle {
+    font-size: $base-font-size * 1.5;
+    font-weight: 300;
+    color: $Grey10;
+  }
+  .glossaryDefinition {
+    margin: $spacing-unit;
+    p {
+      margin: 0 $spacing-unit;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+    }
+  }
+  .glossaryDefinition:before, .glossaryDefinition:after {
+    font-size: $base-font-size * 8;
+    width: $spacing-unit;
+    color: $Grey4;
+    position: relative;
+    height: $spacing-unit;
+  }
+  .glossaryDefinition:before {
+    content: open-quote;
+    float: left;
+    left: -$spacing-unit;
+    Top: -$spacing-unit;
+  }
+  .glossaryDefinition:after {
+    content: close-quote;
+    float: right;
+    left: $spacing-unit * 0.5;
+    bottom: $spacing-unit * 2;
+  }
+  .glossaryLetterLinks {
+    display: table;
+    width: 100%;
+    padding-left: $spacing-unit;
+    table-layout: fixed;    /* For cells of equal size */
+  }
+  .glossaryLetterLinks span {
+    display: table-cell;
+    text-align: left;
+  }
+}

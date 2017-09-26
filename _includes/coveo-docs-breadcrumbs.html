@@ -1,13 +1,15 @@
-<ul class="coveo-docs-breadcrumbs" style="padding-left: 0">
-    {% assign path_elements = page.url | split: '/' %}
-    {% assign current_path = '' %}
-    {% for path_element in path_elements %}
-        {% assign current_path = current_path | append: path_element | append: "/" %}
-        <li style="display: inline">
-            {% if current_path != '/' %}
-                /
-            {% endif %}
-            <a class="coveo-docs-breadcrumbs-element" href="{{ current_path }}">{% if forloop.index0 == 0 %}<i class="fa fa-home" aria-hidden="true"></i>{% else %}{{ path_element }}{% endif %}</a>
-        </li>
-    {% endfor %}
-</ul>
+<div id="content-breadcrumb">
+    <ul class="breadcrumb-list">
+        {% assign path_elements = page.url | split: '/' %}
+        {% assign current_path = '' %}
+        {% for path_element in path_elements %}
+            {% assign current_path = current_path | append: path_element | append: "/" %}
+            <li class="breadcrumb-element">
+                {% if current_path != '/' %}
+                    /
+                {% endif %}
+                <a class="breadcrumbs-link" href="{{ current_path }}">{% if forloop.index0 == 0 %}<i class="fa fa-home" aria-hidden="true"></i>{% else %}{{ path_element }}{% endif %}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
