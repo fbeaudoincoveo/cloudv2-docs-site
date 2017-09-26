@@ -31,6 +31,21 @@ $Blue10: #00101E;
 
 $bottom-header: #E6ECF0;
 
+header {
+  nav .externalbox ul {
+    width: inherit;
+  }
+  ul.with-sub li ul {
+    width: inherit;
+    z-index: 1000000; /* To appear above ReDoc loading animation */
+    li {
+      word-break: normal;
+      white-space: nowrap;
+    }
+  }
+}
+
 .CoveoSearchbox input::placeholder {
   color: $CoveoGrey6;
 }
+
