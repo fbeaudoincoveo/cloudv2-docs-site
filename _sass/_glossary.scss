@@ -34,26 +34,27 @@
       -webkit-margin-before: 0;
       -webkit-margin-after: 0;
     }
+    &:before, &:after {
+      font-size: $base-font-size * 8;
+      width: $spacing-unit;
+      color: $Grey4;
+      position: relative;
+      height: $spacing-unit;
+    }
+    &:before {
+      content: open-quote;
+      float: left;
+      left: -$spacing-unit;
+      Top: -$spacing-unit;
+    }
+    &:after {
+      content: close-quote;
+      float: right;
+      left: $spacing-unit * 0.5;
+      bottom: $spacing-unit * 2;
+    }
   }
-  .glossaryDefinition:before, .glossaryDefinition:after {
-    font-size: $base-font-size * 8;
-    width: $spacing-unit;
-    color: $Grey4;
-    position: relative;
-    height: $spacing-unit;
-  }
-  .glossaryDefinition:before {
-    content: open-quote;
-    float: left;
-    left: -$spacing-unit;
-    Top: -$spacing-unit;
-  }
-  .glossaryDefinition:after {
-    content: close-quote;
-    float: right;
-    left: $spacing-unit * 0.5;
-    bottom: $spacing-unit * 2;
-  }
+
   .glossaryLetterLinks {
     display: table;
     width: 100%;
