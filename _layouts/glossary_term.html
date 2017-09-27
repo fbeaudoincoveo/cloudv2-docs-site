@@ -1,13 +1,24 @@
 ---
-layout: content-2-panel
+layout: default
 ---
-<h1>Glossary Term</h1>
-<div class="glossary">
-  <div class="glossaryTerm">
-    <span class="glossaryTermTitle">{{ page.title }}</span>
-    <span class="partOfSpeech"> ({{ page.partOfSpeech }})</span>
-    <div class="glossaryDefinition">{{ content | markdownify }}</div>
-  </div>
+<div id="contentBox">
+    <div id="left-panel">
+        {% include coveo-docs-toc.html %}
+    </div>
+    <div id="main-panel" role="main">
+        {% include coveo-docs-breadcrumbs.html %}
+        <article class="article">
+            <div class="article-content">
+                <h1>Glossary Term</h1>
+                <div class="glossary">
+                    <div class="glossaryTerm">
+                        <span class="glossaryTermTitle">{{ page.title }}</span>
+                        <span class="partOfSpeech"> ({{ page.partOfSpeech }})</span>
+                        <div class="glossaryDefinition">{{ content | markdownify }}</div>
+                    </div>
+                </div>
+                {% include glossary_term_list.html %}
+            </div>
+        </article>
+    </div>
 </div>
-
-{% include glossary_term_list.html %}
