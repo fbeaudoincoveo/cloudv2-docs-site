@@ -27,10 +27,9 @@
     width:100%;
     height:100%;
     display: flex;
-    align-items: top;
     #left-panel {
       flex: 1;
-      padding: 20px 20px 0 0;
+      padding: $spacing-unit 0;
       .coveo-docs-toc {
         margin: 0;
         padding:0;
@@ -39,11 +38,20 @@
           padding-left: 0;
           list-style-type: none;
           ul {
+            padding-left: $spacing-unit;
+            list-style-type: inherit;
+          }
+          li {
             padding-left: 0;
             list-style-type: inherit;
-            li.toc-item {
-              padding-left: $spacing-unit;
-              list-style-type: inherit;
+            a:-webkit-any-link {
+              padding: $spacing-unit/6 $spacing-unit/3;
+              display: block;
+              &:hover { background-color: $bottom-header;}
+              &.selected {
+                color: $text-color-revert;
+                background-color: $middle-header;
+              }
             }
           }
         }
@@ -51,13 +59,13 @@
     }
     #main-panel {
       flex: 3;
-      padding: 20px;
+      padding: $spacing-unit;
       #content-breadcrumb {
-        .breadcrumb-list {
+        ul {
           color: $CoveoGrey6;
           margin: 0;
-          padding-left: 0;
-          .breadcrumb-element {
+          padding: $spacing-unit/6 0;
+          li {
             display: inline;
             a {
               color: $CoveoGrey6;

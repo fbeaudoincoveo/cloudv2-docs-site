@@ -2,6 +2,7 @@
 title: Link Test Page
 layout: content-2-panel #This is a comment test 
 ---
+# {{ page.title | escape }}
 
 This is a temporary page used to test links. 
 
