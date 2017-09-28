@@ -60,23 +60,23 @@
     #main-panel {
       flex: 3;
       padding: $spacing-unit;
-      #content-breadcrumb {
-        ul {
-          color: $CoveoGrey6;
-          margin: 0;
-          padding: $spacing-unit/6 0;
-          li {
-            display: inline;
-            a {
-              color: $CoveoGrey6;
-            }
-          }
-        }
-      }
       article {
         p {
           padding-bottom: 1em;
         }
+      }
+    }
+  }
+}
+#content-breadcrumb {
+  ul {
+    color: $CoveoGrey6;
+    margin: 0;
+    padding: $spacing-unit/6 0;
+    li {
+      display: inline;
+      a {
+        color: $CoveoGrey6;
       }
     }
   }
