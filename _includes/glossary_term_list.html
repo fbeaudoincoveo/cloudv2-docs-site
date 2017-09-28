@@ -11,17 +11,21 @@
   <h3 class="alphabeticalLinks">
     {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
   </h3>
-  <div class="glossaryLetter">
+  <div class="glossaryListContainer">
   {% for b in all_letters %}
-    <a name="letter_{{b}}"></a>
-    <h3>{{ b }}</h3>
-    <div class="glossaryLetterLinks">
+    <div class="glossaryLetter">
+      <a name="letter_{{b}}"></a>
+      <h3>{{ b }}</h3>
+    </div>
+    <div class="glossaryLetterContainer">
+      <div class="glossaryLetterTerms">
       {% for term in site.glossary %}
         {% assign l = term.title | truncate: 1, "" | upcase  %}
         {% if l == b %}
-          <span><a href="{{term.url}}">{{ term.title }}</a></span>
+          <div><a href="{{term.url}}">{{ term.title }}</a></div>
         {% endif %}
       {% endfor %}
+      </div>
     </div>
   {% endfor %}
   </div>

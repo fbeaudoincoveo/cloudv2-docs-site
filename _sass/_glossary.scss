@@ -8,7 +8,7 @@
       margin: 0 $spacing-unit * 0.5 0 0;
     }
   }
-  .glossaryLetter {
+  .glossaryListContainer {
     margin-top: 2*$spacing-unit;
     padding-bottom: $spacing-unit;
     border-bottom: 1px solid $Grey4;
@@ -53,15 +53,24 @@
       bottom: $spacing-unit * 2;
     }
   }
-
-  .glossaryLetterLinks {
-    display: table;
+  .glossaryLetterContainer {
+    height: 100%;
     width: 100%;
     padding-left: $spacing-unit;
-    table-layout: fixed;    /* For cells of equal size */
-  }
-  .glossaryLetterLinks span {
-    display: table-cell;
-    text-align: left;
+    .glossaryLetterTerms {
+      -webkit-column-width: 15em;
+      -moz-column-width: 15em;
+      column-width: 15em;
+      div {
+        break-inside: avoid-column;
+        -webkit-column-break-inside: avoid;
+        a {
+          display: block;
+          padding: 5px 10px;
+          &:hover {background-color: $bottom-header;}
+        }
+      }
+    }
+
   }
 }
