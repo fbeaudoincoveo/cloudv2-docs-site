@@ -29,9 +29,8 @@
   .glossaryDefinition {
     margin: $spacing-unit;
     p {
-      margin: 0 $spacing-unit;
-      -webkit-margin-before: 0;
-      -webkit-margin-after: 0;
+      margin-left: $spacing-unit;
+      margin-right: $spacing-unit;
     }
     &:before, &:after {
       font-size: $base-font-size * 8;
