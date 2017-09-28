@@ -1,0 +1,20 @@
+{% assign indexUrl = site.baseurl | append: '/glossary/index.html' %}
+{% assign index = site.glossary | where:'url', indexUrl %}
+{% assign currentPageUrl = page.url %}
+<div class="coveo-docs-toc">
+    <ul>
+        {% comment %}First element is the index of all glossary terms{% endcomment %}
+        {% for page in index %}
+        <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        <li>
+            <ul>
+                {% for p in site.glossary %}
+                    {% unless p.url == indexUrl %}
+                    <li><a href="{{ site.baseurl }}{{ p.url }}" class="{% if p.url == currentPageUrl %}selected{% endif %}">{{ p.title }}</a></li>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>
