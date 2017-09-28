@@ -457,6 +457,9 @@ header {
 							border-bottom: 4px solid $orange;
 							color:$orange;
 						}
+						&.currentSection {
+							border-bottom: 4px solid $orange;
+						}
 						&.sub {
 							border: solid 1px transparent;
 							&.current,
@@ -599,3 +602,4 @@ header {
 .magic-box .magic-box-suggestions .coveo-highlight{
     font-weight:bold !important;
 }
+
