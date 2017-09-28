@@ -14,8 +14,15 @@
     var apiName = '{{ apiName}}';
     var apiTitle = '<h2>' + apiName + '</h2>';
 
-    // Waiting for ReDoc to render the TOC and injecting an API title at the top of the ReDoc TOC
-    setTimeout(function () {
-        $('redoc-search > div.search-input-wrap').prepend(apiTitle);
-    },1000);
+    // Function to wait for the rendered ReDoc DIV and inject an API title at the top of the ReDoc TOC
+    function AddAPITitle() {
+        if (!$('redoc-search > div.search-input-wrap').size()) {
+            // Loop until ReDoc DIV exits
+            window.requestAnimationFrame(AddAPITitle);
+        }else {
+            $('redoc-search > div.search-input-wrap').prepend(apiTitle);
+        }
+    }
+
+    AddAPITitle()
 </script>
