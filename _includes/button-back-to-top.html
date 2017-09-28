@@ -1,0 +1,62 @@
+<style>
+    /* Back-to-top floating button */
+    #back-to-top {
+        display: table;
+        width: 60px;
+        height: 60px;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        font-size: 1.5em;
+        text-align: center;
+        z-index: 1000;
+        opacity: 0.25;
+        background: #8097AA;
+        -o-border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        -o-transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        transition: 0.5s;
+        -o-box-shadow: 2px 3px 2.5em #999;
+        -webkit-box-shadow: 2px 3px 2.5em #999;
+        -moz-box-shadow: 2px 3px 2.5em #999;
+        box-shadow: 2px 3px 2.5em #999;
+    }
+    #back-to-top:hover {
+        opacity: 1;
+        -o-transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        transition: 0.5s;
+        cursor: pointer;}
+    #back-to-top i {
+        display: table-cell;
+        vertical-align: middle;
+        padding-bottom: 5px;}
+</style>
+<script>
+    // Back-to-top lower-right corner floating button appearing when header disappears
+    // Adding the button HTML
+    $('body').prepend('<div id="back-to-top" title="Back to Top" style="display: none;"><i class="fa fa-chevron-up fa-inverse"></i></div>');
+    // Get the header height
+    var amountScrolled = $('header').outerHeight();
+    // Show the button only when header is no longer visible
+    $(window).scroll(function() {
+        if ( $(window).scrollTop() > amountScrolled ) {
+            $('#back-to-top').fadeIn('fast');
+        } else {
+            $('#back-to-top').fadeOut('fast');
+        }
+    });
+    // Scroll to top with bact-to-top button is clicked
+    $('#back-to-top').click(function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 300);
+        //logCustomEvent('pageNav', 'backToTop', uaToken, "Back to Top");
+        return false;
+    });
+</script>
