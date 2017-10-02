@@ -1,0 +1,19 @@
+/* Use redoc[spec-url] to override ReDoc script CSS without always using !important (https://github.com/Rebilly/ReDoc/issues/241) */
+redoc[spec-url] {
+  h1 {
+    margin-top: $spacing-unit;
+    color: $CoveoBlue;
+  }
+  .api-info-wrapper[_ngcontent-c6] {
+    padding: $spacing-unit;
+  }
+  .tag-info {
+    padding: 0 $spacing-unit $spacing-unit $spacing-unit !important;
+    h1 {
+      color: $CoveoBlue !important;
+    }
+  }
+  .api-content .operation-content {
+    padding: 0 $spacing-unit $spacing-unit $spacing-unit !important;
+  }
+}
