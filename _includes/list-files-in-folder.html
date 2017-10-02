@@ -1,0 +1,17 @@
+{% strip %}
+{% assign currentFilename = page.url | split: '/' | last %}
+{% assign currentFolder = page.url | remove: currentFilename | split: '/' | last %}
+{% assign currentPage = site.baseurl | append: page.url %}
+
+<div class="page-list">
+    <ul>
+        {% for p in site.api-explorer %}
+            {% assign pFilename = p.url | split: '/' | last %}
+            {% assign pFolder = p.url | remove: pFilename | split: '/' | last %}
+            {% unless p.url == currentPage or pFolder != currentFolder %}
+                <li><a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a></li>
+                {% endunless %}
+        {% endfor %}
+    </ul>
+</div>
+{% endstrip %}
