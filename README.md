@@ -21,18 +21,18 @@
 Build the site locally to validate your changes:
 1. In the terminal: 
    1. Go to the repository root folder. 
-   1. Run ```bundle exec jekyll serve```
+   1. Run ```bundle exec jekyll serve --incremental```
    
-      Alternately:
-      - If you want sitemap.xml links to contain the production hostname (not localhost:4000), run:
-      
-        ```JEKYLL_ENV=production bundle exec jekyll serve```
-        
-        The default value is `JEKYLL_ENV=development` (see [Specifying a Jekyll environment at build timePermalink](https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time)). 
-        
-      - If `baseurl` was not empty in `_config.yml` and you want to the local site to start from the root, run: 
-       
-        ```bundle exec jekyll serve --baseurl ''```
+      > Alternately:
+      > - If you want sitemap.xml links to contain the production hostname (not localhost:4000), run:
+      >
+      >  ```JEKYLL_ENV=production bundle exec jekyll serve --incremental```
+      >  
+      >  The default value is `JEKYLL_ENV=development` (see [Specifying a Jekyll environment at build timePermalink](https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time)). 
+      >  
+      > - If `baseurl` was not empty in `_config.yml` and you want to the local site to start from the root, run: 
+      > 
+      >  ```bundle exec jekyll serve --baseurl '' --incremental```
          
 1. In a browser, go to `http://localhost:4000/` to view the site. 
 1. Make your changes to the site. 
