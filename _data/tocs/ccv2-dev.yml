@@ -1,0 +1,47 @@
+# Section Table of Content (TOC)
+#
+# Name TOC file with name of folder where files reside
+# List all items to include in the TOC from a folder in the desired hierarchy with the following syntax
+# entries:
+# - title: The TOC Entry Text                             # Can be different from the page.title
+#   path: full/relative/path/with/the/filename.html
+#   subentries:                                           # When the entry has subentries
+entries:
+- title: Coveo Cloud V2 API Overview
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_API_Overview.html
+
+- title: Basic Topics
+  path: /pages/ccv2-dev/Basic_Topics.html
+  subentries:
+
+  - title: Storage and Recommendation Allocation (Coveo Platform)
+    path: /pages/ccv2-dev/Storage_and_Recommendation_Allocation__Coveo_Platform_.html
+
+  - title: Logging into the Coveo Cloud V2 Platform
+    path: /pages/ccv2-dev/Logging_into_the_Coveo_Cloud_V2_Platform.html
+
+  - title: Getting Your Coveo Cloud V2 Platform Access Token
+    path: /pages/ccv2-dev/Getting_Your_Coveo_Cloud_V2_Platform_Access_Token.html
+
+- title: Search API
+  path: /pages/ccv2-dev/Search_API.html
+  subentries:
+
+  - title: Performing a Simple Query
+    path: /pages/ccv2-dev/Performing_a_Simple_Query.html
+
+  - title: Query Security Basics
+    path: /pages/ccv2-dev/Query_Security_Basics.html
+
+  - title: Creating a Search Token
+    path: /pages/ccv2-dev/Creating_a_Search_Token.html
+
+  - title: Authentication Methods
+    path: /pages/ccv2-dev/Authentication_Methods.html
+    subentries:
+
+    - title: API Key Authentication
+      path: /pages/ccv2-dev/API_Key_Authentication.html
+
+    - title: Search Token Authentication
+      path: /pages/ccv2-dev/Search_Token_Authentication.html
