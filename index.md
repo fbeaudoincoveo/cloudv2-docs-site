@@ -5,6 +5,7 @@
 title: Site Home page
 layout: content-2-panel
 sitemap: true
+toc: root
 ---
 
 # {{ page.title | escape }}

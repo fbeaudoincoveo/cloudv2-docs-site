@@ -2,6 +2,7 @@
 title: API Explorer
 category: index
 layout: content-2-panel
+toc: root
 ---
 {% comment %}Folder index article{% endcomment %}
 # {{ page.title | escape }}

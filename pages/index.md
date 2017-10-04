@@ -6,6 +6,7 @@ ghPagesSiteName: /cloudv2-docs-site
 summary: Test page to validate Jekyll features
 audience: Any
 author: Coveo Contributors
+toc: root
 categories:
   - category 1
 tags:

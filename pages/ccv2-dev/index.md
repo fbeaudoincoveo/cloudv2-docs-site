@@ -2,6 +2,7 @@
 layout: content-2-panel
 title: CloudPlatform (Coveo Cloud V2)
 categories: migrated
+toc: root
 ---
 
 # CloudPlatform (Coveo Cloud V2)
