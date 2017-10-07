@@ -3,7 +3,16 @@ layout: default
 ---
 <div id="contentBox">
     <div id="left-panel" >
-        {% include coveo-docs-toc.html %}
+        <div class="coveo-docs-toc">
+        {% comment %}Create TOC from the TOC declared in the front matter when available{% endcomment %}
+        {% if page.toc %}
+            {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
+            {% assign toc = site.data.tocs[page.toc].entries %}
+            {% include toc-partial-from-yml.html %}
+        {% else %}
+            {% include coveo-docs-toc.html %}
+        {% endif %}
+        </div>
     </div>
     <div id="main-panel" role="main">
         {% include breadcrumb-folder-structure.html %}
