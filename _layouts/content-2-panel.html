@@ -4,10 +4,17 @@ layout: default
 <div id="contentBox">
     <div id="left-panel" >
         <div class="coveo-docs-toc">
-        {% comment %}Create TOC from the TOC declared in the front matter when available{% endcomment %}
-        {% if page.toc %}
+        {% comment %}Create TOC from the YAML TOC for the parent folder when available {% endcomment %}
+        {% assign pagePath = page.url | split: '/' %}
+        {% assign pagePathSize = pagePath | size %}
+        {% assign parentFolderPos = pagePathSize | minus: 2 %}
+        {% assign parentFolder = pagePath[parentFolderPos] %}
+
+        {% if parentFolder %}
             {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
-            {% assign toc = site.data.tocs[page.toc].entries %}
+            {% assign toc = site.data.tocs[parentFolder].entries %}
+            {% assign parent = toc %}
+            {% assign parentStr = "site.data.tocs[" | append: parentFolder | append: "].entries" %}
             {% include toc-partial-from-yml.html %}
         {% else %}
             {% include coveo-docs-toc.html %}
