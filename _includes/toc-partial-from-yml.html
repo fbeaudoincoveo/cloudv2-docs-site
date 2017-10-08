@@ -37,7 +37,6 @@
             {% comment %}When there are subentries, recursively call this file{% endcomment %}
             {% if entry.subentries %}
                 {% assign toc = entry.subentries %}
-                {% assign level = level | plus: 1 %}
                 {% include toc-partial-from-yml.html %}
             {% endif %}
         {% endif %}
