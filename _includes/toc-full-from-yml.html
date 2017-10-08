@@ -1,3 +1,4 @@
+{% strip %}
 <ul>
     {% for entry in toc %}
     <li>
@@ -5,9 +6,10 @@
         {% if entry.path == page.url %}{% assign classes = classes | append: "selected " %}{% endif %}
         {% if entry.subentries %}{% assign classes = classes | append: "expanded " %}{% endif %}
         <a href="{{ entry.path }}" {% if classes !="" %}class="{{classes}}"{% endif %}>{{ entry.title }}</a></li>
-    {% if entry.subentries %}
-        {% assign toc = entry.subentries %}
-        {% include toc-full-from-yml.html %}
-    {% endif %}
+        {% if entry.subentries %}
+            {% assign toc = entry.subentries %}
+            {% include toc-full-from-yml.html %}
+        {% endif %}
     {% endfor %}
 </ul>
+{% endstrip %}
