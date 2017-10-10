@@ -1,0 +1,48 @@
+{% comment %}Generates a static UL LI TOC of the current page, its siblings, and its children {% endcomment %}
+
+{% comment %}Find the TOC level where the current page is{% endcomment %}
+{% assign inThisLevel = false %}
+{% for entry in toc %}
+    {% if entry.path == page.url %}
+        {% assign inThisLevel = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% comment %}Write the opening UL only when at the TOC section containing the current page {% endcomment %}
+{% if inThisLevel %}<ul>{% endif %}
+    {% for entry in toc %}
+        {% comment %}Create items for the current page as well as for its siblings and child pages {% endcomment %}
+        {% if inThisLevel %}
+            {% assign classes = ""%}
+            {% if entry.path == page.url %}{% assign isCurrent = true %}{% else %}{% assign isCurrent = false %}{% endif %}
+            {% if entry.subentries %}{% assign hasChild = true %}{% else %}{% assign hasChild = false %}{% endif %}
+            <li>
+                {% if isCurrent %}{% assign classes = classes | append: "selected " %}{% endif %}
+                {% if isCurrent and hasChild %}{% assign classes = classes | append: "expanded " %}{% elsif hasChild %}{% assign classes = classes | append: "expandable " %}{% endif %}
+                <a href="{{ entry.path }}" {% if classes !="" %}class="{{classes}}"{% endif %}>{{ entry.title }}</a>
+                {% if isCurrent and hasChild %}
+                <ul>
+                    {% for e in entry.subentries %}
+                    <li>
+                        {% assign classes = ""%}
+                        {% if e.subentries %}{% assign classes = classes | append: "expandable " %}{% endif %}
+                        <a href="{{ e.path }}" {% if classes !="" %}class="{{classes}}"{% endif %}>{{ e.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+        {% else %}
+            {% comment %}When there are subentries, recursively call this file{% endcomment %}
+            {% if entry.subentries %}
+                {% assign toc = entry.subentries %}
+                {% include toc-partial-from-yml.html %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% if inThisLevel %}
+    {% comment %}Close the UL and reset inThisLevel to prevent adding further TOC entries not directly siblings of the current page{% endcomment %}
+    </ul>
+    {% assign inThisLevel = false %}
+{% endif %}

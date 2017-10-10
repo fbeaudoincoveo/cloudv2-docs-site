@@ -1,6 +1,7 @@
 ---
 title: The Page Title       # Write title "In Title Case"
 layout: content-2-panel     # 
+toc: ccv2-dev               # The table of content to use in the sidebar
 category:                   # 
 tags: [keyword1, keyword2]  # Optional. Article related keywords
 audience: Administrator     # Article target audience: User | Administrator | Developer | Anyone

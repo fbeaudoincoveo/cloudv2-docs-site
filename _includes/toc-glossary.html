@@ -1,11 +1,11 @@
-{% assign indexUrl = site.baseurl | append: '/glossary/index.html' %}
+{% assign indexUrl = site.baseurl | append: '/glossary/1000/' %}
 {% assign index = site.glossary | where:'url', indexUrl %}
 {% assign currentPageUrl = page.url %}
 <div class="coveo-docs-toc">
     <ul>
         {% comment %}First element is the index of all glossary terms{% endcomment %}
         {% for page in index %}
-        <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+        <li><a href="{{ site.baseurl }}{{ page.url }}" class="expanded">{{ page.title }}</a></li>
         {% endfor %}
         <li>
             <ul>

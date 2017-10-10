@@ -4,6 +4,7 @@ title: search alerts
 partOfSpeech: noun
 sidebar: ccv2_docs
 ghPagesSiteName: /cloudv2-docs-site
+slug: "1007"
 ---
 
 A Coveo cloud service allowing users to subscribe to search queries or search results and receive email notifications when the followed queries or results change (see [Search Alerts](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=247)). 

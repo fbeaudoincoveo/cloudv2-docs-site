@@ -1,0 +1,315 @@
+# Section Table of Content
+#
+# Name TOC file with name of parent folder where files reside
+# List all items to include in the TOC from a folder in the desired hierarchy with the following syntax:
+# entries:
+# - title: The TOC Entry Text                             # Can be different from the page.title
+#   path: /full/path/with/the/filename.html
+#   subentries:                                           # When the entry has subentries
+
+entries:
+
+- title: Coveo Cloud V2 API Overview
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_API_Overview.html
+
+- title: Basic Topics
+  path: /pages/ccv2-dev/Basic_Topics.html
+  subentries:
+
+  - title: Storage and Recommendation Allocation (Coveo Platform)
+    path: /pages/ccv2-dev/Storage_and_Recommendation_Allocation__Coveo_Platform_.html
+
+  - title: Logging into the Coveo Cloud V2 Platform
+    path: /pages/ccv2-dev/Logging_into_the_Coveo_Cloud_V2_Platform.html
+
+  - title: Getting Your Coveo Cloud V2 Platform Access Token
+    path: /pages/ccv2-dev/Getting_Your_Coveo_Cloud_V2_Platform_Access_Token.html
+
+- title: Coveo Cloud V2 API PaaS Tutorials
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_API_PaaS_Tutorials.html
+  subentries:
+
+  - title: Create an Organization and a Source, and Get Your First Query Results
+    path: /pages/ccv2-dev/Create_an_Organization_and_a_Source,_and_Get_Your_First_Query_Results.html
+
+- title: Search API
+  path: /pages/ccv2-dev/Search_API.html
+  subentries:
+
+  - title: Performing a Simple Query
+    path: /pages/ccv2-dev/Performing_a_Simple_Query.html
+
+  - title: Query Security Basics
+    path: /pages/ccv2-dev/Query_Security_Basics.html
+
+  - title: Creating a Search Token
+    path: /pages/ccv2-dev/Creating_a_Search_Token.html
+
+  - title: Authentication Methods
+    path: /pages/ccv2-dev/Authentication_Methods.html
+    subentries:
+
+    - title: API Key Authentication
+      path: /pages/ccv2-dev/API_Key_Authentication.html
+
+    - title: Search Token Authentication
+      path: /pages/ccv2-dev/Search_Token_Authentication.html
+
+    - title: Claims Authentication
+      path: /pages/ccv2-dev/Claims_Authentication.html
+
+    - title: SAML Authentication
+      path: /pages/ccv2-dev/SAML_Authentication.html
+      subentries:
+
+      - title: Configuring SAML for Use with AD FS
+        path: /pages/ccv2-dev/Configuring_SAML_for_Use_with_AD_FS.html
+
+      - title: Configuring SAML for Use with Okta
+        path: /pages/ccv2-dev/Configuring_SAML_for_Use_with_Okta.html
+
+    - title: OAuth2 Authentication
+      path: /pages/ccv2-dev/OAuth2_Authentication.html
+
+  - title: Search Alerts Limitations
+    path: /pages/ccv2-dev/Search_Alerts_Limitations.html
+
+  - title: Determining Which Coveo Cloud Query Pipeline a Search Page Uses
+    path: /pages/ccv2-dev/Determining_Which_Coveo_Cloud_Query_Pipeline_a_Search_Page_Uses.html
+
+  - title: Determining if the Query Pipeline is Coded in the Search Interface
+    path: /pages/ccv2-dev/Determining_if_the_Query_Pipeline_is__Coded_in_the_Search_Interface.html
+
+- title: Platform API
+  path: /pages/ccv2-dev/Platform_API.html
+  subentries:
+
+  - title: Creating a Coveo Cloud V2 Organization
+    path: /pages/ccv2-dev/Creating_a_Coveo_Cloud_V2_Organization.html
+
+  - title: Getting the organizationId
+    path: /pages/ccv2-dev/Getting_the_organizationId.html
+
+  - title: Deleting a Coveo Cloud V2 Organization
+    path: /pages/ccv2-dev/Deleting_a_Coveo_Cloud_V2_Organization.html
+
+- title: Source API
+  path: /pages/ccv2-dev/Source_API.html
+  subentries:
+
+  - title: Creating a Basic Shared Web Source
+    path: /pages/ccv2-dev/Creating_a_Basic_Shared_Web_Source.html
+
+  - title: Getting the sourceId
+    path: /pages/ccv2-dev/Getting_the_sourceId.html
+
+  - title: Possible sourceType Values
+    path: /pages/ccv2-dev/Possible_sourceType_Values.html
+
+- title: Push API
+  path: /pages/ccv2-dev/Push_API.html
+  subentries:
+
+  - title: Getting the uploadUri and fileId
+    path: /pages/ccv2-dev/Getting_the_uploadUri_and_fileId.html
+
+  - title: Using the Push API
+    path: /pages/ccv2-dev/Using_the_Push_API.html
+    subentries:
+
+    - title: Push API Limits
+      path: /pages/ccv2-dev/Push_API_Limits.html
+
+    - title: Push API Reference
+      path: /pages/ccv2-dev/Push_API_Reference.html
+
+    - title: Creating a Push Type Source
+      path: /pages/ccv2-dev/Creating_a_Push_Type_Source.html
+
+    - title: Creating an Identity Provider for a Secured Push Type Source
+      path: /pages/ccv2-dev/Creating_an_Identity_Provider_for_a_Secured_Push_Type_Source.html
+
+    - title: Pushing Items to a Source
+      path: /pages/ccv2-dev/Pushing_Items_to_a_Source.html
+      subentries:
+
+      - title: Pushing Secured Items to a Source
+        path: /pages/ccv2-dev/Pushing_Secured_Items_to_a_Source.html
+
+      - title: Pushing Large Items to a Source
+        path: /pages/ccv2-dev/Pushing_Large_Items_to_a_Source.html
+
+      - title: JavaScript Push API Client Example
+        path: /pages/ccv2-dev/JavaScript_Push_API_Client_Example.html
+
+      - title: Deleting Items from a Source
+        path: /pages/ccv2-dev/Deleting_Items_from_a_Source.html
+
+    - title: Pushing Identities to an Identity Provider
+      path: /pages/ccv2-dev/Pushing_Identities_to_an_Identity_Provider.html
+
+    - title: Batch Pushing Encrypted Files and Permissions to a Source
+      path: /pages/ccv2-dev/Batch_Pushing_Encrypted_Files_and_Permissions_to_a_Source.html
+
+    - title: Understanding Push API Processing Delay
+      path: /pages/ccv2-dev/Understanding_Push_API_Processing_Delay.html
+
+    - title: Understanding the orderingId Parameter
+      path: /pages/ccv2-dev/Understanding_the_orderingId_Parameter.html
+
+    - title: Troubleshooting Push API Error Codes
+      path: /pages/ccv2-dev/Troubleshooting_Push_API_Error_Codes.html
+
+- title: Source Logs API
+  path: /pages/ccv2-dev/Source_Logs_API.html
+
+- title: Activity API
+  path: /pages/ccv2-dev/Activity_API.html
+  subentries:
+
+  - title: Retrieving Search API Activities
+    path: /pages/ccv2-dev/Retrieving_Search_API_Activities.html
+
+- title: Authorization Server API
+  path: /pages/ccv2-dev/Authorization_Server_API.html
+  subentries:
+
+  - title: Getting the Privileges You Can Assign to an API Key
+    path: /pages/ccv2-dev/Getting_the_Privileges_You_Can_Assign_to_an_API_Key.html
+
+  - title: Creating an API Key
+    path: /pages/ccv2-dev/Creating_an_API_Key.html
+
+  - title: Getting the apiKeyId
+    path: /pages/ccv2-dev/Getting_the_apiKeyId.html
+
+  - title: Deleting an API Key
+    path: /pages/ccv2-dev/Deleting_an_API_Key.html
+
+  - title: Getting the Privileges of an Access Token
+    path: /pages/ccv2-dev/Getting_the_Privileges_of_an_Access_Token.html
+
+  - title: Valid Privilege owner, targetDomain, and type Combinations
+    path: /pages/ccv2-dev/Valid_Privilege_owner,_targetDomain,_and_type_Combinations.html
+
+- title: Indexing Pipeline Customization Tools Overview
+  path: /pages/ccv2-dev/Indexing_Pipeline_Customization_Tools_Overview.html
+
+- title: Coveo Cloud V2 Indexing Pipeline Extensions
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_Indexing_Pipeline_Extensions.html
+  subentries:
+
+  - title: Document Object Python API Reference
+    path: /pages/ccv2-dev/Document_Object_Python_API_Reference.html
+
+  - title: Indexing Pipeline Extension Condition Syntax Reference
+    path: /pages/ccv2-dev/Indexing_Pipeline_Extension_Condition_Syntax_Reference.html
+
+  - title: Python Modules Available to Indexing Pipeline Extensions
+    path: /pages/ccv2-dev/Python_Modules_Available_to_Indexing_Pipeline_Extensions.html
+
+  - title: Indexing Pipeline Extension Parameters
+    path: /pages/ccv2-dev/Indexing_Pipeline_Extension_Parameters.html
+
+  - title: Indexing Pipeline Extension Supported Character Sets
+    path: /pages/ccv2-dev/Indexing_Pipeline_Extension_Supported_Character_Sets.html
+
+  - title: Extension API Reference
+    path: /pages/ccv2-dev/Extension_API_Reference.html
+
+  - title: Indexing Pipeline Extension Script Samples
+    path: /pages/ccv2-dev/Indexing_Pipeline_Extension_Script_Samples.html
+    subentries:
+
+    - title: Inspecting All Available Metadata Values
+      path: /pages/ccv2-dev/Inspecting_All_Available_Metadata_Values.html
+
+    - title: Updating the Printable and Clickable URIs
+      path: /pages/ccv2-dev/Updating_the_Printable_and_Clickable_URIs.html
+
+    - title: Generating Metadata
+      path: /pages/ccv2-dev/Generating_Metadata.html
+
+    - title: Grouping Parents and Children
+      path: /pages/ccv2-dev/Grouping_Parents_and_Children.html
+
+    - title: Modifying Date
+      path: /pages/ccv2-dev/Modifying_Date.html
+
+    - title: Rejecting Items
+      path: /pages/ccv2-dev/Rejecting_Items.html
+
+    - title: Modifying Source Item Permissions
+      path: /pages/ccv2-dev/Modifying_Source_Item_Permissions.html
+
+  - title: Creating an Indexing Pipeline Extension with the API
+    path: /pages/ccv2-dev/Creating_an_Indexing_Pipeline_Extension_with_the_API.html
+
+  - title: Logging Messages from an Indexing Pipeline Extension
+    path: /pages/ccv2-dev/Logging_Messages_from_an_Indexing_Pipeline_Extension.html
+
+  - title: Passing Parameters to Indexing Pipeline Extension Scripts
+    path: /pages/ccv2-dev/Passing_Parameters_to_Indexing_Pipeline_Extension_Scripts.html
+
+  - title: Applying an Indexing Pipeline Extension to a Source with the API
+    path: /pages/ccv2-dev/Applying_an_Indexing_Pipeline_Extension_to_a_Source_with_the_API.html
+
+  - title: Indexing Pipeline Extension Testing Strategies and Good Practices
+    path: /pages/ccv2-dev/Indexing_Pipeline_Extension_Testing_Strategies_and_Good_Practices.html
+
+- title: Coveo Cloud V2 Indexing Pipeline Mappings
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_Indexing_Pipeline_Mappings.html
+  subentries:
+
+  - title: Indexing Pipeline Mapping Concepts
+    path: /pages/ccv2-dev/Indexing_Pipeline_Mapping_Concepts.html
+
+  - title: Source API Mappings Resource Usage Overview
+    path: /pages/ccv2-dev/Source_API_Mappings_Resource_Usage_Overview.html
+
+  - title: Source API - Mappings Resource
+    path: /pages/ccv2-dev/Source_API_-_Mappings_Resource.html
+
+  - title: Differences Between the Source JSON Mappings Configuration and the Response JSON Body Formats
+    path: /pages/ccv2-dev/Differences_Between_the_Source_JSON_Mappings_Configuration_and_the_Response_JSON_Body_Formats.html
+
+- title: Coveo Cloud V2 On-Premises Crawling Module
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_On-Premises_Crawling_Module.html
+  subentries:
+
+  - title: Crawling Module Deployment Overview
+    path: /pages/ccv2-dev/Crawling_Module_Deployment_Overview.html
+
+  - title: Crawling Module Requirements
+    path: /pages/ccv2-dev/Crawling_Module_Requirements.html
+
+  - title: Installing the Crawling Module
+    path: /pages/ccv2-dev/Installing_the_Crawling_Module.html
+
+  - title: Crawling Module Configuration
+    path: /pages/ccv2-dev/Crawling_Module_Configuration.html
+    subentries:
+
+    - title: Configuring a Permission Expansion Tool for a Secured Source
+      path: /pages/ccv2-dev/Configuring_a_Permission_Expansion_Tool_for_a_Secured_Source.html
+
+    - title: Configuring the PrePushExtension Parameters
+      path: /pages/ccv2-dev/Configuring_the_PrePushExtension_Parameters.html
+
+  - title: Running a Crawling Module Instance
+    path: /pages/ccv2-dev/Running_a_Crawling_Module_Instance.html
+
+  - title: Understanding How On-Premises Item Permissions are Resolved
+    path: /pages/ccv2-dev/Understanding_How_On-Premises_Item_Permissions_are_Resolved.html
+
+- title: Parameters and API Calls
+  path: /pages/ccv2-dev/Parameters_and_API_Calls.html
+
+- title: Privileges and API Calls
+  path: /pages/ccv2-dev/Privileges_and_API_Calls.html
+
+- title: Coveo Cloud V2 API Generated Documentation Site
+  path: /pages/ccv2-dev/Coveo_Cloud_V2_API_Generated_Documentation_Site.html
+
+- title: Glossary
+  path: /pages/ccv2-dev/Glossary.html

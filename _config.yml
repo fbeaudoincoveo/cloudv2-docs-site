@@ -46,5 +46,6 @@ exclude:
 collections:
   glossary:
     output: true
+    permalink: /:collection/:slug/
   api-explorer:
     output: true

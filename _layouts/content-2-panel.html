@@ -3,7 +3,32 @@ layout: default
 ---
 <div id="contentBox">
     <div id="left-panel" >
-        {% include coveo-docs-toc.html %}
+        <div class="coveo-docs-toc">
+        {% comment %}Create TOC from the YAML TOC for the parent folder when available {% endcomment %}
+        {% assign frontMatterToc = page.toc %}
+        {% assign pagePath = page.url | split: '/' %}
+        {% assign pagePathSize = pagePath | size %}
+        {% assign parentFolderPos = pagePathSize | minus: 2 %}
+        {% assign parentFolder = pagePath[parentFolderPos] %}
+            <!--<p>pagePath: {{ pagePath }}</p>
+            <p>pagePathSize: {{ pagePathSize }}</p>
+            <p>parentFolderPos: {{ parentFolderPos }}</p>
+            <p>parentFolder: {{ parentFolder }}</p>-->
+
+        {% if frontMatterToc %}
+            {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
+            {% assign toc = site.data.tocs[frontMatterToc].entries %}
+            {% include toc-partial-from-yml.html %}
+        {% elsif parentFolder %}
+            {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
+            {% assign toc = site.data.tocs[parentFolder].entries %}
+            {% assign parent = toc %}
+            {% assign parentStr = "site.data.tocs[" | append: parentFolder | append: "].entries" %}
+            {% include toc-partial-from-yml.html %}
+        {% else %}
+            {% include coveo-docs-toc.html %}
+        {% endif %}
+        </div>
     </div>
     <div id="main-panel" role="main">
         {% include breadcrumb-folder-structure.html %}
