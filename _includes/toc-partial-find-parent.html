@@ -1,0 +1,15 @@
+{% assign i = 0 %}
+{% for entry in parent %}
+    {% if entry.path == page.url %}
+        <p>Parent: <a href="{{ parent.path }}">{{ parent.title}}</a> </br>{{ parentStr }}</p>
+        <p></p>
+        {% break %}
+    {% else %}
+        {% if entry.subentries %}
+            {% assign parent = parent[i].subentries %}
+            {% assign parentStr = parentStr | append: "[" | append: i | append: "].subentries" %}
+            {% include toc-partial-find-parent.html %}
+        {% endif %}
+    {% endif %}
+    {% assign i = i | plus: 1 %}
+{% endfor %}
