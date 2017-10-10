@@ -19,11 +19,11 @@ $(window).ready(function() {
     }
 
     // Injecting the page title in the glossary ID based URL
-    var title = $('head > title').text();
+    /* var title = $('head > title').text();
     var codedTitle = title.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
     var originalPath = window.document.location.pathname;
     var originalHash = window.document.location.hash;
     if (originalPath.includes('/glossary/') ) {
         window.history.pushState("", "", originalPath + codedTitle + originalHash);
-    }
+    } */
 });
