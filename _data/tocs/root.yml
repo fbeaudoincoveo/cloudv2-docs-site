@@ -1,14 +1,18 @@
 # TOC for project root folders and files
 entries:
+
 - title: Home
-  path: /index.html
+  path: /
+
 - title: Pages
-  path: /pages/index.html
-- title: Coveo Glossary
-  path: /glossary/index.html
-- title: API Explorer
-  path: /api-explorer/index.html
+  path: /pages/
   subentries:
 
   - title: Coveo Cloud V2 Developer Topics
-    path: /api-explorer/ccv2-dev/index.html
+    path: /pages/ccv2-dev/
+
+- title: API Explorer
+  path: /api-explorer/index.html
+
+- title: Coveo Glossary
+  path: /glossary/1000/
