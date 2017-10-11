@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/Source.yml
+title: Source API
+swagger: ../../api_docs/Source.yml
 ---

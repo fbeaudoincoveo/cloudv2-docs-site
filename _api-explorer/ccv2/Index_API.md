@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/Index.yml
+title: Index API
+swagger: ../../api_docs/Index.yml
 ---
