@@ -162,7 +162,7 @@ header {
 	//First row
 	.upHeader {
 		display: flex;
-		background: #296896 url("https://s3.amazonaws.com/coveostatic/community-unified-navigation/img/background.png") no-repeat left bottom;
+		background: $Mirage;
 		background-size: cover;
 		.logos {
 			padding: 12px 20px 20px;
@@ -417,7 +417,8 @@ header {
 		}
 	}
 	.middleHeader {
-		background-color: $bleuMarin;
+		background-color: $Mirage;
+		border-top: 1px solid $headerSeparator;
 		position: relative;
 		display: flex;
 		nav {
@@ -551,20 +552,44 @@ header {
 		}
 	}
 	.bottomHeader {
-		background-color: #E6ECF0;
-		padding: 10px 20px;
+		background-color: $Mirage;
+		border-top: 1px solid $headerSeparator;
+		padding: 14px 20px;
 		box-shadow: 0 2px 4px rgba(0,0,0,0.10);
 		border-bottom:#BCC3CA 1px solid;
-		height:72px;
+		height: 80px;
+		position: relative;
+		&:before,
+		&:after {
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 100%;
+			opacity: .6;
+		}
+		&:before {
+			background: transparent url(https://www.coveo.com/images/assets/textures/pattern-triangle-left.svg) no-repeat left 50%;
+			top: 0;
+			left: 0;
+		}
+		&:after {
+			background: transparent url(https://www.coveo.com/images/assets/textures/pattern-triangle-right.svg) no-repeat right top 50%;
+			top: 0;
+			right: 0;
+		}
+
 		#searchBox{
 			max-width: 800px;
 			margin: 0 auto;
 			.coveo-top-field-suggestion-header { display: none;}
-			.CoveoSearchbox .CoveoSearchButton { background-color: #fff;}
+			.CoveoSearchbox .CoveoSearchButton { background-color: $blanc;}
 			.magic-box-suggestions.magic-box-hasSuggestion {border-color: #BCC3CA   !important;}
 			.magic-box .magic-box-suggestions .magic-box-suggestion {   color: #373737  ;}
 		}
-
+		.CoveoOmnibox.magic-box,  .CoveoSearchButton {
+			background: $blanc;
+			border-color: $orange;
+		}
 	}
 	.full {
 		width: 100%;
