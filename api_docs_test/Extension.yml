@@ -1,0 +1,759 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/extensions/{extensionId}/versions/{versionId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+          - 
+            description: "versionId"
+            required: true
+            type: "string"
+            name: "versionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensionVersion"
+        summary: "Get the specific version of an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionVersionUsingGET"
+    /rest/organizations/{organizationId}/extensions/{extensionId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/EditExtensionModel"
+            description: "extensionModel"
+            required: true
+            name: "extensionModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "updateExtension"
+        summary: "Update an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateExtensionUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "deleteExtension"
+        summary: "Delete an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteExtensionUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtension"
+        summary: "Get an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionUsingGET"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/test/datastream: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/test/datastream_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionTestDataStreamUriModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "generateTestDataStreamUploadUri"
+        summary: "Generate a datastream upload uri for an extension test"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "generateTestDataStreamUploadUriUsingPOST"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/test: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/test_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ExtensionTestExecutionReportModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ExtensionTestModel"
+            description: "extensionTestModel"
+            required: true
+            name: "extensionTestModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "testExtension"
+        summary: "Test an extension"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "testExtensionUsingPOST"
+    /rest/organizations/{organizationId}/extensions/{extensionId}/versions: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions/paramId/versions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ExtensionContentVersionModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "extensionId"
+            required: true
+            type: "string"
+            name: "extensionId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensionVersions"
+        summary: "Get all available versions of an extension"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionVersionsUsingGET"
+    /rest/organizations/{organizationId}/extensions: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/extensions_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/EditExtensionModel"
+            description: "extensionModel"
+            required: true
+            name: "extensionModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "createExtension"
+        summary: "Creates an extension for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createExtensionUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "INDEXING_PIPELINE_EXTENSION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/extensions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ExtensionModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Indexing Pipeline Extensions"
+        x-pretty-name: "getExtensions"
+        summary: "Get all extensions for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getExtensionsUsingGET"
+  tags: 
+    - 
+      name: "Indexing Pipeline Extensions"
+      description: "Extension Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    LogEntryModel: 
+      type: "object"
+      properties: 
+        comment: 
+          type: "string"
+        date: 
+          type: "string"
+        duration: 
+          type: "number"
+          format: "double"
+        severity: 
+          enum: 
+            - "DEBUG"
+            - "DETAIL"
+            - "NORMAL"
+            - "IMPORTANT"
+            - "WARNING"
+            - "ERROR"
+            - "FATAL"
+            - "NOTIFICATION"
+          type: "string"
+        fields: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+    ExtensionDisabledStatusModel: 
+      type: "object"
+      properties: 
+        disabledDate: 
+          type: "integer"
+          format: "int64"
+        reason: 
+          type: "string"
+    PermissionLevelModel: 
+      type: "object"
+      properties: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSetModel"
+          type: "array"
+        name: 
+          type: "string"
+    ExtensionTestResultModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "DISABLED"
+            - "EXECUTION_ERROR"
+            - "REJECTED"
+            - "SUCCESS"
+            - "TIMEOUT"
+          type: "string"
+        reason: 
+          type: "string"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        name: 
+          type: "string"
+        permissions: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    ExtensionTestDataStreamUriModel: 
+      type: "object"
+      properties: 
+        requiredHeaders: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        uri: 
+          type: "string"
+        streamId: 
+          type: "string"
+    ExtensionHealthModel: 
+      type: "object"
+      properties: 
+        reason: 
+          type: "string"
+        healthIndicator: 
+          enum: 
+            - "GOOD"
+            - "WARNING"
+            - "PROBLEMATIC"
+            - "UNKNOWN"
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    ExtensionContentVersionModel: 
+      type: "object"
+      properties: 
+        lastModified: 
+          type: "integer"
+          format: "int64"
+        id: 
+          type: "string"
+    DataStreamValueModel: 
+      type: "object"
+      properties: 
+        origin: 
+          type: "string"
+        values: 
+          additionalProperties: 
+            $ref: "#/definitions/DataStreamContentModel"
+          type: "object"
+    MetadataValueModel: 
+      type: "object"
+      properties: 
+        origin: 
+          type: "string"
+        values: 
+          additionalProperties: 
+            items: 
+              type: "string"
+            type: "array"
+          type: "object"
+    DataStreamContentModel: 
+      type: "object"
+      properties: 
+        compressionType: 
+          enum: 
+            - "UNCOMPRESSED"
+            - "ZLIB"
+            - "GZIP"
+            - "LZMA"
+          type: "string"
+        inlineContent: 
+          type: "string"
+        id: 
+          type: "string"
+    ExtensionModel: 
+      type: "object"
+      properties: 
+        status: 
+          $ref: "#/definitions/ExtensionStatusModel"
+        requiredDataStreams: 
+          items: 
+            enum: 
+              - "BODY_TEXT"
+              - "BODY_HTML"
+              - "THUMBNAIL"
+              - "DOCUMENT_DATA"
+            type: "string"
+          type: "array"
+        description: 
+          type: "string"
+        lastModified: 
+          type: "integer"
+          format: "int64"
+        enabled: 
+          type: "boolean"
+        content: 
+          type: "string"
+        versionId: 
+          type: "string"
+        createdDate: 
+          type: "integer"
+          format: "int64"
+        usedBy: 
+          items: 
+            $ref: "#/definitions/ExtensionUsedByModel"
+          type: "array"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    ExtensionTestModel: 
+      type: "object"
+      properties: 
+        versionId: 
+          type: "string"
+        document: 
+          $ref: "#/definitions/ExtensionTestDocumentModel"
+        parameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+    SinglePermissionModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        securityProvider: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        identityType: 
+          enum: 
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+            - "UNKNOWN"
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        allowed: 
+          type: "boolean"
+        identity: 
+          type: "string"
+    ExtensionTestExecutionReportModel: 
+      type: "object"
+      properties: 
+        duration: 
+          type: "number"
+          format: "double"
+        result: 
+          $ref: "#/definitions/ExtensionTestResultModel"
+        document: 
+          $ref: "#/definitions/ExtensionTestDocumentModel"
+        logs: 
+          items: 
+            $ref: "#/definitions/LogEntryModel"
+          type: "array"
+        dataStreamUris: 
+          items: 
+            $ref: "#/definitions/ExtensionTestDataStreamUriModel"
+          type: "array"
+    EditExtensionModel: 
+      type: "object"
+      properties: 
+        content: 
+          type: "string"
+        requiredDataStreams: 
+          items: 
+            enum: 
+              - "BODY_TEXT"
+              - "BODY_HTML"
+              - "THUMBNAIL"
+              - "DOCUMENT_DATA"
+            type: "string"
+          type: "array"
+        description: 
+          type: "string"
+        name: 
+          type: "string"
+    ExtensionTestDocumentModel: 
+      type: "object"
+      properties: 
+        dataStreams: 
+          items: 
+            $ref: "#/definitions/DataStreamValueModel"
+          type: "array"
+        permissions: 
+          items: 
+            $ref: "#/definitions/PermissionLevelModel"
+          type: "array"
+        id: 
+          type: "string"
+        metadata: 
+          items: 
+            $ref: "#/definitions/MetadataValueModel"
+          type: "array"
+    ExtensionUsedByModel: 
+      type: "object"
+      properties: 
+        sourceId: 
+          type: "string"
+        sourceName: 
+          type: "string"
+    ExtensionStatusModel: 
+      type: "object"
+      properties: 
+        disabledStatus: 
+          $ref: "#/definitions/ExtensionDisabledStatusModel"
+        timeoutHealth: 
+          $ref: "#/definitions/ExtensionHealthModel"
+        durationHealth: 
+          $ref: "#/definitions/ExtensionHealthModel"
+        dailyStatistics: 
+          $ref: "#/definitions/ExtensionStatisticsModel"
+    ExtensionStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfErrors: 
+          type: "integer"
+          format: "int32"
+        numberOfTimeouts: 
+          type: "integer"
+          format: "int32"
+        numberOfSkips: 
+          type: "integer"
+          format: "int32"
+        numberOfExecutions: 
+          type: "integer"
+          format: "int32"
+        averageDurationInSeconds: 
+          type: "number"
+          format: "double"
+  swagger: "2.0"
+

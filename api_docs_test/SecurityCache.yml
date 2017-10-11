@@ -1,0 +1,1884 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/securitycache/{providerId}/refresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/paramId/refresh_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refreshProvider"
+        summary: "Triggers a refresh on a security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshProviderUsingPOST"
+    /rest/organizations/{organizationId}/securityproviders/snapshots/{snapshotId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/snapshots/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "snapshotId"
+            required: true
+            type: "string"
+            name: "snapshotId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSnapshot"
+        summary: "Gets a security provider config snapshot"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSnapshotUsingGET"
+    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}/raw: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+          - 
+            description: "forceUpdate"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "forceUpdate"
+          - 
+            schema: 
+              $ref: "#/definitions/RawSecurityProviderConfig"
+            description: "securityProviderConfig"
+            required: true
+            name: "securityProviderConfig"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProviderRaw"
+        summary: "Create or update the raw configuration of a security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderRawUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId/raw_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RawSecurityProviderConfig"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviderRaw"
+        summary: "Get the raw configuration of a security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProviderRawUsingGET"
+    /rest/organizations/{organizationId}/securitycache/configuration: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/configuration_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityCacheConfigurationModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityCacheConfigurationModel"
+            description: "configurationModel"
+            required: true
+            name: "configurationModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "updateConfiguration"
+        summary: "Update the security cache configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateConfigurationUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/configuration_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityCacheConfigurationModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getConfiguration"
+        summary: "Get the security cache configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getConfigurationUsingGET"
+    /rest/organizations/{organizationId}/securityproviders/{securityProviderId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModelWithStatus"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityProviderModel"
+            description: "securityProviderModel"
+            required: true
+            name: "securityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "createOrUpdateSecurityProvider"
+        summary: "Create or update a security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrUpdateSecurityProviderUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "removeSecurityProvider"
+        summary: "Remove a security provider from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeSecurityProviderUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securityproviders/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityProviderModelWithStatus"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "securityProviderId"
+            required: true
+            type: "string"
+            name: "securityProviderId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProvider"
+        summary: "Get a single security provider for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProviderUsingGET"
+    /rest/organizations/{organizationId}/securitycache/schedules: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getSchedules"
+        summary: "Get the security cache schedules"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSchedulesUsingGET"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members/parents: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId/members/parents_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PageModel«DetailedSecurityCacheMemberModel»"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            description: "recursive"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "recursive"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityCacheMemberModel"
+            description: "member"
+            required: true
+            name: "member"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getParentEntities"
+        summary: "Get parent entities for a specified security provider member"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getParentEntitiesUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members/children: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId/members/children_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PageModel«DetailedSecurityCacheMemberModel»"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            description: "recursive"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "recursive"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityCacheMemberModel"
+            description: "member"
+            required: true
+            name: "member"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getChildEntities"
+        summary: "Get child entities for a specified security provider member"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getChildEntitiesUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/schedule: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "scheduleModel"
+            required: true
+            name: "scheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "updateRefreshSchedule"
+        summary: "Update the security cache refresh schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateRefreshScheduleUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedule_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getSchedule"
+        summary: "Get the security cache refresh schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getScheduleUsingGET"
+    /rest/organizations/{organizationId}/securityproviders: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securityproviders_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SecurityProviderModelWithStatus"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Providers"
+        x-pretty-name: "getSecurityProviders"
+        summary: "Get all security providers for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSecurityProvidersUsingGET"
+    /rest/organizations/{organizationId}/securitycache/refresh/entity: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh/entity_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SecurityCacheMemberModel"
+            description: "refreshEntityModel"
+            required: true
+            name: "refreshEntityModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refreshEntity"
+        summary: "Refreshes a single entity in the security cache"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshEntityUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/{providerId}/disabled/enable: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/paramId/disabled/enable_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "enableProviderDisabledEntities"
+        summary: "Enable all disabled entities for a specified security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "enableProviderDisabledEntitiesUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}/members: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId/members_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PageModel«DetailedSecurityCacheMemberModel»"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            required: true
+            type: "string"
+            name: "usePageModel"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getMembers"
+        summary: "Get the members for a specified security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMembersUsingGET"
+    /rest/organizations/{organizationId}/securitycache/refresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/refresh_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "refresh"
+        summary: "Triggers a refresh on the security cache"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/entities/{providerId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/entities/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PageModel«SIDModel»"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "providerId"
+            required: true
+            type: "string"
+            name: "providerId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            required: true
+            type: "string"
+            name: "usePageModel"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getEntities"
+        summary: "Get the entities for a specified security provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getEntitiesUsingGET"
+    /rest/organizations/{organizationId}/securitycache/status: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/status_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SecurityCacheStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getStatus"
+        summary: "Get the security cache status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getStatusUsingGET"
+    /rest/organizations/{organizationId}/securitycache/disabled/enable: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/disabled/enable_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "enableDisabledEntities"
+        summary: "Enable all disabled entities on security cache"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "enableDisabledEntitiesUsingPOST"
+    /rest/organizations/{organizationId}/securitycache/schedules/{scheduleId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "scheduleModel"
+            required: true
+            name: "scheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "updateSchedule"
+        summary: "Update a security cache schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateScheduleUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/securitycache/schedules/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Security Cache"
+        x-pretty-name: "getScheduleById"
+        summary: "Get a security cache schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getScheduleByIdUsingGET"
+  tags: 
+    - 
+      name: "Security Providers"
+      description: "Security Provider Service Resource"
+    - 
+      name: "Security Cache"
+      description: "Security Cache Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    SecurityCacheStatusModel: 
+      type: "object"
+      properties: 
+        currentStatus: 
+          $ref: "#/definitions/CurrentStatusModel"
+        statistics: 
+          $ref: "#/definitions/SecurityCacheStatisticsModel"
+        lastRefreshOperation: 
+          $ref: "#/definitions/LastRefreshOperationModel"
+        nextRefreshOperation: 
+          $ref: "#/definitions/NextOperation"
+    UserIdentity: 
+      type: "object"
+      properties: 
+        userName: 
+          type: "string"
+        password: 
+          type: "string"
+        name: 
+          type: "string"
+    UserIdentityModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        password: 
+          type: "string"
+        name: 
+          type: "string"
+    HourMinutePair: 
+      type: "object"
+      properties: 
+        minute: 
+          type: "integer"
+          format: "int32"
+        hour: 
+          type: "integer"
+          format: "int32"
+    Parameter: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    SecurityCacheMemberInfoModel: 
+      type: "object"
+      properties: 
+        value: 
+          type: "string"
+        key: 
+          type: "string"
+    LastRefreshOperationModel: 
+      type: "object"
+      properties: 
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+        errorCode: 
+          type: "string"
+        result: 
+          type: "string"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        id: 
+          type: "string"
+    ScheduleFrequency: 
+      type: "object"
+      properties: 
+        monthDay: 
+          type: "integer"
+          format: "int32"
+        hourMinute: 
+          $ref: "#/definitions/HourMinutePair"
+        weekDays: 
+          items: 
+            enum: 
+              - "MONDAY"
+              - "TUESDAY"
+              - "WEDNESDAY"
+              - "THURSDAY"
+              - "FRIDAY"
+              - "SATURDAY"
+              - "SUNDAY"
+            type: "string"
+          type: "array"
+        value: 
+          type: "integer"
+          format: "int32"
+        type: 
+          enum: 
+            - "MINUTELY"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+            - "MONTHLY"
+          type: "string"
+    SecurityProviderModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/ParameterModel"
+          type: "object"
+        caseSensitive: 
+          type: "boolean"
+        cascadingSecurityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/CascadingSecurityProvider"
+          type: "object"
+        organizationClusterId: 
+          type: "string"
+        nodeRequired: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        id: 
+          type: "string"
+        referencedBy: 
+          items: 
+            $ref: "#/definitions/SecurityProviderReferenceModel"
+          type: "array"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentityModel"
+          type: "object"
+    PageModel«DetailedSecurityCacheMemberModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/DetailedSecurityCacheMemberModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    SecurityProviderModelWithStatus: 
+      type: "object"
+      properties: 
+        statistics: 
+          $ref: "#/definitions/SecurityProviderStatisticsModel"
+        displayName: 
+          type: "string"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/ParameterModel"
+          type: "object"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        organizationClusterId: 
+          type: "string"
+        caseSensitive: 
+          type: "boolean"
+        cascadingSecurityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/CascadingSecurityProvider"
+          type: "object"
+        currentStatus: 
+          $ref: "#/definitions/CurrentStatusModel"
+        nodeRequired: 
+          type: "boolean"
+        lastRefreshOperation: 
+          $ref: "#/definitions/LastRefreshOperationModel"
+        id: 
+          type: "string"
+        referencedBy: 
+          items: 
+            $ref: "#/definitions/SecurityProviderReferenceModel"
+          type: "array"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentityModel"
+          type: "object"
+    PageModel«SIDModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/SIDModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    SecurityCacheMemberModel: 
+      type: "object"
+      properties: 
+        infos: 
+          items: 
+            $ref: "#/definitions/SecurityCacheMemberInfoModel"
+          type: "array"
+        type: 
+          enum: 
+            - "Unknown"
+            - "User"
+            - "Group"
+            - "VirtualGroup"
+          type: "string"
+        name: 
+          type: "string"
+        provider: 
+          type: "string"
+    ParameterModel: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    ScheduleModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        resourceId: 
+          type: "string"
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        enabled: 
+          type: "boolean"
+        frequency: 
+          $ref: "#/definitions/ScheduleFrequency"
+        scheduleType: 
+          enum: 
+            - "SECURITY_CACHE"
+            - "SOURCE"
+          type: "string"
+        id: 
+          type: "string"
+    SecurityProvider: 
+      type: "object"
+      properties: 
+        typeName: 
+          type: "string"
+        name: 
+          type: "string"
+    CurrentStatusModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        type: 
+          enum: 
+            - "CREATING"
+            - "DISABLED"
+            - "REFRESHING"
+            - "PAUSED"
+            - "PAUSED_ON_ERROR"
+            - "IDLE"
+            - "ERROR"
+            - "PUSH_READY"
+          type: "string"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesProcessed: 
+          type: "integer"
+          format: "int32"
+    NextOperation: 
+      type: "object"
+      properties: 
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+    SecurityCacheStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesByState: 
+          additionalProperties: 
+            type: "integer"
+            format: "int32"
+          type: "object"
+        numberOfPermissionModels: 
+          type: "integer"
+          format: "int32"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+        numberOfProviders: 
+          type: "integer"
+          format: "int32"
+    SecurityProviderReferenceModel: 
+      type: "object"
+      properties: 
+        attributes: 
+          type: "object"
+        type: 
+          enum: 
+            - "SOURCE"
+            - "SECURITY_PROVIDER"
+          type: "string"
+        id: 
+          type: "string"
+    SIDModel: 
+      type: "object"
+      properties: 
+        data: 
+          type: "string"
+        provider: 
+          type: "string"
+    DataFile: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        data: 
+          type: "string"
+    CascadingSecurityProvider: 
+      type: "object"
+      properties: 
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    DetailedSecurityCacheMemberModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        name: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        provider: 
+          type: "string"
+        infos: 
+          items: 
+            $ref: "#/definitions/SecurityCacheMemberInfoModel"
+          type: "array"
+        type: 
+          type: "string"
+    RawSecurityProviderConfig: 
+      type: "object"
+      properties: 
+        dataFiles: 
+          additionalProperties: 
+            $ref: "#/definitions/DataFile"
+          type: "object"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/Parameter"
+          type: "object"
+        securityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/SecurityProvider"
+          type: "object"
+        caseSensitive: 
+          type: "boolean"
+        dbConnectionString: 
+          type: "string"
+        displayName: 
+          type: "string"
+        indexIdentifier: 
+          type: "string"
+        nodeRequired: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentity"
+          type: "object"
+    SecurityCacheConfigurationModel: 
+      type: "object"
+      properties: 
+        commitDelayInSeconds: 
+          type: "integer"
+          format: "int32"
+        jobProcessorForwarderLRUCacheMaxSize: 
+          type: "integer"
+          format: "int32"
+        operationExpirationDelayInSeconds: 
+          type: "integer"
+          format: "int32"
+        statusUpdateFrequencyInSeconds: 
+          type: "integer"
+          format: "int32"
+        statusUpdateFrequency_s: 
+          type: "integer"
+          format: "int32"
+        metricsPublishingEnabled: 
+          type: "boolean"
+        syncProcessingEnabled: 
+          type: "boolean"
+        permissionModelsUpdateDelayInMilliseconds: 
+          type: "integer"
+          format: "int32"
+        jobProcessingEnabled: 
+          type: "boolean"
+    SecurityProviderStatisticsModel: 
+      type: "object"
+      properties: 
+        numberOfEntitiesInError: 
+          type: "integer"
+          format: "int32"
+        numberOfEntitiesByState: 
+          additionalProperties: 
+            type: "integer"
+            format: "int32"
+          type: "object"
+        totalNumberOfEntities: 
+          type: "integer"
+          format: "int32"
+  swagger: "2.0"
+

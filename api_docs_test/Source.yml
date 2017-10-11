@@ -1,0 +1,4526 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/sources/{sourceId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SourceModel"
+            description: "sourceModel"
+            required: true
+            name: "sourceModel"
+            in: "body"
+          - 
+            description: "updateSecurityProviders"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "updateSecurityProviders"
+          - 
+            description: "rebuild"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "updateSource"
+        summary: "Update a source from simple configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateSourceUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_delete"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "deleteSource"
+        summary: "Delete a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteSourceUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getSource"
+        summary: "Get a single source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSourceUsingGET"
+    /rest/sourceconfiguration/salesforce/objects: 
+      post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+            description: "inputObjects"
+            required: true
+            name: "inputObjects"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "refreshObjects"
+        summary: "Refresh objects"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshObjectsUsingPOST"
+      get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+          - 
+            description: "serviceCloudIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "serviceCloudIndexed"
+          - 
+            description: "knowledgeIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "knowledgeIndexed"
+          - 
+            description: "contentIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "contentIndexed"
+          - 
+            description: "chatterIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "chatterIndexed"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "getObjects"
+        summary: "Get objects"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getObjectsUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/TypedMappingSettingsModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseTypedMappingSettingsModel«BaseRuleModel»"
+            description: "typedMappingSettingsModel"
+            required: true
+            name: "typedMappingSettingsModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "updateMappingTypeSettings"
+        summary: "Update an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateMappingTypeSettingsUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "deleteMappingType"
+        summary: "Delete an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteMappingTypeUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/TypedMappingSettingsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getMappingTypeSettings"
+        summary: "Get an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMappingTypeSettingsUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/stopRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/stopRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "stopRefresh"
+        summary: "Stop the current refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "stopRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/schedules: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "sourceScheduleModel"
+            required: true
+            name: "sourceScheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "createSourceSchedule"
+        summary: "Create a new schedule for the source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createSourceScheduleUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ScheduleModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getSourceSchedules"
+        summary: "Get all source schedules"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSourceSchedulesUsingGET"
+    /rest/organizations/{organizationId}/sources/raw: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/sources/raw_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/RawSourceConfig"
+            description: "platformSourceConfig"
+            required: true
+            name: "platformSourceConfig"
+            in: "body"
+          - 
+            description: "updateSecurityProviders"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "updateSecurityProviders"
+          - 
+            description: "rebuild"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "createRawSource"
+        summary: "Create a source from raw configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createRawSourceUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/TypedMappingSettingsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseTypedMappingSettingsModel«BaseRuleModel»"
+            description: "typedMappingSettings"
+            required: true
+            name: "typedMappingSettings"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "addMappingTypes"
+        summary: "Add a new item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addMappingTypesUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/TypedMappingSettingsModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getMappingTypes"
+        summary: "Get all item types"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMappingTypesUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules/{ruleId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseRuleModel"
+            description: "baseRule"
+            required: true
+            name: "baseRule"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "updateMappingTypeSettingsRule"
+        summary: "Update a mapping rule for an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateMappingTypeSettingsRuleUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "deleteMappingTypeSettingsRule"
+        summary: "Delete a mapping rule for an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteMappingTypeSettingsRuleUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getMappingTypeSettingsRule"
+        summary: "Get a mapping rule for an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMappingTypeSettingsRuleUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/raw: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/RawSourceConfig"
+            description: "platformSourceConfig"
+            required: true
+            name: "platformSourceConfig"
+            in: "body"
+          - 
+            description: "updateSecurityProviders"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "updateSecurityProviders"
+          - 
+            description: "rebuild"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "updateRawSource"
+        summary: "Update a source from raw configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateRawSourceUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/raw_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RawSourceConfig"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getRawSource"
+        summary: "Get the raw configuration of a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getRawSourceUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/fullRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/fullRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "fullRefresh"
+        summary: "Apply a full refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "fullRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/light: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/light_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getLightSource"
+        summary: "Get a single source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLightSourceUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/pauseRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/pauseRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "pauseRefresh"
+        summary: "Pause the current refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "pauseRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/startRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/startRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "startRefresh"
+        summary: "Start a refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "startRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/extensions: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/SourceExtensionsMap"
+            description: "extensions"
+            required: true
+            name: "extensions"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Source Extensions"
+        x-pretty-name: "setSourceExtensions"
+        summary: "Sets the extensions on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setSourceExtensionsUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/extensions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceExtensionsMap"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Source Extensions"
+        x-pretty-name: "getSourceExtensions"
+        summary: "Get extensions set on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSourceExtensionsUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/applyChanges: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/applyChanges_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "applyChanges"
+        summary: "Apply pending changes on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "applyChangesUsingPOST"
+    /rest/sourceconfiguration/salesforce/parseOTG: 
+      post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/parseOTG_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              type: "string"
+            description: "objectsToGetXml"
+            required: true
+            name: "objectsToGetXml"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "parseOTG"
+        summary: "Parse an ObjectsToGet to a schema"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "parseOTGUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/rebuild: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/rebuild_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "rebuild"
+        summary: "Apply a rebuild operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "rebuildUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/enable: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/enable_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Sources"
+        x-pretty-name: "enable"
+        summary: "Enable schedules on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "enableUsingPOST"
+    /rest/sourceconfiguration/salesforce/schema: 
+      post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+            description: "inputSchema"
+            required: true
+            name: "inputSchema"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "refreshSchema"
+        summary: "Refresh complete schema (objects and fields)"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshSchemaUsingPOST"
+      get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/schema_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+          - 
+            description: "serviceCloudIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "serviceCloudIndexed"
+          - 
+            description: "knowledgeIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "knowledgeIndexed"
+          - 
+            description: "contentIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "contentIndexed"
+          - 
+            description: "chatterIndexed"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "chatterIndexed"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "getSchema"
+        summary: "Get complete schema (objects and fields)"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSchemaUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/types/{typeId}/rules: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseRuleModel"
+            description: "baseRule"
+            required: true
+            name: "baseRule"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "addMappingTypeSettingRule"
+        summary: "Add a new mapping rule for an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addMappingTypeSettingRuleUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/types/paramId/rules_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RuleModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "typeId"
+            required: true
+            type: "string"
+            name: "typeId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getMappingTypeSettingRules"
+        summary: "Get all mapping rules for an item type"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMappingTypeSettingRulesUsingGET"
+    /rest/organizations/{organizationId}/sources: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/sources_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SourceModel"
+            description: "sourceModel"
+            required: true
+            name: "sourceModel"
+            in: "body"
+          - 
+            description: "updateSecurityProviders"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "updateSecurityProviders"
+          - 
+            description: "rebuild"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "createSource"
+        summary: "Create a source from simple configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createSourceUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/sources_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SourceModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getSources"
+        summary: "Get all sources"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSourcesUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/resumeRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/resumeRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "resumeRefresh"
+        summary: "Resume the current refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "resumeRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/tasks/abort: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/tasks/abort_post"
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "activityId"
+            required: true
+            type: "string"
+            name: "activityId"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "abortTaskForActivity"
+        summary: "Abort a source task related to a given activity."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "abortTaskForActivityUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/incrementalRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/incrementalRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "incrementalRefresh"
+        summary: "Apply an incremental refresh operation on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "incrementalRefreshUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/CommonMappingSettingsModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseCommonMappingSettingsModel"
+            description: "commonMappingSettings"
+            required: true
+            name: "commonMappingSettings"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "updateCommonMappingSettings"
+        summary: "Update common mapping configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateCommonMappingSettingsUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/CommonMappingSettingsModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getCommonMappingSettings"
+        summary: "Get common mapping configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getCommonMappingSettingsUsingGET"
+    /rest/organizations/{organizationId}/sources/snapshots/{snapshotId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/sources/snapshots/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "snapshotId"
+            required: true
+            type: "string"
+            name: "snapshotId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getSnapshot"
+        summary: "Gets a source config snapshot"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSnapshotUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/evict: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/evict_post"
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "evictSchemaForSource"
+        summary: "Evict the salesforce schema of a source."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "evictSchemaForSourceUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/schedules/{scheduleId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_put"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ScheduleModel"
+            description: "sourceScheduleModel"
+            required: true
+            name: "sourceScheduleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "updateSourceSchedule"
+        summary: "Update a source schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateSourceScheduleUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/schedules/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "scheduleId"
+            required: true
+            type: "string"
+            name: "scheduleId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "deleteSourceSchedule"
+        summary: "Delete a source schedule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteSourceScheduleUsingDELETE"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseRuleModel"
+            description: "ruleModel"
+            required: true
+            name: "ruleModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "addCommonMappingSettingsRule"
+        summary: "Add a new common mapping rule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addCommonMappingSettingsRuleUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RuleModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getCommonMappingSettingsRules"
+        summary: "Get all common mapping rules"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getCommonMappingSettingsRulesUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/configuration/salesforce/objects/{objectName}/fields: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/configuration/salesforce/objects/paramId/fields_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceField"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "objectName"
+            required: true
+            type: "string"
+            name: "objectName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "getFieldsForSource"
+        summary: "Get an object fields for a given source."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldsForSourceUsingGET"
+    /rest/sourceconfiguration/salesforce/generateOTG: 
+      post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/generateOTG_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "string"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceObject"
+              type: "array"
+            description: "salesforceObjects"
+            required: true
+            name: "salesforceObjects"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "generateOTG"
+        summary: "Generate an ObjectsToGet given a schema"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "generateOTGUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/pushRefresh: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/pushRefresh_post"
+        responses: 
+          200: 
+            description: "OK"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            enum: 
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "ENABLE_DISABLED_ENTITIES"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "PAUSE_ON_ERROR"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "TEST"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+              - "ORG_PROVISIONING_CHECK"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "REFRESH_CANCEL"
+              - "LIMIT_REACHED"
+            description: "activityOperation"
+            required: true
+            in: "query"
+            type: "string"
+            name: "activityOperation"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Sources"
+        x-pretty-name: "setPushRefreshStatus"
+        summary: "Sets the refreshing state of a push source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "setPushRefreshStatusUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings/common/rules/{ruleId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseRuleModel"
+            description: "baseRule"
+            required: true
+            name: "baseRule"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "updateCommonMappingSettingsRule"
+        summary: "Update a common mapping rule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateCommonMappingSettingsRuleUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "deleteCommonMappingSettingsRule"
+        summary: "Delete a common mapping rule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteCommonMappingSettingsRuleUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings/common/rules/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RuleModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "ruleId"
+            required: true
+            type: "string"
+            name: "ruleId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getCommonMappingSettingsRule"
+        summary: "Get a common mapping rule"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getCommonMappingSettingsRuleUsingGET"
+    /rest/organizations/{organizationId}/sources/{sourceId}/disable: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/disable_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SourceModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        deprecated: true
+        tags: 
+          - "Sources"
+        x-pretty-name: "disable"
+        summary: "Disable schedules on a source"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "disableUsingPOST"
+    /rest/organizations/{organizationId}/sources/{sourceId}/mappings: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/MappingsConfigurationModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+          - 
+            description: "rebuild"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "rebuild"
+          - 
+            schema: 
+              $ref: "#/definitions/BaseMappingsConfigurationModel"
+            description: "mappingsConfiguration"
+            required: true
+            name: "mappingsConfiguration"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "updateMappingsConfiguration"
+        summary: "Update mapping configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateMappingsConfigurationUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "SOURCE"
+          targetId: "{sourceId}"
+        uiOperationId: "/rest/organizations/paramId/sources/paramId/mappings_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/MappingsConfigurationModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sourceId"
+            required: true
+            type: "string"
+            name: "sourceId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Mappings"
+        x-pretty-name: "getMappingsConfiguration"
+        summary: "Get mapping configuration"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMappingsConfigurationUsingGET"
+    /rest/sourceconfiguration/salesforce/objects/{objectName}/fields: 
+      post: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceField"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "objectName"
+            required: true
+            type: "string"
+            name: "objectName"
+            in: "path"
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceField"
+              type: "array"
+            description: "inputFields"
+            required: true
+            name: "inputFields"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "refreshFields"
+        summary: "Refresh fields for a given object"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "refreshFieldsUsingPOST"
+      get: 
+        uiOperationId: "/rest/sourceconfiguration/salesforce/objects/paramId/fields_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SalesforceField"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "objectName"
+            required: true
+            type: "string"
+            name: "objectName"
+            in: "path"
+          - 
+            description: "refreshToken"
+            required: true
+            type: "string"
+            name: "refreshToken"
+            in: "query"
+          - 
+            description: "refreshTokenGuid"
+            required: true
+            type: "string"
+            name: "refreshTokenGuid"
+            in: "query"
+          - 
+            enum: 
+              - "LEGACY"
+              - "EXPRESS"
+            description: "schemaVersion"
+            default: "LEGACY"
+            required: false
+            in: "query"
+            type: "string"
+            name: "schemaVersion"
+          - 
+            description: "sandbox"
+            default: false
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sandbox"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Salesforce Source Configuration"
+        x-pretty-name: "getFields"
+        summary: "Get fields for a given object"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldsUsingGET"
+  tags: 
+    - 
+      name: "Mappings"
+      description: "Mapping Resource"
+    - 
+      name: "Sources"
+      description: "Source Resource"
+    - 
+      name: "Salesforce Source Configuration"
+      description: "Salesforce Source Config Resource"
+    - 
+      name: "Source Extensions"
+      description: "Source Extension Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    XMLRecordDefinition: 
+      type: "object"
+      properties: 
+        body: 
+          type: "string"
+        dateFormat: 
+          type: "string"
+        author: 
+          type: "string"
+        uri: 
+          type: "string"
+        summary: 
+          type: "string"
+        uniqueId: 
+          type: "string"
+        date: 
+          type: "string"
+        title: 
+          type: "string"
+        root: 
+          type: "string"
+        unescapeXMLEntities: 
+          type: "boolean"
+        metaData: 
+          items: 
+            $ref: "#/definitions/XMLMetaData"
+          type: "array"
+    PermissionLevel: 
+      type: "object"
+      properties: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSet"
+          type: "array"
+        name: 
+          type: "string"
+    MappingModel: 
+      type: "object"
+      properties: 
+        kind: 
+          enum: 
+            - "COMMON"
+            - "MAPPING"
+            - "DEFAULT"
+          type: "string"
+        type: 
+          type: "string"
+        content: 
+          type: "string"
+        fieldTypeHint: 
+          enum: 
+            - "LONG"
+            - "LONG_64"
+            - "DOUBLE"
+            - "DATE"
+            - "STRING"
+          type: "string"
+        fieldName: 
+          type: "string"
+        extractionMethod: 
+          type: "string"
+        id: 
+          type: "string"
+    SecurityProvider: 
+      type: "object"
+      properties: 
+        typeName: 
+          type: "string"
+        name: 
+          type: "string"
+    FormAuthentication: 
+      type: "object"
+      properties: 
+        inputs: 
+          items: 
+            $ref: "#/definitions/FormAuthenticationInput"
+          type: "array"
+        reauthenticate: 
+          type: "boolean"
+        formURL: 
+          type: "string"
+        actionMethod: 
+          enum: 
+            - "Post"
+            - "Get"
+          type: "string"
+        secureURL: 
+          type: "string"
+        actionURL: 
+          type: "string"
+    SalesforceCondition: 
+      type: "object"
+      properties: 
+        operator: 
+          enum: 
+            - "EQUALS"
+            - "NOT_EQUALS"
+            - "LESS_THAN"
+            - "LESS_OR_EQUAL_THAN"
+            - "GREATER_THAN"
+            - "GREATER_OR_EQUAL_THAN"
+            - "LIKE"
+            - "NOT_LIKE"
+            - "INCLUDES"
+            - "EXCLUDES"
+            - "IN"
+            - "NOT_IN"
+          type: "string"
+        inConditionValues: 
+          items: 
+            $ref: "#/definitions/SalesforceInConditionValue"
+          type: "array"
+        fieldName: 
+          type: "string"
+        value: 
+          type: "string"
+    AddressPattern: 
+      type: "object"
+      properties: 
+        expression: 
+          type: "string"
+        patternType: 
+          enum: 
+            - "Wildcard"
+            - "RegEx"
+          type: "string"
+        allowed: 
+          type: "boolean"
+    BaseMappingsConfigurationModel: 
+      type: "object"
+      properties: 
+        common: 
+          $ref: "#/definitions/BaseCommonMappingSettingsModel"
+        types: 
+          items: 
+            $ref: "#/definitions/BaseTypedMappingSettingsModel«BaseRuleModel»"
+          type: "array"
+    UserIdentity: 
+      type: "object"
+      properties: 
+        userName: 
+          type: "string"
+        password: 
+          type: "string"
+        name: 
+          type: "string"
+    KbPublishStatus: 
+      type: "object"
+      properties: 
+        archived: 
+          type: "boolean"
+        draft: 
+          type: "boolean"
+        online: 
+          type: "boolean"
+    SourceInformation: 
+      type: "object"
+      properties: 
+        collectionName: 
+          type: "string"
+        collectionId: 
+          type: "integer"
+          format: "int32"
+        sourceId: 
+          type: "integer"
+          format: "int32"
+        nextOperation: 
+          $ref: "#/definitions/NextOperation"
+        rebuildRequired: 
+          type: "boolean"
+        sourceStatus: 
+          $ref: "#/definitions/SourceStatus"
+        sourceName: 
+          type: "string"
+        numberOfDocuments: 
+          type: "integer"
+          format: "int64"
+        documentsTotalSize: 
+          type: "integer"
+          format: "int64"
+        lastOperation: 
+          $ref: "#/definitions/SourceLastOperation"
+    UserIdentityModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        password: 
+          type: "string"
+        name: 
+          type: "string"
+    DocumentProcessor: 
+      type: "object"
+      properties: 
+        type: 
+          type: "string"
+        parameters: 
+          $ref: "#/definitions/DocumentProcessorParameters"
+    BaseTypedMappingSettingsModel«BaseRuleModel»: 
+      type: "object"
+      properties: 
+        rules: 
+          items: 
+            $ref: "#/definitions/BaseRuleModel"
+          type: "array"
+        type: 
+          type: "string"
+    Parameter: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    BaseRuleModel: 
+      type: "object"
+      properties: 
+        content: 
+          items: 
+            type: "string"
+          type: "array"
+        field: 
+          type: "string"
+    SourceExtensionsMap: 
+      type: "object"
+      properties: 
+        items: 
+          additionalProperties: 
+            $ref: "#/definitions/SourceExtensionsModel"
+          type: "object"
+        common: 
+          $ref: "#/definitions/SourceExtensionsModel"
+    ConditionNode: 
+      type: "object"
+    MappingsConfigurationModel: 
+      type: "object"
+      properties: 
+        common: 
+          $ref: "#/definitions/CommonMappingSettingsModel"
+        types: 
+          items: 
+            $ref: "#/definitions/TypedMappingSettingsModel"
+          type: "array"
+    Permission: 
+      type: "object"
+      properties: 
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        identityType: 
+          enum: 
+            - "Unknown"
+            - "User"
+            - "Group"
+            - "VirtualGroup"
+          type: "string"
+        identity: 
+          type: "string"
+        securityProvider: 
+          type: "string"
+    PermissionSet: 
+      type: "object"
+      properties: 
+        allowAnonymous: 
+          type: "boolean"
+        deniedPermissions: 
+          items: 
+            $ref: "#/definitions/Permission"
+          type: "array"
+        allowedPermissions: 
+          items: 
+            $ref: "#/definitions/Permission"
+          type: "array"
+        name: 
+          type: "string"
+    SourceLastOperation: 
+      type: "object"
+      properties: 
+        initialBuild: 
+          type: "boolean"
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        errorCode: 
+          type: "string"
+        result: 
+          type: "string"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        numberOfDocuments: 
+          type: "integer"
+          format: "int64"
+        id: 
+          type: "string"
+    LanguageHint: 
+      type: "object"
+      properties: 
+        probability: 
+          type: "number"
+          format: "double"
+        language: 
+          type: "string"
+    BaseCommonMappingSettingsModel: 
+      type: "object"
+      properties: 
+        rules: 
+          items: 
+            $ref: "#/definitions/BaseRuleModel"
+          type: "array"
+    ScheduleFrequency: 
+      type: "object"
+      properties: 
+        monthDay: 
+          type: "integer"
+          format: "int32"
+        hourMinute: 
+          $ref: "#/definitions/HourMinutePair"
+        weekDays: 
+          items: 
+            enum: 
+              - "MONDAY"
+              - "TUESDAY"
+              - "WEDNESDAY"
+              - "THURSDAY"
+              - "FRIDAY"
+              - "SATURDAY"
+              - "SUNDAY"
+            type: "string"
+          type: "array"
+        value: 
+          type: "integer"
+          format: "int32"
+        type: 
+          enum: 
+            - "MINUTELY"
+            - "HOURLY"
+            - "DAILY"
+            - "WEEKLY"
+            - "MONTHLY"
+          type: "string"
+    SalesforceField: 
+      type: "object"
+      properties: 
+        mandatory: 
+          type: "boolean"
+        mappings: 
+          items: 
+            $ref: "#/definitions/MappingModel"
+          type: "array"
+        relationshipPolymorphic: 
+          type: "boolean"
+        label: 
+          type: "string"
+        relationshipNameField: 
+          type: "string"
+        referenceTypes: 
+          items: 
+            type: "string"
+          type: "array"
+        values: 
+          items: 
+            type: "string"
+          type: "array"
+        relationshipName: 
+          type: "string"
+        indexed: 
+          type: "boolean"
+        custom: 
+          type: "boolean"
+        type: 
+          type: "string"
+        name: 
+          type: "string"
+    SecurityProviderReferenceModel: 
+      type: "object"
+      properties: 
+        attributes: 
+          type: "object"
+        type: 
+          enum: 
+            - "SOURCE"
+            - "SECURITY_PROVIDER"
+          type: "string"
+        id: 
+          type: "string"
+    ParameterModel: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        value: 
+          type: "string"
+    ScheduleModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        resourceId: 
+          type: "string"
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        enabled: 
+          type: "boolean"
+        frequency: 
+          $ref: "#/definitions/ScheduleFrequency"
+        scheduleType: 
+          enum: 
+            - "SECURITY_CACHE"
+            - "SOURCE"
+          type: "string"
+        id: 
+          type: "string"
+    LightSourceModel: 
+      type: "object"
+      properties: 
+        sourceType: 
+          enum: 
+            - "AMAZONS3"
+            - "BOX"
+            - "BOX_ENTERPRISE"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CONFLUENCE2_HOSTED"
+            - "CUSTOM"
+            - "DROPBOX"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
+            - "GMAIL"
+            - "GMAIL_DOMAIN_WIDE"
+            - "GMAIL_SINGLE_USER"
+            - "GENERIC_REST"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "GOOGLE_DRIVE_SINGLE_USER"
+            - "JIRA2"
+            - "JIRA2_HOSTED"
+            - "JIVE"
+            - "JIVE_HOSTED"
+            - "LITHIUM"
+            - "MICROSOFT_DYNAMICS"
+            - "ONEDRIVE_FOR_BUSINESS"
+            - "PUSH"
+            - "RSS"
+            - "SALESFORCE"
+            - "SHAREPOINT_ONLINE"
+            - "SITECORE"
+            - "SITEMAP"
+            - "TWITTER2"
+            - "WEB2"
+            - "YOUTUBE"
+          type: "string"
+        crawlerInstanceType: 
+          type: "string"
+        pushEnabled: 
+          type: "boolean"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    DocumentPermissionModel: 
+      type: "object"
+      properties: 
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "VALID"
+            - "PENDING"
+            - "INCOMPLETE"
+            - "IN_ERROR"
+            - "WARNING"
+          type: "string"
+        permissionLevels: 
+          items: 
+            $ref: "#/definitions/PermissionLevelModel"
+          type: "array"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+    SourceModel: 
+      type: "object"
+      properties: 
+        postConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+        customParameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        name: 
+          type: "string"
+        information: 
+          $ref: "#/definitions/SourceInformation"
+        urlFilters: 
+          items: 
+            $ref: "#/definitions/UrlFilter"
+          type: "array"
+        sourceVisibility: 
+          enum: 
+            - "PRIVATE"
+            - "SECURED"
+            - "SHARED"
+          type: "string"
+        pushEnabled: 
+          type: "boolean"
+        configurationError: 
+          $ref: "#/definitions/ConfigurationError"
+        securityProviderReferences: 
+          items: 
+            type: "string"
+          type: "array"
+        preConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+        onPremisesEnabled: 
+          type: "boolean"
+        owner: 
+          type: "string"
+        sourceType: 
+          enum: 
+            - "AMAZONS3"
+            - "BOX"
+            - "BOX_ENTERPRISE"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CONFLUENCE2_HOSTED"
+            - "CUSTOM"
+            - "DROPBOX"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
+            - "GMAIL"
+            - "GMAIL_DOMAIN_WIDE"
+            - "GMAIL_SINGLE_USER"
+            - "GENERIC_REST"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "GOOGLE_DRIVE_SINGLE_USER"
+            - "JIRA2"
+            - "JIRA2_HOSTED"
+            - "JIVE"
+            - "JIVE_HOSTED"
+            - "LITHIUM"
+            - "MICROSOFT_DYNAMICS"
+            - "ONEDRIVE_FOR_BUSINESS"
+            - "PUSH"
+            - "RSS"
+            - "SALESFORCE"
+            - "SHAREPOINT_ONLINE"
+            - "SITECORE"
+            - "SITEMAP"
+            - "TWITTER2"
+            - "WEB2"
+            - "YOUTUBE"
+          type: "string"
+        permissions: 
+          $ref: "#/definitions/DocumentPermissionModel"
+        id: 
+          type: "string"
+        mappings: 
+          items: 
+            $ref: "#/definitions/MappingModel"
+          type: "array"
+    SourceExtensionModel: 
+      type: "object"
+      properties: 
+        extensionId: 
+          type: "string"
+        actionOnError: 
+          enum: 
+            - "REJECT_DOCUMENT"
+            - "SKIP_EXTENSION"
+          type: "string"
+        itemType: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        versionId: 
+          type: "string"
+        condition: 
+          type: "string"
+    DocumentProcessorParameters: 
+      type: "object"
+      properties: 
+        values: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        deleteOnError: 
+          type: "boolean"
+        condition: 
+          $ref: "#/definitions/ConditionNode"
+    NextOperation: 
+      type: "object"
+      properties: 
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        operationType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+    SalesforceInConditionValue: 
+      type: "object"
+      properties: 
+        type: 
+          enum: 
+            - "SOQL_STRING"
+            - "SOQL_ID"
+            - "SOQL_DATETIME"
+            - "SOQL_BOOLEAN"
+            - "SOQL_OTHER"
+          type: "string"
+        value: 
+          type: "string"
+    ExtendedDataFile: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        data: 
+          type: "string"
+        extendedData: 
+          type: "object"
+    CharsetDetectionHint: 
+      type: "object"
+      properties: 
+        confidence: 
+          type: "number"
+          format: "double"
+        charset: 
+          type: "string"
+    ExtendedConfig: 
+      type: "object"
+      properties: 
+        dataFiles: 
+          additionalProperties: 
+            $ref: "#/definitions/DataFile"
+          type: "object"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/Parameter"
+          type: "object"
+        addressPatterns: 
+          items: 
+            $ref: "#/definitions/AddressPattern"
+          type: "array"
+        startingAddresses: 
+          items: 
+            type: "string"
+          type: "array"
+        dbConnectionString: 
+          type: "string"
+        documentConsumerURI: 
+          type: "string"
+        sourceSecurityOption: 
+          enum: 
+            - "Retrieve"
+            - "Specified"
+            - "Merge"
+          type: "string"
+        caseSensitivePatterns: 
+          type: "boolean"
+        securityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/SecurityProvider"
+          type: "object"
+        authenticationForms: 
+          additionalProperties: 
+            $ref: "#/definitions/FormAuthentication"
+          type: "object"
+        metricsEnabled: 
+          type: "boolean"
+        extendedDataFiles: 
+          additionalProperties: 
+            $ref: "#/definitions/ExtendedDataFile"
+          type: "object"
+        sourceInformation: 
+          $ref: "#/definitions/SourceInformation"
+        documentConfig: 
+          $ref: "#/definitions/DocumentConfig"
+        indexIdentifier: 
+          type: "string"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentity"
+          type: "object"
+        permissions: 
+          items: 
+            $ref: "#/definitions/PermissionLevel"
+          type: "array"
+    ExtensionSetting: 
+      type: "object"
+      properties: 
+        openResultWithQuickView: 
+          type: "boolean"
+        customConverter: 
+          $ref: "#/definitions/DocumentProcessor"
+        converter: 
+          enum: 
+            - "Detect"
+            - "Skip"
+            - "Html"
+            - "IFilter"
+            - "Wordperfect"
+            - "Rtf"
+            - "Excel"
+            - "Word"
+            - "Pdf"
+            - "Powerpoint"
+            - "PlainText"
+            - "Zip"
+            - "Xml"
+            - "Msg"
+            - "Mime"
+            - "Image"
+          type: "string"
+        generateThumbnail: 
+          type: "boolean"
+        summarizeDocument: 
+          type: "boolean"
+        saveExcerptBlob: 
+          type: "boolean"
+        convertDirectlyToHtml: 
+          type: "boolean"
+        indexContainer: 
+          type: "boolean"
+        fileTypeValue: 
+          type: "string"
+        excerptSource: 
+          enum: 
+            - "Document"
+            - "Summary"
+          type: "string"
+        action: 
+          enum: 
+            - "Retrieve"
+            - "Reference"
+            - "Ignore"
+          type: "string"
+        actionOnError: 
+          enum: 
+            - "Reference"
+            - "Ignore"
+          type: "string"
+        useContentType: 
+          type: "boolean"
+        useExternalHTMLGenerator: 
+          type: "boolean"
+    SourceExtensionsModel: 
+      type: "object"
+      properties: 
+        postConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+        preConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+    DocumentProcessorConfig: 
+      type: "object"
+      properties: 
+        summarizeDocument: 
+          type: "boolean"
+        maxTextOutputSize: 
+          type: "integer"
+          format: "int32"
+        addRawTextDataStream: 
+          type: "boolean"
+        openResultWithQuickView: 
+          type: "boolean"
+        indexMeta: 
+          type: "boolean"
+        beautifyDocuments: 
+          type: "boolean"
+        generateMobileHTML: 
+          type: "boolean"
+        fieldMappingOrigin: 
+          type: "string"
+        summarySize: 
+          type: "integer"
+          format: "int32"
+        titleGrammaticalScoreWeight: 
+          type: "number"
+          format: "double"
+        reportProgressionTimeout: 
+          type: "integer"
+          format: "int32"
+        imageMinimumSize: 
+          type: "integer"
+          format: "int32"
+        xmlrecordDefinitions: 
+          items: 
+            $ref: "#/definitions/XMLRecordDefinition"
+          type: "array"
+        excerptSource: 
+          enum: 
+            - "Document"
+            - "Summary"
+          type: "string"
+        extensionSettings: 
+          $ref: "#/definitions/ExtensionSettings"
+        indexExcelNumbers: 
+          type: "boolean"
+        timeout: 
+          type: "integer"
+          format: "int32"
+        titlePositionScoreWeight: 
+          type: "number"
+          format: "double"
+        titleLengthProbabilityWeight: 
+          type: "number"
+          format: "double"
+        styleSheet: 
+          type: "string"
+        generateHTML: 
+          type: "boolean"
+        titlePercentageOfCapsFirstLettersWeight: 
+          type: "number"
+          format: "double"
+        languagesSettings: 
+          type: "string"
+        languageHints: 
+          items: 
+            $ref: "#/definitions/LanguageHint"
+          type: "array"
+        charsetDetectionHint: 
+          $ref: "#/definitions/CharsetDetectionHint"
+        saveExcerptBlob: 
+          type: "boolean"
+        maxHTMLOutputSize: 
+          type: "integer"
+          format: "int32"
+        excelFloatingPointPrecision: 
+          type: "integer"
+          format: "int32"
+        maximumNumberOfPagesToConvert: 
+          type: "integer"
+          format: "int32"
+        useClickableUriAsBasePath: 
+          type: "boolean"
+    PermissionLevelModel: 
+      type: "object"
+      properties: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSetModel"
+          type: "array"
+        name: 
+          type: "string"
+    SalesforceObject: 
+      type: "object"
+      properties: 
+        name: 
+          type: "string"
+        searchable: 
+          type: "boolean"
+        fields: 
+          items: 
+            $ref: "#/definitions/SalesforceField"
+          type: "array"
+        custom: 
+          type: "boolean"
+        kbPublishStatus: 
+          $ref: "#/definitions/KbPublishStatus"
+        hasCustomFiletype: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "SERVICE_CLOUD"
+            - "CHATTER"
+            - "CONTENT"
+            - "KNOWLEDGEBASE"
+            - "CUSTOM"
+          type: "string"
+        indexed: 
+          type: "boolean"
+        label: 
+          type: "string"
+        conditions: 
+          items: 
+            $ref: "#/definitions/SalesforceCondition"
+          type: "array"
+    XMLMetaData: 
+      type: "object"
+      properties: 
+        name: 
+          type: "string"
+        value: 
+          type: "string"
+    FormAuthenticationInput: 
+      type: "object"
+      properties: 
+        type: 
+          enum: 
+            - "Text"
+            - "Password"
+            - "Checkbox"
+            - "Radio"
+            - "Submit"
+            - "Reset"
+            - "File"
+            - "Hidden"
+            - "Image"
+            - "Button"
+          type: "string"
+        name: 
+          type: "string"
+        value: 
+          type: "string"
+    SecurityProviderModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        name: 
+          type: "string"
+        parameters: 
+          additionalProperties: 
+            $ref: "#/definitions/ParameterModel"
+          type: "object"
+        caseSensitive: 
+          type: "boolean"
+        cascadingSecurityProviders: 
+          additionalProperties: 
+            $ref: "#/definitions/CascadingSecurityProvider"
+          type: "object"
+        organizationClusterId: 
+          type: "string"
+        nodeRequired: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        id: 
+          type: "string"
+        referencedBy: 
+          items: 
+            $ref: "#/definitions/SecurityProviderReferenceModel"
+          type: "array"
+        userIdentities: 
+          additionalProperties: 
+            $ref: "#/definitions/UserIdentityModel"
+          type: "object"
+    RuleModel: 
+      type: "object"
+      properties: 
+        content: 
+          items: 
+            type: "string"
+          type: "array"
+        field: 
+          type: "string"
+        id: 
+          type: "string"
+    ExtensionSettings: 
+      type: "object"
+      properties: 
+        other: 
+          $ref: "#/definitions/ExtensionSetting"
+        noExtension: 
+          $ref: "#/definitions/ExtensionSetting"
+        byExtensions: 
+          items: 
+            $ref: "#/definitions/ExtensionSettingByExtension"
+          type: "array"
+        byContentTypes: 
+          items: 
+            $ref: "#/definitions/ExtensionSettingByExtension"
+          type: "array"
+    DataFile: 
+      type: "object"
+      properties: 
+        sensitive: 
+          type: "boolean"
+        data: 
+          type: "string"
+    TypedMappingSettingsModel: 
+      type: "object"
+      properties: 
+        rules: 
+          items: 
+            $ref: "#/definitions/RuleModel"
+          type: "array"
+        type: 
+          type: "string"
+        id: 
+          type: "string"
+    ExtensionSettingByExtension: 
+      type: "object"
+      properties: 
+        extensionSetting: 
+          $ref: "#/definitions/ExtensionSetting"
+        extensions: 
+          items: 
+            type: "string"
+          type: "array"
+    CascadingSecurityProvider: 
+      type: "object"
+      properties: 
+        type: 
+          enum: 
+            - "ACTIVE_DIRECTORY"
+            - "ACTIVE_DIRECTORY_WITHOUT_EXPANSION"
+            - "ALFRESCO"
+            - "BOX"
+            - "CLAIMS"
+            - "CLAIMS_TO_EMAIL"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CUSTOM"
+            - "DATABASE"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EMAIL"
+            - "EXCHANGE"
+            - "EXPANDED"
+            - "FILE_SYSTEM"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "JIRA2"
+            - "JIRA_LEGACY"
+            - "JIVE"
+            - "LDAP"
+            - "LIFERAY"
+            - "MICROSOFT_DYNAMICS"
+            - "MICROSOFT_DYNAMICS_LEGACY"
+            - "OFFICE365"
+            - "OPENTEXT_CONTENT_SERVER"
+            - "ORACLE_KNOWLEDGE"
+            - "ORACLE_UCM"
+            - "SALESFORCE"
+            - "SALESFORCE_LEGACY"
+            - "SHAREPOINT"
+            - "SITECORE"
+            - "SITECORE_LEGACY"
+            - "WEBSPHERE_WCM"
+            - "WINDCHILL"
+            - "YAMMER"
+            - "ZENDESK"
+          type: "string"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    CommonMappingSettingsModel: 
+      type: "object"
+      properties: 
+        rules: 
+          items: 
+            $ref: "#/definitions/RuleModel"
+          type: "array"
+    RawSourceConfig: 
+      type: "object"
+      properties: 
+        postConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+        mappings: 
+          items: 
+            $ref: "#/definitions/MappingModel"
+          type: "array"
+        securityProviderReferences: 
+          items: 
+            type: "string"
+          type: "array"
+        securityProviders: 
+          items: 
+            $ref: "#/definitions/SecurityProviderModel"
+          type: "array"
+        onPremisesEnabled: 
+          type: "boolean"
+        pushEnabled: 
+          type: "boolean"
+        additionalInfos: 
+          type: "object"
+        preConversionExtensions: 
+          items: 
+            $ref: "#/definitions/SourceExtensionModel"
+          type: "array"
+        sourceType: 
+          enum: 
+            - "AMAZONS3"
+            - "BOX"
+            - "BOX_ENTERPRISE"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CONFLUENCE2_HOSTED"
+            - "CUSTOM"
+            - "DROPBOX"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
+            - "GMAIL"
+            - "GMAIL_DOMAIN_WIDE"
+            - "GMAIL_SINGLE_USER"
+            - "GENERIC_REST"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "GOOGLE_DRIVE_SINGLE_USER"
+            - "JIRA2"
+            - "JIRA2_HOSTED"
+            - "JIVE"
+            - "JIVE_HOSTED"
+            - "LITHIUM"
+            - "MICROSOFT_DYNAMICS"
+            - "ONEDRIVE_FOR_BUSINESS"
+            - "PUSH"
+            - "RSS"
+            - "SALESFORCE"
+            - "SHAREPOINT_ONLINE"
+            - "SITECORE"
+            - "SITEMAP"
+            - "TWITTER2"
+            - "WEB2"
+            - "YOUTUBE"
+          type: "string"
+        fromRaw: 
+          type: "boolean"
+        additionalComments: 
+          type: "string"
+        owner: 
+          type: "string"
+        crawlerInstanceType: 
+          type: "string"
+        configuration: 
+          $ref: "#/definitions/ExtendedConfig"
+        id: 
+          type: "string"
+        name: 
+          type: "string"
+    ConfigurationError: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+        message: 
+          type: "string"
+    UrlFilter: 
+      type: "object"
+      properties: 
+        filter: 
+          type: "string"
+        filterType: 
+          enum: 
+            - "WILDCARD"
+            - "REGEX"
+          type: "string"
+        includeFilter: 
+          type: "boolean"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        name: 
+          type: "string"
+        permissions: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    DocumentConfig: 
+      type: "object"
+      properties: 
+        preConversions: 
+          items: 
+            $ref: "#/definitions/DocumentProcessor"
+          type: "array"
+        indexUri: 
+          type: "string"
+        documentProcessorConfig: 
+          $ref: "#/definitions/DocumentProcessorConfig"
+        postConversions: 
+          items: 
+            $ref: "#/definitions/DocumentProcessor"
+          type: "array"
+    SourceStatus: 
+      type: "object"
+      properties: 
+        initialBuild: 
+          type: "boolean"
+        timestamp: 
+          type: "integer"
+          format: "int64"
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        allowedOperations: 
+          items: 
+            enum: 
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "ENABLE_DISABLED_ENTITIES"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "PAUSE_ON_ERROR"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "TEST"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+              - "ORG_PROVISIONING_CHECK"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "REFRESH_CANCEL"
+              - "LIMIT_REACHED"
+            type: "string"
+          type: "array"
+        pausedOnErrorCode: 
+          type: "string"
+        numberOfDocuments: 
+          type: "integer"
+          format: "int64"
+        type: 
+          enum: 
+            - "CREATING"
+            - "DISABLED"
+            - "REFRESHING"
+            - "PAUSED"
+            - "PAUSED_ON_ERROR"
+            - "IDLE"
+            - "ERROR"
+            - "PUSH_READY"
+          type: "string"
+    HourMinutePair: 
+      type: "object"
+      properties: 
+        minute: 
+          type: "integer"
+          format: "int32"
+        hour: 
+          type: "integer"
+          format: "int32"
+    SinglePermissionModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        securityProvider: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        identityType: 
+          enum: 
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+            - "UNKNOWN"
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        allowed: 
+          type: "boolean"
+        identity: 
+          type: "string"
+  swagger: "2.0"
+

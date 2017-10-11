@@ -1,0 +1,880 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/license: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/license_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/LicenseModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "getLicense"
+        summary: "Get the organization's license"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseUsingGET"
+    /rest/organizations/{organizationId}/limits/{sectionName}/{limitKey}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/limits/paramId/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/LimitStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+          - 
+            description: "limitKey"
+            required: true
+            type: "string"
+            name: "limitKey"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Limits"
+        x-pretty-name: "getLimit"
+        summary: "Get a specific limit status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLimitUsingGET"
+    /rest/organizations/{organizationId}/license/{sectionName}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/license/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "Id of the organization"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "License"
+        x-pretty-name: "getLicenseSection"
+        summary: "Get an organization license section"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLicenseSectionUsingGET"
+    /rest/organizations/{organizationId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationModel"
+            description: "organizationModel"
+            required: true
+            name: "organizationModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "updateOrganization"
+        summary: "Updates a single organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateOrganizationUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "deleteOrganization"
+        summary: "Delete an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteOrganizationUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganization"
+        summary: "Get a single organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationUsingGET"
+    /rest/organizations/{organizationId}/limits/{sectionName}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/limits/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              additionalProperties: 
+                $ref: "#/definitions/LimitStatusModel"
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sectionName"
+            required: true
+            type: "string"
+            name: "sectionName"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Limits"
+        x-pretty-name: "getSectionLimits"
+        summary: "Get a section limits and their statuses"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getSectionLimitsUsingGET"
+    /rest/organizations/{organizationId}/exports/logins: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/exports/logins_get"
+        responses: 
+          200: 
+            description: "OK"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "numberOfDays"
+            format: "int32"
+            default: 31
+            required: false
+            in: "query"
+            type: "integer"
+            name: "numberOfDays"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations Exports"
+        x-pretty-name: "getLoginsExport"
+        summary: "Get the login activity for the organization."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getLoginsExportUsingGET"
+    /rest/organizations/{organizationId}/limits: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/limits_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              additionalProperties: 
+                additionalProperties: 
+                  $ref: "#/definitions/LimitStatusModel"
+                type: "object"
+              type: "object"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Limits"
+        x-pretty-name: "getOrganizationLimits"
+        summary: "Get the organization limits and their statuses"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationLimitsUsingGET"
+    /rest/organizations/{organizationId}/status: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/status_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationStatusModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganizationStatus"
+        summary: "Get the organization status"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationStatusUsingGET"
+    /rest/organizations: 
+      post: 
+        uiOperationId: "/rest/organizations_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/OrganizationCreatedModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "name"
+            required: true
+            type: "string"
+            name: "name"
+            in: "query"
+          - 
+            description: "owner"
+            required: false
+            type: "string"
+            name: "owner"
+            in: "query"
+          - 
+            description: "licenseTemplate"
+            required: false
+            type: "string"
+            name: "licenseTemplate"
+            in: "query"
+          - 
+            description: "organizationTemplate"
+            required: false
+            type: "string"
+            name: "organizationTemplate"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "createOrganization"
+        summary: "Create an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createOrganizationUsingPOST"
+      get: 
+        uiOperationId: "/rest/organizations_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "additionalFields"
+            items: 
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "additionalFields"
+          - 
+            description: "filter"
+            required: false
+            type: "string"
+            name: "filter"
+            in: "query"
+          - 
+            description: "sortBy"
+            default: "displayName"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "ASC"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organizations"
+        x-pretty-name: "getOrganizations"
+        summary: "Gets all organizations"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationsUsingGET"
+  tags: 
+    - 
+      name: "Organizations"
+      description: "Organization Service Resource"
+    - 
+      name: "Organizations Exports"
+      description: "Exports Resource"
+    - 
+      name: "License"
+      description: "License Service Resource"
+    - 
+      name: "Limits"
+      description: "Limit Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    OrganizationModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        license: 
+          $ref: "#/definitions/LicenseModel"
+        readOnly: 
+          type: "boolean"
+        emailNotificationsEnabled: 
+          type: "boolean"
+        createdDate: 
+          type: "integer"
+          format: "int64"
+        owner: 
+          $ref: "#/definitions/OrganizationOwnerModel"
+        provisioningStatus: 
+          $ref: "#/definitions/LightProvisioningStatusModel"
+        id: 
+          type: "string"
+    PageModel«OrganizationModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/OrganizationModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    RealmModel: 
+      type: "object"
+      properties: 
+        samlIdentityProviderId: 
+          type: "string"
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    OrganizationOwnerModel: 
+      type: "object"
+      properties: 
+        email: 
+          type: "string"
+    LicenseModel: 
+      type: "object"
+      properties: 
+        additionalInfo: 
+          type: "string"
+        productName: 
+          enum: 
+            - "COVEO_CLOUD"
+            - "DYNAMICS"
+            - "SALESFORCE"
+            - "SITECORE"
+          type: "string"
+        connectors: 
+          items: 
+            $ref: "#/definitions/ConnectorInformationModel"
+          type: "array"
+        expirationDate: 
+          type: "integer"
+          format: "int64"
+        monitoringLevel: 
+          type: "string"
+        type: 
+          type: "string"
+        properties: 
+          type: "object"
+    OrganizationCreatedModel: 
+      type: "object"
+      properties: 
+        apiKey: 
+          $ref: "#/definitions/ApiKeyModel"
+        id: 
+          type: "string"
+    ApiKeyModel: 
+      type: "object"
+      properties: 
+        deniedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        displayName: 
+          type: "string"
+        description: 
+          type: "string"
+        allowedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        privileges: 
+          items: 
+            $ref: "#/definitions/PrivilegeModel"
+          type: "array"
+        enabled: 
+          type: "boolean"
+        value: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        createdBy: 
+          $ref: "#/definitions/UserModel"
+        createdDate: 
+          type: "string"
+          format: "date-time"
+        id: 
+          type: "string"
+    LightProvisioningStatusModel: 
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "ERROR"
+            - "HEALTHY"
+          type: "string"
+        ongoing: 
+          type: "boolean"
+        currentProvisioningProgress: 
+          type: "number"
+          format: "float"
+        lastProvisioningCompletedDate: 
+          type: "integer"
+          format: "int64"
+        initialProvisioningDone: 
+          type: "boolean"
+    OrganizationStatusModel: 
+      type: "object"
+      properties: 
+        readOnly: 
+          type: "boolean"
+        provisioningStatus: 
+          $ref: "#/definitions/LightProvisioningStatusModel"
+        supportActivated: 
+          type: "boolean"
+    AllowedScheduleModel: 
+      type: "object"
+      properties: 
+        refreshType: 
+          enum: 
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "DELETION"
+            - "SECURITY_CACHE_REFRESH"
+            - "SECURITY_CACHE_REFRESH_ENTITIES_IN_ERROR"
+          type: "string"
+        scheduleFrequencies: 
+          items: 
+            enum: 
+              - "MINUTELY"
+              - "HOURLY"
+              - "DAILY"
+              - "WEEKLY"
+              - "MONTHLY"
+            type: "string"
+          type: "array"
+    PrivilegeModel: 
+      type: "object"
+      properties: 
+        owner: 
+          type: "string"
+        targetDomain: 
+          type: "string"
+        type: 
+          type: "string"
+        targetIds: 
+          items: 
+            type: "string"
+          type: "array"
+    UserModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/UserRealmModel"
+          type: "array"
+        socialUser: 
+          type: "boolean"
+        enabled: 
+          type: "boolean"
+        additionalInformation: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        emailAliases: 
+          items: 
+            type: "string"
+          type: "array"
+        samlIdentityProviderId: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        locked: 
+          type: "boolean"
+        providerUsername: 
+          type: "string"
+        expired: 
+          type: "boolean"
+        email: 
+          type: "string"
+        credentialsExpired: 
+          type: "boolean"
+    Map«string,LimitStatusModel»: 
+      additionalProperties: 
+        $ref: "#/definitions/LimitStatusModel"
+      type: "object"
+    ConnectorInformationModel: 
+      type: "object"
+      properties: 
+        sourceVisibilities: 
+          items: 
+            enum: 
+              - "PRIVATE"
+              - "SECURED"
+              - "SHARED"
+            type: "string"
+          type: "array"
+        type: 
+          enum: 
+            - "AMAZONS3"
+            - "BOX"
+            - "BOX_ENTERPRISE"
+            - "CONFLUENCE"
+            - "CONFLUENCE2"
+            - "CONFLUENCE2_HOSTED"
+            - "CUSTOM"
+            - "DROPBOX"
+            - "DROPBOX_FOR_BUSINESS"
+            - "EXCHANGE"
+            - "EXCHANGE_ENTERPRISE"
+            - "GMAIL"
+            - "GMAIL_DOMAIN_WIDE"
+            - "GMAIL_SINGLE_USER"
+            - "GENERIC_REST"
+            - "GOOGLE_DRIVE_DOMAIN_WIDE"
+            - "GOOGLE_DRIVE_SINGLE_USER"
+            - "JIRA2"
+            - "JIRA2_HOSTED"
+            - "JIVE"
+            - "JIVE_HOSTED"
+            - "LITHIUM"
+            - "MICROSOFT_DYNAMICS"
+            - "ONEDRIVE_FOR_BUSINESS"
+            - "PUSH"
+            - "RSS"
+            - "SALESFORCE"
+            - "SHAREPOINT_ONLINE"
+            - "SITECORE"
+            - "SITEMAP"
+            - "TWITTER2"
+            - "WEB2"
+            - "YOUTUBE"
+          type: "string"
+        allowedSchedules: 
+          items: 
+            $ref: "#/definitions/AllowedScheduleModel"
+          type: "array"
+        allowed: 
+          type: "boolean"
+    LimitStatusModel: 
+      type: "object"
+      properties: 
+        limit: 
+          type: "integer"
+          format: "int64"
+        actualCount: 
+          type: "integer"
+          format: "int64"
+    UserRealmModel: 
+      type: "object"
+      properties: 
+        member: 
+          type: "boolean"
+        realm: 
+          $ref: "#/definitions/RealmModel"
+  swagger: "2.0"
+
