@@ -18,7 +18,7 @@ gitHelper.checkout(repository.baseBranch, DEBUG)
 if not fileHelper.file_exists(repository.mdPagesPath, DEBUG):
     directoryHelper.make_directory(repository.mdPagesPath, DEBUG)
 
-def format_front_matter(layout, title, categories, swagger, ghPagesSiteName):
+def format_front_matter(layout, title, swagger):
     return "---\n" \
            "layout: %s\n" \
            "title: %s\n" \
@@ -37,7 +37,7 @@ for api in platform.apiList:
             layout = repository.mdLayout
             title = apiTitle
             swagger = fileToLoad
-            mdData = format_front_matter(layout, title, categories, swagger, ghPagesSiteName)
+            mdData = format_front_matter(layout, title, swagger)
             fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
             gitHelper.add(markdownFile, DEBUG)
