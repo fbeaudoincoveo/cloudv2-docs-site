@@ -1,28 +1,28 @@
 ---
   debug: True # Setting this to False will execute the script in "silent" mode.
   repository:
-    accessToken: "" # This must allow to create PRs on public GitHub repositories.
+    accessToken: "" # Must allow to create PRs on public GitHub repositories. Leave empty for now.
     tempOutputJsonPath: ./temp_json/ # Where to save temporary JSONs when running diff script. Deleted after script.
-    outputYamlPath: ../../api_docs/ # Where the YAMLs are.
-    mdPagesPath: ../../pages/api_explorer/ # Where to put the MD pages.
+    outputYamlPath: ../../api_docs/ # Where the YAML API specifications are stored.
+    mdPagesPath: ../../_api_explorer/ccv2/ # Where to put the MD pages.
     mdLayout: redoc_page # Use either "redoc_page", "swaggerui2_page" or "swaggerui3_page".
     upstreamBranch: upstream_api_spec_changes # The branch that the diff script checkouts when it runs.
     baseBranch: master # The deploy script checkouts this branch. The diff script sends its PRs to this branch.
     baseUpstreamCommitMessage: Upstream_update_ # Base commit message used by the diff script. Datetime is added.
     baseDeployCommitMessage: Deployment_ # Base commit message used by the deploy script. Datetime is added.
     upstreamPullRequestMessage: Upstream_update_request # PR message used by the diff script.
-    ghPagesHostName: https://coveo.github.io # Name of page on GitHub pages.
-    ghPagesSiteName: cloudv2-docs-site # Must specify GH pages site name to be able to render yml.
   platform:
     environment: "" # Use either "" (for Prod environment), "qa" or "dev".
     apiList: # The list of apis to try to load from the Coveo platform site.
       - Platform
       - Index
+      - Field
       - SecurityCache
       - Source
       - Activity
       - Privilege
-      - UsageAnalytics
+      - UsageAnalyticsRead
+      - UsageAnalyticsWrite
       - PushApi
       - SourceLogsApi
       - Extension
