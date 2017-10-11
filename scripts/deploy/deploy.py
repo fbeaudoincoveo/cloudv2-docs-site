@@ -22,29 +22,25 @@ def format_front_matter(layout, title, categories, swagger, ghPagesSiteName):
     return "---\n" \
            "layout: %s\n" \
            "title: %s\n" \
-           "categories: %s\n" \
            "swagger: %s\n" \
-           "ghPagesSiteName: %s\n" \
            "---" % \
-            (layout, title, categories, swagger, ghPagesSiteName)
+            (layout, title, swagger)
 
 for api in platform.apiList:
     fileToLoad = repository.outputYamlPath + api + ".yml"
+    markdownFile = repository.mdPagesPath + api + "_API.md"
 
     if (fileHelper.file_exists(fileToLoad, DEBUG)):
-        data = fileHelper.load_yaml_file(fileToLoad, DEBUG)
+        if (not fileHelper.file_exists(markdownFile, DEBUG)):
+            data = fileHelper.load_yaml_file(fileToLoad, DEBUG)
+            apiTitle = data["info"]["title"]
+            layout = repository.mdLayout
+            title = apiTitle
+            swagger = fileToLoad
+            mdData = format_front_matter(layout, title, categories, swagger, ghPagesSiteName)
+            fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
 
-        apiTitle = data["info"]["title"]
-        markdownFile = repository.mdPagesPath + api + ".md"
-        layout = repository.mdLayout
-        title = apiTitle
-        categories = "api_docs"
-        swagger = fileToLoad
-        ghPagesSiteName = repository.ghPagesSiteName
-        mdData = format_front_matter(layout, title, categories, swagger, ghPagesSiteName)
-        fileHelper.create_file_from_data(mdData, markdownFile, DEBUG)
-
-        gitHelper.add(markdownFile, DEBUG)
+            gitHelper.add(markdownFile, DEBUG)
 
     else:
         print "Could not get Swagger specification from " + fileToLoad + " ."

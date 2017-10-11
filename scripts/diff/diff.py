@@ -64,5 +64,4 @@ commitMessage = repository.baseUpstreamCommitMessage + str(datetime.now().strfti
 gitHelper.commit_all(commitMessage, DEBUG)
 
 gitHelper.push(DEBUG)
-gitHelper.create_pull_request(repository.accessToken, repository.upstreamPullRequestMessage,
-                              repository.upstreamBranch, repository.baseBranch, DEBUG)
+# gitHelper.create_pull_request(repository.accessToken, repository.upstreamPullRequestMessage, repository.upstreamBranch, repository.baseBranch, DEBUG)
