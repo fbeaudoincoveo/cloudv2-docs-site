@@ -93,7 +93,6 @@ header {
 					display: none;
 					z-index: 999;
 					li {
-						//border-bottom: 1px solid $bleuMarin;
 						a {
 							color: $bleuMarin;
 							text-decoration: none;
@@ -277,7 +276,7 @@ header {
 			}
 			.externalbox {
 				> li > a {
-					padding: 10px 15px 10px 10px;
+					padding: 10px 15px 29px 10px;
 					border-radius: 2px;
 					border: 1px solid transparent;
 					background-color: transparent;
@@ -289,14 +288,12 @@ header {
 					}
 					&.current,
 					&:hover {
-						border: 1px solid #22374e;
-						background-color: $bleuMarin2;
 					}
 				}
 				ul {
 					width: 300%;
 					right: 0;
-					top: 34px;
+					top: 53px;
 				}
 			}
 
@@ -379,7 +376,6 @@ header {
 				background-color:rgba(38,62,85,0.30);
 				li{
 					text-align:left !important;
-					//border-top:1px solid #fff!important;
 					a{
 						border:none !important;
 						text-transform: none;
@@ -477,7 +473,7 @@ header {
 
             .externalbox {
               > li > a {
-                padding: 10px 15px 10px 10px;
+                padding: 10px 15px 17px 10px;
                 border-radius: 2px;
                 border: 1px solid transparent;
                 background-color: transparent;
@@ -489,14 +485,12 @@ header {
                 }
                 &.current,
                 &:hover {
-                  border: 1px solid #22374e;
-                  background-color: $bleuMarin2;
                 }
               }
               ul {
                 width: auto;
                 right: 0;
-                top: 34px;
+                top: 42px;
                 padding-left:0;
               }
             }
@@ -589,7 +583,7 @@ header {
 		}
 		.CoveoOmnibox.magic-box,  .CoveoSearchButton {
 			background: $blanc;
-			border-color: $orange;
+			border-radius: 0;
 		}
 	}
 	.full {
