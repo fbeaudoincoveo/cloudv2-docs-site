@@ -20,7 +20,6 @@
       - SecurityCache
       - Source
       - Activity
-      - Privilege
       - UsageAnalyticsRead
       - UsageAnalyticsWrite
       - PushApi
