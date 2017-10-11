@@ -42,8 +42,8 @@ function isMobile(){
 }
 
 // Set the Coveo Cloud Organization search and analytics tokens
-var siteOrigin= 'CoveoDocs'; // Telling search.coveo.com where the search request comes from
-var SuggestionScope = '@source==CoveoProductDocsStagingOnS3'; //Search Box suggestion filter ex: @syssource=("ohclouden")
+var siteOrigin= 'Docs'; // Telling search.coveo.com where the search request comes from
+var SuggestionScope = '@source==CoveoProductDocsStagingOnS3Sitemap'; //Search Box suggestion filter ex: @syssource=("ohclouden")
 var searchToken = 'xx1b26c04d-9505-4a61-bab2-ff29d6d4efc1'; //API Key allowing to query
 var uaToken = searchToken; // API Key for allowing to push Usage analytics events
 var hostname = window.location.hostname; //To manage dev/staging/prod environment
