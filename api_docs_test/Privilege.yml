@@ -1,0 +1,2693 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/privileges/apikeys: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/privileges/apikeys_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/PrivilegeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Privileges"
+        x-pretty-name: "getApiKeyPrivileges"
+        summary: "Get all possible privileges for api keys in the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getApiKeyPrivilegesUsingGET"
+    /rest/organizations/{organizationId}/apikeys: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/apikeys_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/ApiKeyModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ApiKeyModel"
+            description: "apiKeyModel"
+            required: true
+            name: "apiKeyModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "createApiKey"
+        summary: "Create a new api key for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createApiKeyUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/apikeys_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ApiKeyModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "getApiKeys"
+        summary: "Get all api keys for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getApiKeysUsingGET"
+    /rest/organizations/{organizationId}/members/privileges: 
+      get: 
+        uiOperationId: "/rest/organizations/paramId/members/privileges_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/PrivilegeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "getOrganizationMemberPrivileges"
+        summary: "Get all privileges for the authenticated member"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMemberPrivilegesUsingGET"
+    /rest/organizations/{organizationId}/groups: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/groups_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/JsonStringIdWrapper"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sendEmailToInvitedUsers"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmailToInvitedUsers"
+          - 
+            schema: 
+              $ref: "#/definitions/GroupModel"
+            description: "groupModel"
+            required: true
+            name: "groupModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Groups"
+        x-pretty-name: "createGroup"
+        summary: "Create a new group for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createGroupUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/groups_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/GroupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Groups"
+        x-pretty-name: "getGroups"
+        summary: "Get all groups for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupsUsingGET"
+    /rest/organizations/{organizationId}/saml/enabled: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ORGANIZATION"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/saml/enabled_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderEnabledModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "isSamlIdentityProviderEnabled"
+        summary: "Checks if a saml identity provider exists for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "isSamlIdentityProviderEnabledUsingGET"
+    /rest/organizations/{organizationId}/apikeys/{apiKeyId}/activate: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/activate_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "apiKeyId"
+            required: true
+            type: "string"
+            name: "apiKeyId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "activateApiKey"
+        summary: "Activate an existing api key"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "activateApiKeyUsingPUT"
+    /rest/organizations/{organizationId}/groups/{groupId}/members/{username}: 
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Members"
+        x-pretty-name: "deleteGroupMember"
+        summary: "Delete a user from the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteGroupMemberUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/MemberModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Members"
+        x-pretty-name: "getGroupMember"
+        summary: "Get a group user"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupMemberUsingGET"
+    /rest/organizations/{organizationId}/saml/availables: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/saml/availables_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/SamlIdentityProviderModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getAvailableSamlIdentityProviders"
+        summary: "Get saml identity providers that the authenticated user can manage and that could be added to this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAvailableSamlIdentityProvidersUsingGET"
+    /rest/organizations/{organizationId}/privileges: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/privileges_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/PrivilegeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Privileges"
+        x-pretty-name: "getOrganizationPrivileges"
+        summary: "Get all possible privileges for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationPrivilegesUsingGET"
+    /rest/organizations/{organizationId}/saml/identityprovider: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/saml/identityprovider_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+            description: "samlIdentityProviderModel"
+            required: true
+            name: "samlIdentityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "updateIdentityProvider"
+        summary: "Update the identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateIdentityProviderUsingPUT"
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/saml/identityprovider_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+            description: "samlIdentityProviderModel"
+            required: true
+            name: "samlIdentityProviderModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "createIdentityProvider"
+        summary: "Add an identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createIdentityProviderUsingPOST"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/saml/identityprovider_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "deleteIdentityProvider"
+        summary: "Delete the identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteIdentityProviderUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/saml/identityprovider_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SamlIdentityProviderModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getIdentityProvider"
+        summary: "Get the identity provider for this organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getIdentityProviderUsingGET"
+    /rest/organizations/{organizationId}/realms: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/realms_post"
+        responses: 
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationRealmModel"
+              type: "array"
+            description: "organizationRealmModels"
+            required: true
+            name: "organizationRealmModels"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Realms"
+        x-pretty-name: "addRealmsToGroups"
+        summary: "Add the realms to the specified groups of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addRealmsToGroupsUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/realms_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationRealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Realms"
+        x-pretty-name: "getOrganizationRealms"
+        summary: "Get the realms of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationRealmsUsingGET"
+    /rest/organizations/{organizationId}/members/{username}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationMemberModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationMemberModel"
+            description: "member"
+            required: true
+            name: "member"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "updateOrganizationMember"
+        summary: "Update member of an organization."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateOrganizationMemberUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "deleteOrganizationMember"
+        summary: "Delete a member of all groups in organization. Warning : User can still be included by domain."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteOrganizationMemberUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/members/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationMemberModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "getOrganizationMember"
+        summary: "Get a single member of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMemberUsingGET"
+    /rest/organizations/{organizationId}/apikeys/{apiKeyId}/disable: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId/disable_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "apiKeyId"
+            required: true
+            type: "string"
+            name: "apiKeyId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "disableApiKey"
+        summary: "Disable an existing api key"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "disableApiKeyUsingPUT"
+    /rest/organizations/{organizationId}/groups/{groupId}/members: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/MemberModel"
+            description: "user"
+            required: true
+            name: "user"
+            in: "body"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "sendEmailOnInvite"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmailOnInvite"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Members"
+        x-pretty-name: "addGroupMember"
+        summary: "Add user to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addGroupMemberUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/members_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/MemberModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Members"
+        x-pretty-name: "getGroupMembers"
+        summary: "Get all the group's members"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupMembersUsingGET"
+    /rest/organizations/{organizationId}/members: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/members_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationMemberModel"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "sendEmailToInvitedUsers"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmailToInvitedUsers"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationInviteModel"
+              type: "array"
+            description: "invites"
+            required: true
+            name: "invites"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "updateOrganizationMembers"
+        summary: "Edit members of an organization."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateOrganizationMembersUsingPUT"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/members_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationMemberModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "getOrganizationMembers"
+        summary: "Get the members of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMembersUsingGET"
+    /rest/organizations/{organizationId}/apikeys/{apiKeyId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "apiKeyId"
+            required: true
+            type: "string"
+            name: "apiKeyId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/ApiKeyModel"
+            description: "apiKeyModel"
+            required: true
+            name: "apiKeyModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "updateApiKey"
+        summary: "Update an existing api key"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateApiKeyUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "apiKeyId"
+            required: true
+            type: "string"
+            name: "apiKeyId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "deleteApiKey"
+        summary: "Delete an api key"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteApiKeyUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "API_KEY"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/apikeys/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ApiKeyModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "apiKeyId"
+            required: true
+            type: "string"
+            name: "apiKeyId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Api Keys"
+        x-pretty-name: "getApiKey"
+        summary: "Get an api key details"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getApiKeyUsingGET"
+    /rest/organizations/{organizationId}/privileges/token: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/privileges/token_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/GlobalPrivilegeModel"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "accessToken"
+            required: true
+            type: "string"
+            name: "accessToken"
+            in: "query"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Privileges"
+        x-pretty-name: "getOrganizationMemberPrivilegesUsingPost"
+        summary: "Get all organization privileges for the access token"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMemberPrivilegesUsingPostUsingPOST"
+      get: 
+        uiOperationId: "/rest/organizations/paramId/privileges/token_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/GlobalPrivilegeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "accessToken"
+            required: false
+            type: "string"
+            name: "accessToken"
+            in: "query"
+          - 
+            description: "X-Token-To-Validate"
+            required: false
+            type: "string"
+            name: "X-Token-To-Validate"
+            in: "header"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Privileges"
+        x-pretty-name: "getOrganizationMemberPrivileges"
+        summary: "Get all organization privileges for the access token"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMemberPrivilegesUsingGET"
+    /rest/organizations/{organizationId}/groups/{groupId}/invites/decline: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/decline_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "declineInvite"
+        summary: "Decline an invite to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "declineInviteUsingPOST"
+    /rest/organizations/{organizationId}/groups/{groupId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "sendEmailToInvitedUsers"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmailToInvitedUsers"
+          - 
+            schema: 
+              $ref: "#/definitions/GroupModel"
+            description: "groupModel"
+            required: true
+            name: "groupModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Groups"
+        x-pretty-name: "updateGroup"
+        summary: "Update an existing group for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateGroupUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Groups"
+        x-pretty-name: "deleteGroup"
+        summary: "Delete an existing group for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteGroupUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/GroupModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Groups"
+        x-pretty-name: "getGroup"
+        summary: "Get group details for the selected organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupUsingGET"
+    /rest/invites: 
+      get: 
+        uiOperationId: "/rest/invites_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/LightGroupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Invites"
+        x-pretty-name: "getInvites"
+        summary: "Get all the groups where a user is invited."
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getInvitesUsingGET"
+    /rest/organizations/{organizationId}/groups/{groupId}/invites/{usernameOrEmail}: 
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "usernameOrEmail"
+            required: true
+            type: "string"
+            name: "usernameOrEmail"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "deleteInvite"
+        summary: "Delete an invite from the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteInviteUsingDELETE"
+    /rest/organizations/{organizationId}/groups/{groupId}/realms: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_post"
+        responses: 
+          201: 
+            description: "Created"
+            schema: 
+              $ref: "#/definitions/RealmModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/RealmModel"
+            description: "newRealm"
+            required: true
+            name: "newRealm"
+            in: "body"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Realms"
+        x-pretty-name: "addGroupRealm"
+        summary: "Add a realm to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "addGroupRealmUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Realms"
+        x-pretty-name: "getGroupRealms"
+        summary: "Get all the group's realms"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupRealmsUsingGET"
+    /rest/organizations/{organizationId}/members/{username}/groups: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/members/paramId/groups_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/GroupModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Members"
+        x-pretty-name: "getMemberGroups"
+        summary: "Get groups for an organization member"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getMemberGroupsUsingGET"
+    /rest/organizations/{organizationId}/groups/{groupId}/invites: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/InviteModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "sendEmail"
+            default: true
+            required: false
+            in: "query"
+            type: "boolean"
+            name: "sendEmail"
+          - 
+            schema: 
+              $ref: "#/definitions/InviteModel"
+            description: "invitedModel"
+            required: true
+            name: "invitedModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "inviteMember"
+        summary: "Invite a user to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "inviteMemberUsingPOST"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/InviteModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "getInvites"
+        summary: "Get all the group's invited members"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getInvitesUsingGET"
+    /rest/organizations/{organizationId}/realms/{realmId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/realms/paramId_put"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/OrganizationRealmModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "realmId"
+            required: true
+            type: "string"
+            name: "realmId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/OrganizationRealmModel"
+            description: "organizationRealmModel"
+            required: true
+            name: "organizationRealmModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Realms"
+        x-pretty-name: "updateRealmsInGroups"
+        summary: "Update the realms of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateRealmsInGroupsUsingPUT"
+    /rest/privilege/evaluate: 
+      post: 
+        uiOperationId: "/rest/privilege/evaluate_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/PrivilegeRequestModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            schema: 
+              $ref: "#/definitions/PrivilegeRequestModel"
+            description: "privilegeRequestModel"
+            required: true
+            name: "privilegeRequestModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Privilege Evaluator"
+        x-pretty-name: "evaluate"
+        summary: "Evaluate a privilege request"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "evaluateUsingPOST"
+    /rest/organizations/{organizationId}/groups/{groupId}/realms/{realmId}: 
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "EDIT"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "realmId"
+            required: true
+            type: "string"
+            name: "realmId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Realms"
+        x-pretty-name: "deleteGroupRealm"
+        summary: "Delete a realm from the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "deleteGroupRealmUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          type: "VIEW"
+          targetDomain: "GROUP"
+          targetId: "{groupId}"
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/realms/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/RealmModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+          - 
+            description: "realmId"
+            required: true
+            type: "string"
+            name: "realmId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Realms"
+        x-pretty-name: "getGroupRealm"
+        summary: "Get a group realm"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getGroupRealmUsingGET"
+    /rest/users/{username}/realms: 
+      get: 
+        uiOperationId: "/rest/users/paramId/realms_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Users"
+        x-pretty-name: "getAllExistingRealmsForUser"
+        summary: "Get a single user's realms"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAllExistingRealmsForUserUsingGET"
+    /rest/organizations/{organizationId}/groups/{groupId}/invites/accept: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/groups/paramId/invites/accept_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "groupId"
+            required: true
+            type: "string"
+            name: "groupId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Group Invites"
+        x-pretty-name: "acceptInvite"
+        summary: "Accept an invite to the specified group"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "acceptInviteUsingPOST"
+    /rest/organizations/{organizationId}/saml/identityprovider/realms: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SAML_IDENTITY_PROVIDER"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/saml/identityprovider/realms_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/RealmModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Saml Identity Providers"
+        x-pretty-name: "getRealmsForSamlIdentityProvider"
+        summary: "Get all realms for the identity provider"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getRealmsForSamlIdentityProviderUsingGET"
+    /rest/organizations/{organizationId}/privileges/me: 
+      get: 
+        uiOperationId: "/rest/organizations/paramId/privileges/me_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/PrivilegeModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Privileges"
+        x-pretty-name: "getOrganizationMemberPrivileges"
+        summary: "Get all organization privileges for the authenticated member"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationMemberPrivilegesUsingGET"
+    /rest/organizations/{organizationId}/invites: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "GROUP"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/invites_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/OrganizationInviteModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Organization Invites"
+        x-pretty-name: "getOrganizationInvites"
+        summary: "Get the invites of an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getOrganizationInvitesUsingGET"
+    /rest/users/{username}: 
+      get: 
+        uiOperationId: "/rest/users/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/UserModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "username"
+            required: true
+            type: "string"
+            name: "username"
+            in: "path"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Users"
+        x-pretty-name: "getUser"
+        summary: "Get a single user"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getUserUsingGET"
+  tags: 
+    - 
+      name: "Privilege Evaluator"
+      description: "Privilege Request Evaluator Resource"
+    - 
+      name: "Group Invites"
+      description: "Group Invite Resource"
+    - 
+      name: "Saml Identity Providers"
+      description: "Saml Identity Provider Resource"
+    - 
+      name: "Organization Members"
+      description: "Organization Member Resource"
+    - 
+      name: "Organization Realms"
+      description: "Organization Realm Resource"
+    - 
+      name: "Groups"
+      description: "Group Resource"
+    - 
+      name: "Api Keys"
+      description: "Api Key Resource"
+    - 
+      name: "Organization Invites"
+      description: "Organization Invite Resource"
+    - 
+      name: "Group Realms"
+      description: "Group Realm Resource"
+    - 
+      name: "Invites"
+      description: "Invite Resource"
+    - 
+      name: "Group Members"
+      description: "Group Member Resource"
+    - 
+      name: "Users"
+      description: "User Resource"
+    - 
+      name: "Organization Privileges"
+      description: "Organization Privilege Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    InviteModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        invitedDate: 
+          type: "integer"
+          format: "int64"
+        expirationDate: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        providerUsername: 
+          type: "string"
+        email: 
+          type: "string"
+    UserModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/UserRealmModel"
+          type: "array"
+        socialUser: 
+          type: "boolean"
+        enabled: 
+          type: "boolean"
+        additionalInformation: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        emailAliases: 
+          items: 
+            type: "string"
+          type: "array"
+        samlIdentityProviderId: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        locked: 
+          type: "boolean"
+        providerUsername: 
+          type: "string"
+        expired: 
+          type: "boolean"
+        email: 
+          type: "string"
+        credentialsExpired: 
+          type: "boolean"
+    OrganizationRealmModel: 
+      type: "object"
+      properties: 
+        samlIdentityProviderId: 
+          type: "string"
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        groups: 
+          items: 
+            $ref: "#/definitions/IdAndDisplayNameModel"
+          type: "array"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    PrivilegeRequestModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        requestedPrivilege: 
+          $ref: "#/definitions/GlobalPrivilegeModel"
+        approved: 
+          type: "boolean"
+    OrganizationMemberModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        groups: 
+          items: 
+            $ref: "#/definitions/OrganizationMemberGroupModel"
+          type: "array"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        providerUsername: 
+          type: "string"
+        email: 
+          type: "string"
+    JsonStringIdWrapper: 
+      type: "object"
+      properties: 
+        id: 
+          type: "string"
+    GroupModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        realms: 
+          items: 
+            $ref: "#/definitions/RealmModel"
+          type: "array"
+        privileges: 
+          items: 
+            $ref: "#/definitions/PrivilegeModel"
+          type: "array"
+        id: 
+          type: "string"
+        deletable: 
+          type: "boolean"
+        members: 
+          items: 
+            $ref: "#/definitions/MemberModel"
+          type: "array"
+        invites: 
+          items: 
+            $ref: "#/definitions/InviteModel"
+          type: "array"
+    RealmModel: 
+      type: "object"
+      properties: 
+        samlIdentityProviderId: 
+          type: "string"
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    MemberModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        displayName: 
+          type: "string"
+        lastLogin: 
+          type: "integer"
+          format: "int64"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+        providerUsername: 
+          type: "string"
+        email: 
+          type: "string"
+    ApiKeyModel: 
+      type: "object"
+      properties: 
+        deniedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        displayName: 
+          type: "string"
+        description: 
+          type: "string"
+        allowedIps: 
+          items: 
+            type: "string"
+          type: "array"
+        privileges: 
+          items: 
+            $ref: "#/definitions/PrivilegeModel"
+          type: "array"
+        enabled: 
+          type: "boolean"
+        value: 
+          type: "string"
+        organizationId: 
+          type: "string"
+        createdBy: 
+          $ref: "#/definitions/UserModel"
+        createdDate: 
+          type: "string"
+          format: "date-time"
+        id: 
+          type: "string"
+    OrganizationGroupInviteModel: 
+      type: "object"
+      properties: 
+        inviter: 
+          type: "string"
+        invitedDate: 
+          type: "integer"
+          format: "int64"
+        group: 
+          $ref: "#/definitions/IdAndDisplayNameModel"
+        expirationDate: 
+          type: "integer"
+          format: "int64"
+    SamlIdentityProviderEnabledModel: 
+      type: "object"
+      properties: 
+        organizationId: 
+          type: "string"
+        samlEnabled: 
+          type: "boolean"
+    LightGroupModel: 
+      type: "object"
+      properties: 
+        organizations: 
+          items: 
+            $ref: "#/definitions/IdAndDisplayNameModel"
+          type: "array"
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+    OrganizationMemberGroupModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+    SamlIdentityProviderModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        postBindingEndpoint: 
+          type: "string"
+        organizationIds: 
+          items: 
+            $ref: "#/definitions/IdAndDisplayNameModel"
+          type: "array"
+        x509Certificate: 
+          type: "string"
+        entityId: 
+          type: "string"
+        id: 
+          type: "string"
+    IdAndDisplayNameModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        id: 
+          type: "string"
+    OrganizationInviteModel: 
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+        groupInvites: 
+          items: 
+            $ref: "#/definitions/OrganizationGroupInviteModel"
+          type: "array"
+        providerUsername: 
+          type: "string"
+        email: 
+          type: "string"
+        provider: 
+          enum: 
+            - "SALESFORCE"
+            - "SALESFORCE_SANDBOX"
+            - "GOOGLE"
+            - "OFFICE365"
+            - "SAML"
+            - "OTHER"
+          type: "string"
+    GlobalPrivilegeModel: 
+      type: "object"
+      properties: 
+        owner: 
+          type: "string"
+        global: 
+          type: "boolean"
+        type: 
+          type: "string"
+        targetDomain: 
+          type: "string"
+        targetIds: 
+          items: 
+            type: "string"
+          type: "array"
+    PrivilegeModel: 
+      type: "object"
+      properties: 
+        owner: 
+          type: "string"
+        targetDomain: 
+          type: "string"
+        type: 
+          type: "string"
+        targetIds: 
+          items: 
+            type: "string"
+          type: "array"
+    UserRealmModel: 
+      type: "object"
+      properties: 
+        member: 
+          type: "boolean"
+        realm: 
+          $ref: "#/definitions/RealmModel"
+  swagger: "2.0"
+

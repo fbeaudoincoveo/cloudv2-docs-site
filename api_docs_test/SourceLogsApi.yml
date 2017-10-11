@@ -1,0 +1,578 @@
+---
+  info: 
+    version: "2016-03-03T13:22:11Z"
+    title: "Source Logs"
+  paths: 
+    /organizations/{organizationId}: 
+      post: 
+        responses: 
+          200: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          429: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Too many Requests"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/Error"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            name: "documentId"
+            in: "query"
+          - 
+            required: true
+            in: "query"
+            type: "string"
+            name: "from"
+            format: "date-time"
+          - 
+            required: true
+            in: "query"
+            type: "string"
+            name: "to"
+            format: "date-time"
+          - 
+            required: false
+            type: "integer"
+            name: "page"
+            in: "query"
+          - 
+            required: false
+            type: "integer"
+            name: "perPage"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/DocumentLogFacetModel"
+            required: true
+            name: "DocumentLogFacetModel"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Logs"
+        x-pretty-name: "getDocumentLogs"
+        summary: "Get specified source document logs"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+      get: 
+        responses: 
+          200: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          429: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Too many Requests"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/Error"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            name: "sourceId"
+            in: "query"
+          - 
+            required: false
+            type: "string"
+            name: "documentId"
+            in: "query"
+          - 
+            allowMultiple: true
+            required: false
+            type: "string"
+            name: "tasks"
+            in: "query"
+          - 
+            allowMultiple: true
+            required: false
+            type: "string"
+            name: "operations"
+            in: "query"
+          - 
+            allowMultiple: true
+            required: false
+            type: "string"
+            name: "results"
+            in: "query"
+          - 
+            required: true
+            in: "query"
+            type: "string"
+            name: "from"
+            format: "date-time"
+          - 
+            required: true
+            in: "query"
+            type: "string"
+            name: "to"
+            format: "date-time"
+          - 
+            required: false
+            type: "integer"
+            name: "page"
+            in: "query"
+          - 
+            required: false
+            type: "integer"
+            name: "perPage"
+            in: "query"
+        produces: 
+          - "application/json"
+        deprecated: true
+        tags: 
+          - "Logs"
+        x-pretty-name: "getDocumentLogsDeprecated"
+        summary: "Get specified source document logs"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+    /organizations/{organizationId}/facets: 
+      post: 
+        responses: 
+          200: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Success"
+          400: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Bad request"
+            schema: 
+              $ref: "#/definitions/Error"
+          401: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unauthorized"
+            schema: 
+              $ref: "#/definitions/Error"
+          403: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Forbidden"
+            schema: 
+              $ref: "#/definitions/Error"
+          404: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Not found"
+            schema: 
+              $ref: "#/definitions/Error"
+          412: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Precondition Failed"
+            schema: 
+              $ref: "#/definitions/Error"
+          415: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Unsupported Media Type"
+            schema: 
+              $ref: "#/definitions/Error"
+          429: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Too many Requests"
+            schema: 
+              $ref: "#/definitions/Error"
+          500: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Internal Server Error"
+            schema: 
+              $ref: "#/definitions/Error"
+          504: 
+            headers: 
+              Access-Control-Allow-Methods: 
+                type: "string"
+              Access-Control-Allow-Headers: 
+                type: "string"
+              Access-Control-Allow-Origin: 
+                type: "string"
+            description: "Gateway Timeout"
+            schema: 
+              $ref: "#/definitions/Error"
+        parameters: 
+          - 
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            required: false
+            type: "string"
+            name: "documentId"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            name: "from"
+            in: "query"
+          - 
+            required: true
+            type: "string"
+            name: "to"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/DocumentLogFacetModel"
+            required: true
+            name: "DocumentLogFacetModel"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Facets"
+        x-pretty-name: "getDocumentLogsFacets"
+        summary: "Get source document log facets"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+  schemes: 
+    - "https"
+  tags: 
+    - 
+      description: "Indexing pipeline logs for source documents"
+      name: "Logs"
+    - 
+      description: "Log filters"
+      name: "Facets"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      scopes: 
+        full: "Required"
+      flow: "implicit"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      type: "oauth2"
+  host: "api.cloud.coveo.com/logs/v1"
+  definitions: 
+    DocumentLogResults: 
+      items: 
+        enum: 
+          - "COMPLETED"
+          - "WARNING"
+          - "REJECTED"
+          - "ERROR"
+          - "SKIPPED"
+        type: "string"
+      type: "array"
+    DocumentLogTasks: 
+      items: 
+        enum: 
+          - "STREAMING"
+          - "STREAMING_BATCH"
+          - "CONSUMING"
+          - "CONSUMING_BATCH"
+          - "CRAWLING"
+          - "PROCESSING"
+          - "MAPPING"
+          - "EXTENSION"
+          - "INDEXING"
+        type: "string"
+      type: "array"
+    DocumentLogOperations: 
+      items: 
+        enum: 
+          - "ADD"
+          - "UPDATE"
+          - "DELETE"
+          - "DELETE_OLDER_THAN"
+          - "DELETE_AND_CHILDREN"
+          - "BATCH_FILE"
+        type: "string"
+      type: "array"
+    DocumentLogFacetModel: 
+      type: "object"
+      properties: 
+        operations: 
+          $ref: "#/definitions/DocumentLogOperations"
+        resourceIds: 
+          items: 
+            type: "string"
+          type: "array"
+        tasks: 
+          $ref: "#/definitions/DocumentLogTasks"
+        results: 
+          $ref: "#/definitions/DocumentLogResults"
+        sourcesIds: 
+          items: 
+            type: "string"
+          type: "array"
+    Error: 
+      type: "object"
+      properties: 
+        errorCode: 
+          type: "string"
+        message: 
+          type: "string"
+    Empty: 
+      type: "object"
+  swagger: "2.0"
+

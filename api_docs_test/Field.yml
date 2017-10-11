@@ -1,0 +1,496 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/indexes/fields/batch/create: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/create_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+            description: "fieldModels"
+            required: true
+            name: "fieldModels"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "createFields"
+        summary: "Creates fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createFieldsUsingPOST"
+    /rest/organizations/{organizationId}/indexes/fields/batch/delete: 
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/delete_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fields"
+            items: 
+              type: "string"
+            required: true
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "fields"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "removeFields"
+        summary: "Removes fields from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeFieldsUsingDELETE"
+    /rest/organizations/{organizationId}/indexes/fields/batch/update: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/batch/update_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+            description: "fieldModels"
+            required: true
+            name: "fieldModels"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "updateFields"
+        summary: "Update fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateFieldsUsingPUT"
+    /rest/organizations/{organizationId}/indexes/page/fields: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/indexes/page/fields_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/FieldModel"
+              type: "array"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            enum: 
+              - "LONG"
+              - "LONG_64"
+              - "DOUBLE"
+              - "DATE"
+              - "STRING"
+            description: "type"
+            required: false
+            in: "query"
+            type: "string"
+            name: "type"
+          - 
+            description: "filter"
+            required: false
+            type: "string"
+            name: "filter"
+            in: "query"
+          - 
+            description: "sortBy"
+            default: "name"
+            required: false
+            in: "query"
+            type: "string"
+            name: "sortBy"
+          - 
+            description: "order"
+            default: "ASC"
+            required: false
+            in: "query"
+            type: "string"
+            name: "order"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            enum: 
+              - "ALL"
+              - "USER"
+              - "SYSTEM"
+            description: "origin"
+            default: "ALL"
+            required: false
+            in: "query"
+            type: "string"
+            name: "origin"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "getFields"
+        summary: "Get a page of fields for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldsUsingGET"
+    /rest/organizations/{organizationId}/indexes/fields/{fieldId}: 
+      put: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_put"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/FieldModel"
+            description: "fieldModel"
+            required: true
+            name: "fieldModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "updateField"
+        summary: "Update a field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "updateFieldUsingPUT"
+      delete: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "EDIT"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_delete"
+        responses: 
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "removeField"
+        summary: "Removes a specific field from an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "removeFieldUsingDELETE"
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SOURCE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/indexes/fields/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/FieldModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "fieldId"
+            required: true
+            type: "string"
+            name: "fieldId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "getField"
+        summary: "Get a single field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getFieldUsingGET"
+    /rest/organizations/{organizationId}/indexes/fields: 
+      post: 
+        uiOperationId: "/rest/organizations/paramId/indexes/fields_post"
+        responses: 
+          201: 
+            description: "Created"
+          204: 
+            description: "No Content"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            schema: 
+              $ref: "#/definitions/FieldModel"
+            description: "fieldModel"
+            required: true
+            name: "fieldModel"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Fields"
+        x-pretty-name: "createField"
+        summary: "Creates a field for an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "createFieldUsingPOST"
+  tags: 
+    - 
+      name: "Fields"
+      description: "Field Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    FieldModel: 
+      type: "object"
+      properties: 
+        multiValueFacetTokenizers: 
+          type: "string"
+        includeInResults: 
+          type: "boolean"
+        description: 
+          type: "string"
+        ranking: 
+          type: "boolean"
+        dateFormat: 
+          type: "string"
+        multiValueFacet: 
+          type: "boolean"
+        useCacheForComputedFacet: 
+          type: "boolean"
+        system: 
+          type: "boolean"
+        sort: 
+          type: "boolean"
+        facet: 
+          type: "boolean"
+        stemming: 
+          type: "boolean"
+        useCacheForNumericQuery: 
+          type: "boolean"
+        mergeWithLexicon: 
+          type: "boolean"
+        useCacheForSort: 
+          type: "boolean"
+        useCacheForNestedQuery: 
+          type: "boolean"
+        type: 
+          enum: 
+            - "LONG"
+            - "LONG_64"
+            - "DOUBLE"
+            - "DATE"
+            - "STRING"
+          type: "string"
+        includeInQuery: 
+          type: "boolean"
+        smartDateFacet: 
+          type: "boolean"
+        name: 
+          type: "string"
+    PageModel«FieldModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/FieldModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+  swagger: "2.0"
+

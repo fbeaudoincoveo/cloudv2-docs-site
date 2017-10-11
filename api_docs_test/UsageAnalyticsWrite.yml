@@ -1,0 +1,1625 @@
+---
+  info: 
+    version: "1.0"
+    title: "Usage Analytics Write API"
+  paths: 
+    /v15/analytics/status: 
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/StatusResponse"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Get the analytics service status"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_status"
+    /v15/analytics/visit: 
+      delete: 
+        responses: 
+          default: 
+            description: "successful operation"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Clear all cookies associated with the API"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "delete__v15_analytics_visit"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/VisitInfoResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+            required: false
+            type: "string"
+            name: "user"
+            in: "query"
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Get the user current visit information"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_visit"
+    /v15/analytics/search: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddSearchEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/SearchEventModelV15"
+            description: "The search event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a search event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v15_analytics_search"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddSearchEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The search event to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "searchEvent"
+            in: "query"
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a search event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_search"
+    /v15/analytics/click: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddClickEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/ClickEventModelV15"
+            description: "The click event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a click event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v15_analytics_click"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddClickEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The click event to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "clickEvent"
+            in: "query"
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a click event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_click"
+    /v14/analytics/click: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddClickEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+          - 
+            schema: 
+              $ref: "#/definitions/ClickEventModelV14"
+            description: "The click event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a click event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v14_analytics_click"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddClickEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The click event to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "clickEvent"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a click event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_click"
+    /v15/analytics/custom: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddCustomEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/CustomEventModelV15"
+            description: "The custom event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a custom event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v15_analytics_custom"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddCustomEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The custom event to add. Uses the same JSON format as the POST version."
+            required: false
+            type: "string"
+            name: "customEvent"
+            in: "query"
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a custom event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_custom"
+    /v15/analytics/searches: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              items: 
+                $ref: "#/definitions/AddSearchEventResponseV15"
+              type: "array"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SearchEventModelV15"
+              type: "array"
+            description: "The search events to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add multiple search events via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v15_analytics_searches"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              items: 
+                $ref: "#/definitions/AddSearchEventResponseV15"
+              type: "array"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The search events to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "searchEvents"
+            in: "query"
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add multiple search events via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_searches"
+    /v14/analytics/search: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddSearchEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+          - 
+            schema: 
+              $ref: "#/definitions/SearchEventModelV14"
+            description: "The search event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a search event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v14_analytics_search"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddSearchEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The search event to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "searchEvent"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a search event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_search"
+    /v14/analytics/status: 
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/StatusResponse"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Gets the status of the analytics service"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_status"
+    /v14/analytics/monitoring/health: 
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/StatusResponse"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Health check for the analytics service"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_monitoring_health"
+    /v15/analytics/monitoring/health: 
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/StatusResponse"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Health check for the analytics service"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v15_analytics_monitoring_health"
+    /v15/analytics/view: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddViewEventResponseV15"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The name of the organization (Coveo Cloud V2 only)"
+            required: false
+            type: "string"
+            name: "org"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. The query param is overridden by the visitor cookie if present. If none is provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "query"
+          - 
+            schema: 
+              $ref: "#/definitions/ViewEventModelV15"
+            description: "The view event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 15"
+        summary: "Add a view event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v15_analytics_view"
+    /v14/analytics/custom: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddCustomEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+          - 
+            schema: 
+              $ref: "#/definitions/CustomEventModelV14"
+            description: "The custom event to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a custom event via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v14_analytics_custom"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/AddCustomEventResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The custom event to add. Uses the same JSON format as the POST version."
+            required: false
+            type: "string"
+            name: "customEvent"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds a custom event via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_custom"
+    /v14/analytics/visit: 
+      delete: 
+        responses: 
+          default: 
+            description: "successful operation"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: []
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Clears all cookies associated with this API"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "delete__v14_analytics_visit"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              $ref: "#/definitions/VisitInfoResponseV14"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+            required: false
+            type: "string"
+            name: "user"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Get the user current visit informations"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_visit"
+    /v14/analytics/searches: 
+      post: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              items: 
+                $ref: "#/definitions/AddSearchEventResponseV14"
+              type: "array"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+          - 
+            schema: 
+              items: 
+                $ref: "#/definitions/SearchEventModelV14"
+              type: "array"
+            description: "The search events to add."
+            required: true
+            name: "body"
+            in: "body"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds multiple search events via POST"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "post__v14_analytics_searches"
+      get: 
+        responses: 
+          200: 
+            description: "successful operation"
+            schema: 
+              items: 
+                $ref: "#/definitions/AddSearchEventResponseV14"
+              type: "array"
+        schemes: 
+          - "https"
+        description: ""
+        parameters: 
+          - 
+            description: "The search events to add. Uses the same JSON format as the POST version."
+            required: true
+            type: "string"
+            name: "searchEvents"
+            in: "query"
+          - 
+            description: "The unique identifier of the visitor. If not provided, a new identifier will be created and returned as a HTTP cookie."
+            required: false
+            type: "string"
+            name: "visitor"
+            in: "cookie"
+        produces: 
+          - "application/json"
+        tags: 
+          - "Analytics API - Version 14"
+        summary: "Adds multiple search events via GET"
+        security: 
+          - 
+            v8: 
+              - "full"
+          - 
+            v7: 
+              - "writeUA"
+        operationId: "get__v14_analytics_searches"
+  tags: 
+    - 
+      name: "Analytics API - Version 15"
+    - 
+      name: "Analytics API - Version 14"
+  basePath: "/rest/ua"
+  securityDefinitions: 
+    v8: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: ""
+    v7: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://cloudplatform.coveo.com/oauth/authorize"
+      scopes: 
+        writeUA: "Write to the Usage Analytics service"
+        administrateUA: "Perform usage analytics administrator reserved operations"
+        executeQuery: "Execute a query to the index"
+        readUA: "Read from the Usage Analytics service"
+        administrate: "Perform organization administrator reserved operations"
+  definitions: 
+    AddClickEventResponseV15: 
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "Unique identifier associated with the current visitor."
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided click event"
+      description: "The response to add click event operation"
+    AddClickEventResponseV14: 
+      type: "object"
+      properties: 
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided click event"
+      description: "The response to add click event operation"
+    AddCustomEventResponseV14: 
+      type: "object"
+      properties: 
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided custom event"
+      description: "The response to add custom event operation"
+    ClickEventModelV14: 
+      required: 
+        - "actionCause"
+        - "collectionName"
+        - "documentPosition"
+        - "documentUri"
+        - "documentUriHash"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+        - "searchQueryUid"
+        - "sourceName"
+      type: "object"
+      properties: 
+        sourceName: 
+          type: "string"
+          description: "The @syssource of the document that was clicked"
+        documentTitle: 
+          type: "string"
+          description: "The title of the document that was clicked."
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        rankingModifier: 
+          type: "string"
+          description: "The ranking modifier that affected the clicked document."
+        collectionName: 
+          type: "string"
+          description: "The @syscollection of the document that was clicked"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        queryPipeline: 
+          type: "string"
+          description: "The query pipeline of the search that returned the document that was clicked."
+        actionCause: 
+          type: "string"
+          description: "The type of operation that triggered this event. Example: 'firstSearch', 'searchEnter'"
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        searchQueryUid: 
+          type: "string"
+          description: "The searchQueryUid of the search that returned the document that was clicked"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        device: 
+          type: "string"
+          description: "The name of the device that the end user is using"
+        documentPosition: 
+          type: "integer"
+          description: "The position of the document (one-based) that was clicked in the list of results"
+          format: "int32"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of the document that was clicked"
+        documentUrl: 
+          type: "string"
+          description: "The URL of the document that was clicked."
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        mobile: 
+          default: false
+          type: "boolean"
+          description: "Whether the end user's device is a mobile device or not"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of the document that was clicked"
+      description: "An event that represents a result that was clicked"
+    ClickEventModelV15: 
+      required: 
+        - "actionCause"
+        - "collectionName"
+        - "documentPosition"
+        - "documentUri"
+        - "documentUriHash"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+        - "searchQueryUid"
+        - "sourceName"
+      type: "object"
+      properties: 
+        sourceName: 
+          type: "string"
+          description: "The @syssource of the document that was clicked"
+        documentTitle: 
+          type: "string"
+          description: "The title of the document that was clicked."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
+        documentCategory: 
+          type: "string"
+          description: "The category of the clicked document."
+        documentAuthor: 
+          type: "string"
+          description: "The author of the document that was clicked."
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        rankingModifier: 
+          type: "string"
+          description: "The ranking modifier that affected the clicked document."
+        collectionName: 
+          type: "string"
+          description: "The @syscollection of the document that was clicked"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        queryPipeline: 
+          type: "string"
+          description: "The query pipeline of the search that returned the document that was clicked."
+        actionCause: 
+          type: "string"
+          description: "The type of operation that triggered this event. Example: 'firstSearch', 'searchEnter'"
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        searchQueryUid: 
+          type: "string"
+          description: "The searchQueryUid of the search that returned the document that was clicked"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        documentPosition: 
+          type: "integer"
+          description: "The position of the document (one-based) that was clicked in the list of results"
+          format: "int32"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of the document that was clicked"
+        documentUrl: 
+          type: "string"
+          description: "The URL of the document that was clicked."
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of the document that was clicked"
+        outcome: 
+          type: "integer"
+          description: "The outcome of the event. A score you apply on the event which gives it importance"
+          format: "int32"
+      description: "An event that represents a result that was clicked"
+    CustomEventModelV14: 
+      required: 
+        - "eventType"
+        - "eventValue"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        mobile: 
+          default: false
+          type: "boolean"
+          description: "Whether the end user's device is a mobile device or not"
+        eventType: 
+          type: "string"
+          description: "The type of this event"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        eventValue: 
+          type: "string"
+          description: "The type of operation that triggered this event"
+        device: 
+          type: "string"
+          description: "The name of the device that the end user is using"
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        lastSearchQueryUid: 
+          type: "string"
+          description: "The searchQueryUid of the last search event that occurred before this event"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+    AddViewEventResponseV15: 
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "Unique identifier associated with the current visitor."
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided view event"
+      description: "The response to the add view event operation"
+    AddSearchEventResponseV15: 
+      required: 
+        - "searchEventUid"
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "Unique identifier associated with the current visitor."
+        searchEventUid: 
+          type: "string"
+          description: "The searchEventUid associated with the provided search event"
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided custom event"
+      description: "The response to add search event operations"
+    VisitInfoResponseV15: 
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "The visitor id."
+        id: 
+          type: "string"
+          description: "The visit id."
+      description: "The user current visit"
+    VisitInfoResponseV14: 
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "The visitor id."
+        id: 
+          type: "string"
+          description: "The visit id."
+      description: "The user current visit"
+    CustomEventModelV15: 
+      required: 
+        - "eventType"
+        - "eventValue"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        eventType: 
+          type: "string"
+          description: "The type of this event"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        eventValue: 
+          type: "string"
+          description: "The type of operation that triggered this event"
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        outcome: 
+          type: "integer"
+          description: "The outcome of the event. A score you apply on the event which gives it importance"
+          format: "int32"
+        lastSearchQueryUid: 
+          type: "string"
+          description: "The searchQueryUid of the last search event that occurred before this event"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+    ResultModelV15: 
+      required: 
+        - "documentUri"
+        - "documentUriHash"
+      type: "object"
+      properties: 
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of this document"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of this document"
+      description: "A search result"
+    ResultModelV14: 
+      required: 
+        - "documentUri"
+        - "documentUriHash"
+      type: "object"
+      properties: 
+        documentUri: 
+          type: "string"
+          description: "The @sysuri of this document"
+        documentUriHash: 
+          type: "string"
+          description: "The @sysurihash of this document"
+      description: "A search result"
+    AddSearchEventResponseV14: 
+      required: 
+        - "searchEventUid"
+      type: "object"
+      properties: 
+        searchEventUid: 
+          type: "string"
+          description: "The searchEventUid associated with the provided search event"
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided custom event"
+      description: "The response to add search event operations"
+    ViewEventModelV15: 
+      required: 
+        - "language"
+        - "location"
+        - "originLevel1"
+        - "originLevel2"
+      type: "object"
+      properties: 
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        contentType: 
+          type: "string"
+          description: "The content type"
+        contentIdValue: 
+          type: "string"
+          description: "The content ID value"
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        referrer: 
+          type: "string"
+          description: "The page referer"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
+        title: 
+          type: "string"
+          description: "The title of the page"
+        location: 
+          type: "string"
+          description: "The uri of the loaded page or component that is viewed"
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        contentIdKey: 
+          type: "string"
+          description: "The content ID key"
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        outcome: 
+          type: "integer"
+          description: "The outcome of the event. A score you apply on the event which gives it importance"
+          format: "int32"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+    StatusResponse: 
+      required: 
+        - "status"
+      type: "object"
+      properties: 
+        status: 
+          enum: 
+            - "online"
+            - "unavailable"
+            - "degraded"
+          type: "string"
+          description: "The status of the service"
+      description: "Service's status information"
+    SearchEventModelV15: 
+      required: 
+        - "actionCause"
+        - "contextual"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+        - "queryText"
+        - "responseTime"
+        - "results"
+        - "searchQueryUid"
+      type: "object"
+      properties: 
+        numberOfResults: 
+          type: "integer"
+          description: "The number of results found. Must be equal to or greater than zero"
+          format: "int32"
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        results: 
+          items: 
+            $ref: "#/definitions/ResultModelV15"
+          type: "array"
+          description: "The results of this search event"
+        originContext: 
+          type: "string"
+          description: "The origin of the event. Used to specify the section of the website in which the user performs the action."
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        advancedQuery: 
+          type: "string"
+          description: "The advanced part of the query that was sent to the index"
+        queryPipeline: 
+          type: "string"
+          description: "The query pipeline of the search event."
+        actionCause: 
+          type: "string"
+          description: "The type of operation that triggered this event. Example: 'firstSearch', 'searchEnter'"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        userGroups: 
+          items: 
+            type: "string"
+          type: "array"
+          description: "The groups that the end user performing the event is a member of"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        responseTime: 
+          type: "integer"
+          description: "The time, in milliseconds, between the moment the query was sent and the moment the results were received. Must be greater than zero"
+          format: "int32"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        contextual: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the query is modified by contextual filters (for instance, a query to find similar documents)"
+        searchQueryUid: 
+          type: "string"
+          description: "The unique identifier of the search event. Must be a UUID"
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        queryText: 
+          type: "string"
+          description: "The text that was searched"
+        outcome: 
+          type: "integer"
+          description: "The outcome of the event. A score you apply on the event which gives it importance"
+          format: "int32"
+      description: "An event that represents a search that was done to the index"
+    SearchEventModelV14: 
+      required: 
+        - "actionCause"
+        - "contextual"
+        - "language"
+        - "originLevel1"
+        - "originLevel2"
+        - "queryText"
+        - "responseTime"
+        - "results"
+        - "searchQueryUid"
+      type: "object"
+      properties: 
+        numberOfResults: 
+          type: "integer"
+          description: "The number of results found. Must be equal to or greater than zero"
+          format: "int32"
+        anonymous: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the user is anonymous."
+        results: 
+          items: 
+            $ref: "#/definitions/ResultModelV14"
+          type: "array"
+          description: "The results of this search event"
+        userAgent: 
+          type: "string"
+          description: "The user agent string of the end user's browser"
+        advancedQuery: 
+          type: "string"
+          description: "The advanced part of the query that was sent to the index"
+        queryPipeline: 
+          type: "string"
+          description: "The query pipeline of the search event."
+        actionCause: 
+          type: "string"
+          description: "The type of operation that triggered this event. Example: 'firstSearch', 'searchEnter'"
+        originLevel3: 
+          type: "string"
+          description: "The origin this event took place"
+        username: 
+          type: "string"
+          description: "The unique identifier of the user performing the search event. If not provided, the username will be extracted from the token."
+        userGroups: 
+          items: 
+            type: "string"
+          type: "array"
+          description: "The groups that the end user performing the event is a member of"
+        splitTestRunVersion: 
+          type: "string"
+          description: "The version of the A/B test run, if one is active."
+        customData: 
+          additionalProperties: 
+            type: "object"
+          type: "object"
+          description: "Custom data that can contain all the user defined dimensions and their values. Keys can only contain alphanumeric or underscore characters. Spaces in the key are converted to underscores. Uppercase characters in the key are converted to lowercase characters. It is highly recommended that you create your custom dimension before adding customData"
+        splitTestRunName: 
+          type: "string"
+          description: "The name of the A/B test run, if one is active."
+        responseTime: 
+          type: "integer"
+          description: "The time, in milliseconds, between the moment the query was sent and the moment the results were received. Must be greater than zero"
+          format: "int32"
+        device: 
+          type: "string"
+          description: "The name of the device that the end user is using"
+        originLevel1: 
+          type: "string"
+          description: "The origin this event took place"
+        originLevel2: 
+          type: "string"
+          description: "The origin this event took place"
+        contextual: 
+          default: false
+          type: "boolean"
+          description: "Indicates if the query is modified by contextual filters (for instance, a query to find similar documents)"
+        searchQueryUid: 
+          type: "string"
+          description: "The unique identifier of the search event. Must be a UUID"
+        language: 
+          type: "string"
+          description: "The language that end user is using. Use ISO 639-1 codes. See <a href=http://en.wikipedia.org/wiki/ISO_639-1>ISO 639-1</a> for more information"
+        mobile: 
+          default: false
+          type: "boolean"
+          description: "Whether the end user's device is a mobile device or not"
+        userDisplayName: 
+          type: "string"
+          description: "The display name of the user performing the search event."
+        queryText: 
+          type: "string"
+          description: "The text that was searched"
+      description: "An event that represents a search that was done to the index"
+    AddCustomEventResponseV15: 
+      type: "object"
+      properties: 
+        visitorId: 
+          type: "string"
+          description: "Unique identifier associated with the current visitor."
+        visitId: 
+          type: "string"
+          description: "The ID of the visit associated with the provided custom event"
+      description: "The response to add custom event operation"
+  swagger: "2.0"
+

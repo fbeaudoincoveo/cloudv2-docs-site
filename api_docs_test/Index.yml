@@ -1,0 +1,291 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/DocumentPermissionModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "documentId"
+            required: true
+            type: "string"
+            name: "documentId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getPermissions"
+        summary: "Get the permission model for a document"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getPermissionsUsingGET"
+    /rest/organizations/{organizationId}/indexes/{indexId}/documents/{documentId}/permissions/effective: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "SECURITY_CACHE"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/indexes/paramId/documents/paramId/permissions/effective_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/SinglePermissionPageModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "indexId"
+            required: true
+            type: "string"
+            name: "indexId"
+            in: "path"
+          - 
+            description: "documentId"
+            required: true
+            type: "string"
+            name: "documentId"
+            in: "path"
+          - 
+            enum: 
+              - "UNKNOWN"
+              - "UP_TO_DATE"
+              - "NOT_UPDATED"
+              - "OUT_OF_DATE"
+              - "IN_ERROR"
+              - "DISABLED"
+            description: "states"
+            items: 
+              enum: 
+                - "UNKNOWN"
+                - "UP_TO_DATE"
+                - "NOT_UPDATED"
+                - "OUT_OF_DATE"
+                - "IN_ERROR"
+                - "DISABLED"
+              type: "string"
+            required: false
+            collectionFormat: "multi"
+            in: "query"
+            type: "array"
+            name: "states"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            enum: 
+              - "ALL"
+              - "ALLOWED"
+              - "DENIED"
+            description: "includedEntities"
+            default: "ALL"
+            required: false
+            in: "query"
+            type: "string"
+            name: "includedEntities"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Index"
+        x-pretty-name: "getEffectivePermissions"
+        summary: "Get the effective permissions for a document with filters"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getEffectivePermissionsUsingGET"
+  tags: 
+    - 
+      name: "Index"
+      description: "Index Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    PermissionLevelModel: 
+      type: "object"
+      properties: 
+        permissionSets: 
+          items: 
+            $ref: "#/definitions/PermissionSetModel"
+          type: "array"
+        name: 
+          type: "string"
+    SinglePermissionPageModel: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        anonymousAllowed: 
+          type: "boolean"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+        items: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    PermissionSetModel: 
+      type: "object"
+      properties: 
+        anonymousAllowed: 
+          type: "boolean"
+        name: 
+          type: "string"
+        permissions: 
+          items: 
+            $ref: "#/definitions/SinglePermissionModel"
+          type: "array"
+    SinglePermissionModel: 
+      type: "object"
+      properties: 
+        lastUpdateResult: 
+          enum: 
+            - "NONE"
+            - "SUCCESS"
+            - "ACCESS_DENIED"
+            - "TIMED_OUT"
+            - "ENTITY_IS_INVALID"
+            - "ENTITY_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNAVAILABLE"
+            - "SECURITY_PROVIDER_IS_UNREACHABLE"
+            - "SECURITY_PROVIDER_IS_NOT_READY"
+            - "UNEXPECTED_ERROR"
+          type: "string"
+        additionalInfo: 
+          additionalProperties: 
+            type: "string"
+          type: "object"
+        securityProvider: 
+          type: "string"
+        lastUpdateErrorDetail: 
+          type: "string"
+        identityType: 
+          enum: 
+            - "USER"
+            - "GROUP"
+            - "VIRTUAL_GROUP"
+            - "UNKNOWN"
+          type: "string"
+        lastUpdateDate: 
+          type: "integer"
+          format: "int64"
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "UP_TO_DATE"
+            - "NOT_UPDATED"
+            - "OUT_OF_DATE"
+            - "IN_ERROR"
+            - "DISABLED"
+          type: "string"
+        allowed: 
+          type: "boolean"
+        identity: 
+          type: "string"
+    DocumentPermissionModel: 
+      type: "object"
+      properties: 
+        state: 
+          enum: 
+            - "UNKNOWN"
+            - "VALID"
+            - "PENDING"
+            - "INCOMPLETE"
+            - "IN_ERROR"
+            - "WARNING"
+          type: "string"
+        permissionLevels: 
+          items: 
+            $ref: "#/definitions/PermissionLevelModel"
+          type: "array"
+        lastUpdatedDate: 
+          type: "integer"
+          format: "int64"
+  swagger: "2.0"
+

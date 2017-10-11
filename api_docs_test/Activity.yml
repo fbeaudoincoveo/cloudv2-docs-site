@@ -1,0 +1,532 @@
+---
+  info: 
+    termsOfService: "Coveo API terms of service"
+    contact: 
+      url: "https://answers.coveo.com"
+      name: "Coveo"
+    description: "API for Coveo Platform"
+    license: {}
+    title: "Coveo Platform API"
+  paths: 
+    /rest/organizations/{organizationId}/activities/{activityId}: 
+      get: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/activities/paramId_get"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityModel"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "activityId"
+            required: true
+            type: "string"
+            name: "activityId"
+            in: "path"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Activities"
+        x-pretty-name: "getActivityById"
+        summary: "Get activity by id"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getActivityByIdUsingGET"
+    /rest/organizations/{organizationId}/activities/public: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/activities/public_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              items: 
+                $ref: "#/definitions/ActivityModel"
+              type: "array"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "page"
+            format: "int32"
+            default: 0
+            required: false
+            in: "query"
+            type: "integer"
+            name: "page"
+          - 
+            description: "perPage"
+            format: "int32"
+            default: 100
+            required: false
+            in: "query"
+            type: "integer"
+            name: "perPage"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+            description: "activityFacet"
+            required: true
+            name: "activityFacet"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Activities"
+        x-pretty-name: "getAllPublicActivitiesForOrganization"
+        summary: "Get public activities related to an organization"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getAllPublicActivitiesForOrganizationUsingPOST"
+    /rest/organizations/{organizationId}/activities/facets/public: 
+      post: 
+        x-required-privilege: 
+          owner: "PLATFORM"
+          targetDomain: "ACTIVITIES"
+          type: "VIEW"
+        uiOperationId: "/rest/organizations/paramId/activities/facets/public_post"
+        responses: 
+          200: 
+            description: "OK"
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+          201: 
+            description: "Created"
+          401: 
+            description: "Unauthorized"
+          403: 
+            description: "Forbidden"
+          404: 
+            description: "Not Found"
+        parameters: 
+          - 
+            description: "organizationId"
+            required: true
+            type: "string"
+            name: "organizationId"
+            in: "path"
+          - 
+            description: "from"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "from"
+          - 
+            description: "to"
+            format: "int64"
+            required: false
+            in: "query"
+            type: "integer"
+            name: "to"
+          - 
+            schema: 
+              $ref: "#/definitions/ActivityFacetModel"
+            description: "activityFacet"
+            required: true
+            name: "activityFacet"
+            in: "body"
+        produces: 
+          - "*/*"
+        tags: 
+          - "Activities"
+        x-pretty-name: "getPublicActivitiesFacetsForOrganization"
+        summary: "Get activity public facets"
+        security: 
+          - 
+            oauth2: 
+              - "full"
+        consumes: 
+          - "application/json"
+        operationId: "getPublicActivitiesFacetsForOrganizationUsingPOST"
+  tags: 
+    - 
+      name: "Activities"
+      description: "Activity Service Resource"
+  basePath: "/"
+  securityDefinitions: 
+    oauth2: 
+      flow: "implicit"
+      type: "oauth2"
+      authorizationUrl: "https://platform.cloud.coveo.com/oauth/authorize"
+      scopes: 
+        full: "Required"
+  host: "platform.cloud.coveo.com"
+  definitions: 
+    ActivityAbortedByModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        relatedActivityResourceType: 
+          type: "string"
+        abortedByType: 
+          enum: 
+            - "USER"
+            - "SYSTEM"
+          type: "string"
+        userId: 
+          type: "string"
+        relatedActivityId: 
+          type: "string"
+        relatedActivity: 
+          enum: 
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "ENABLE_DISABLED_ENTITIES"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "PAUSE_ON_ERROR"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "TEST"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+            - "ORG_PROVISIONING_CHECK"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "REFRESH_CANCEL"
+            - "LIMIT_REACHED"
+          type: "string"
+    ActivityModel: 
+      type: "object"
+      properties: 
+        startDate: 
+          type: "integer"
+          format: "int64"
+        endDate: 
+          type: "integer"
+          format: "int64"
+        resourceId: 
+          type: "string"
+        errorCode: 
+          type: "string"
+        result: 
+          enum: 
+            - "SUCCESS"
+            - "ERROR"
+            - "ABORT"
+          type: "string"
+        errorDetail: 
+          type: "string"
+        snapshotId: 
+          type: "string"
+        duration: 
+          type: "integer"
+          format: "int64"
+        resourceName: 
+          type: "string"
+        operation: 
+          enum: 
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "ENABLE_DISABLED_ENTITIES"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "PAUSE_ON_ERROR"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "TEST"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+            - "ORG_PROVISIONING_CHECK"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "REFRESH_CANCEL"
+            - "LIMIT_REACHED"
+          type: "string"
+        id: 
+          type: "string"
+        createDate: 
+          type: "integer"
+          format: "int64"
+        content: 
+          type: "object"
+        state: 
+          enum: 
+            - "NOT_EXECUTED"
+            - "EXECUTING"
+            - "RESCHEDULED"
+            - "PAUSED"
+            - "EXECUTED"
+          type: "string"
+        progress: 
+          type: "number"
+          format: "double"
+        description: 
+          type: "string"
+        abortReason: 
+          type: "string"
+        abortedBy: 
+          $ref: "#/definitions/ActivityAbortedByModel"
+        organizationId: 
+          type: "string"
+        resourceType: 
+          type: "string"
+        organizationClusterId: 
+          type: "string"
+        section: 
+          enum: 
+            - "CONTENT"
+            - "SEARCH"
+            - "ANALYTICS"
+            - "ORGANIZATION"
+            - "INTERNAL"
+          type: "string"
+        triggeredBy: 
+          $ref: "#/definitions/ActivityTriggerByModel"
+    ActivityFacetModel: 
+      type: "object"
+      properties: 
+        operations: 
+          items: 
+            enum: 
+              - "COMMIT"
+              - "CREATE"
+              - "DELETE"
+              - "DISABLE"
+              - "DUPLICATE"
+              - "ENABLE"
+              - "ENABLE_DISABLED_ENTITIES"
+              - "UPDATE"
+              - "START"
+              - "STOP"
+              - "PAUSE"
+              - "PAUSE_ON_ERROR"
+              - "RESUME"
+              - "SYNCHRONIZE"
+              - "BACKUP"
+              - "RECOVER"
+              - "REFRESH"
+              - "REFRESH_ENTITIES_IN_ERROR"
+              - "REFRESH_ENTITY"
+              - "RESIZE"
+              - "RESTORE"
+              - "IMPORT"
+              - "CONFIG_CHANGE"
+              - "CONFIG_CREATE"
+              - "CHANGE_READ_ONLY"
+              - "CHANGE_ONLINE"
+              - "TEST"
+              - "UPGRADE"
+              - "SCHEDULE_CREATE"
+              - "SCHEDULE_CHANGE"
+              - "SCHEDULE_DELETE"
+              - "ORG_PROVISIONING_CHECK"
+              - "REBUILD"
+              - "FULL_REFRESH"
+              - "INCREMENTAL_REFRESH"
+              - "IDLE"
+              - "REFRESH_CANCEL"
+              - "LIMIT_REACHED"
+            type: "string"
+          type: "array"
+        resultTypes: 
+          items: 
+            enum: 
+              - "SUCCESS"
+              - "ERROR"
+              - "ABORT"
+            type: "string"
+          type: "array"
+        organizationIds: 
+          items: 
+            type: "string"
+          type: "array"
+        states: 
+          items: 
+            enum: 
+              - "NOT_EXECUTED"
+              - "EXECUTING"
+              - "RESCHEDULED"
+              - "PAUSED"
+              - "EXECUTED"
+            type: "string"
+          type: "array"
+        resourceIds: 
+          items: 
+            type: "string"
+          type: "array"
+        resourceTypes: 
+          items: 
+            type: "string"
+          type: "array"
+        sections: 
+          items: 
+            enum: 
+              - "CONTENT"
+              - "SEARCH"
+              - "ANALYTICS"
+              - "ORGANIZATION"
+              - "INTERNAL"
+            type: "string"
+          type: "array"
+    PageModel«ActivityModel»: 
+      type: "object"
+      properties: 
+        totalPages: 
+          type: "integer"
+          format: "int32"
+        items: 
+          items: 
+            $ref: "#/definitions/ActivityModel"
+          type: "array"
+        totalEntries: 
+          type: "integer"
+          format: "int64"
+    ActivityTriggerByModel: 
+      type: "object"
+      properties: 
+        displayName: 
+          type: "string"
+        relatedActivityResourceType: 
+          type: "string"
+        relatedActivityId: 
+          type: "string"
+        relatedActivity: 
+          enum: 
+            - "COMMIT"
+            - "CREATE"
+            - "DELETE"
+            - "DISABLE"
+            - "DUPLICATE"
+            - "ENABLE"
+            - "ENABLE_DISABLED_ENTITIES"
+            - "UPDATE"
+            - "START"
+            - "STOP"
+            - "PAUSE"
+            - "PAUSE_ON_ERROR"
+            - "RESUME"
+            - "SYNCHRONIZE"
+            - "BACKUP"
+            - "RECOVER"
+            - "REFRESH"
+            - "REFRESH_ENTITIES_IN_ERROR"
+            - "REFRESH_ENTITY"
+            - "RESIZE"
+            - "RESTORE"
+            - "IMPORT"
+            - "CONFIG_CHANGE"
+            - "CONFIG_CREATE"
+            - "CHANGE_READ_ONLY"
+            - "CHANGE_ONLINE"
+            - "TEST"
+            - "UPGRADE"
+            - "SCHEDULE_CREATE"
+            - "SCHEDULE_CHANGE"
+            - "SCHEDULE_DELETE"
+            - "ORG_PROVISIONING_CHECK"
+            - "REBUILD"
+            - "FULL_REFRESH"
+            - "INCREMENTAL_REFRESH"
+            - "IDLE"
+            - "REFRESH_CANCEL"
+            - "LIMIT_REACHED"
+          type: "string"
+        type: 
+          enum: 
+            - "USER"
+            - "SYSTEM"
+          type: "string"
+        id: 
+          type: "string"
+  swagger: "2.0"
+
