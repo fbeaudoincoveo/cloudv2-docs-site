@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Source Logs
-swagger: ../../api_docs_test/SourceLogsApi.yml
+title: Source Logs API
+swagger: ../../api_docs/SourceLogsApi.yml
 ---

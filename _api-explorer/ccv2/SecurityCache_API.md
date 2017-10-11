@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/SecurityCache.yml
+title: Security Cache API
+swagger: ../../api_docs/SecurityCache.yml
 ---

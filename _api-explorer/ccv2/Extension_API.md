@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/Extension.yml
+title: Extension API
+swagger: ../../api_docs/Extension.yml
 ---

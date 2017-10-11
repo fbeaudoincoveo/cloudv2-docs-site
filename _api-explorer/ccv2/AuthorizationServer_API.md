@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/AuthorizationServer.yml
+title: Authorization Server API
+swagger: ../../api_docs/AuthorizationServer.yml
 ---

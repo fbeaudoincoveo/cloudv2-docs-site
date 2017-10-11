@@ -1,5 +1,5 @@
 ---
 layout: redoc_page
-title: Coveo Platform API
-swagger: ../../api_docs_test/Notification.yml
+title: Notification API
+swagger: ../../api_docs/Notification.yml
 ---
