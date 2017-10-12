@@ -127,3 +127,66 @@ items:
   createdby: fdallaire
   lastmodifieddate: 
   lastmodifiedby: 
+
+- id: 19
+  path: _glossary/coveo-cloud-v1.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 20
+  path: _glossary/coveo-cloud-v2.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 21
+  path: _glossary/coveo-cloud.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 22
+  path: _glossary/coveo-machine-learning.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 23
+  path: _glossary/index.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 24
+  path: _glossary/indexing-pipeline-extension.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 25
+  path: _glossary/indexing-pipeline.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 26
+  path: _glossary/search-alerts.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 27
+  path: _glossary/usage-analytics.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 

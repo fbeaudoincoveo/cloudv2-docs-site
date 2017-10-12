@@ -1,10 +1,10 @@
 ---
+slug: "27"
 layout: glossary_term
 title: usage analytics
 partOfSpeech: noun
 sidebar: ccv2_docs
 ghPagesSiteName: /cloudv2-docs-site
-slug: "1008"
 ---
 
 A cloud service that records user interactions with search interfaces and other web content allowing administrators to monitor and measure the Coveo solution usage (see [Coveo Cloud Usage Analytics](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=89)). 
