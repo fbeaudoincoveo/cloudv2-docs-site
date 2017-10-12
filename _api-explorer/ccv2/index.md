@@ -1,4 +1,5 @@
 ---
+slug: "4"
 title: Coveo Cloud V2 APIs
 category: index
 layout: content-2-panel

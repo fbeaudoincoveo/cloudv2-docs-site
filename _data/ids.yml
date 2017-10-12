@@ -3,22 +3,127 @@
 items:
 
 - id: 1
-  path: /index.md
+  path: index.md
   createddate: 2017-10-11T17:02:00-04:00
   createdby: fdallaire
   lastmodifieddate:
   lastmodifiedby:
 
 - id: 2
-  path: /pages/index.md
+  path: pages/index.md
   createddate: 2017-10-11T17:03:00-04:00
   createdby: fdallaire
   lastmodifieddate:
   lastmodifiedby:
 
 - id: 3
-  path: /_api-explorer/index.md
+  path: _api-explorer/index.md
   createddate: 2017-10-12T12:03:00-04:00
   createdby: fdallaire
   lastmodifieddate:
   lastmodifiedby:
+
+- id: 4
+  path: _api-explorer/ccv2/index.md
+  createddate: 2017-10-12T12:03:10-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 5
+  path: _api-explorer/ccv2/Activity_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 6
+  path: _api-explorer/ccv2/AuthorizationServer_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 7
+  path: _api-explorer/ccv2/Extension_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 8
+  path: _api-explorer/ccv2/Field_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 9
+  path: _api-explorer/ccv2/Index_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 10
+  path: _api-explorer/ccv2/Notification_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 11
+  path: _api-explorer/ccv2/Platform_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 12
+  path: _api-explorer/ccv2/PushApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 13
+  path: _api-explorer/ccv2/SearchApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 14
+  path: _api-explorer/ccv2/SecurityCache_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 15
+  path: _api-explorer/ccv2/Source_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 16
+  path: _api-explorer/ccv2/SourceLogsApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 17
+  path: _api-explorer/ccv2/UsageAnalyticsRead_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 18
+  path: _api-explorer/ccv2/UsageAnalyticsWrite_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
