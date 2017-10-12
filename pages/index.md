@@ -1,10 +1,10 @@
 ---
+slug: "2"
 title: Pages
 layout: content-2-panel
 audience: Any
 author: Coveo Contributors
 toc: root
-slug: "2"
 ---
 
 # {{ page.title | escape }}
