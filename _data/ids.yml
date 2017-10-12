@@ -1,0 +1,24 @@
+# File listing the unique id of each item (page|glossary|api-explorer) of the site.
+
+items:
+
+- id: 1
+  path: /index.md
+  createddate: 2017-10-11T17:02:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 2
+  path: /pages/index.md
+  createddate: 2017-10-11T17:03:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 3
+  path: /_api-explorer/index.md
+  createddate: 2017-10-12T12:03:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
