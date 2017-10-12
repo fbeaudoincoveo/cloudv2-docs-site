@@ -43,9 +43,11 @@ exclude:
   - README.md
   - CONTRIBUTING-CONTENT.md
 
+
 collections:
   glossary:
     output: true
-    permalink: /:collection/:slug/
+    permalink: /pages/:slug/
   api-explorer:
     output: true
+    permalink: /api-explorer/:slug/
