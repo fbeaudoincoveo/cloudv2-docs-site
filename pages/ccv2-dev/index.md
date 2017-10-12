@@ -1,6 +1,7 @@
 ---
-layout: content-2-panel
 title: CloudPlatform (Coveo Cloud V2)
+slug: "3"
+layout: content-2-panel
 categories: migrated
 toc: root
 ---

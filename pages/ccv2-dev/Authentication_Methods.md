@@ -2,6 +2,7 @@
 layout: content-2-panel
 title: Authentication Methods
 categories: migrated
+slug: "7"
 ---
 
 # Authentication Methods

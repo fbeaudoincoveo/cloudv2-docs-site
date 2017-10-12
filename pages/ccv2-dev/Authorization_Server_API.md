@@ -2,6 +2,7 @@
 layout: content-2-panel
 title: Authorization Server API
 categories: migrated
+slug: "8"
 ---
 
 # Authorization Server API

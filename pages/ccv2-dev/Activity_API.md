@@ -2,6 +2,7 @@
 layout: content-2-panel
 title: Activity API
 categories: migrated
+slug: "4"
 ---
 
 # Activity API

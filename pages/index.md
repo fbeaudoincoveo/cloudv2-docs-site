@@ -1,17 +1,10 @@
 ---
 title: Pages
 layout: content-2-panel
-categories: test
-ghPagesSiteName: /cloudv2-docs-site
-summary: Test page to validate Jekyll features
 audience: Any
 author: Coveo Contributors
 toc: root
-categories:
-  - category 1
-tags:
-  - product A
-  - platform Z
+slug: "2"
 ---
 
 # {{ page.title | escape }}

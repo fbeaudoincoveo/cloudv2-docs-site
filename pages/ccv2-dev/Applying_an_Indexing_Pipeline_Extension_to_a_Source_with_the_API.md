@@ -2,6 +2,7 @@
 layout: content-2-panel
 title: Applying an Indexing Pipeline Extension to a Source with the API
 categories: migrated
+slug: "6"
 ---
 
 # Applying an Indexing Pipeline Extension to a Source with the API

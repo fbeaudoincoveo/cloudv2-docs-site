@@ -3,6 +3,7 @@ layout: content-2-panel
 title: API Key Authentication
 categories: migrated
 toc: ccv2-dev
+slug: "5"
 ---
 
 # API Key Authentication
