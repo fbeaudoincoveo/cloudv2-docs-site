@@ -46,8 +46,6 @@ header {
 				border: 1px solid transparent;
 				position: relative;
 				&:focus,&:hover{
-					border: 1px solid #22374e;
-					background-color: #18456C;
 				}
 			}
 		}
@@ -288,12 +286,14 @@ header {
 					}
 					&.current,
 					&:hover {
+						color: $orange;
 					}
 				}
 				ul {
 					width: 300%;
 					right: 0;
 					top: 53px;
+					border-color: $borders;
 				}
 			}
 
@@ -485,6 +485,7 @@ header {
                 }
                 &.current,
                 &:hover {
+					color: $orange;
                 }
               }
               ul {
@@ -492,6 +493,7 @@ header {
                 right: 0;
                 top: 42px;
                 padding-left:0;
+				  border-color: $borders;
               }
             }
 
