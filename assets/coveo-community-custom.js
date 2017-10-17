@@ -18,12 +18,16 @@ $(window).ready(function() {
             $('#pagesMenu > a').addClass('currentSection');
     }
 
-    // Injecting the page title in the glossary ID based URL
-    /* var title = $('head > title').text();
-    var codedTitle = title.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
+    // Dynamically completing the ID based URL with the page path and title if extUrl=1
     var originalPath = window.document.location.pathname;
     var originalHash = window.document.location.hash;
-    if (originalPath.includes('/glossary/') ) {
-        window.history.pushState("", "", originalPath + codedTitle + originalHash);
-    } */
+    var originalSearch = window.document.location.search;
+    var isExtUrl = originalSearch.includes("extUrl=1");
+    var title = $('head > title').text();
+    var codedTitle = title.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
+    var sourcePath = $('meta[name=sourcePath]').attr("content");
+    var collectionLabel = sourcePath.substr(0, sourcePath.indexOf('/')).replace(/^_/, '');
+    if (isExtUrl) {
+        window.history.pushState("", "", originalPath + collectionLabel + '/' + codedTitle + originalHash + originalSearch);
+    }
 });
