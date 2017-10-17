@@ -34,7 +34,7 @@ File.open(idFile,'a') do |h|
     # Iterate through a folder to set the ID in Markdown front matter slug parameter
     Dir.foreach(sourceFolder) do |file|
         # Ignore current and parent folders
-        next if file == '.' or file == '..'
+        next if file == '.' or file == '..' or !file.include? ".md"
         
         filePath = sourceFolder + '/' + file
         # Remove leading '../' occurrences from file path
