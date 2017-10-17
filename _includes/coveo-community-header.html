@@ -27,13 +27,26 @@
 
   <div class="middleHeader clear">
     <nav>
-      <ul class="menu floated ">
-        <li id="pagesMenu"><a href="{{ site.baseurl }}{% link pages/index.md %}">Pages</a></li>
+      <!--<ul class="menu floated ">
         <li id="glossaryMenu"><a href="{{ site.baseurl }}{% link _glossary/index.md %}">Glossary</a></li>
+      </ul>-->
+      <ul class="externalbox with-sub floated">
+        <li id="spacesMenu">
+          <a href="#" class="sub">Spaces
+            <i class="arrow"></i>
+          </a>
+          <ul>
+            {% for c in site.collections %}
+              {% if c.output == true and c.label != "posts" %}
+                <li><a id="{{c.label}}" href="{{ site.baseurl }}{{ c.home }}">{{ c.name }}</a></li>
+              {% endif%}
+            {% endfor %}
+          </ul>
+        </li>
       </ul>
-      <ul class="externalbox with-sub">
+      <ul class="externalbox with-sub floated">
         <li id="apiExplorerMenu">
-          <a href="#" class="sub">API Explorer
+          <a href="{{ site.baseurl }}{% link _api-explorer/index.md %}" class="sub">API Explorer
             <i class="arrow"></i>
           </a>
           <ul>
