@@ -54,8 +54,8 @@ File.open(idFile,'a') do |h|
         if !hasId
             # Read the file text content
             text0 = File.read(filePath)
-            # Remove existing 'slug' front matter entry 
-            text1 = text0.gsub(/^slug:\s*["']([0-9]*)["'](.*)\n/,"")
+            # Remove existing 'slug' front matter entries
+            text1 = text0.gsub(/^slug:\s*["']([0-9]*)["'](.*)\n/,"")  
             # Add 'slug' value as first front matter entry
             slugId = 'slug: "' + newId.to_s + '"'
             text2 = text1.gsub(/\A(---)\s*/, "---" + "\n" + slugId + "\n")
