@@ -43,11 +43,24 @@ exclude:
   - README.md
   - CONTRIBUTING-CONTENT.md
 
-
 collections:
-  glossary:
-    output: true
-    permalink: /pages/:slug/
+  posts:
+    name: Posts
+    home:
+    permalink: pretty
+    output: false
   api-explorer:
+    name: API Explorer
+    home: /3/
+    permalink: /:slug/
     output: true
-    permalink: /api-explorer/:slug/
+  glossary:
+    name: Glossary
+    home: /23/
+    permalink: /:slug/
+    output: true
+  ccv2-dev:
+    name: Coveo Cloud V2 Developer Stuff
+    home: /76/
+    permalink: /:slug/
+    output: true

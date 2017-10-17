@@ -9,12 +9,10 @@ entries:
   subentries:
 
   - title: Coveo Glossary
-    path: /pages/23/
+    path: /23/
 
   - title: Coveo Cloud V2 Developer Topics
-    path: /pages/ccv2-dev/
+    path: /76/
 
 - title: API Explorer
-  path: /api-explorer/3/
-
-
+  path: /api-explorer/
