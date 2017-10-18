@@ -4,8 +4,8 @@
 #
 # items:
 #
-# usage:    ruby AddIdToAllMarkdownFilesInAFolder.rb sourceFolder ifFile userName
-# ex:       ruby AddIdToAllMarkdownFilesInAFolder.rb "../pages/ccv2-dev" "../_data/ids_test.yml" "fdallaire"
+# usage:    AddIdToAllMarkdownFilesInAFolder.rb sourceFolder ifFile userName
+# ex:       scripts/AddIdToAllMarkdownFilesInAFolder.rb "_ccv2-dev" "_data/ids_test.yml" "fdallaire"
 
 sourceFolder = ARGV[0]
 idFile = ARGV[1]
