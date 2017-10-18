@@ -2,7 +2,7 @@ $(window).ready(function() {
     // Highlight current site and section in site header
     var baseFolder = window.document.location.pathname.split('/')[1];
     $('#jsDevDocs').addClass('currentSite');
-    console.log('The baseFolder is: ' + baseFolder);
+    // console.log('The baseFolder is: ' + baseFolder);
     switch(baseFolder) {
         case 'api-explorer':
             $('#apiExplorerMenu > a').addClass('currentSection');
