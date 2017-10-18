@@ -4,26 +4,21 @@ layout: default
 <div id="contentBox">
     <div id="left-panel" >
         <div class="coveo-docs-toc">
-        {% comment %}Create TOC from the YAML TOC for the parent folder when available {% endcomment %}
+        {% comment %}Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
         {% assign frontMatterToc = page.toc %}
-        {% assign pagePath = page.url | split: '/' %}
-        {% assign pagePathSize = pagePath | size %}
-        {% assign parentFolderPos = pagePathSize | minus: 2 %}
-        {% assign parentFolder = pagePath[parentFolderPos] %}
-            <!--<p>pagePath: {{ pagePath }}</p>
-            <p>pagePathSize: {{ pagePathSize }}</p>
-            <p>parentFolderPos: {{ parentFolderPos }}</p>
-            <p>parentFolder: {{ parentFolder }}</p>-->
-
+        {% assign pagePathArray = page.path | split: '/' %}
+        {% assign collectionName = pagePathArray[0] | remove_first: "_" %}
+        <!--<p>pagePath: {{ pagePath }}</p>
+        <p>collectionName: {{ collectionName }}</p>-->
         {% if frontMatterToc %}
             {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[frontMatterToc].entries %}
             {% include toc-partial-from-yml.html %}
-        {% elsif parentFolder %}
+        {% elsif collectionName %}
             {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
-            {% assign toc = site.data.tocs[parentFolder].entries %}
+            {% assign toc = site.data.tocs[collectionName].entries %}
             {% assign parent = toc %}
-            {% assign parentStr = "site.data.tocs[" | append: parentFolder | append: "].entries" %}
+            {% assign parentStr = "site.data.tocs[" | append: collectionName | append: "].entries" %}
             {% include toc-partial-from-yml.html %}
         {% else %}
             {% include coveo-docs-toc.html %}
