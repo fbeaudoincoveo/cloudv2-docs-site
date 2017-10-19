@@ -5,18 +5,13 @@ entries:
   path: /
   parentPath: 
 
-- title: Pages
-  path: /2/
+- title: Coveo Glossary
+  path: /23/
   parentPath: 
-  subentries:
 
-  - title: Coveo Glossary
-    path: /23/
-    parentPath: /2/
-  
-  - title: Coveo Cloud V2 Developer Topics
-    path: /76/
-    parentPath: /2/
+- title: Coveo Cloud V2 Developer Topics
+  path: /76/
+  parentPath: 
 
 - title: API Explorer
   path: /3/

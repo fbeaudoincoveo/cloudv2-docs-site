@@ -10,11 +10,12 @@ items:
   lastmodifiedby:
 
 - id: 2
-  path: pages/index.md
+  path: index.md
   createddate: 2017-10-11T17:03:00-04:00
   createdby: fdallaire
   lastmodifieddate:
   lastmodifiedby:
+  obsolete: true
 
 - id: 3
   path: _api-explorer/index.md
