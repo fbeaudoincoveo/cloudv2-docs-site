@@ -12,6 +12,7 @@ entries:
 - title: Coveo Cloud V2 API Overview
   source: _ccv2-dev/Coveo_Cloud_V2_API_Overview.md
   path: /41/
+  extPath: /41/ccv2-dev/Coveo-Cloud-V2-API-Overview
   parentPath: /76/
 
 - title: Basic Topics
