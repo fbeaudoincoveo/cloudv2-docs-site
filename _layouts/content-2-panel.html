@@ -13,13 +13,16 @@ layout: default
         {% if frontMatterToc %}
             {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[frontMatterToc].entries %}
-            {% include toc-partial-from-yml.html %}
+            {% include toc-partial-from-yml.liquid %}
         {% elsif collectionName %}
             {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[collectionName].entries %}
-            {% assign parent = toc %}
-            {% assign parentStr = "site.data.tocs[" | append: collectionName | append: "].entries" %}
-            {% include toc-partial-from-yml.html %}
+            
+            {% assign tocLevel = 0 %}
+            {% assign tocPageIndexes = 0 %}
+
+            <!-- {% include toc-page-indexes.liquid %} -->
+            <!-- {% include toc-partial-from-yml.liquid %} -->
         {% else %}
             {% include coveo-docs-toc.html %}
         {% endif %}
