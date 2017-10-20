@@ -8,7 +8,7 @@
         {% if entry.subentries %}
             {% assign parent = parent[i].subentries %}
             {% assign parentStr = parentStr | append: "[" | append: i | append: "].subentries" %}
-            {% include toc-partial-find-parent.html %}
+            {% include toc-partial-find-parent.liquid %}
         {% endif %}
     {% endif %}
     {% assign i = i | plus: 1 %}
