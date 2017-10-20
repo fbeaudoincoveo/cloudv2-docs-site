@@ -1,0 +1,13 @@
+{% assign i = 0 %}
+<p>tocPageIndexes: {{tocPageIndexes}}</p>
+{% for entry in toc %}
+    {% assign tocPageIndexes[tocLevel] = i %}
+    {% if entry.path == page.url %}
+        {% break %}
+    {% elsif entry.subentries%}
+        {% assign toc = toc[i].subentries %}
+        {% assign parentStr = parentStr | append: "[" | append: i | append: "].subentries" %}
+        {% include toc-page-indexes.liquid %}
+    {% endif %}
+    {% assign i = i | plus: 1 %}
+{% endfor %}
