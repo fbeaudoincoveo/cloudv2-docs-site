@@ -1,9 +1,9 @@
-# Custom Liquid tag plugin to return an array containing the page TOC level indexes
+# Custom Liquid tag plugin to return an array containing the page TOC level indices needed to build the TOC and the breadcrumb
 # 
 # Usage: {% PageTocIndices %}
+# Returns:  [i0,...,in]
+# To be used ex.: pageInToc = toc["entries"][i0]["subentries"][i1]["subentries"][i2]["title"]
 # 
-# Assumes the toc file is under _data/tocs
-#
 # Created 2017-10-20 
 # By FDallaire
 # Inspired by: 
@@ -12,103 +12,96 @@
 
 # Inherit from Liquid::Tag
 class PageTocIndices < Liquid::Tag
-    def initialize(tag_name, input, tokens)
-      super
-    end
-   
-    $tocLevel = 0
-    $iterations = 0
-    $tocIndices = []
-    $found = false
-    
-    # Lookup allows access to the page/post variables through the tag context
-    def lookup(context, name)
-      lookup = context
-      name.split(".").each { |value| lookup = lookup[value] }
-      lookup
-    end
-
-    # Function to build the page toc indices
-    # def tocLevelIndex(toc)
-    #   i = 0
-    #   l = $tocLevel
-    #   puts "l= " + l.to_s
-    #   $tocIndices = $tocIndices.first(l)
-    #   toc.each do |entry|
-    #     $tocIndices[l] = i
-    #     # t = t + "entry: " + entry["path"] + " | pageUrl: " + $pageUrl + "\n"  
-    #     # puts entry.to_s
-    #     puts "entry: " + entry["path"] + " | pageUrl: " + $pageUrl + "\n"
-    #     puts $tocIndices.to_s 
-    #     if ($pageUrl == entry["path"])
-    #       $found = true
-    #       return
-    #     elsif entry["subentries"]
-    #       # puts 'subentries for ' + i.to_s + " tocLevel: " + $tocLevel.to_s + entry.to_s + 
-    #       $tocLevel += 1
-    #       tocLevelIndex(entry["subentries"])
-    #       $tocLevel -= 1
-    #     end
-    #     i += 1
-    #   end
-    # end
+  # Tag initializing
+  def initialize(tag_name, input, tokens)
+    super
+  end
   
-    def tocLevelIndex2(entry)
-      l = $tocLevel
-      $tocIndices[l] = $iterations
-      puts "entry: " + entry["path"] + " \tl = " + l.to_s + " \ti = " + $iterations.to_s + "\t" + $tocIndices.to_s
-      # puts "entry: " + entry["path"] + " | pageUrl: " + $pageUrl + "\n"
-      if ($pageUrl == entry["path"])
-        $found = true
-        puts "THIS IS THE TOPIC!" + " | found = " + $found.to_s
-        return
-      elsif entry["subentries"]
-        $tocLevel += 1
-        $iterations = 0
-        entry["subentries"].each do |subentry|
-          if $found
-            break
-          end
-          tocLevelIndex2(subentry)
-        end
-        $tocLevel -= 1
-        $iterations = $tocIndices[$tocLevel] + 1
-        $tocIndices = $tocIndices.first($tocLevel)
-      else
-        $iterations += 1
-      end
+  # Lookup allows access to the page/post variables through the tag context
+  def lookup(context, name)
+    lookup = context
+    name.split(".").each { |value| lookup = lookup[value] }
+    lookup
+  end
+
+  # Global variable initializing 
+  $tocLevel = 0                 # Indice of current TOC hierarchy level
+  $iterations = 0               # Indice of TOC item in a TOC level
+  $tocIndices = []              # Indices of the page for each TOC level
+  $found = false                # Flag to break out of recursive loops
+  $tocFolder = "_data/tocs/"    # Folder hosting the YAML TOC files
+
+  # Recursively building the page position in TOC in the $tocIndices array
+  def tocLevelIndex2(entry)
+    # Return if page already found
+    if $found
+      return
     end
-
-    def render(context)
-      # Accessing the page/site variable for the base url
-      $pageUrl = "#{lookup(context, 'page.url')}"
-      pagePath = "#{lookup(context, 'page.path')}"
-      tocName = pagePath.split(/\//).first.sub!("_", "")
-      tocFile = "_data/tocs/" + tocName + ".yml"
-
-      require 'yaml'
-      # Load the YAML toc and its entries
-      toc = YAML.load_file(tocFile)
-      entries = toc["entries"]
-      
-      # tocLevelIndex(entries)
-      entries.each do |entry|
+    # Setting the TOC level
+    l = $tocLevel
+    
+    # Recording the current item in the current TOC level
+    $tocIndices[l] = $iterations
+    
+    puts "entry: " + entry["path"] + " \tl = " + l.to_s + " \ti = " + $iterations.to_s + "\t" + $tocIndices.to_s
+    
+    if ($pageUrl == entry["path"])
+      # This is the page => break out
+      puts "Indices when found: " + $tocIndices.to_s
+      $found = true
+      return
+    elsif entry["subentries"]
+      # Entering another TOC level
+      $tocLevel += 1      # Increase TOC level
+      $iterations = 0     # Reset item indice
+      # Recursively call the method for each subentry
+      entry["subentries"].each do |subentry|
+        # Break if page already found
         if $found
           break
         end
-        tocLevelIndex2(entry)
+        tocLevelIndex2(subentry)
       end
+      # Exiting a TOC level 
+      $tocLevel -= 1                                # Decrease TOC level
+      $iterations = $tocIndices[$tocLevel] + 1      # Increase item indice restored from previous TOC level
+      if !$found
+        $tocIndices = $tocIndices.first($tocLevel)  # Reduce the $tocInces array length
+      end
+      
+    else
+      # Go to next item in TOC level 
+      $iterations += 1
+    end
+    puts "Indices at if end: " + $tocIndices.to_s
+  end
 
-      # Build the output
-      tocEntryEx1 = toc["entries"][3]["subentries"][3]["subentries"][0]["title"]
-      output = $tocIndices.to_s
-      # output = "i = " + tocLevelIndex.to_s + " | tocIndices = " + $tocIndices.to_s
-      # output =  "Title of first TOC entry: " + tocEntryEx1
-      # output = "tocFile: " + tocFile + " | pageUrl: " + pageUrl + " | pagePath: " + pagePath + + " | tocName: " + tocName
-      # Render it on the page by returning it
-      return output;
+  def render(context)
+    # Accessing the page/site variable for the base url
+    $pageUrl = "#{lookup(context, 'page.url')}"
+    pagePath = "#{lookup(context, 'page.path')}"
+    tocName = pagePath.split(/\//).first.sub!("_", "")
+    tocFile = $tocFolder + tocName + ".yml"
+
+    require 'yaml'
+    # Load the YAML toc and its entries
+    toc = YAML.load_file(tocFile)
+    entries = toc["entries"]
+    
+    # tocLevelIndex(entries)
+    entries.each do |entry|
+      # Break if page already found
+      if $found
+        break
+      end
+      tocLevelIndex2(entry)
     end
 
+    # Build the output
+    output = $tocIndices.to_s
+    # Render it on the page by returning it
+    return output;
+  end
 end
 
 # Register the new custom Liquid tag
