@@ -23,6 +23,7 @@ url: "https://d3in5cp0cx0iu6.cloudfront.net"
 
 # Needed for relative links to work in GitHub pages (ex.: "/cloudv2-docs-site") adding {{ site.baseurl }} to all links
 baseurl: ""
+home_topic_url: /1/ 
 
 twitter_username: jekyllrb
 github_username:  jekyll
