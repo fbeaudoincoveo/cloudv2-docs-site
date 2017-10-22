@@ -4,6 +4,7 @@ title: Site Home page
 layout: content-2-panel
 sitemap: true
 toc: root
+permalink: /1/
 ---
 
 # {{ page.title | escape }}
