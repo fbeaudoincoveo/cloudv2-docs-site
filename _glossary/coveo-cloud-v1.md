@@ -1,10 +1,7 @@
 ---
 slug: "19"
-layout: glossary_term
 title: Coveo Cloud V1
 partOfSpeech: noun
-sidebar: ccv2_docs
-ghPagesSiteName: /cloudv2-docs-site
 ---
 
 A SaaS solution providing secure unified indexing to make the content of multiple systems searchable (see [Coveo Cloud V1](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=76)).

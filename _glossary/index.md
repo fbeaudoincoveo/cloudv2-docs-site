@@ -2,7 +2,6 @@
 slug: "23"
 title: Coveo Glossary
 category: index
-layout: content-2-panel
 toc: root
 ---
 {% comment %}Article to list all glossary item, not to confuse with the "index" glossary term article{% endcomment %}
