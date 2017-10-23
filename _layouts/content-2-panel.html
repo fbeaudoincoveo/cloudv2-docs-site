@@ -1,22 +1,22 @@
 ---
 layout: default
 ---
+{% strip %}
 <div id="contentBox">
     <div id="left-panel" >
         <div class="coveo-docs-toc">
         {% comment %}Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
         {% assign frontMatterToc = page.toc %}
         {% assign pagePathArray = page.path | split: '/' %}
-        {% assign collectionName = pagePathArray[0] | remove_first: "_" %}
-        <!--<p>pagePath: {{ pagePath }}</p>
-        <p>collectionName: {{ collectionName }}</p>-->
+        {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
+        
         {% if frontMatterToc %}
             {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[frontMatterToc].entries %}
             {% include toc-partial-from-yml.liquid %}
-        {% elsif collectionName %}
+        {% elsif collectionLabel %}
             {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
-            {% assign toc = site.data.tocs[collectionName].entries %}
+            {% assign toc = site.data.tocs[collectionLabel].entries %}
             
             {% assign tocLevel = 0 %}
             {% assign tocPageIndexes = 0 %}
@@ -29,7 +29,7 @@ layout: default
         </div>
     </div>
     <div id="main-panel" role="main">
-        {% include breadcrumb-folder-structure.html %}
+        {% include breadcrumb-home-collection-toc.liquid %}
         <article class="article">
             <div class="article-content">
                 {{ content }}
@@ -37,3 +37,4 @@ layout: default
         </article>
     </div>
 </div>
+{% endstrip %}
