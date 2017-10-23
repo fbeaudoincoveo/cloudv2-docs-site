@@ -1,7 +1,7 @@
 {% strip %}
 {% comment %} Create breadcrumb stating with the site home, the page collection home, and page hierarchy in the collection TOC {% endcomment %}
 
-{% comment %} Get the page collection metadata {% endcomment %}
+{% comment %} Get the page collection metadata and TOC descendents {% endcomment %}
 {% assign pagePathArray = page.path | split: '/' %}
 {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
 {% for c in site.collections %}
@@ -27,37 +27,46 @@
         {% comment %} Breadcrumb collection item {% endcomment %}
         <li><a href="{{ site.baseurl }}{{ collectionHome }}" class="breadcrumbSeparator" data-collection-label="{{ collectionLabel }}">{{ collectionName }}</a></li>
         
-        {% comment %} Breadcrumb TOC items {% endcomment %}
+        {% comment %} If collection has TOC, add breadcrumb TOC items {% endcomment %}
         {% if collectionToc %}
-            {% comment %} If collection has TOC, get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
+            {% comment %} Get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
             {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
+            {% comment %} Convert captured plugin string into a string array {% endcomment %}
             {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
+            {% comment %} Get the number of array items as an integer {% endcomment %}
             {% assign max = iTocArray.size | minus: 1  %}
             {% comment %} <p>Page TOC indices: {% PageTocIndices %}</p>
             <p>iTocStr: {{ iTocStr }}</p>
             <p>iTocArray: {{ iTocArray }}</p>
             <p>max: {{ max }}</p> {% endcomment %}
 
-            {% comment %} <p>m0: {{ m0 }}</p> {% endcomment %}
+            {% comment %} Build {% endcomment %}
             {% for n in (0..max ) %}
                 {% if n == 0 %}
+                    {% comment %} Convert the array string item to an integer {% endcomment %}
                     {% assign m0 = iTocArray[0] | times: 1 %}
-                    <li><a href="{{ entries.[m0].path }}" class="breadcrumbSeparator" >{{ entries.[m0].title }}</a></li>   
+                    {% assign e0 = entries.[m0] %}
+                    <li><a href="{{ e0.path }}" class="breadcrumbSeparator" >{{ e0.title }}</a></li>   
                 {% elsif n == 1 %}
                     {% assign m1 = iTocArray[1] | times: 1 %}
-                    <li><a href="{{ entries.[m0]["subentries"][m1].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1].title }}</a></li>   
+                    {% assign e1 = entries.[m0]["subentries"][m1] %}
+                    <li><a href="{{ e1.path }}" class="breadcrumbSeparator" >{{ e1.title }}</a></li>   
                 {% elsif n == 2 %}
                     {% assign m2 = iTocArray[2] | times: 1 %}
-                    <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2].title }}</a></li>   
+                    {% assign e2 = entries.[m0]["subentries"][m1]["subentries"][m2] %}
+                    <li><a href="{{ e2.path }}" class="breadcrumbSeparator" >{{ e2.title }}</a></li>   
                 {% elsif n == 3 %}
                     {% assign m3 = iTocArray[3] | times: 1 %}
-                    <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3].title }}</a></li>   
+                    {% assign e3 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3] %}
+                    <li><a href="{{ e3.path }}" class="breadcrumbSeparator" >{{ e3.title }}</a></li>   
                 {% elsif n == 4 %}
                     {% assign m4 = iTocArray[4] | times: 1 %}
-                    <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4].title }}</a></li>   
+                    {% assign e4 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
+                    <li><a href="{{ e4.path }}" class="breadcrumbSeparator" >{{ e4.title }}</a></li>   
                 {% elsif n == 5 %}
                     {% assign m5 = iTocArray[5] | times: 1 %}
-                    <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5].title }}</a></li>   
+                    {% assign e5 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5] %}
+                    <li><a href="{{ e5.path }}" class="breadcrumbSeparator" >{{ e5.title }}</a></li>   
                 {% endif %}
             {% endfor %}
         {% endif %}
