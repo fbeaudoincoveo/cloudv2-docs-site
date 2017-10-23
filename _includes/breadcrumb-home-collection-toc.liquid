@@ -6,57 +6,19 @@
 {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
 {% for c in site.collections %}
     {% if c.label == collectionLabel %}
-        <p>collectionLabel: {{ collectionLabel }}</p>
         {% assign collectionName = c.name %}
-        <p>collectionName: {{ collectionName }}</p>
         {% assign collectionHome = c.home %}
-        <p>collectionHome: {{ collectionHome }}</p>
         {% assign collectionOutput = c.output %}
-        <p>collectionOutput: {{ collectionOutput }}</p>
         {% assign collectionToc = c.toc %}
+        {% assign entries = site.data["tocs"][collectionLabel]['entries'] %}
+        {% comment %} <p>collectionLabel: {{ collectionLabel }}</p>
+        <p>collectionName: {{ collectionName }}</p>
+        <p>collectionHome: {{ collectionHome }}</p>
+        <p>collectionOutput: {{ collectionOutput }}</p>
         <p>collectionToc: {{ collectionToc }}</p>
-        {% for toc in site.data["tocs"] %}
-            {% if toc.[0] == collectionLabel %}
-                <p>IF TOC YÉ !!! </p>
-                <p>toc: {{ toc }}</p>
-                {% assign test1 = toc["entries"] %}
-                <p>test1: {{ test1 }}</p>
-                {% assign test2 = toc.[0]["entries"] %}
-                <p>test2: {{ test2 }}</p>
-                {% assign test3 = toc.[0].entries %}
-                <p>test3: {{ test3 }}</p>
-                {% assign test4 = toc.collectionLabel.entries %}
-                <p>test4: {{ test4 }}</p>
-                {% assign test5 = toc.collectionLabel["entries"] %}
-                <p>test5: {{ test5 }}</p>
-                {% assign test6 = toc[0]['entries'] %}
-                <p>test6: {{ test6 }}</p>
-                {% assign test7 = toc[0].entries %}
-                <p>test7: {{ test7 }}</p>
-                {% assign test8 = toc.entries %}
-                <p>test8: {{ test8 }}</p>
-                {% assign test9 = toc.["entries"] %}
-                <p>test9: {{ test9 }}</p>
-                {% assign test10 = toc.[collectionLabel]['entries'] %}
-                <p>test10: {{ test10 }}</p>
-                
-            {% endif %}
-            <p>toc[0]: {{ toc[0] }}</p>
-            <p>toc.[0]: {{ toc.[0] }}</p>
-        {% endfor %}
-        {% assign entries = site.data["tocs"][c.label]['entries'] %}
-        <p>entries: {{ entries }}</p>
+        <p>entries: {{ entries }}</p> {% endcomment %}
     {% endif%}
 {% endfor %}
-
-{% comment %} If collection has TOC, get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
-{% if collectionToc %}
-    <p>Page TOC indices: {% PageTocIndices %}</p>
-    {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
-    <p>iTocStr: {{ iTocStr }}</p>
-    {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
-    <p>iTocArray: {{ iTocArray }}</p>
-{% endif %}
 
 <div id="content-breadcrumb">
     <ul>
@@ -67,32 +29,33 @@
         
         {% comment %} Breadcrumb TOC items {% endcomment %}
         {% if collectionToc %}
+            {% comment %} If collection has TOC, get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
+            {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
+            {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
             {% assign max = iTocArray.size | minus: 1  %}
-            {% comment %} <p>max: {{ max }}</p> {% endcomment %}
+            {% comment %} <p>Page TOC indices: {% PageTocIndices %}</p>
+            <p>iTocStr: {{ iTocStr }}</p>
+            <p>iTocArray: {{ iTocArray }}</p>
+            <p>max: {{ max }}</p> {% endcomment %}
+
+            {% comment %} <p>m0: {{ m0 }}</p> {% endcomment %}
             {% for n in (0..max ) %}
-                {% comment %} <p>n: {{ n }}</p> {% endcomment %}
                 {% if n == 0 %}
                     {% assign m0 = iTocArray[0] | times: 1 %}
-                    {% comment %} <p>m0: {{ m0 }}</p> {% endcomment %}
                     <li><a href="{{ entries.[m0].path }}" class="breadcrumbSeparator" >{{ entries.[m0].title }}</a></li>   
-                {% endif %}
-                {% if n == 1 %}
+                {% elsif n == 1 %}
                     {% assign m1 = iTocArray[1] | times: 1 %}
                     <li><a href="{{ entries.[m0]["subentries"][m1].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1].title }}</a></li>   
-                {% endif %}
-                {% if n == 2 %}
+                {% elsif n == 2 %}
                     {% assign m2 = iTocArray[2] | times: 1 %}
                     <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2].title }}</a></li>   
-                {% endif %}
-                {% if n == 3 %}
+                {% elsif n == 3 %}
                     {% assign m3 = iTocArray[3] | times: 1 %}
                     <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3].title }}</a></li>   
-                {% endif %}
-                {% if n == 4 %}
+                {% elsif n == 4 %}
                     {% assign m4 = iTocArray[4] | times: 1 %}
                     <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4].title }}</a></li>   
-                {% endif %}
-                {% if n == 5 %}
+                {% elsif n == 5 %}
                     {% assign m5 = iTocArray[5] | times: 1 %}
                     <li><a href="{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5].path }}" class="breadcrumbSeparator" >{{ entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5].title }}</a></li>   
                 {% endif %}
