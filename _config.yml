@@ -70,3 +70,26 @@ collections:
     permalink: /:slug/
     output: true
     toc: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "api-explorer"
+    values:
+      layout: "redoc_page"
+  - scope:
+      path: ""
+      type: "glossary"
+    values:
+      layout: "glossary_term"
+  - scope:
+      path: ""
+      type: "ccv2-dev"
+    values:
+      layout: "content-2-panel"
+      
