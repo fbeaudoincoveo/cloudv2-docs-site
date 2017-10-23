@@ -18,7 +18,7 @@ $(window).ready(function() {
             $('#pagesMenu > a').addClass('currentSection');
     }
 
-    // Dynamically completing the ID based URL with the page path and title
+    // Dynamically completing the ID based URL with the collection label and the page title
     var location = window.document.location;
     var host = location.host;
     var originalSearch = location.search;
