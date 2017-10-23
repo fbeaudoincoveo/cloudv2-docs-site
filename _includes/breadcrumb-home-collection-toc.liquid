@@ -10,13 +10,13 @@
         {% assign collectionHome = c.home %}
         {% assign collectionOutput = c.output %}
         {% assign collectionToc = c.toc %}
-        {% assign entries = site.data["tocs"][collectionLabel]['entries'] %}
+        {% assign collectionEntries = site.data["tocs"][collectionLabel]['entries'] %}
         {% comment %} <p>collectionLabel: {{ collectionLabel }}</p>
         <p>collectionName: {{ collectionName }}</p>
         <p>collectionHome: {{ collectionHome }}</p>
         <p>collectionOutput: {{ collectionOutput }}</p>
         <p>collectionToc: {{ collectionToc }}</p>
-        <p>entries: {{ entries }}</p> {% endcomment %}
+        <p>collectionEntries: {{ collectionEntries }}</p> {% endcomment %}
     {% endif%}
 {% endfor %}
 
@@ -24,8 +24,11 @@
     <ul>
         {% comment %} Breadcrumb home item {% endcomment %}
         <li><a href="{{ site.baseurl }}{{ site.home_topic_url }}" class="breadcrumbHome" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
-        {% comment %} Breadcrumb collection item {% endcomment %}
-        <li><a href="{{ site.baseurl }}{{ collectionHome }}" class="breadcrumbSeparator" data-collection-label="{{ collectionLabel }}">{{ collectionName }}</a></li>
+        
+        {% comment %} Breadcrumb collection item - unless no collection {% endcomment %}
+        {% unless page.path == 'index.md' %}
+            <li><a href="{{ site.baseurl }}{{ collectionHome }}" class="breadcrumbSeparator" data-collection-label="{{ collectionLabel }}">{{ collectionName }}</a></li>
+        {% endunless %}
         
         {% comment %} If collection has TOC, add breadcrumb TOC items {% endcomment %}
         {% if collectionToc %}
@@ -45,27 +48,27 @@
                 {% if n == 0 %}
                     {% comment %} Convert the array string item to an integer {% endcomment %}
                     {% assign m0 = iTocArray[0] | times: 1 %}
-                    {% assign e0 = entries.[m0] %}
+                    {% assign e0 = collectionEntries.[m0] %}
                     <li><a href="{{ e0.path }}" class="breadcrumbSeparator" >{{ e0.title }}</a></li>   
                 {% elsif n == 1 %}
                     {% assign m1 = iTocArray[1] | times: 1 %}
-                    {% assign e1 = entries.[m0]["subentries"][m1] %}
+                    {% assign e1 = collectionEntries.[m0]["subentries"][m1] %}
                     <li><a href="{{ e1.path }}" class="breadcrumbSeparator" >{{ e1.title }}</a></li>   
                 {% elsif n == 2 %}
                     {% assign m2 = iTocArray[2] | times: 1 %}
-                    {% assign e2 = entries.[m0]["subentries"][m1]["subentries"][m2] %}
+                    {% assign e2 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2] %}
                     <li><a href="{{ e2.path }}" class="breadcrumbSeparator" >{{ e2.title }}</a></li>   
                 {% elsif n == 3 %}
                     {% assign m3 = iTocArray[3] | times: 1 %}
-                    {% assign e3 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3] %}
+                    {% assign e3 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3] %}
                     <li><a href="{{ e3.path }}" class="breadcrumbSeparator" >{{ e3.title }}</a></li>   
                 {% elsif n == 4 %}
                     {% assign m4 = iTocArray[4] | times: 1 %}
-                    {% assign e4 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
+                    {% assign e4 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
                     <li><a href="{{ e4.path }}" class="breadcrumbSeparator" >{{ e4.title }}</a></li>   
                 {% elsif n == 5 %}
                     {% assign m5 = iTocArray[5] | times: 1 %}
-                    {% assign e5 = entries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5] %}
+                    {% assign e5 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5] %}
                     <li><a href="{{ e5.path }}" class="breadcrumbSeparator" >{{ e5.title }}</a></li>   
                 {% endif %}
             {% endfor %}
