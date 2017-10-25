@@ -5,7 +5,7 @@ layout: default
 <div id="contentBox">
     <div id="left-panel" >
         <div class="coveo-docs-toc">
-        {% comment %}Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
+        {% comment %} Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
         {% assign frontMatterToc = page.toc %}
         {% assign pagePathArray = page.path | split: '/' %}
         {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
@@ -29,6 +29,7 @@ layout: default
         </div>
     </div>
     <div id="main-panel" role="main">
+        {% comment %} Create breadcrumb with home, collection name, and YAML TOC parent entries {% endcomment %}
         {% include breadcrumb-home-collection-toc.liquid %}
         <article class="article">
             <div class="article-content">
