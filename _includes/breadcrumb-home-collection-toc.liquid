@@ -37,7 +37,7 @@
             {% comment %} Convert captured plugin string into a string array {% endcomment %}
             {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
             {% comment %} Get the number of array items as an integer {% endcomment %}
-            {% assign max = iTocArray.size | minus: 1  %}
+            {% assign max = iTocArray.size | minus: 2  %}
             {% comment %} <p>Page TOC indices: {% PageTocIndices %}</p>
             <p>iTocStr: {{ iTocStr }}</p>
             <p>iTocArray: {{ iTocArray }}</p>
