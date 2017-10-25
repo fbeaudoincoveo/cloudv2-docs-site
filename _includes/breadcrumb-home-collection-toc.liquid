@@ -1,24 +1,9 @@
 {% strip %}
-{% comment %} Create breadcrumb stating with the site home, the page collection home, and page hierarchy in the collection TOC {% endcomment %}
+{% comment %} Create breadcrumb stating with the site home, the page collection home, and page hierarchy in the collection TOC 
+    
+    IMPORTANT: Prerequisite: page-toc-and-collection-metadata.liquid
 
-{% comment %} Get the page collection metadata and TOC descendents {% endcomment %}
-{% assign pagePathArray = page.path | split: '/' %}
-{% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
-{% for c in site.collections %}
-    {% if c.label == collectionLabel %}
-        {% assign collectionName = c.name %}
-        {% assign collectionHome = c.home %}
-        {% assign collectionOutput = c.output %}
-        {% assign collectionToc = c.toc %}
-        {% assign collectionEntries = site.data["tocs"][collectionLabel]['entries'] %}
-        {% comment %} <p>collectionLabel: {{ collectionLabel }}</p>
-        <p>collectionName: {{ collectionName }}</p>
-        <p>collectionHome: {{ collectionHome }}</p>
-        <p>collectionOutput: {{ collectionOutput }}</p>
-        <p>collectionToc: {{ collectionToc }}</p>
-        <p>collectionEntries: {{ collectionEntries }}</p> {% endcomment %}
-    {% endif%}
-{% endfor %}
+{% endcomment %}
 
 <div id="content-breadcrumb">
     <ul>
@@ -32,12 +17,8 @@
         
         {% comment %} If collection has TOC, add breadcrumb TOC items {% endcomment %}
         {% if collectionToc %}
-            {% comment %} Get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
-            {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
-            {% comment %} Convert captured plugin string into a string array {% endcomment %}
-            {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
-            {% comment %} Get the number of array items as an integer {% endcomment %}
-            {% assign max = iTocArray.size | minus: 2  %}
+            {% comment %} Set the loop iteration number to not include the current page in the breadcrumb {% endcomment %}
+            {% assign max = iTocArraySize | minus: 2  %}
             {% comment %} <p>Page TOC indices: {% PageTocIndices %}</p>
             <p>iTocStr: {{ iTocStr }}</p>
             <p>iTocArray: {{ iTocArray }}</p>

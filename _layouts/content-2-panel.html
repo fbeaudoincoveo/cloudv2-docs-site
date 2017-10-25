@@ -2,13 +2,14 @@
 layout: default
 ---
 {% strip %}
+
+{% include page-toc-and-collection-metadata.liquid %} 
+
 <div id="contentBox">
     <div id="left-panel" >
         <div class="coveo-docs-toc">
         {% comment %} Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
         {% assign frontMatterToc = page.toc %}
-        {% assign pagePathArray = page.path | split: '/' %}
-        {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
         
         {% if frontMatterToc %}
             {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
