@@ -48,7 +48,7 @@
       
       if ($pageUrl == entry["path"])
         # This is the page => break out
-        puts "Indices when found: " + $tocIndices.to_s
+        puts 'URL: ' + $pageUrl.to_s + ' | Indices: ' + $tocIndices.to_s + ' | Path: ' + $pagePath.to_s
         $found = true
         return
       elsif entry["subentries"]
@@ -73,16 +73,16 @@
         # Go to next item in TOC level 
         $iterations += 1
       end
-      puts "Indices at if end: " + $tocIndices.to_s
+      # puts "Indices at if end: " + $tocIndices.to_s
     end
   
     def render(context)
       # Accessing the page/site variable for the base url
       $pageUrl = "#{lookup(context, 'page.url')}"
-      pagePath = "#{lookup(context, 'page.path')}"
-      tocName = pagePath.split(/\//).first.sub!("_", "")
+      $pagePath = "#{lookup(context, 'page.path')}"
+      tocName = $pagePath.split(/\//).first.sub!("_", "")
       tocFile = $tocFolder + tocName + ".yml"
-      puts 'Page URL: ' + $pageUrl.to_s + ' | Page path: ' + pagePath.to_s
+      # puts 'Page URL: ' + $pageUrl.to_s + ' | Page path: ' + $pagePath.to_s
 
       # Resetting indice parameters for each new page
       $tocLevel = 0                 # Indice of current TOC hierarchy level
@@ -103,7 +103,7 @@
         getIndices(entry)
         # Break if page already found
         if $found
-          puts "Exiting entries render look: $found =false "
+          # puts "Exiting entries render look: $found =false "
           $found = false
           break
         end
