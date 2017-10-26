@@ -1,6 +1,7 @@
 ---
 slug: "23"
 title: Coveo Glossary
+layout: glossary_all_terms
 category: index
 toc: root
 ---
