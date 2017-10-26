@@ -46,7 +46,7 @@ exclude:
   - CONTRIBUTING-CONTENT.md
 
 collections:
-  posts:                      # collectionLabel must match the folder name less the _ prefix
+  posts:                      # The collection.label. Must match the collection folder name less the '_' prefix
     name: Posts               # Beautified collection name
     home:                     # Collection home topic URL (ex.: /123/)
     permalink: pretty         # Collection pages permalink defining the URL
