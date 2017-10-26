@@ -6,28 +6,23 @@ layout: default
 {% include page-toc-and-collection-metadata.liquid %} 
 
 <div id="contentBox">
-    <div id="left-panel" >
-        <div class="coveo-docs-toc">
+    <div id="left-panel" >        
         {% comment %} Create TOC from the YAML TOC for front matter override or collection name {% endcomment %}
+        
+        {% comment %} Check it there is a front matter TOC override {% endcomment %}
         {% assign frontMatterToc = page.toc %}
         
         {% if frontMatterToc %}
             {% comment %}Initialize the 'toc' variable with the front matter override and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[frontMatterToc].entries %}
-            {% include toc-partial-from-yml.liquid %}
+            {% include toc-parent-siblings-children-from-yaml.liquid %}
         {% elsif collectionLabel %}
             {% comment %}Initialize the 'toc' variable and call the recursive toc file{% endcomment %}
             {% assign toc = site.data.tocs[collectionLabel].entries %}
-            
-            {% assign tocLevel = 0 %}
-            {% assign tocPageIndexes = 0 %}
-
-            <!-- {% include toc-page-indexes.liquid %} -->
-            <!-- {% include toc-partial-from-yml.liquid %} -->
+            {% include toc-parent-siblings-children-from-yaml.liquid %}
         {% else %}
             {% include coveo-docs-toc.html %}
         {% endif %}
-        </div>
     </div>
     <div id="main-panel" role="main">
         {% comment %} Create breadcrumb with home, collection name, and YAML TOC parent entries {% endcomment %}
