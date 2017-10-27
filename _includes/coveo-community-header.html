@@ -37,7 +37,7 @@
           </a>
           <ul>
             {% for c in site.collections %}
-              {% if c.output == true and c.label != "posts" %}
+              {% if c.output == true and c.label != "posts" and c.label != "api-explorer" %}
                 <li><a id="{{c.label}}" href="{{ site.baseurl }}{{ c.home }}">{{ c.name }}</a></li>
               {% endif%}
             {% endfor %}
