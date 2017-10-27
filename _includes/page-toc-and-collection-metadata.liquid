@@ -16,7 +16,7 @@
             {% assign collectionEntries = site.data["tocs"][collectionLabel]['entries'] %}
         {% endif%}
     {% endfor %}
-    {% if collectionToc %}
+    {% if collectionToc and collectionOutput == true %}
             {% comment %} Get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
             {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
             {% comment %} <p>PageTocIndices: {{iTocStr}}</p> {% endcomment %}
