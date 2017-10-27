@@ -1,0 +1,23 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "command": "bundle",
+    "args": ["exec"],
+    "tasks": [
+        {
+            "suppressTaskName": true,
+            "taskName": "Jekyll - Build Prod incremental",
+            "isShellCommand": true,
+            "type": "shell",
+            "args": [
+                "jekyll",
+                "serve",
+                "--incremental"
+            ],
+            "showOutput": "always",
+            "echoCommand": true,
+            "problemMatcher": []
+        }
+    ]
+}

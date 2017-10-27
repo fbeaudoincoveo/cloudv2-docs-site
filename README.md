@@ -22,8 +22,16 @@ Build the site locally to validate your changes:
 1. In the terminal: 
    1. Go to the repository root folder. 
    1. Run ```bundle exec jekyll serve --incremental```
+
+      > Tip:
+      > You can also use the defined Visual Studio Code task `Jekyll - Build Prod incremental`:
+      > 1. In Visual Studio Code, open the Command Palette (`shift`+ `cmd`+ 'P').
+      > 1. In the Command Palette, type `tasks` and then select **Tasks: Run tasks**.
+      > 1. In the drop-down list, select **Jekyll - Build Prod incremental**.
+      > 1. In the drop-down list, select **Never scan the task output**.
+      >    A **TERMINAL** window opens and the command to build the Jekyll site locally starts. 
    
-      > Alternately:
+      > Alternate commangs:
       > - If you want sitemap.xml links to contain the production hostname (not localhost:4000), run:
       >
       >  ```JEKYLL_ENV=production bundle exec jekyll serve --incremental```
