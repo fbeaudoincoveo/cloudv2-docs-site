@@ -1,6 +1,6 @@
 ---
 slug: "25"
-title: indexing-pipeline
+title: indexing pipeline
 partOfSpeech: noun
 termtype: expression
 ---
