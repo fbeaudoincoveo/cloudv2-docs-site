@@ -1,11 +1,11 @@
 {% strip %}
     {% comment %} Get the page collection metadata and TOC descendents 
-        Required for:
+        Required for the following _include folder files:
         - breadcrumb-home-collection-toc.liquid
-        - toc...
+        - toc-parent.siblings-children-from-yaml.liquid
 
     {% endcomment %}
-    {% assign pagePathArray = page.path | split: '/' %}
+    {% assign pagePathArray = page.path | remove: 'index.md' | split: '/' %}
     {% assign collectionLabel = pagePathArray[0] | remove_first: "_" %}
     {% for c in site.collections %}
         {% if c.label == collectionLabel %}
@@ -18,6 +18,7 @@
         {% if collectionToc %}
             {% comment %} Get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
             {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
+            {% comment %} <p>PageTocIndices: {{iTocStr}}</p> {% endcomment %}
             {% comment %} Convert captured plugin string into a string array {% endcomment %}
             {% assign iTocArray = iTocStr | remove: '[' | remove: ']' | remove: ' ' | split: ',' %}
             {% comment %} Get the number of array items as an integer {% endcomment %}

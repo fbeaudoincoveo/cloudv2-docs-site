@@ -38,7 +38,7 @@
         {% assign parent = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
         {% assign siblings = parent.subentries %}
     {% else %}
-        <p>Error: The TOC is empty or is more than 6 levels (iTocArray empty or more than 6 items)</p>
+        <p>Error: The TOC is empty or is more than 6 levels</p>
 {% endcase %}
 
 {% comment %} <p>iTocStr: {{ iTocStr }} </p>
@@ -47,7 +47,7 @@
 <p>siblings: {{ siblings }} </p>
 <p>parent.path: {{ parent.path }} </p> 
 <p>parent.title: {{ parent.title }} </p> 
-<p>collectionHome: {{ collectionHome }} </p>{% endcomment %}
+<p>collectionHome: {{ collectionHome }} </p> {% endcomment %}
 
 {% comment %} Find the parent and current pages {% endcomment %}
 

@@ -9,6 +9,7 @@
     {% endif %}
 {% endfor %}
 
+<div class="coveo-docs-toc">
 {% comment %}Write the opening UL only when at the TOC section containing the current page {% endcomment %}
 {% if inThisLevel %}<ul>{% endif %}
     {% for entry in toc %}
@@ -45,4 +46,5 @@
     {% comment %}Close the UL and reset inThisLevel to prevent adding further TOC entries not directly siblings of the current page{% endcomment %}
     </ul>
     {% assign inThisLevel = false %}
+</div>
 {% endif %}
