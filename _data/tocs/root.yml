@@ -2,17 +2,22 @@
 entries:
 
 - title: Home 
-  path: /
-  parentPath: 
-
+  path: /1/
+  parentPath: /1/
+ 
 - title: Coveo Glossary
   path: /23/
   parentPath: 
 
 - title: Coveo Cloud V2 Developer Topics
   path: /76/
-  parentPath: 
+  parentPath: /1/
 
 - title: API Explorer
   path: /3/
-  parentPath:
+  parentPath: /1/
+  
+- title: Coveo Cloud V2 APIs
+  path: /4/
+  parentPath: /3/
+ 

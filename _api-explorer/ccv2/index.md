@@ -3,7 +3,9 @@ slug: "4"
 title: Coveo Cloud V2 APIs
 category: index
 layout: content-2-panel
+toc: root
 ---
+
 {% comment %}Folder index article, not to confuse with the "indexApi" APIarticle{% endcomment %}
 # {{ page.title | escape }}
 
