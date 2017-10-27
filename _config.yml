@@ -73,10 +73,10 @@ collections:
 
 defaults:
   - scope:
-      path: ""
-      type: "posts"
+      path: ""              # ?
+      type: "posts"         # Name of collection for which you want to set default values 
     values:
-      layout: "default"
+      layout: "default"     # Default layout of collection pages
   - scope:
       path: ""
       type: "api-explorer"
