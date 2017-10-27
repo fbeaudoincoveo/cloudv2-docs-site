@@ -15,7 +15,8 @@
             {% assign collectionToc = c.toc %}
             {% assign collectionEntries = site.data["tocs"][collectionLabel]['entries'] %}
         {% endif%}
-        {% if collectionToc %}
+    {% endfor %}
+    {% if collectionToc %}
             {% comment %} Get page TOC indices from the PageTocIndices plugin into a string array {% endcomment %}
             {% capture iTocStr %}{% PageTocIndices %}{% endcapture %}
             {% comment %} <p>PageTocIndices: {{iTocStr}}</p> {% endcomment %}
@@ -24,5 +25,4 @@
             {% comment %} Get the number of array items as an integer {% endcomment %}
             {% assign iTocArraySize = iTocArray.size %}
         {% endif %}
-    {% endfor %}
 {% endstrip %}
