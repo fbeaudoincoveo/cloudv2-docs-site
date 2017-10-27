@@ -1,0 +1,879 @@
+# File listing the unique id of each item (page|glossary|api-explorer) of the site.
+
+items:
+
+- id: 1
+  path: index.md
+  createddate: 2017-10-11T17:02:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 2
+  path: index.md
+  createddate: 2017-10-11T17:03:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+  obsolete: true
+
+- id: 3
+  path: _api-explorer/index.md
+  createddate: 2017-10-12T12:03:00-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 4
+  path: _api-explorer/ccv2/index.md
+  createddate: 2017-10-12T12:03:10-04:00
+  createdby: fdallaire
+  lastmodifieddate:
+  lastmodifiedby:
+
+- id: 5
+  path: _api-explorer/ccv2/Activity_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 6
+  path: _api-explorer/ccv2/AuthorizationServer_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 7
+  path: _api-explorer/ccv2/Extension_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 8
+  path: _api-explorer/ccv2/Field_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 9
+  path: _api-explorer/ccv2/Index_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 10
+  path: _api-explorer/ccv2/Notification_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 11
+  path: _api-explorer/ccv2/Platform_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 12
+  path: _api-explorer/ccv2/PushApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 13
+  path: _api-explorer/ccv2/SearchApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 14
+  path: _api-explorer/ccv2/SecurityCache_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 15
+  path: _api-explorer/ccv2/Source_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 16
+  path: _api-explorer/ccv2/SourceLogsApi_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 17
+  path: _api-explorer/ccv2/UsageAnalyticsRead_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 18
+  path: _api-explorer/ccv2/UsageAnalyticsWrite_API.md
+  createddate: 2017-10-12T12:06:36-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 19
+  path: _glossary/coveo-cloud-v1.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 20
+  path: _glossary/coveo-cloud-v2.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 21
+  path: _glossary/coveo-cloud.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 22
+  path: _glossary/coveo-machine-learning.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 23
+  path: _glossary/index.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 24
+  path: _glossary/indexing-pipeline-extension.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 25
+  path: _glossary/indexing-pipeline.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 26
+  path: _glossary/search-alerts.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 27
+  path: _glossary/usage-analytics.md
+  createddate: 2017-10-12T14:24:08-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 28
+  path: _ccv2-dev/Activity_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 29
+  path: _ccv2-dev/API_Key_Authentication.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 30
+  path: _ccv2-dev/Applying_an_Indexing_Pipeline_Extension_to_a_Source_with_the_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 31
+  path: _ccv2-dev/Authentication_Methods.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 32
+  path: _ccv2-dev/Authorization_Server_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 33
+  path: _ccv2-dev/Basic_Topics.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 34
+  path: _ccv2-dev/Batch_Pushing_Encrypted_Files_and_Permissions_to_a_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 35
+  path: _ccv2-dev/Claims_Authentication.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 36
+  path: _ccv2-dev/Configuring_a_Permission_Expansion_Tool_for_a_Secured_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 37
+  path: _ccv2-dev/Configuring_SAML_for_Use_with_AD_FS.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 38
+  path: _ccv2-dev/Configuring_SAML_for_Use_with_Okta.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 39
+  path: _ccv2-dev/Configuring_the_PrePushExtension_Parameters.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 40
+  path: _ccv2-dev/Coveo_Cloud_V2_API_Generated_Documentation_Site.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 41
+  path: _ccv2-dev/Coveo_Cloud_V2_API_Overview.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 42
+  path: _ccv2-dev/Coveo_Cloud_V2_API_PaaS_Tutorials.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 43
+  path: _ccv2-dev/Coveo_Cloud_V2_Home.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 44
+  path: _ccv2-dev/Coveo_Cloud_V2_Indexing_Pipeline_Extensions.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 45
+  path: _ccv2-dev/Coveo_Cloud_V2_Indexing_Pipeline_Mappings.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 46
+  path: _ccv2-dev/Coveo_Cloud_V2_On-Premises_Crawling_Module.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 47
+  path: _ccv2-dev/Crawling_Module_Configuration.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 48
+  path: _ccv2-dev/Crawling_Module_Deployment_Overview.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 49
+  path: _ccv2-dev/Crawling_Module_Requirements.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 50
+  path: _ccv2-dev/Create_an_Organization_and_a_Source,_and_Get_Your_First_Query_Results.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 51
+  path: _ccv2-dev/Creating_a_Basic_Shared_Web_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 52
+  path: _ccv2-dev/Creating_a_Coveo_Cloud_V2_Organization.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 53
+  path: _ccv2-dev/Creating_a_Push_Type_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 54
+  path: _ccv2-dev/Creating_a_Search_Token.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 55
+  path: _ccv2-dev/Creating_an_API_Key.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 56
+  path: _ccv2-dev/Creating_an_Identity_Provider_for_a_Secured_Push_Type_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 57
+  path: _ccv2-dev/Creating_an_Indexing_Pipeline_Extension_with_the_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 58
+  path: _ccv2-dev/Deleting_a_Coveo_Cloud_V2_Organization.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 59
+  path: _ccv2-dev/Deleting_an_API_Key.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 60
+  path: _ccv2-dev/Deleting_Items_from_a_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 61
+  path: _ccv2-dev/Determining_if_the_Query_Pipeline_is__Coded_in_the_Search_Interface.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 62
+  path: _ccv2-dev/Determining_Which_Coveo_Cloud_Query_Pipeline_a_Search_Page_Uses.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 63
+  path: _ccv2-dev/Differences_Between_the_Source_JSON_Mappings_Configuration_and_the_Response_JSON_Body_Formats.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 64
+  path: _ccv2-dev/Document_Object_Python_API_Reference.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 65
+  path: _ccv2-dev/Extension_API_Reference.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 66
+  path: _ccv2-dev/Generating_Metadata.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 67
+  path: _ccv2-dev/Getting_the_apiKeyId.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 68
+  path: _ccv2-dev/Getting_the_organizationId.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 69
+  path: _ccv2-dev/Getting_the_Privileges_of_an_Access_Token.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 70
+  path: _ccv2-dev/Getting_the_Privileges_You_Can_Assign_to_an_API_Key.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 71
+  path: _ccv2-dev/Getting_the_sourceId.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 72
+  path: _ccv2-dev/Getting_the_uploadUri_and_fileId.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 73
+  path: _ccv2-dev/Getting_Your_Coveo_Cloud_V2_Platform_Access_Token.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 74
+  path: _ccv2-dev/Glossary.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 75
+  path: _ccv2-dev/Grouping_Parents_and_Children.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 76
+  path: _ccv2-dev/index.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 77
+  path: _ccv2-dev/Indexing_Pipeline_Customization_Tools_Overview.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 78
+  path: _ccv2-dev/Indexing_Pipeline_Extension_Condition_Syntax_Reference.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 79
+  path: _ccv2-dev/Indexing_Pipeline_Extension_Parameters.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 80
+  path: _ccv2-dev/Indexing_Pipeline_Extension_Script_Samples.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 81
+  path: _ccv2-dev/Indexing_Pipeline_Extension_Supported_Character_Sets.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 82
+  path: _ccv2-dev/Indexing_Pipeline_Extension_Testing_Strategies_and_Good_Practices.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 83
+  path: _ccv2-dev/Indexing_Pipeline_Mapping_Concepts.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 84
+  path: _ccv2-dev/Inspecting_All_Available_Metadata_Values.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 85
+  path: _ccv2-dev/Installing_the_Crawling_Module.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 86
+  path: _ccv2-dev/JavaScript_Push_API_Client_Example.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 87
+  path: _ccv2-dev/Logging_into_the_Coveo_Cloud_V2_Platform.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 88
+  path: _ccv2-dev/Logging_Messages_from_an_Indexing_Pipeline_Extension.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 89
+  path: _ccv2-dev/Modifying_Date.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 90
+  path: _ccv2-dev/Modifying_Source_Item_Permissions.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 91
+  path: _ccv2-dev/OAuth2_Authentication.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 92
+  path: _ccv2-dev/Parameters_and_API_Calls.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 93
+  path: _ccv2-dev/Passing_Parameters_to_Indexing_Pipeline_Extension_Scripts.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 94
+  path: _ccv2-dev/Performing_a_Simple_Query.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 95
+  path: _ccv2-dev/Platform_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 96
+  path: _ccv2-dev/Possible_sourceType_Values.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 97
+  path: _ccv2-dev/Privileges_and_API_Calls.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 98
+  path: _ccv2-dev/Push_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 99
+  path: _ccv2-dev/Push_API_Limits.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 100
+  path: _ccv2-dev/Push_API_Reference.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 101
+  path: _ccv2-dev/Pushing_Identities_to_an_Identity_Provider.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 102
+  path: _ccv2-dev/Pushing_Items_to_a_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 103
+  path: _ccv2-dev/Pushing_Large_Items_to_a_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 104
+  path: _ccv2-dev/Pushing_Secured_Items_to_a_Source.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 105
+  path: _ccv2-dev/Python_Modules_Available_to_Indexing_Pipeline_Extensions.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 106
+  path: _ccv2-dev/Query_Security_Basics.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 107
+  path: _ccv2-dev/Rejecting_Items.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 108
+  path: _ccv2-dev/Retrieving_Search_API_Activities.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 109
+  path: _ccv2-dev/Running_a_Crawling_Module_Instance.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 110
+  path: _ccv2-dev/SAML_Authentication.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 111
+  path: _ccv2-dev/Search_Alerts_Limitations.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 112
+  path: _ccv2-dev/Search_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 113
+  path: _ccv2-dev/Search_Token_Authentication.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 114
+  path: _ccv2-dev/Source_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 115
+  path: _ccv2-dev/Source_API_-_Mappings_Resource.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 116
+  path: _ccv2-dev/Source_API_Mappings_Resource_Usage_Overview.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 117
+  path: _ccv2-dev/Source_Logs_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 118
+  path: _ccv2-dev/Storage_and_Recommendation_Allocation__Coveo_Platform_.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 119
+  path: _ccv2-dev/Troubleshooting_Push_API_Error_Codes.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 120
+  path: _ccv2-dev/Understanding_How_On-Premises_Item_Permissions_are_Resolved.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 121
+  path: _ccv2-dev/Understanding_Push_API_Processing_Delay.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 122
+  path: _ccv2-dev/Understanding_the_orderingId_Parameter.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 123
+  path: _ccv2-dev/Updating_the_Printable_and_Clickable_URIs.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 124
+  path: _ccv2-dev/Using_the_Push_API.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 
+
+- id: 125
+  path: _ccv2-dev/Valid_Privilege_owner,_targetDomain,_and_type_Combinations.md
+  createddate: 2017-10-17T17:35:35-0400
+  createdby: fdallaire
+  lastmodifieddate: 
+  lastmodifiedby: 

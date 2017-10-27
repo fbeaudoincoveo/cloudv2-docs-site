@@ -6,10 +6,11 @@
 <script src="https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"></script>
 
 <script>
-    // Setting an API title
+    // Setting the API title
     var apiName = '{{ apiName }}';
     var apiTitle = '<h2>' + apiName + '</h2>';
-    var breadcrumb = `{% include breadcrumb-folder-structure.html %}`;
+    var pageMetadata = `{% include page-toc-and-collection-metadata.liquid %}`;
+    var breadcrumb = `{% include breadcrumb-home-collection-toc.liquid %}`;
 
     // Function to wait for the rendered ReDoc DIV and inject an API title at the top of the ReDoc TOC
     function AddAPITitle() {

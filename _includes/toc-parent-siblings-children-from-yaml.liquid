@@ -1,0 +1,87 @@
+{% strip %}
+{% comment %} Creates a partial table of content (TOC) of up to 3 levels: 
+    1. Current page parent
+    2. Current page and its siblings (if any)
+    3. If any, current page children 
+    
+    IMPORTANT: You must call the "page-toc-and-collection-metadata.liquid" include before this one to provide several variables used below
+
+{% endcomment %}
+
+{% comment %} Convert the array string item to integer variables {% endcomment %}
+{% assign m0 = iTocArray[0] | times: 1 %} 
+{% assign m1 = iTocArray[1] | times: 1 %}
+{% assign m2 = iTocArray[2] | times: 1 %}
+{% assign m3 = iTocArray[3] | times: 1 %}
+{% assign m4 = iTocArray[4] | times: 1 %}
+{% assign m5 = iTocArray[5] | times: 1 %}
+{% assign m6 = iTocArray[6] | times: 1 %}
+
+{% comment %} Get the current page parent hash {% endcomment %}
+{% case iTocArraySize %}
+    {% when 1 %}
+        {% comment %} For the 1st level, the parent is the collection home page, so we must build the parent hash {% endcomment %}
+        {% assign siblings = collectionEntries %}
+    {% when 2 %}
+        {% assign parent = collectionEntries.[m0] %}
+        {% assign siblings = parent.subentries %}
+    {% when 3 %}
+        {% assign parent = collectionEntries.[m0]["subentries"][m1] %}
+        {% assign siblings = parent.subentries %}
+    {% when 4 %}
+        {% assign parent = collectionEntries.[m0]["subentries"][m1]["subentries"][m2] %}
+        {% assign siblings = parent.subentries %}
+    {% when 5 %}
+        {% assign parent = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3] %}
+        {% assign siblings = parent.subentries %} 
+    {% when 6 %}
+        {% assign parent = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
+        {% assign siblings = parent.subentries %}
+    {% else %}
+        <p>Error: The TOC is empty or is more than 6 levels</p>
+{% endcase %}
+
+{% comment %} <p>iTocStr: {{ iTocStr }} </p>
+<p>iTocArraySize: {{ iTocArraySize }} </p>
+<p>parent: {{ parent }} </p>
+<p>siblings: {{ siblings }} </p>
+<p>parent.path: {{ parent.path }} </p> 
+<p>parent.title: {{ parent.title }} </p> 
+<p>collectionHome: {{ collectionHome }} </p> {% endcomment %}
+
+{% comment %} Find the parent and current pages {% endcomment %}
+
+<div class="coveo-docs-toc">
+    <ul> {% comment %} Parent TOC item {% endcomment %}
+        <li>
+            {% if iTocArraySize == 1 %}
+                <a href="{{ collectionHome }}" class="expanded" data-toc-item="parent" >{{ collectionName }}</a>
+            {% else %}
+                <a href="{{ parent.path }}" class="expanded" data-toc-item="parent" >{{ parent.title }}</a>
+            {% endif %}
+            
+            <ul> {% comment %} Current page and siblings TOC items {% endcomment %}
+                {% for sibling in siblings %}
+                    {% assign classes = "" %}
+                    {% if sibling.path == page.url %}{% assign isCurrent = true %}{% else %}{% assign isCurrent = false %}{% endif %}
+                    {% if sibling.subentries %}{% assign hasChild = true %}{% else %}{% assign hasChild = false %}{% endif %}
+                    <li>
+                        {% if isCurrent %}{% assign classes = classes | append: "selected " %}{% endif %}
+                        {% if isCurrent and hasChild %}{% assign classes = classes | append: "expanded " %}{% elsif hasChild %}{% assign classes = classes | append: "expandable " %}{% endif %}
+                        <a href="{{ sibling.path }}" {% if classes !="" %}class="{{classes}}"{% endif %} data-toc-item="sibling">{{ sibling.title }}</a>
+                        {% if isCurrent and hasChild %}
+                        <ul> {% comment %} Current page children TOC items {% endcomment %}
+                            {% for child in sibling.subentries %}
+                                {% assign classes = "" %}
+                                {% if child.subentries %}{% assign classes = classes | append: "expandable " %}{% endif %}
+                                <li><a href="{{ child.path }}" data-toc-item="child" class="{{classes}}">{{ child.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>
+{% endstrip %}

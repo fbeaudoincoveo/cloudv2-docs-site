@@ -26,6 +26,8 @@
     {% assign path = page.url | escape  | split: '/' %}<meta name="contentType" content="{{ path[1] }}"/>
     <meta name="filename" content="{{ page.url | escape | split: '/' | last }}"/>
     <meta name="lastModifiedDate" content="{{ page.last_modified_at | escape }}"/>
+    {% if page.path %}<meta name="sourcePath" content="{{ page.path | escape }}"/>{% endif %}
+    {% if page.collection %}<meta name="space" content="{{ site.collections[page.collection].name }}"/>{% endif %}
     {% if page.author %}<meta name="author" content="{{ page.author | escape }}"/>{% endif %}
     {% if page.audience %}<meta name="audience" content="{{ page.audience | escape }}"/>{% endif %}
     {% if page.platform %}<meta name="platform" content="{{ page.platform | escape }}"/>{% endif %}

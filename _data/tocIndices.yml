@@ -1,0 +1,7 @@
+ids: 
+- id: 22
+  toc: mycollection
+  indices: [3,2,1]
+- id: 123
+  toc: anothercollection
+  indices: [1,2]

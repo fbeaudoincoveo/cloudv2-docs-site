@@ -1,4 +1,5 @@
 ---
+slug: "3"
 title: API Explorer
 category: index
 layout: content-2-panel

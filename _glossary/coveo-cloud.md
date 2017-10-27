@@ -1,9 +1,7 @@
 ---
+slug: "21"
 title: Coveo Cloud
-layout: glossary_term
 partOfSpeech: noun
-sidebar: ccv2_docs
-slug: "1001"
 ---
 
 A SaaS solutions providing relevant search results from multiple indexed systems (see [Coveo Cloud](http://www.coveo.com/go?dest=cloudhelp&lcid=9&context=1)). 

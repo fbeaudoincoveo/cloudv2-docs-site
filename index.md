@@ -1,11 +1,9 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+slug: "1"
 title: Site Home page
 layout: content-2-panel
-sitemap: true
 toc: root
+permalink: /1/
 ---
 
 # {{ page.title | escape }}

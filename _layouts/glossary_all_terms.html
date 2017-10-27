@@ -17,7 +17,8 @@ layout: content-2-panel
   <h3 class="alphabeticalLinks">
     {% for a in all_letters %}<span class="letterLinks"><a href="#letter_{{a}}">{{a}}</a> </span>{% endfor %}
   </h3>
-  {% for b in all_letters %}<div class="glossaryListContainer">
+  {% for b in all_letters %}
+  <div class="glossaryListContainer">
     <a name="letter_{{b}}"></a><h3>{{ b }}</h3>
       {% for item in site.glossary %}
         {% assign l = item.title | truncate: 1, "" | upcase  %}

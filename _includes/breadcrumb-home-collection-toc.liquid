@@ -1,0 +1,60 @@
+{% strip %}
+{% comment %} Create breadcrumb stating with the site home, the page collection home, and page hierarchy in the collection TOC 
+    
+    IMPORTANT: Prerequisite: page-toc-and-collection-metadata.liquid
+
+{% endcomment %}
+
+<div id="content-breadcrumb">
+    <ul>
+        {% comment %} Breadcrumb home item {% endcomment %}
+        <li><a href="{{ site.baseurl }}{{ site.home_topic_url }}" class="breadcrumbHome" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        {% comment %} Breadcrumb collection item - unless no collection {% endcomment %}
+        {% unless page.path == 'index.md' %}
+            <li><a href="{{ site.baseurl }}{{ collectionHome }}" class="breadcrumbSeparator" data-collection-label="{{ collectionLabel }}">{{ collectionName }}</a></li>
+        {% endunless %}
+        
+        {% comment %} If collection has TOC, add breadcrumb TOC items {% endcomment %}
+        {% if collectionToc %}
+            {% comment %} Set the loop iteration number to not include the current page in the breadcrumb {% endcomment %}
+            {% assign max = iTocArraySize | minus: 2  %}
+            {% comment %} <p>Page TOC indices: {% PageTocIndices %}</p>
+            <p>iTocStr: {{ iTocStr }}</p>
+            <p>iTocArray: {{ iTocArray }}</p>
+            <p>max: {{ max }}</p> {% endcomment %}
+
+            {% comment %} Build {% endcomment %}
+            {% for n in (0..max ) %}
+                {% if n == 0 %}
+                    {% comment %} Convert the array string item to an integer {% endcomment %}
+                    {% assign m0 = iTocArray[0] | times: 1 %}
+                    {% assign e0 = collectionEntries.[m0] %}
+                    <li><a href="{{ e0.path }}" class="breadcrumbSeparator" >{{ e0.title }}</a></li>   
+                {% elsif n == 1 %}
+                    {% assign m1 = iTocArray[1] | times: 1 %}
+                    {% assign e1 = collectionEntries.[m0]["subentries"][m1] %}
+                    <li><a href="{{ e1.path }}" class="breadcrumbSeparator" >{{ e1.title }}</a></li>   
+                {% elsif n == 2 %}
+                    {% assign m2 = iTocArray[2] | times: 1 %}
+                    {% assign e2 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2] %}
+                    <li><a href="{{ e2.path }}" class="breadcrumbSeparator" >{{ e2.title }}</a></li>   
+                {% elsif n == 3 %}
+                    {% assign m3 = iTocArray[3] | times: 1 %}
+                    {% assign e3 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3] %}
+                    <li><a href="{{ e3.path }}" class="breadcrumbSeparator" >{{ e3.title }}</a></li>   
+                {% elsif n == 4 %}
+                    {% assign m4 = iTocArray[4] | times: 1 %}
+                    {% assign e4 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4] %}
+                    <li><a href="{{ e4.path }}" class="breadcrumbSeparator" >{{ e4.title }}</a></li>   
+                {% elsif n == 5 %}
+                    {% assign m5 = iTocArray[5] | times: 1 %}
+                    {% assign e5 = collectionEntries.[m0]["subentries"][m1]["subentries"][m2]["subentries"][m3]["subentries"][m4]["subentries"][m5] %}
+                    <li><a href="{{ e5.path }}" class="breadcrumbSeparator" >{{ e5.title }}</a></li>   
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        
+    </ul>
+</div>
+{% endstrip %}

@@ -103,6 +103,17 @@
       a {
         color: $CoveoGrey6;
       }
+      .breadcrumbHome > i {
+        width: 12px;
+      }
+      .breadcrumbSeparator {
+        margin-left: 10px;
+        &:before {
+          position: relative;
+          content: '/';
+          left: -5px;
+        }
+      }
     }
   }
 }

@@ -6,10 +6,10 @@ layout: default
         {% include toc-glossary.html %}
     </div>
     <div id="main-panel" role="main">
-        {% include breadcrumb-folder-structure.html %}
+        {% include page-toc-and-collection-metadata.liquid %}
+        {% include breadcrumb-home-collection-toc.liquid %}
         <article class="article">
             <div class="article-content">
-                <h1>Glossary Term</h1>
                 <div class="glossary">
                     <div class="glossaryTerm">
                         <span class="glossaryTermTitle">{{ page.title }}</span>
@@ -17,7 +17,6 @@ layout: default
                         <div class="glossaryDefinition">{{ content | markdownify }}</div>
                     </div>
                 </div>
-                {% include glossary_term_list.html %}
             </div>
         </article>
     </div>

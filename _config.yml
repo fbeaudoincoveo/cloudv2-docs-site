@@ -23,6 +23,8 @@ url: "https://d3in5cp0cx0iu6.cloudfront.net"
 
 # Needed for relative links to work in GitHub pages (ex.: "/cloudv2-docs-site") adding {{ site.baseurl }} to all links
 baseurl: ""
+home_topic_url: /1/
+toc_folder: _data/tocs/
 
 twitter_username: jekyllrb
 github_username:  jekyll
@@ -44,8 +46,50 @@ exclude:
   - CONTRIBUTING-CONTENT.md
 
 collections:
-  glossary:
-    output: true
-    permalink: /:collection/:slug/
+  posts:                      # The collection.label. Must match the collection folder name less the '_' prefix
+    name: Posts               # Beautified collection name
+    home:                     # Collection home topic URL (ex.: /123/)
+    permalink: pretty         # Collection pages permalink defining the URL
+    output: false             # Whether to include the collection pages in the site 
+    toc: false                # Whether a YAML TOC file exists for this collection in toc_folders
   api-explorer:
+    name: API Explorer
+    home: /3/
+    permalink: /:slug/
     output: true
+    toc: false
+  glossary:
+    name: Glossary
+    home: /23/
+    permalink: /:slug/
+    output: true
+    toc: false
+  ccv2-dev:
+    name: Coveo Cloud V2 Developer Stuff
+    home: /76/
+    permalink: /:slug/
+    output: true
+    toc: true
+
+defaults:
+  - scope:
+      path: ""              # ?
+      type: "posts"         # Name of collection for which you want to set default values 
+    values:
+      layout: "default"     # Default layout of collection pages
+  - scope:
+      path: ""
+      type: "api-explorer"
+    values:
+      layout: "redoc_page"
+  - scope:
+      path: ""
+      type: "glossary"
+    values:
+      layout: "glossary_term"
+  - scope:
+      path: ""
+      type: "ccv2-dev"
+    values:
+      layout: "content-2-panel"
+      
